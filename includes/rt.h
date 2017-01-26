@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/26 15:26:47 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/26 17:12:41 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,51 @@ typedef struct		s_ray
 {
 	t_vec			org;
 	t_vec			dir;
+	double			t;
 }					t_ray;
+
+/* Quat is the structure
+ * for quaternion:
+ *
+ * R is the real part of the number,
+ * I, J and K are the imaginary part of
+ * the hyper complex space
+ */
+
+typedef struct		s_quat
+{
+	double			r;
+	double			i;
+	double			j;
+	double			k;
+}					t_quat;
+
+/* Quaternion Operations
+ * File: quaternion_operations.c
+ *
+ * Cover the range of operations on quaternions
+ *
+ * Note: All the quaternions should be dereferenced
+ * for performance issues
+ */
+
+/* Quaternion Multiplication
+ *
+ * Take quaternions q1 and q2
+ * and return the quaternion
+ * equal to q1 x q2
+ */
+
+t_quat				quat_mult(t_quat *q1, t_quat *q2);
+
+/* Quaternion  Rotation
+ *
+ * Take Quaternion rot and Vector vec
+ * And returns another vector
+ * corresponding to the rotation
+ * of vec by rot
+ */
+
+t_vec				quat_rot(t_quat *q1, t_vec *vec);
 
 #endif
