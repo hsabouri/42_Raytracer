@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/27 16:30:45 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/27 17:00:56 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ typedef struct		s_cam
 
 /* Init Cam
  *
- * file: init.c
+ * file: camera.c
  *
  * Returns an allocated camera
  * with given rotation, position and fov
@@ -213,6 +213,14 @@ typedef struct		s_cam
  */
 
 t_cam				*init_cam(t_vec *pos, t_quat *rot, double fov);
+
+/* Rotate Cam
+ *
+ * Rotate the camera
+ * by the givem quaternion
+ */
+
+void				rotate_cam(t_cam *cam, t_quat *rot);
 
 /* Ray is the structure for
  * ray components:
@@ -247,5 +255,39 @@ typedef struct		s_ray
  */
 
 t_ray				init_ray(t_cam *cam, int x, int y);
+
+/* Env is the structure
+ * for all variables and components
+ * who need to be used through
+ * the program
+ */
+
+typedef struct		s_env
+{
+	char			*addr;
+	void			*mlx;
+	void			*win;
+	void			*img;
+	int				endian;
+	int				size;
+	int				bpp;
+}					t_env;
+
+/* TEMPORARY
+ * Obj is the test
+ * structure for objects
+ * at the moment
+ */
+
+typedef struct		s_obj
+{
+	double			radius;
+	t_vec			center;
+	t_quat			rot;
+	t_quat			inv;
+}					t_obj;
+
+double				solve_quadra(double a, double b, double c);
+int					raytrace(t_ray ray, t_obj obj);
 
 #endif
