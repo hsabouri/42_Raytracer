@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/27 14:28:12 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/27 16:30:45 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct		s_vec
 }					t_vec;
 
 /* Vector Operations
- * file: vector_operation.s
+ * files: vector_operation.s, vector_methods.c
  * Contain all operations of vectors
  *
  * Note 1: Vectors should always be dereferenced
@@ -67,17 +67,6 @@ t_vec				vector_sub(t_vec *v1, t_vec *v2);
  */
 
 t_vec				vector_scale(t_vec *v1, double k);
-
-/* Vector methods
- * file: vector_methods.c
- * Contain all method needed to create
- * and manipulate vectors
- *
- * Note 1: The w component of the results is one
- *
- * Note 2: Vectors should always be dereferenced
- * for performance issues
- */
 
 /* Scalar product:
  * Take vector v1 and vector v2
@@ -116,27 +105,6 @@ t_vec				normalize_vector(t_vec *v);
 
 void				print_vector(t_vec *v);
 
-/* Ray is the structure for
- * ray components:
- * Basically everything from camera
- * to lights
- *
- * org is the vector of the coordinates
- * for the origin of the ray
- *
- * dir is the vector representing
- * the direction of the ray in 3 dimensions
- *
- * t is the scalar needed to get the distance
- * By default it is set to EPSILON
- */ 
-
-typedef struct		s_ray
-{
-	t_vec			org;
-	t_vec			dir;
-	double			t;
-}					t_ray;
 
 /* Quat is the structure
  * for quaternion:
@@ -215,5 +183,69 @@ t_vec				quat_rot(t_quat *q1, t_vec *vec);
  */
 
 void				print_quat(t_quat *q1);
+
+/* Cam is the structur for the camera
+ *
+ * Pos denotes the position,
+ * Rot is the quternion corresponding
+ * to the rotation of the camera
+ * FOV is the... fov
+ */
+
+typedef struct		s_cam
+{
+	t_vec			*pos;
+	t_quat			*rot;
+	double			fov;
+}					t_cam;
+
+/* Init Cam
+ *
+ * file: init.c
+ *
+ * Returns an allocated camera
+ * with given rotation, position and fov
+ *
+ * By default you want:
+ * pos as (0, 0, 0),
+ * rotation as NULL
+ * and fov as 60;
+ */
+
+t_cam				*init_cam(t_vec *pos, t_quat *rot, double fov);
+
+/* Ray is the structure for
+ * ray components:
+ * Basically everything from camera
+ * to lights
+ *
+ * org is the vector of the coordinates
+ * for the origin of the ray
+ *
+ * dir is the vector representing
+ * the direction of the ray in 3 dimensions
+ *
+ * t is the scalar needed to get the distance
+ * By default it is set to EPSILON
+ */ 
+
+typedef struct		s_ray
+{
+	t_vec			org;
+	t_vec			dir;
+	double			t;
+}					t_ray;
+
+/* Init Ray
+ * file: init.c
+ *
+ * Initialize a ray launched by the camera
+ * into the given x and y pixel
+ *
+ * Note: Use this function for the camera rays
+ * only
+ */
+
+t_ray				init_ray(t_cam *cam, int x, int y);
 
 #endif

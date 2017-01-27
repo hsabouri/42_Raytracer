@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/01/27 14:28:37 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/01/27 15:23:44 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ LFT = libft/libft.a
 LIBS = $(LFT) -L./ -lmlx
 HPATH = -I./
 SRC = main.c \
+	  init.c \
 	  vector_methods.c \
 	  vector_operations.c \
 	  quaternion_operations.c
