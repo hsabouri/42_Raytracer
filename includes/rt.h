@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/26 17:12:41 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/27 14:28:12 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,21 @@ typedef struct		s_ray
  * R is the real part of the number,
  * I, J and K are the imaginary part of
  * the hyper complex space
+ *
+ *  /!\  WARNING /!\
+ *  I, J, and K should NEVER
+ *  EVER be accessed direcctly :
+ *  NO quat->i, quat->j or quat->k authorized
+ *  UNLESS in a method of quaternion
+ *
+ *  FUNCTIONS should be used
+ *  instead to modify these values
+ *
+ *	Think of these components
+ *	as PRIVATE
+ *
+ *  ACCESSING IT DIRECTLY MAY CAUSE 
+ *  BIG PROBLEMS IN MATH
  */
 
 typedef struct		s_quat
@@ -163,6 +178,17 @@ typedef struct		s_quat
  * for performance issues
  */
 
+/* New Quaternion
+ *
+ * Take the angle of rotation in radians
+ * and the axis of rotation
+ * (AKA vector(1, 0, 0) for x, etc..)
+ *
+ * Returns an unit quaternion
+ */
+
+t_quat				new_quat(float radians, t_vec axis);
+
 /* Quaternion Multiplication
  *
  * Take quaternions q1 and q2
@@ -181,5 +207,13 @@ t_quat				quat_mult(t_quat *q1, t_quat *q2);
  */
 
 t_vec				quat_rot(t_quat *q1, t_vec *vec);
+
+/* Print quaternion
+ *
+ * Test function, use it
+ * to print the values of q quat
+ */
+
+void				print_quat(t_quat *q1);
 
 #endif

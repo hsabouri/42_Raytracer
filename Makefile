@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/01/26 15:11:18 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/01/27 14:28:37 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ LIBS = $(LFT) -L./ -lmlx
 HPATH = -I./
 SRC = main.c \
 	  vector_methods.c \
-	  vector_operations.c
+	  vector_operations.c \
+	  quaternion_operations.c
 CC = gcc -Wall -Werror -Wextra
 C_MLX = $(MLX) -framework OpenGL -framework AppKit
 AR = ar libft.a

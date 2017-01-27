@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:53:08 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/26 15:26:36 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/27 14:29:04 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double			get_vector_len(t_vec *v)
 {
 	double		len;
 
-	len = sqrt(scalar_product(v1, v1));
+	len = sqrt(scalar_product(v, v));
 	return len;
 }
 
