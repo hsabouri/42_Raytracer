@@ -6,18 +6,15 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:53:08 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/27 14:29:04 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/28 20:00:50 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-double			scalar_product(t_vec *v1, t_vec *v2)
+inline double	scalar_product(t_vec *v1, t_vec *v2)
 {
-	double		res;
-
-	res = v1->x * v2->x + v1->y * v2->y + v1->z * v2->z;
-	return (res);
+	return (v1->x * v2->x + v1->y * v2->y + v1->z * v2->z)
 }
 
 t_vec			new_vector(double x, double y, double z)
@@ -28,12 +25,9 @@ t_vec			new_vector(double x, double y, double z)
 	return (res);
 }
 
-double			get_vector_len(t_vec *v)
+inline double	get_vector_len(t_vec *v)
 {
-	double		len;
-
-	len = sqrt(scalar_product(v, v));
-	return len;
+	return(sqrt(scalar_product(v, v)));
 }
 
 t_vec			normalize_vector(t_vec *v)
@@ -46,7 +40,18 @@ t_vec			normalize_vector(t_vec *v)
 	res.y = v->y * len;
 	res.z = v->z * len;
 	res.w = 1;
-	return res;
+	return (res);
+}
+
+t_vec			cross_product(t_vec *v1, t_vec *v2)
+{
+	t_vec		res;
+
+	res.x = v1->y * v2.z -v1.z * v2.y;
+	res.y = v1->z * v2.x -v1.x * v2.z;
+	res.z = v1->x * v2.y -v1.y * v2.x;
+	res = normalize(&res);
+	return (res);
 }
 
 void			print_vector(t_vec *v)

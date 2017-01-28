@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raytrace.c                                         :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/28 20:33:50 by hsabouri         ###   ########.fr       */
+/*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
+/*   Updated: 2017/01/28 19:32:43 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-int		raytrace(t_cam camera, t_obj *objs, t_env env)
+void	pixel_put(t_env env, int x, int y, t_color color)
 {
-	int x;
-	int y;
-
+	if (x < WIDTH && x >= 0 && y < HEIGHT && y >= 0)
+		((t_color *)(env.img))[y * WIDTH + x] = color;
 }

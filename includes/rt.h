@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/27 17:00:56 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/28 19:51:31 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,18 @@
 # include <math.h>
 # include <stdio.h>
 # define PI 3.141592653
-# define EPSILON pow(10, -6)
+# define EPSILON 0.000001
 # define HEIGHT 600
 # define LENGTH 600
+
+/*
+ * MiniLibX related function
+ */
+
+/* Puts a pixel in env.img[]
+ */
+
+void				pixel_put(t_env env, int x, int y, t_color color);
 
 /* Vec is the vector struct;
  * 4 coordinates for homogeneous coordinates:
@@ -75,6 +84,14 @@ t_vec				vector_scale(t_vec *v1, double k);
  */
 
 double				scalar_product(t_vec *v1, t_vec *v2);
+
+/* Cross product:
+ * Take vector v1 and vector v2
+ * returns a vector perendicular
+ * to v1 AND v2
+ */
+
+t_vec				cross_product(t_vec *v1, t_vec *v2);
 
 /* New vector:
  * Construct a vector
@@ -273,6 +290,19 @@ typedef struct		s_env
 	int				bpp;
 }					t_env;
 
+/* Color structure
+ * Equivalent to an int
+ * The endianness is correct
+ */
+
+typedef struct		s_color
+{
+	unsigned char	blue;
+	unsigned char	green;
+	unsigned char	red;
+	unsigned char	alpha;
+}					t_color;
+
 /* TEMPORARY
  * Obj is the test
  * structure for objects
@@ -282,7 +312,8 @@ typedef struct		s_env
 typedef struct		s_obj
 {
 	double			radius;
-	t_vec			center;
+	t_vec			dir;
+	t_vec			pos;
 	t_quat			rot;
 	t_quat			inv;
 }					t_obj;
