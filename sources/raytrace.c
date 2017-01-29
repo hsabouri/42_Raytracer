@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/29 18:50:34 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 20:20:48 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,29 @@
 
 t_color			*check_intersections(t_obj *objs, t_ray ray)
 {
-	double		tmin;
+	double		t;
+	double		t_tmp;
 	int			i;
 	t_color		*res;
+	t_ray		ray_tmp;
 
 	res = NULL;
 	i = 0;
-	tmin = EPSILON;
+	t = -1.0;
+	t_tmp = -1.0;
+	ray_tmp = ray;
 	while (objs[i].type != BACKSLASH)
 	{
 		if (objs[i].type == SPHERE)
-			tmin = intersect_sphere(&ray, objs[i]);
+			t_tmp = intersect_sphere(&ray_tmp, objs[i]);
 		else if (objs[i].type == PLANE)
-			tmin = intersect_sphere(&ray, objs[i]);
-		if (tmin > EPSILON)
+			t_tmp = intersect_sphere(&ray_tmp, objs[i]);
+		if ((t_tmp < t || t <= EPSILON) && t_tmp > EPSILON)
+		{
+			t = t_tmp;
+			ray = ray_tmp;
 			res = &objs[i].rgb;
+		}
 		i++;
 	}
 	return (res);
