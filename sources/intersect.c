@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:58:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 20:20:49 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/29 20:34:12 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,22 @@ double		intersect_sphere(t_ray *ray, t_obj sphere)
 
 double		intersect_plane(t_ray *ray, t_obj plane)
 {
+	t_vec	v;
 	double	div;
+	double	res;
 
 	div = scalar_product(&plane.dir, &ray->dir);
-	if (div <= EPSILON)
+	if (div)
+	{
+		v = vector_sub(&plane.pos, &ray->org);
+		res = scalar_product(&v, &plane.dir);
+		res /= div;
+		if (res > EPSILON)
+		{
+			ray->t = res;
+			return (res);
+		}
 		return (EPSILON);
-	ray->t = -(scalar_product(&plane.dir, &ray->org) + plane.radius) / div;
-	return (ray->t);
+	}
+	return (EPSILON);
 }
