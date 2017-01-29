@@ -6,21 +6,21 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/29 21:13:46 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 21:24:26 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_color			*check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
+t_color			check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
 {
 	double		t;
 	double		lamb;
 	double		t_tmp;
 	int			i;
-	t_color		*res;
+	t_color		res;
 
-	res = NULL;
+	res = (t_color) {0, 0, 0, 0};
 	i = 0;
 	t = -1.0;
 	t_tmp = -1.0;
@@ -34,7 +34,7 @@ t_color			*check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
 		{
 			t = t_tmp;
 			lamb = lambert(objs[i], ray, lgt);
-			res = apply_lambert(&objs[i].rgb, lamb);
+			res = apply_lambert(objs[i].rgb, lamb);
 		}
 		i++;
 	}
@@ -46,7 +46,7 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 	int			x;
 	int			y;
 	t_ray		ray;
-	t_color		*col;
+	t_color		col;
 
 	x = 0;
 	while (x < LENGTH)
@@ -56,10 +56,7 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 		{
 			ray = init_ray(&camera, x, y);
 			col = check_intersections(objs, ray, env.lgt);
-			if (col)
-			{
-				pixel_put(env, x, y, *col);
-			}
+			pixel_put(env, x, y, col);
 			y++;
 		}
 		x++;

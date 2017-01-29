@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:58:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 20:40:31 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 21:42:56 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ double		intersect_sphere(t_ray *ray, t_obj sphere)
 	double	c;
 	t_vec	v;
 
-	v = vector_sub(&ray->org, &sphere.pos);
-	a = scalar_product(&ray->dir, &ray->dir);
-	b = 2 * scalar_product(&ray->dir, &v);
-	c = scalar_product(&v, &v) - sphere.radius * sphere.radius;
+	v = vector_sub(ray->org, sphere.pos);
+	a = scalar_product(ray->dir, ray->dir);
+	b = 2 * scalar_product(ray->dir, v);
+	c = scalar_product(v, v) - sphere.radius * sphere.radius;
 	ray->t = solve_quadra(a, b, c);
 	return (ray->t);
 }
@@ -33,11 +33,11 @@ double		intersect_plane(t_ray *ray, t_obj plane)
 	double	div;
 	double	res;
 
-	div = scalar_product(&plane.dir, &ray->dir);
+	div = scalar_product(plane.dir, ray->dir);
 	if (div)
 	{
-		v = vector_sub(&plane.pos, &ray->org);
-		res = scalar_product(&v, &plane.dir);
+		v = vector_sub(plane.pos, ray->org);
+		res = scalar_product(v, plane.dir);
 		res /= div;
 		if (res > EPSILON)
 		{

@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 21:13:50 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 22:10:44 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static t_obj	*ft_init_objs()
 	res[0].rgb = (t_color){255, 255, 255, 0};
 
 	res[1].type = PLANE;
-	res[1].dir = new_vector(0, 1, 0);
-	res[1].pos = new_vector(0, -2, 0);
+	res[1].dir = new_vector(0, -1, 0);
+	res[1].pos = new_vector(0, -1, 0);
 	res[1].rot = NULL;
 	res[1].inv = NULL;
 	res[1].rgb = (t_color) {255, 155, 155, 0};

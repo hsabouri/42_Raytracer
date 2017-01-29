@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 20:47:43 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 22:12:14 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,21 @@ typedef struct		s_vec
  * of the 2 given vectors
  */
 
-t_vec				vector_add(t_vec *v1, t_vec *v2);
+t_vec				vector_add(t_vec v1, t_vec v2);
 
 /* Vector sub:
  * Take vector v1 and vector v2,
  * returns a vector equals to v1 - v2
  */
 
-t_vec				vector_sub(t_vec *v1, t_vec *v2);
+t_vec				vector_sub(t_vec v1, t_vec v2);
 
 /* Vector scale:
  * Take vector v1 and scalar k and return
  * a vector equals to v1 scaled by k;
  */
 
-t_vec				vector_scale(t_vec *v1, double k);
+t_vec				vector_scale(t_vec v1, double k);
 
 /* Scalar product:
  * Take vector v1 and vector v2
@@ -74,7 +74,7 @@ t_vec				vector_scale(t_vec *v1, double k);
  * the scalar product of v1 x v2
  */
 
-double				scalar_product(t_vec *v1, t_vec *v2);
+double				scalar_product(t_vec v1, t_vec v2);
 
 /* Cross product:
  * Take vector v1 and vector v2
@@ -82,7 +82,7 @@ double				scalar_product(t_vec *v1, t_vec *v2);
  * to v1 AND v2
  */
 
-t_vec				cross_product(t_vec *v1, t_vec *v2);
+t_vec				cross_product(t_vec v1, t_vec v2);
 
 /* New vector:
  * Construct a vector
@@ -96,14 +96,14 @@ t_vec				new_vector(double x, double y, double z);
  * the given vector
  */
 
-double				get_vector_len(t_vec *v);
+double				get_vector_len(t_vec v);
 
 /* Normalize Vector:
  * Returns the normalized
  * given vector
  */
 
-t_vec				normalize_vector(t_vec *v);
+t_vec				normalize_vector(t_vec v);
 
 /* Print vector:
  * Degub function, use it
@@ -111,7 +111,7 @@ t_vec				normalize_vector(t_vec *v);
  * the given vector
  */
 
-void				print_vector(t_vec *v);
+void				print_vector(t_vec v);
 
 
 /* Quat is the structure
@@ -346,6 +346,6 @@ double				intersect_plane(t_ray *ray, t_obj plane);
 void				pixel_put(t_env env, int x, int y, t_color color);
 
 double				lambert(t_obj obj, t_ray ray, t_lgt lgt);
-t_color				*apply_lambert(t_color *col, double l);
+t_color				apply_lambert(t_color col, double l);
 
 #endif
