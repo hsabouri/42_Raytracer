@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/28 19:51:31 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/29 18:54:27 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@
 # define EPSILON 0.000001
 # define HEIGHT 600
 # define LENGTH 600
-
-/*
- * MiniLibX related function
- */
-
-/* Puts a pixel in env.img[]
- */
-
-void				pixel_put(t_env env, int x, int y, t_color color);
 
 /* Vec is the vector struct;
  * 4 coordinates for homogeneous coordinates:
@@ -297,10 +288,10 @@ typedef struct		s_env
 
 typedef struct		s_color
 {
-	unsigned char	blue;
-	unsigned char	green;
-	unsigned char	red;
-	unsigned char	alpha;
+	unsigned char	b;
+	unsigned char	g;
+	unsigned char	r;
+	unsigned char	a;
 }					t_color;
 
 /* TEMPORARY
@@ -309,16 +300,41 @@ typedef struct		s_color
  * at the moment
  */
 
+/* t_type is an enum for
+ * the type of the object
+ */
+
+typedef enum		e_type
+{
+	SPHERE,
+	PLANE,
+	BACKSLASH
+}					t_type;
+
 typedef struct		s_obj
 {
+	t_type			type;
 	double			radius;
 	t_vec			dir;
 	t_vec			pos;
-	t_quat			rot;
-	t_quat			inv;
+	t_quat			*rot;
+	t_quat			*inv;
+	t_color			rgb;
 }					t_obj;
 
 double				solve_quadra(double a, double b, double c);
-int					raytrace(t_ray ray, t_obj obj);
+int					raytrace(t_cam camera, t_obj *objs, t_env env);
+double				intersect_sphere(t_ray *ray, t_obj sphere);
+double				intersect_plane(t_ray *ray, t_obj plane);
+
+
+/*
+ * MiniLibX related function
+ */
+
+/* Puts a pixel in env.img[]
+ */
+
+void				pixel_put(t_env env, int x, int y, t_color color);
 
 #endif

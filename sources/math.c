@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 17:01:03 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/28 19:32:45 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/29 18:56:43 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ double		solve_quadra(double a, double b, double c)
 		d = sqrt(d);
 		t1 = (-b - d) / (2.0 * a);
 		t2 = (-b + d) / (2.0 * a);
-		if (t1 > EPSILON)
+		if (t1 > EPSILON) {
 			return t1;
-		else if (t2 > EPSILON)
+		}
+		else if (t2 > EPSILON) {
 			return t2;
+		}
 	}
-	return (0);
+	return (EPSILON);
 }

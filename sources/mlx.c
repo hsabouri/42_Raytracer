@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/28 19:32:43 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/29 18:53:38 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	pixel_put(t_env env, int x, int y, t_color color)
 {
-	if (x < WIDTH && x >= 0 && y < HEIGHT && y >= 0)
-		((t_color *)(env.img))[y * WIDTH + x] = color;
+	int	pos;
+
+	pos = (x * (env.bpp / 8)) + (y * env.size);
+	env.addr[pos + 0] = color.b;
+	env.addr[pos + 1] = color.g;
+	env.addr[pos + 2] = color.r;
 }

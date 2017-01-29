@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/27 16:53:42 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 18:55:55 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ t_ray		init_ray(t_cam *cam, int x, int y)
 	v.y *= tan((cam->fov / 2) * PI / 180);
 	v.z = 1;
 	ray.dir = v;
+	ray.t = EPSILON;
 	return (ray);
 }

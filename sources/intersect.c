@@ -6,43 +6,34 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:58:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/28 20:15:56 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/29 18:55:44 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_ray	intersect_sphere(t_ray ray, t_obj sphere, t_vec *cross_point)
+double		intersect_sphere(t_ray *ray, t_obj sphere)
 {
-	double a;
-	double b;
-	double b;
+	double	a;
+	double	b;
+	double	c;
+	t_vec	v;
 
-	a = ray.dir.x * ray.dir.x + ray.dir.y * ray.dir.y + ray.dir.z * ray.dir.z;
-	b = 2 * (ray.dir.x * (ray.org.x - sphere.pos.x)) +
-		(ray.dir.y * (ray.org.y - sphere.pos.y)) +
-		(ray.dir.z - (ray.org.z - sphere.pos.z));
-	c = (ray.org.x - sphere.pos.x) * (ray.org.x - sphere.pos.x) +
-		(ray.org.y - sphere.pos.y) * (ray.org.y - sphere.pos.y) +
-		(ray.org.z - sphere.pos.z) * (ray.org.z - sphere.pos.z) -
-		sphere.radius * sphere.radius;
-	ray.t = solve_quadra(a, b, c);
-	cross_point->x = ray.dir.x * ray.t + ray.org.x;
-	cross_point->y = ray.dir.y * ray.t + ray.org.y;
-	cross_point->z = ray.dir.z * ray.t + ray.org.z;
-	return (ray);
+	v = vector_sub(&ray->org, &sphere.pos);
+	a = scalar_product(&ray->dir, &ray->dir);
+	b = 2 * scalar_product(&ray->dir, &v);
+	c = scalar_product(&v, &v) - sphere.radius * sphere.radius;
+	ray->t = solve_quadra(a, b, c);
+	return (ray->t);
 }
 
-t_ray	intersect_plane(t_ray ray, t_obj plane, t_vec *cross_point)
+double		intersect_plane(t_ray *ray, t_obj plane)
 {
 	double	div;
 
-	div = scalar_product(plane.dir, ray.dir);
+	div = scalar_product(&plane.dir, &ray->dir);
 	if (div <= EPSILON)
-		return (ray)
-	ray.t = -(scalar_product(plane.dir, ray.org) + plane.radius) / div;
-	cross_point.x = ray.dir.x * ray.t + ray.org.x;
-	cross_point.y = ray.dir.y * ray.t + ray.org.y;
-	cross_point.z = ray.dir.z * ray.t + ray.org.z;
-	return (ray)
+		return (EPSILON);
+	ray->t = -(scalar_product(&plane.dir, &ray->org) + plane.radius) / div;
+	return (ray->t);
 }
