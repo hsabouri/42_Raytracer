@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/29 19:59:01 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/29 20:58:19 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	pixel_put(t_env env, int x, int y, t_color color)
 		env.addr[pos + 0] = color.b;
 		env.addr[pos + 1] = color.g;
 		env.addr[pos + 2] = color.r;
+		env.addr[pos + 3] = 0;
 	}
 }

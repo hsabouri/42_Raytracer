@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 20:34:15 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 20:47:43 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,8 +270,16 @@ t_ray				init_ray(t_cam *cam, int x, int y);
  * the program
  */
 
+typedef struct		s_lgt
+{
+	t_vec			pos;
+	t_vec			hitpnt;
+	t_vec			normal;
+}					t_lgt;
+
 typedef struct		s_env
 {
+	t_lgt			lgt;
 	char			*addr;
 	void			*mlx;
 	void			*win;
@@ -336,5 +344,8 @@ double				intersect_plane(t_ray *ray, t_obj plane);
  */
 
 void				pixel_put(t_env env, int x, int y, t_color color);
+
+double				lambert(t_obj obj, t_ray ray, t_lgt lgt);
+t_color				*apply_lambert(t_color *col, double l);
 
 #endif

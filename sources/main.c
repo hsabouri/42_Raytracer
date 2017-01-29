@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 20:34:17 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 21:13:50 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void 	ft_init_env(t_env *env)
 	env->img = mlx_new_image(env->mlx, LENGTH, HEIGHT);
 	env->addr = mlx_get_data_addr(env->img, &env->bpp,
 			&env->size, &env->endian);
+	env->lgt.pos = (t_vec){2, 2, -10, 1};
 }
 
 static t_obj	*ft_init_objs()

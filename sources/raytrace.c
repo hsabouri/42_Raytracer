@@ -6,36 +6,35 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/29 20:32:10 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/01/29 21:13:46 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_color			*check_intersections(t_obj *objs, t_ray ray)
+t_color			*check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
 {
 	double		t;
+	double		lamb;
 	double		t_tmp;
 	int			i;
 	t_color		*res;
-	t_ray		ray_tmp;
 
 	res = NULL;
 	i = 0;
 	t = -1.0;
 	t_tmp = -1.0;
-	ray_tmp = ray;
 	while (objs[i].type != BACKSLASH)
 	{
 		if (objs[i].type == SPHERE)
-			t_tmp = intersect_sphere(&ray_tmp, objs[i]);
+			t_tmp = intersect_sphere(&ray, objs[i]);
 		else if (objs[i].type == PLANE)
-			t_tmp = intersect_sphere(&ray_tmp, objs[i]);
+			t_tmp = intersect_sphere(&ray, objs[i]);
 		if ((t_tmp < t || t <= EPSILON) && t_tmp > EPSILON)
 		{
 			t = t_tmp;
-			ray = ray_tmp;
-			res = &objs[i].rgb;
+			lamb = lambert(objs[i], ray, lgt);
+			res = apply_lambert(&objs[i].rgb, lamb);
 		}
 		i++;
 	}
@@ -56,7 +55,7 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 		while (y < HEIGHT)
 		{
 			ray = init_ray(&camera, x, y);
-			col = check_intersections(objs, ray);
+			col = check_intersections(objs, ray, env.lgt);
 			if (col)
 			{
 				pixel_put(env, x, y, *col);

@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/01/29 20:24:03 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/01/29 20:46:18 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC = main.c \
 	  mlx.c \
 	  math.c \
 	  init.c \
+	  light.c \
 	  camera.c \
 	  intersect.c \
 	  raytrace.c \
