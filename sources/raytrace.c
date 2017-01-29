@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/29 21:24:26 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/29 22:28:10 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_color			check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
 	double		t;
 	double		lamb;
 	double		t_tmp;
-	int			i;
 	t_color		res;
+	int			i;
 
 	res = (t_color) {0, 0, 0, 0};
 	i = 0;

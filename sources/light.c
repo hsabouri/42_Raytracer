@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 21:59:54 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/29 23:01:52 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,13 @@ double		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	lgt.hitpnt = vector_add(ray.org, tmp);
 	dir = vector_sub(lgt.hitpnt, lgt.pos);
 	dir = normalize_vector(dir);
-	tmp = vector_sub(obj.pos, lgt.hitpnt);
-	lgt.normal = normalize_vector(tmp);
+	if (obj.type == PLANE)
+		lgt.normal = obj.dir;
+	else
+	{
+		tmp = vector_sub(obj.pos, lgt.hitpnt);
+		lgt.normal = normalize_vector(tmp);
+	}
 	res = scalar_product(dir, lgt.normal);
 	if (res < 0.1)
 		res = 0.1;
