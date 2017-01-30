@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx.c                                              :+:      :+:    :+:   */
+/*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/30 15:17:34 by hsabouri         ###   ########.fr       */
+/*   Created: 2017/01/30 17:24:15 by hsabouri          #+#    #+#             */
+/*   Updated: 2017/01/30 17:36:28 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-void	pixel_put(t_env env, unsigned int x, unsigned int y, t_color color)
+t_vec		normal_plane(t_ray ray, t_obj obj)
 {
-	if (x < LENGTH && y < HEIGHT)
-		((t_color *)(env.addr))[x + y * LENGTH] = color;
+	t_vec res;
+
+	if (scalar_product(obj.dir, ray.dir) < EPSILON)
+		res = vector_scale(obj.dir, -1.0);
+	else
+		res = obj.dir;
+	return (res);
 }

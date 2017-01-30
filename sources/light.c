@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 23:01:52 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/30 17:36:25 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ t_color		apply_lambert(t_color col, double l)
 {
 	t_color	res;
 
-	res.r = ((double)col.r * l);
-	res.g = ((double)col.g * l);
-	res.b = ((double)col.b * l);
+	res.b = (col.b * l);
+	res.g = (col.g * l);
+	res.r = (col.r * l);
+	res.a = 0;
 	return (res);
 }
 
@@ -33,7 +34,7 @@ double		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	dir = vector_sub(lgt.hitpnt, lgt.pos);
 	dir = normalize_vector(dir);
 	if (obj.type == PLANE)
-		lgt.normal = obj.dir;
+		lgt.normal = normal_plane(ray, obj);
 	else
 	{
 		tmp = vector_sub(obj.pos, lgt.hitpnt);

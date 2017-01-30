@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/29 22:28:10 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/30 15:45:58 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_color			check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
 {
-	double		t;
-	double		lamb;
-	double		t_tmp;
-	t_color		res;
-	int			i;
+	double			t;
+	double			lamb;
+	double			t_tmp;
+	t_color			res;
+	unsigned int	i;
 
 	res = (t_color) {0, 0, 0, 0};
 	i = 0;
@@ -29,7 +29,7 @@ t_color			check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
 		if (objs[i].type == SPHERE)
 			t_tmp = intersect_sphere(&ray, objs[i]);
 		else if (objs[i].type == PLANE)
-			t_tmp = intersect_sphere(&ray, objs[i]);
+			t_tmp = intersect_plane(&ray, objs[i]);
 		if ((t_tmp < t || t <= EPSILON) && t_tmp > EPSILON)
 		{
 			t = t_tmp;
@@ -43,10 +43,10 @@ t_color			check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
 
 int				raytrace(t_cam camera, t_obj *objs, t_env env)
 {
-	int			x;
-	int			y;
-	t_ray		ray;
-	t_color		col;
+	unsigned int	x;
+	unsigned int	y;
+	t_ray			ray;
+	t_color			col;
 
 	x = 0;
 	while (x < LENGTH)

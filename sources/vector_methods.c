@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:53:08 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 22:02:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/30 17:16:49 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_vec			new_vector(double x, double y, double z)
 
 inline double	get_vector_len(t_vec v)
 {
-	return(sqrt(scalar_product(v, v)));
+	return (sqrt(scalar_product(v, v)));
 }
 
 t_vec			normalize_vector(t_vec v)

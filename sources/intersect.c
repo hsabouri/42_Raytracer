@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:58:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 23:00:47 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/30 17:36:27 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,18 @@ double		intersect_plane(t_ray *ray, t_obj plane)
 	double	res;
 
 	div = scalar_product(plane.dir, ray->dir);
-	if (div)
+	if (div > EPSILON || div < EPSILON)
 	{
 		v = vector_sub(plane.pos, ray->org);
-		res = scalar_product(v, plane.dir);
-		res /= div;
+		res = scalar_product(v, plane.dir) / div;
 		if (res > EPSILON)
 		{
 			ray->t = res;
 			return (res);
 		}
-		return (EPSILON);
+		else
+			return (EPSILON);
 	}
-	return (EPSILON);
+	else
+		return (EPSILON);
 }

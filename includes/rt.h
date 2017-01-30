@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/29 22:12:14 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/01/30 17:29:31 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,6 +335,8 @@ int					raytrace(t_cam camera, t_obj *objs, t_env env);
 double				intersect_sphere(t_ray *ray, t_obj sphere);
 double				intersect_plane(t_ray *ray, t_obj plane);
 
+t_vec				normal_plane(t_ray ray, t_obj obj);
+
 
 /*
  * MiniLibX related function
@@ -343,7 +345,8 @@ double				intersect_plane(t_ray *ray, t_obj plane);
 /* Puts a pixel in env.img[]
  */
 
-void				pixel_put(t_env env, int x, int y, t_color color);
+void				pixel_put(t_env env, unsigned int x, unsigned int y,
+					t_color color);
 
 double				lambert(t_obj obj, t_ray ray, t_lgt lgt);
 t_color				apply_lambert(t_color col, double l);
