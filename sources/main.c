@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/30 17:36:22 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/02 12:51:37 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,27 @@ static void 	ft_init_env(t_env *env)
 
 static t_obj	*ft_init_objs()
 {
+	t_vec		axis;
 	t_obj		*res;
 
+	axis = new_vector(0, 0, 1);
 	res = (t_obj *)malloc(sizeof(t_obj) * 3);
 	
-	res[0].type = SPHERE;
-	res[0].radius = 2;
+	res[0].type = CONE;
+	res[0].radius = 0.7;
 	res[0].pos = new_vector(0, 0, 0);
-	res[0].rot = NULL;
-	res[0].inv = NULL;
+	res[0].rot = (t_quat *)malloc(sizeof(t_quat));
+	*res[0].rot = new_quat(90, axis);
+	res[0].inv = (t_quat *)malloc(sizeof(t_quat));
+	*res[0].inv = (t_quat){res[0].rot->r,
+						-res[0].rot->i,
+						-res[0].rot->j,
+						-res[0].rot->k};
 	res[0].rgb = (t_color){255, 255, 255, 0};
 
-	res[1].type = PLANE;
-	res[1].dir = normalize_vector(new_vector(0, 1, 0));
-	res[1].pos = new_vector(0, -1, 0);
+	res[1].type = CYLINDER;
+	res[1].radius = 2;
+	res[1].pos = new_vector(1, -1, 0);
 	res[1].rot = NULL;
 	res[1].inv = NULL;
 	res[1].rgb = (t_color) {255, 155, 155, 0};

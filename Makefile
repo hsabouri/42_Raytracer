@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/01/30 17:29:01 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/02 12:32:37 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,13 @@ LIBS = $(LFT) -L./ -lmlx
 HPATH = -I./
 SRC = main.c \
 	  mlx.c \
-	  math.c \
 	  init.c \
 	  light.c \
 	  camera.c \
 	  normal.c \
-	  intersect.c \
+	  quadra.c \
 	  raytrace.c \
+	  intersect.c \
 	  vector_methods.c \
 	  vector_operations.c \
 	  quaternion_operations.c

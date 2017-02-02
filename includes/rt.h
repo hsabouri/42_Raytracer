@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/01/30 17:29:31 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/02 12:50:20 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdio.h>
 # define PI 3.141592653
 # define EPSILON 0.000001
-# define HEIGHT 600
-# define LENGTH 600
+# define HEIGHT 1200
+# define LENGTH 1200
 
 /* Vec is the vector struct;
  * 4 coordinates for homogeneous coordinates:
@@ -316,6 +316,8 @@ typedef enum		e_type
 {
 	SPHERE,
 	PLANE,
+	CONE,
+	CYLINDER,
 	BACKSLASH
 }					t_type;
 
@@ -334,6 +336,8 @@ double				solve_quadra(double a, double b, double c);
 int					raytrace(t_cam camera, t_obj *objs, t_env env);
 double				intersect_sphere(t_ray *ray, t_obj sphere);
 double				intersect_plane(t_ray *ray, t_obj plane);
+double				intersect_cone(t_ray *ray, t_obj cone);
+double				intersect_cylinder(t_ray *ray, t_obj cylinder);
 
 t_vec				normal_plane(t_ray ray, t_obj obj);
 
