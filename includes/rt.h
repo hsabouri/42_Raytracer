@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/02 12:50:20 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/03 15:28:44 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 # include "../libft/libft.h"
 # include <math.h>
 # include <stdio.h>
-# define PI 3.141592653
-# define EPSILON 0.000001
-# define HEIGHT 1200
-# define LENGTH 1200
+# include "defines.h"
 
 /* Vec is the vector struct;
  * 4 coordinates for homogeneous coordinates:
@@ -200,11 +197,28 @@ void				print_quat(t_quat *q1);
  * FOV is the... fov
  */
 
+typedef enum		e_dir
+{
+	FRONT,
+	BACK,
+	RIGHT,
+	LEFT,
+	DOWN,
+	UP
+}					t_dir;
+
+typedef enum		e_mode
+{
+	MOVEMENT,
+	ROTATION
+}					t_mode;
+
 typedef struct		s_cam
 {
 	t_vec			*pos;
 	t_quat			*rot;
 	double			fov;
+	t_mode			control;
 }					t_cam;
 
 /* Init Cam
@@ -220,7 +234,7 @@ typedef struct		s_cam
  * and fov as 60;
  */
 
-t_cam				*init_cam(t_vec *pos, t_quat *rot, double fov);
+t_cam				*init_cam(t_vec pos, t_quat *rot, double fov);
 
 /* Rotate Cam
  *
@@ -229,6 +243,9 @@ t_cam				*init_cam(t_vec *pos, t_quat *rot, double fov);
  */
 
 void				rotate_cam(t_cam *cam, t_quat *rot);
+void				translate_cam(t_cam *cam, t_vec tran);
+void				move_camera(t_cam *cam, t_dir dir);
+void				camera_control(t_cam *cam, t_dir dir);
 
 /* Ray is the structure for
  * ray components:
@@ -277,17 +294,6 @@ typedef struct		s_lgt
 	t_vec			normal;
 }					t_lgt;
 
-typedef struct		s_env
-{
-	t_lgt			lgt;
-	char			*addr;
-	void			*mlx;
-	void			*win;
-	void			*img;
-	int				endian;
-	int				size;
-	int				bpp;
-}					t_env;
 
 /* Color structure
  * Equivalent to an int
@@ -332,6 +338,21 @@ typedef struct		s_obj
 	t_color			rgb;
 }					t_obj;
 
+typedef struct		s_env
+{
+	t_lgt			lgt;
+	t_cam			*cam;
+	t_obj			*objs;
+	char			*addr;
+	void			*mlx;
+	void			*win;
+	void			*img;
+	int				redraw;
+	int				endian;
+	int				size;
+	int				bpp;
+}					t_env;
+
 double				solve_quadra(double a, double b, double c);
 int					raytrace(t_cam camera, t_obj *objs, t_env env);
 double				intersect_sphere(t_ray *ray, t_obj sphere);
@@ -351,6 +372,8 @@ t_vec				normal_plane(t_ray ray, t_obj obj);
 
 void				pixel_put(t_env env, unsigned int x, unsigned int y,
 					t_color color);
+int					key_hook(int keycode, t_env *env);
+
 
 double				lambert(t_obj obj, t_ray ray, t_lgt lgt);
 t_color				apply_lambert(t_color col, double l);
