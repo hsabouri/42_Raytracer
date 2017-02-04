@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:52:33 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/03 15:29:21 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/04 19:06:17 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ void		camera_control(t_cam *cam, t_dir dir)
 	t_vec	axis;
 
 	if (dir == FRONT)
-		axis = new_vector(0, 0, -1);
+		axis = new_vector(0, 0, 1);
 	else if (dir == BACK)
 		axis = new_vector(0, 0, 1);
 	else if (dir == RIGHT)
 		axis = new_vector(1, 0, 0);
 	else if (dir == LEFT)
-		axis = new_vector(-1, 0, 0);
+		axis = new_vector(1, 0, 0);
 	else if (dir == DOWN)
-		axis = new_vector(0, -1, 0);
+		axis = new_vector(0, 1, 0);
 	else
 		axis = new_vector(0, 1, 0);
 	rot = new_quat(PI / 10, axis);
