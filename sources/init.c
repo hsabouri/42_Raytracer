@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/05 13:14:16 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/05 17:12:36 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_ray			init_ray(t_cam *cam, int x, int y)
 	t_vec	v;
 	t_ray	ray;
 
-	ray.org = *cam->pos;
+	ray.org = cam->pos;
 	v.x = (x + 0.5) / LENGTH;
 	v.y = (y + 0.5) / HEIGHT;
 	v.x = (2 * v.x) - 1;

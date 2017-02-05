@@ -1,0 +1,62 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/08/19 10:32:42 by hsabouri          #+#    #+#              #
+#    Updated: 2017/02/05 17:51:19 by hsabouri         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = RT
+LIBPATH = libft
+LIBNAME = libft.a
+LIB = $(LIBNAME:%=$(LIBPATH)/%)
+CFLAGS = -Wall -Wextra -I$(LIBINC) -I$(INC)
+#CFLAGS += -O3 -march=native
+#CFLAGS += -g -fsanitize=address
+LDFLAGS = -L $(LIBPATH) -l$(LIBNAME:lib%.a=%) -lmlx -framework OpenGL\
+			-framework AppKit
+CC = clang
+SRCDIR = sources
+SRCS =	main.c \
+		mlx.c \
+		init.c \
+		light.c \
+		camera.c \
+		normal.c \
+		quadra.c \
+		raytrace.c \
+		intersect.c \
+		vector_methods.c \
+		vector_operations.c \
+		quaternion_operations.c
+
+SRC = $(SRCS:%.c=$(SRCDIR)/%.c)
+LIBINC = $(LIBPATH)/includes/
+INC = ./includes/
+OBJ	= $(SRC:$(SRCDIR)/%.c=%.o)
+
+all: $(NAME) $(LIB)
+
+$(LIB):
+	$(MAKE) -C $(LIBPATH)
+
+$(NAME): $(OBJ) $(LIB)
+	$(CC) -o $@ $(LDFLAGS) $(OBJ) $(CFLAGS)
+
+%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+.PHONY: clean
+clean:
+	rm -rf $(OBJ)
+
+.PHONY: fclean
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean
+	$(MAKE) all

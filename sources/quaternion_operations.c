@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 15:45:33 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/03 15:03:25 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/05 17:10:58 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ t_quat			quat_mult(t_quat *q1, t_quat *q2)
 	res.k = (q1->r * q2->k) + (q1->k * q2->r) + (q1->i * q2->j) - (q1->j * q2->i);
 	return (res);
 }
-
-
 
 t_vec			quat_rot(t_quat *rot, t_vec *vec)
 {

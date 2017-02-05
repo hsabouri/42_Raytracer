@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/05 13:13:40 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/05 17:54:29 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		draw(t_env *env)
 	if (!(env->addr = mlx_get_data_addr(env->img, &env->bpp,
 					&env->size, &env->endian)))
 		exit(0);
-	raytrace(*env->cam, env->objs, *env);
+	raytrace(env->cam, env->objs, *env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
 	mlx_destroy_image(env->mlx, env->img);
 	return (0);
@@ -44,15 +44,13 @@ static int		loop_hook(t_env *env)
 int				main(void)
 {
 	t_obj	*objs;
-	t_cam	*cam;
 	t_env	env;
 	t_vec	vec;
 
 	env = init_env();
 	vec = new_vector(0, 0, -10);
 	objs = init_objs();
-	cam = init_cam(vec, NULL, 60);
-	env.cam = cam;
+	env.cam = init_cam(vec, NULL, 60);
 	env.objs = objs;
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_key_hook(env.win, key_hook, &env);

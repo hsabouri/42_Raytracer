@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/05 13:12:58 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/05 17:59:00 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,7 @@ typedef enum		e_mode
 
 typedef struct		s_cam
 {
-	t_vec			*pos;
+	t_vec			pos;
 	t_quat			*rot;
 	double			fov;
 	t_mode			control;
@@ -234,7 +234,7 @@ typedef struct		s_cam
  * and fov as 60;
  */
 
-t_cam				*init_cam(t_vec pos, t_quat *rot, double fov);
+t_cam				init_cam(t_vec pos, t_quat *rot, double fov);
 
 /* Rotate Cam
  *
@@ -242,10 +242,10 @@ t_cam				*init_cam(t_vec pos, t_quat *rot, double fov);
  * by the givem quaternion
  */
 
-void				rotate_cam(t_cam *cam, t_quat *rot);
-void				translate_cam(t_cam *cam, t_vec tran);
-void				move_camera(t_cam *cam, t_dir dir);
-void				camera_control(t_cam *cam, t_dir dir);
+t_cam				rotate_cam(t_cam cam, t_quat *rot);
+t_cam				translate_cam(t_cam cam, t_vec tran);
+t_cam				move_camera(t_cam cam, t_dir dir);
+t_cam				camera_control(t_cam cam, t_dir dir);
 
 /* Ray is the structure for
  * ray components:
@@ -354,7 +354,7 @@ t_obj				*init_objs(void);
 typedef struct		s_env
 {
 	t_lgt			lgt;
-	t_cam			*cam;
+	t_cam			cam;
 	t_obj			*objs;
 	char			*addr;
 	void			*mlx;
