@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/03 13:30:56 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/05 15:50:23 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ double		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
 	res = scalar_product(dir, lgt.normal);
-	if (res < 0.1)
-		res = 0.1;
+	if (res < 0.05)
+		res = 0.05;
 	if (res > 1)
 		res = 1;
 	return (res);

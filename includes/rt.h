@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/04 19:06:19 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/05 13:12:58 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,6 +327,13 @@ typedef enum		e_type
 	BACKSLASH
 }					t_type;
 
+/* Object class
+ * is the same for every objects
+ * radius : can be the radius of something or the d of other
+ * rot is the quaternion
+ * inv is the inverse of it
+ */
+
 typedef struct		s_obj
 {
 	t_type			type;
@@ -337,6 +344,12 @@ typedef struct		s_obj
 	t_quat			*inv;
 	t_color			rgb;
 }					t_obj;
+
+t_obj				*init_objs(void);
+
+/* Environnment structure
+ * Contains all the data we need in loop_hook
+ */
 
 typedef struct		s_env
 {
@@ -353,6 +366,8 @@ typedef struct		s_env
 	int				bpp;
 }					t_env;
 
+t_env 				init_env(void);
+
 double				solve_quadra(double a, double b, double c);
 int					raytrace(t_cam camera, t_obj *objs, t_env env);
 double				intersect_sphere(t_ray *ray, t_obj sphere);
@@ -361,7 +376,6 @@ double				intersect_cone(t_ray *ray, t_obj cone);
 double				intersect_cylinder(t_ray *ray, t_obj cylinder);
 
 t_vec				normal_plane(t_ray ray, t_obj obj);
-
 
 /*
  * MiniLibX related function
