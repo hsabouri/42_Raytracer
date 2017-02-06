@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/03 14:48:32 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/06 01:36:12 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,45 @@
 # define KEY_PL 69
 # define KEY_MN	78
 # define KEY_R	15
+
+/* enum for camera
+ * movement and rotations
+ */
+
+typedef enum	e_dir
+{
+	FRONT,
+	BACK,
+	RIGHT,
+	LEFT,
+	DOWN,
+	UP
+}				t_dir;
+
+/* enum for
+ * camera control
+ */
+
+typedef enum	e_mode
+{
+	MOVEMENT,
+	ROTATION
+}				t_mode;
+
+/* t_type is an enum for
+ * type of object
+ *
+ * Backslah should always be the
+ * Last Element in the array
+ */
+
+typedef enum	e_type
+{
+	SPHERE,
+	PLANE,
+	CONE,
+	CYLINDER,
+	BACKSLASH
+}				t_type;
 
 #endif

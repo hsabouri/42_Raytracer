@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/05 17:59:00 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/06 01:35:53 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,22 +197,6 @@ void				print_quat(t_quat *q1);
  * FOV is the... fov
  */
 
-typedef enum		e_dir
-{
-	FRONT,
-	BACK,
-	RIGHT,
-	LEFT,
-	DOWN,
-	UP
-}					t_dir;
-
-typedef enum		e_mode
-{
-	MOVEMENT,
-	ROTATION
-}					t_mode;
-
 typedef struct		s_cam
 {
 	t_vec			pos;
@@ -313,19 +297,6 @@ typedef struct		s_color
  * structure for objects
  * at the moment
  */
-
-/* t_type is an enum for
- * the type of the object
- */
-
-typedef enum		e_type
-{
-	SPHERE,
-	PLANE,
-	CONE,
-	CYLINDER,
-	BACKSLASH
-}					t_type;
 
 /* Object class
  * is the same for every objects
