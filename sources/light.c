@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/07 12:50:52 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/07 16:00:10 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ double		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	res = scalar_product(dir, lgt.normal);
 	if (res < 0.05)
 		res = 0.05;
-	if (res > 1)
-		res = 1;
+	if (res > 1.0)
+		res = 1.0;
 	return (res);
 }
 
@@ -56,13 +56,12 @@ t_color		shadows(t_obj *objs, t_ray ray, t_lgt lgt, t_color color)
 {
 	t_ray	new;
 	t_color	res;
-	t_obj	obj;
 
-	lgt.hitpnt = vector_add(ray.dir, vector_scale(ray.dir, ray.t));
+	lgt.hitpnt = vector_add(ray.org, vector_scale(ray.dir, ray.t));
 	new.org = lgt.hitpnt;
-	new.dir = vector_scale(lgt.normal, -1.0);
-	obj = check_intersections(objs, &new);
-	if (obj.type == BACKSLASH)
+	new.dir = normalize_vector(vector_sub(lgt.pos, lgt.hitpnt));
+	check_intersections(objs, &new);
+	if (new.t > EPSILON)
 		res = (t_color) {0, 0, 0, 0};
 	else
 		res = color;

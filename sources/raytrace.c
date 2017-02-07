@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/07 12:44:05 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/07 15:59:41 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_lgt lgt)
 
 	res = (t_color) {0, 0, 0, 0};
 	obj = check_intersections(objs, ray);
+	if (obj.type == BACKSLASH)
+		return (res);
+	res = obj.rgb;
 	lamb = lambert(obj, *ray, lgt);
 	res = apply_lambert(obj.rgb, lamb);
 	res = shadows(objs, *ray, lgt, res);
@@ -31,10 +34,10 @@ t_obj			check_intersections(t_obj *objs, t_ray *ray)
 	double			t;
 	double			t_tmp;
 	unsigned int	i;
-	unsigned int	i_final;
+	int				i_final;
 
 	i = 0;
-	i_final = 0;
+	i_final = -1;
 	t = -1.0;
 	t_tmp = -1.0;
 	while (objs[i].type != BACKSLASH)
@@ -58,6 +61,9 @@ t_obj			check_intersections(t_obj *objs, t_ray *ray)
 			ray->dir = quat_rot(objs[i].rot, &ray->dir);
 		i++;
 	}
+	if (i_final == -1)
+		i_final = i;
+	ray->t = t;
 	return (objs[i_final]);
 }
 

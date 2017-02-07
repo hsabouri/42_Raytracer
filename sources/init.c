@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/06 01:31:09 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/07 16:24:52 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_env 			init_env(void)
 
 	env.mlx = mlx_init();
 	env.win = mlx_new_window(env.mlx, LENGTH, HEIGHT, "RT");
-	env.lgt.pos = (t_vec) {2, 2, -10, 1};
+	env.lgt.pos = (t_vec) {2, 2, -5, 1};
 	env.redraw = 1;
 
 	return (env);
@@ -50,7 +50,7 @@ t_obj			*init_objs()
 	t_obj		*res;
 
 	axis = new_vector(0, 0, 1);
-	res = (t_obj *)malloc(sizeof(t_obj) * 3);
+	res = (t_obj *)malloc(sizeof(t_obj) * 4);
 	
 	res[0].type = SPHERE;
 	res[0].radius = 2;
@@ -60,13 +60,21 @@ t_obj			*init_objs()
 	res[0].rgb = (t_color){255, 255, 255, 0};
 
 	res[1].type = PLANE;
-	res[1].radius = 2;
+	res[1].radius = 1;
 	res[1].pos = new_vector(1, -1, 0);
 	res[1].rot = NULL;
 	res[1].inv = NULL;
 	res[1].dir = new_vector(0, 1, 0);
 	res[1].rgb = (t_color) {255, 155, 155, 0};
 
-	res[2].type = BACKSLASH;
+	res[2].type = PLANE;
+	res[2].radius = 1;
+	res[2].pos = new_vector(0, 0, 4);
+	res[2].rot = NULL;
+	res[2].inv = NULL;
+	res[2].dir = new_vector(0, 0, -1);
+	res[2].rgb = (t_color) {255, 255, 155, 0};
+
+	res[3].type = BACKSLASH;
 	return (res);
 }
