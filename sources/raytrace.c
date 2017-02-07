@@ -6,47 +6,59 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/06 01:26:23 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/07 12:44:05 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_color			check_intersections(t_obj *objs, t_ray ray, t_lgt lgt)
+static t_color	pipeline(t_obj *objs, t_ray *ray, t_lgt lgt)
 {
-	double			t;
 	double			lamb;
-	double			t_tmp;
 	t_color			res;
-	unsigned int	i;
+	t_obj			obj;
 
 	res = (t_color) {0, 0, 0, 0};
+	obj = check_intersections(objs, ray);
+	lamb = lambert(obj, *ray, lgt);
+	res = apply_lambert(obj.rgb, lamb);
+	res = shadows(objs, *ray, lgt, res);
+	return (res);
+}
+
+t_obj			check_intersections(t_obj *objs, t_ray *ray)
+{
+	double			t;
+	double			t_tmp;
+	unsigned int	i;
+	unsigned int	i_final;
+
 	i = 0;
+	i_final = 0;
 	t = -1.0;
 	t_tmp = -1.0;
 	while (objs[i].type != BACKSLASH)
 	{
 		if (objs[i].rot)
-			ray.dir = quat_rot(objs[i].inv, &ray.dir);
+			ray->dir = quat_rot(objs[i].inv, &ray->dir);
 		if (objs[i].type == SPHERE)
-			t_tmp = intersect_sphere(&ray, objs[i]);
+			t_tmp = intersect_sphere(ray, objs[i]);
 		else if (objs[i].type == PLANE)
-			t_tmp = intersect_plane(&ray, objs[i]);
+			t_tmp = intersect_plane(ray, objs[i]);
 		else if (objs[i].type == CONE)
-			t_tmp = intersect_cone(&ray, objs[i]);
+			t_tmp = intersect_cone(ray, objs[i]);
 		else if (objs[i].type == CYLINDER)
-			t_tmp = intersect_cylinder(&ray, objs[i]);
+			t_tmp = intersect_cylinder(ray, objs[i]);
 		if ((t_tmp < t || t <= EPSILON) && t_tmp > EPSILON)
 		{
 			t = t_tmp;
-			lamb = lambert(objs[i], ray, lgt);
-			res = apply_lambert(objs[i].rgb, lamb);
+			i_final = i;
 		}
 		if (objs[i].rot)
-			ray.dir = quat_rot(objs[i].rot, &ray.dir);
+			ray->dir = quat_rot(objs[i].rot, &ray->dir);
 		i++;
 	}
-	return (res);
+	return (objs[i_final]);
 }
 
 int				raytrace(t_cam camera, t_obj *objs, t_env env)
@@ -63,7 +75,7 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 		while (y < HEIGHT)
 		{
 			ray = init_ray(&camera, x, y);
-			col = check_intersections(objs, ray, env.lgt);
+			col = pipeline(objs, &ray, env.lgt);
 			pixel_put(env, x, y, col);
 			y++;
 		}

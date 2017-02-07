@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/06 04:43:06 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/07 12:43:24 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 /* Algorithm Functions */
 
 int			raytrace(t_cam camera, t_obj *objs, t_env env);
+t_obj		check_intersections(t_obj *objs, t_ray *ray);
 
 /* Vector Functions	*/
 
@@ -48,6 +49,7 @@ t_cam		camera_control(t_cam cam, t_dir dir);
 
 double		lambert(t_obj obj, t_ray ray, t_lgt lgt);
 t_color		apply_lambert(t_color col, double l);
+t_color		shadows(t_obj *objs, t_ray ray, t_lgt lgt, t_color color);
 
 /* Intersection functions */
 
