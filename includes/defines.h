@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 14:52:32 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/08 17:01:36 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ typedef enum	e_type
 typedef enum	e_ltype
 {
 	SPOT,
-	OMNI
+	OMNI,
+	NOLIGHT
 }				t_ltype;
 
 #endif
