@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/08 14:43:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:00:08 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 		return (res);
 	res = obj.rgb;
 	res = lights(obj, *ray, env, res);
-	//res = shadows(objs, *ray, lgt, res);
+	//res = shadow_handler(objs, *ray, env, res);
 	return (res);
 }
 

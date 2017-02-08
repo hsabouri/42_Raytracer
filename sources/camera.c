@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:52:33 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/06 01:31:55 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/08 16:16:06 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_cam		rotate_cam(t_cam cam, t_quat *rot)
 
 t_cam		camera_control(t_cam cam, t_dir dir)
 {
-	t_quat	rot;
+	t_quat	*rot;
 	t_vec	axis;
 
 	if (dir == FRONT)
@@ -54,7 +54,7 @@ t_cam		camera_control(t_cam cam, t_dir dir)
 	else
 		axis = new_vector(0, 1, 0);
 	rot = new_quat(PI / 18, axis);
-	cam = rotate_cam(cam, &rot);
+	cam = rotate_cam(cam, rot);
 	return (cam);
 }
 

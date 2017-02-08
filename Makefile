@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/08 14:49:40 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/02/08 15:42:21 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = main.c \
 	  camera.c \
 	  normal.c \
 	  quadra.c \
+	  shadows.c \
 	  raytrace.c \
 	  intersect.c \
 	  vector_methods.c \

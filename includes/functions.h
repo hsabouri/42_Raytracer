@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 14:54:21 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/08 16:12:54 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ void		print_vector(t_vec v);
 
 /* Quaternion functions */
 
-t_quat		new_quat(float radians, t_vec axis);
-t_quat		quat_mult(t_quat *q1, t_quat *q2);
+t_quat		*new_quat(float radians, t_vec axis);
+t_quat		*quat_mult(t_quat *q1, t_quat *q2);
+t_quat		*get_inverse(t_quat *q1);
 void		print_quat(t_quat *q1);
 
 /* Camera functions */
@@ -51,7 +52,8 @@ t_cam		camera_control(t_cam cam, t_dir dir);
 t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color);
 t_vec		lambert(t_obj obj, t_ray ray, t_lgt lgt);
 t_color		apply_lambert(t_color col, t_vec coef);
-t_color		shadows(t_obj *objs, t_ray ray, t_lgt lgt, t_color color);
+t_color		shadow_handler(t_obj *objs, t_ray ray, t_env env, t_color color);
+int			shadows(t_obj *objs, t_ray ray, t_lgt lgt);
 
 /* Intersection functions */
 

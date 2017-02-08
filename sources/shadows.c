@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   shadows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/08 14:45:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 15:56:11 by ple-lez          ###   ########.fr       */
+/*   Created: 2017/02/08 15:18:01 by ple-lez           #+#    #+#             */
+/*   Updated: 2017/02/08 16:00:55 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_vec		vector_cap(t_vec vec, double min, double max)
+int				shadows(t_obj *objs, t_ray ray, t_lgt lgt)
 {
-	t_vec	res;
+	t_ray		new;
 
-	res.x = (vec.x < min) ? min : vec.x;
-	res.y = (vec.y < min) ? min : vec.y;
-	res.z = (vec.z < min) ? min : vec.z;
-	res.x = (vec.x > max) ? max : vec.x;
-	res.y = (vec.y > max) ? max : vec.y;
-	res.z = (vec.z > max) ? max : vec.z;
-	return (res);
+	lgt.hitpnt = vector_add(ray.org, vector_scale(ray.dir, ray.t));
+	new.org = lgt.hitpnt;
+	new.dir = normalize_vector(vector_sub(lgt.pos, lgt.hitpnt));
+	check_intersections(objs, &new);
+	if (new.t > EPSILON)
+		return (0);
+	return (1);
 }
