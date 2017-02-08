@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 14:43:19 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:57:30 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,11 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 	while (i < n_lgt)
 	{
 		tmp = lambert(obj, ray, env.lgt[i]);
-		tmp = vector_scale(tmp, 1.0 / n_lgt);
+		tmp = vector_scale(tmp, 1.0 / (n_lgt * 255));
 		coef = vector_add(coef, tmp);
 		i++;
 	}
+	coef = vector_cap(coef, 0.05, 1.0);
 	res = apply_lambert(color, coef);
 	return (res);
 }

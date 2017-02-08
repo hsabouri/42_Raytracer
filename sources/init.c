@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 14:43:21 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:58:30 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,18 @@ t_lgt			*init_lgts(t_env *env)
 {
 	t_lgt	*lgts;
 
-	lgts = (t_lgt *)malloc(sizeof(t_lgt) * 4);
-	env->n_lgt = 3;
+	lgts = (t_lgt *)malloc(sizeof(t_lgt) * 3);
+	env->n_lgt = 2;
 
 	lgts[0].type = OMNI;
 	lgts[0].pos = new_vector(2, 2, -10);
-	lgts[0].rgb = (t_color) {0, 255, 0, 0};
+	lgts[0].rgb = (t_color) {255, 0, 0, 0};
 
-	lgts[1].type = SUN;
-	lgts[1].dir = new_vector(-1, -2, 1);
-	lgts[1].rgb = (t_color) {247, 250, 255, 0};
+	lgts[1].type = OMNI;
+	lgts[1].pos = new_vector(0, 10, -5);
+	lgts[1].rgb = (t_color) {0, 0, 255, 0};
 
 	lgts[2].type = SPOT;
-	lgts[2].pos = new_vector(0, 10, -5);
-	lgts[2].dir = new_vector(0, -1, 0);
-	lgts[2].rgb = (t_color) {0, 0, 255, 0};
-
-	lgts[3].type = BACKSLASH;
 	return (lgts);
 }
 

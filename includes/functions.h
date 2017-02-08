@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 14:37:13 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:54:21 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_vec		vector_scale(t_vec v1, double k);
 t_vec		normalize_vector(t_vec v);
 t_vec		cross_product(t_vec v1, t_vec v2);
 t_vec		quat_rot(t_quat *q1, t_vec *vec);
+t_vec		vector_cap(t_vec vec, double min, double max);
 double		scalar_product(t_vec v1, t_vec v2);
 double		get_vector_len(t_vec v);
 void		print_vector(t_vec v);

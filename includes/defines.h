@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 14:04:26 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:52:32 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,13 @@ typedef enum	e_type
 	PLANE,
 	CONE,
 	CYLINDER,
-	SPOT,
-	OMNI,
-	SUN,
 	BACKSLASH
 }				t_type;
+
+typedef enum	e_ltype
+{
+	SPOT,
+	OMNI
+}				t_ltype;
 
 #endif

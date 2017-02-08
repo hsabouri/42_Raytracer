@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/08 12:47:03 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/08 14:49:40 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ HPATH = -I./
 SRC = main.c \
 	  mlx.c \
 	  init.c \
+	  color.c \
 	  light.c \
 	  camera.c \
 	  normal.c \
