@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/07 14:20:35 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:37:13 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ t_cam		camera_control(t_cam cam, t_dir dir);
 
 /* Light functions */
 
-double		lambert(t_obj obj, t_ray ray, t_lgt lgt);
-t_color		apply_lambert(t_color col, double l);
+t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color);
+t_vec		lambert(t_obj obj, t_ray ray, t_lgt lgt);
+t_color		apply_lambert(t_color col, t_vec coef);
 t_color		shadows(t_obj *objs, t_ray ray, t_lgt lgt, t_color color);
 
 /* Intersection functions */

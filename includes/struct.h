@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/06 04:43:04 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/08 14:43:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct		s_quat
 	double			k;
 }					t_quat;
 
-/* Rqy structure */
+/* Ray structure */
 
 typedef struct		s_ray
 {
@@ -56,15 +56,6 @@ typedef struct		s_cam
 	double			fov;
 }					t_cam;
 
-/* Light structure */
-
-typedef struct		s_lgt
-{
-	t_vec			pos;
-	t_vec			normal;
-	t_vec			hitpnt;
-}					t_lgt;
-
 /* Color structure */
 
 typedef struct		s_color
@@ -74,6 +65,18 @@ typedef struct		s_color
 	unsigned char	r;
 	unsigned char	a;
 }					t_color;
+
+/* Light structure */
+
+typedef struct		s_lgt
+{
+	t_type			type;
+	t_vec			dir;
+	t_vec			pos;
+	t_color			rgb;
+	t_vec			normal;
+	t_vec			hitpnt;
+}					t_lgt;
 
 /* Object Structures */
 
@@ -88,7 +91,7 @@ typedef struct		s_obj
 	double			radius;
 }					t_obj;
 
- /* Environement structure */
+/* Environement structure */
 
 typedef struct		s_env
 {
@@ -100,7 +103,8 @@ typedef struct		s_env
 	void			*win;
 	void			*img;
 	char			*addr;
-	t_lgt			lgt;
+	unsigned int	n_lgt;
+	t_lgt			*lgt;
 	t_cam			cam;
 	t_obj			*objs;
 }					t_env;

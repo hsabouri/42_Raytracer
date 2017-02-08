@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/07 15:11:02 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/08 12:47:03 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC = main.c \
 	  quaternion_operations.c
 CC = gcc -Wall -Wextra
 #CC += -Werror
-#CC += march=native -O3
+CC += -march=native -O3
 C_MLX = $(MLX) -framework OpenGL -framework AppKit
 AR = ar libft.a
 RM = rm -rf

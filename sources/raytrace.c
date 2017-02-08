@@ -6,15 +6,14 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/07 15:59:41 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:43:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-static t_color	pipeline(t_obj *objs, t_ray *ray, t_lgt lgt)
+static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 {
-	double			lamb;
 	t_color			res;
 	t_obj			obj;
 
@@ -23,9 +22,8 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_lgt lgt)
 	if (obj.type == BACKSLASH)
 		return (res);
 	res = obj.rgb;
-	lamb = lambert(obj, *ray, lgt);
-	res = apply_lambert(obj.rgb, lamb);
-	res = shadows(objs, *ray, lgt, res);
+	res = lights(obj, *ray, env, res);
+	//res = shadows(objs, *ray, lgt, res);
 	return (res);
 }
 
@@ -81,7 +79,7 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 		while (y < HEIGHT)
 		{
 			ray = init_ray(&camera, x, y);
-			col = pipeline(objs, &ray, env.lgt);
+			col = pipeline(objs, &ray, env);
 			pixel_put(env, x, y, col);
 			y++;
 		}

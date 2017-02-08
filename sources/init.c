@@ -6,11 +6,35 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/07 16:24:52 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:43:21 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+t_lgt			*init_lgts(t_env *env)
+{
+	t_lgt	*lgts;
+
+	lgts = (t_lgt *)malloc(sizeof(t_lgt) * 4);
+	env->n_lgt = 3;
+
+	lgts[0].type = OMNI;
+	lgts[0].pos = new_vector(2, 2, -10);
+	lgts[0].rgb = (t_color) {0, 255, 0, 0};
+
+	lgts[1].type = SUN;
+	lgts[1].dir = new_vector(-1, -2, 1);
+	lgts[1].rgb = (t_color) {247, 250, 255, 0};
+
+	lgts[2].type = SPOT;
+	lgts[2].pos = new_vector(0, 10, -5);
+	lgts[2].dir = new_vector(0, -1, 0);
+	lgts[2].rgb = (t_color) {0, 0, 255, 0};
+
+	lgts[3].type = BACKSLASH;
+	return (lgts);
+}
 
 t_ray			init_ray(t_cam *cam, int x, int y)
 {
@@ -38,13 +62,13 @@ t_env 			init_env(void)
 
 	env.mlx = mlx_init();
 	env.win = mlx_new_window(env.mlx, LENGTH, HEIGHT, "RT");
-	env.lgt.pos = (t_vec) {2, 2, -5, 1};
+	env.lgt = init_lgts(&env);
 	env.redraw = 1;
 
 	return (env);
 }
 
-t_obj			*init_objs()
+t_obj			*init_objs(void)
 {
 	t_vec		axis;
 	t_obj		*res;
