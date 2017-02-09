@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/09 11:19:56 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/09 12:04:13 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ t_lgt			*init_lgts(t_env *env)
 	env->n_lgt = 3;
 
 	lgts[0].type = OMNI;
-	lgts[0].pos = new_vector(0, 50, -1);
-	lgts[0].rgb = (t_color) {255, 0, 0, 0};
+	lgts[0].pos = new_vector(-5, 2, -5);
+	lgts[0].rgb = (t_color) {255, 255, 255, 0};
 
 	lgts[1].type = OMNI;
-	lgts[1].pos = new_vector(-10, 5, -10);
-	lgts[1].rgb = (t_color) {0, 0, 255, 0};
-
+	lgts[1].pos = new_vector(5, 2, -5);
+	lgts[1].rgb = (t_color) {255, 255, 255, 0};
+	
 	lgts[2].type = OMNI;
-	lgts[2].pos = new_vector(-10, 7, 0);
-	lgts[2].rgb = (t_color) {0, 255, 0, 0};
-
+	lgts[2].pos = new_vector(0, 5, -5);
+	lgts[2].rgb = (t_color) {255, 255, 255, 0};
+	
 	lgts[3].type = NOLIGHT;
 	return (lgts);
 }
@@ -63,7 +63,7 @@ t_env 			init_env(void)
 	env.win = mlx_new_window(env.mlx, LENGTH, HEIGHT, "RT");
 	env.lgt = init_lgts(&env);
 	env.redraw = 1;
-	env.shadow = 1;
+	env.shadow = 0;
 
 	return (env);
 }
@@ -72,11 +72,15 @@ t_obj			*init_objs(void)
 {
 	t_vec		axis;
 	t_obj		*res;
+	t_quat		*rot;
+	t_quat		*inv;
 
 	axis = new_vector(0, 0, 1);
-	res = (t_obj *)malloc(sizeof(t_obj) * 5);
-	
-	res[0].type = SPHERE;
+	res = (t_obj *)malloc(sizeof(t_obj) * 6);
+	rot = new_quat(PI / 3, axis);
+	inv = get_inverse(rot);
+
+	res[0].type = CYLINDER;
 	res[0].radius = 2;
 	res[0].pos = new_vector(0, 0, 0);
 	res[0].rot = NULL;
@@ -91,21 +95,28 @@ t_obj			*init_objs(void)
 	res[1].dir = new_vector(0, 1, 0);
 	res[1].rgb = (t_color) {255, 255, 255, 0};
 
-	res[2].type = SPHERE;
-	res[2].radius = 2;
-	res[2].pos = new_vector(0, 2, 0);
+	res[2].type = PLANE;
+	res[2].radius = 1;
 	res[2].rot = NULL;
 	res[2].inv = NULL;
+	res[2].pos = new_vector(0, 0, 10);
+	res[2].dir = new_vector(0, 0, -1);
 	res[2].rgb = (t_color){255, 255, 255, 0};
-	
-	res[3].type = PLANE;
-	res[3].radius = 1;
+
+	res[3].type = SPHERE;
+	res[3].radius = 2;
+	res[3].pos = new_vector(2, 1, 0);
 	res[3].rot = NULL;
 	res[3].inv = NULL;
-	res[3].pos = new_vector(0, 0, 10);
-	res[3].dir = new_vector(0, 0, -1);
-	res[3].rgb = (t_color){255, 255, 255, 0};
+	res[3].rgb = (t_color){255, 255, 0, 0};
 	
-	res[4].type = BACKSLASH;
+	res[4].type = SPHERE;
+	res[4].radius = 2;
+	res[4].pos = new_vector(2, 4, 0);
+	res[4].rot = NULL;
+	res[4].inv = NULL;
+	res[4].rgb = (t_color){255, 0, 255, 0};
+	
+	res[5].type = BACKSLASH;
 	return (res);
 }

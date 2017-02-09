@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/09 11:22:55 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/09 11:55:29 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_vec		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 
 	res = new_vector(lgt.rgb.r, lgt.rgb.g, lgt.rgb.b);
 	if (obj.rot)
-		ray.dir = quat_rot(obj.rot, &ray.dir);
+		ray.dir = quat_rot(obj.inv, &ray.dir);
 	tmp = vector_scale(ray.dir, ray.t);
 	lgt.hitpnt = vector_add(ray.org, tmp);
 	dir = vector_sub(lgt.hitpnt, lgt.pos);
@@ -70,7 +70,7 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 	i = 0;
 	while (i < n_lgt)
 	{
-		if (env.shadow || shadows(env.objs, ray, env.lgt[i]))
+		if (env.shadow || shadows(env.objs, ray, env.lgt[i], env.last_id))
 		{
 			tmp = lambert(obj, ray, env.lgt[i]);
 			tmp = vector_scale(tmp, 1.0 / 255);	

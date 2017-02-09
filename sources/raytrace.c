@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/09 11:18:29 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/09 11:56:07 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 	t_obj			obj;
 
 	res = (t_color) {0, 0, 0, 0};
-	obj = check_intersections(objs, ray);
+	env.last_id = check_intersections(objs, ray);
 	if (obj.type == BACKSLASH)
 		return (res);
-	res = obj.rgb;
-	res = lights(obj, *ray, env, res);
+	res = objs[env.last_id].rgb;
+	res = lights(objs[env.last_id], *ray, env, res);
 	return (res);
 }
 
-t_obj			check_intersections(t_obj *objs, t_ray *ray)
+int				check_intersections(t_obj *objs, t_ray *ray)
 {
 	double			t;
 	double			t_tmp;
@@ -57,7 +57,7 @@ t_obj			check_intersections(t_obj *objs, t_ray *ray)
 	if (i_final == -1)
 		i_final = i;
 	ray->t = t;
-	return (objs[i_final]);
+	return (i_final);
 }
 
 int				raytrace(t_cam camera, t_obj *objs, t_env env)
