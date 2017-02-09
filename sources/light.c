@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/09 11:20:07 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/09 11:22:55 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 		if (env.shadow || shadows(env.objs, ray, env.lgt[i]))
 		{
 			tmp = lambert(obj, ray, env.lgt[i]);
-			tmp = vector_scale(tmp, 1.0 / (n_lgt * 255));	
+			tmp = vector_scale(tmp, 1.0 / 255);	
 			coef = vector_add(coef, tmp);
 		}
 		i++;
