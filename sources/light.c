@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 16:03:57 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/09 11:20:07 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ t_vec		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	}
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
+	if (obj.rot)
+		lgt.normal = quat_rot(obj.inv, &lgt.normal);
 	lamb = scalar_product(dir, lgt.normal);
 	if (lamb < EPSILON)
 		lamb = 0;
@@ -68,7 +70,7 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 	i = 0;
 	while (i < n_lgt)
 	{
-		if (shadows(env.objs, ray, env.lgt[i]))
+		if (env.shadow || shadows(env.objs, ray, env.lgt[i]))
 		{
 			tmp = lambert(obj, ray, env.lgt[i]);
 			tmp = vector_scale(tmp, 1.0 / (n_lgt * 255));	

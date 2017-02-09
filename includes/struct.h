@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 15:32:22 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/09 11:19:27 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct		s_env
 	int				size;
 	int				endian;
 	int				redraw;
+	int				shadow;
 	void			*mlx;
 	void			*win;
 	void			*img;

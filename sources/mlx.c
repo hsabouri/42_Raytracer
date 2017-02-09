@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/06 01:21:07 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/09 11:20:49 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int				key_hook(int keycode, t_env *env)
 		exit(0);
 	else if (keycode == KEY_R)
 		env->cam = change_mod(env->cam);
+	else if (keycode == KEY_S)
+		env->shadow = 1 - env->shadow;
 	else if (keycode == KEY_AUP || keycode == KEY_ADN ||
 			keycode == KEY_ALF || keycode == KEY_ART ||
 			keycode == KEY_PL || keycode == KEY_MN)

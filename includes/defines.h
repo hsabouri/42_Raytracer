@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 17:01:36 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/09 11:19:41 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define KEY_PL 69
 # define KEY_MN	78
 # define KEY_R	15
+# define KEY_S	1
 
 /* enum for camera
  * movement and rotations

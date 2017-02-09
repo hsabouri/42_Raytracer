@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/08 16:00:08 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/09 11:18:29 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 		return (res);
 	res = obj.rgb;
 	res = lights(obj, *ray, env, res);
-	//res = shadow_handler(objs, *ray, env, res);
 	return (res);
 }
 
@@ -40,23 +39,19 @@ t_obj			check_intersections(t_obj *objs, t_ray *ray)
 	t_tmp = -1.0;
 	while (objs[i].type != BACKSLASH)
 	{
-		if (objs[i].rot)
-			ray->dir = quat_rot(objs[i].inv, &ray->dir);
 		if (objs[i].type == SPHERE)
-			t_tmp = intersect_sphere(ray, objs[i]);
+			t_tmp = intersect_sphere(*ray, objs[i]);
 		else if (objs[i].type == PLANE)
-			t_tmp = intersect_plane(ray, objs[i]);
+			t_tmp = intersect_plane(*ray, objs[i]);
 		else if (objs[i].type == CONE)
-			t_tmp = intersect_cone(ray, objs[i]);
+			t_tmp = intersect_cone(*ray, objs[i]);
 		else if (objs[i].type == CYLINDER)
-			t_tmp = intersect_cylinder(ray, objs[i]);
+			t_tmp = intersect_cylinder(*ray, objs[i]);
 		if ((t_tmp < t || t <= EPSILON) && t_tmp > EPSILON)
 		{
 			t = t_tmp;
 			i_final = i;
 		}
-		if (objs[i].rot)
-			ray->dir = quat_rot(objs[i].rot, &ray->dir);
 		i++;
 	}
 	if (i_final == -1)

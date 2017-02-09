@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 17:38:41 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/09 11:18:12 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ int			shadows(t_obj *objs, t_ray ray, t_lgt lgt);
 
 /* Intersection functions */
 
-double		intersect_cone(t_ray *ray, t_obj cone);
-double		intersect_plane(t_ray *ray, t_obj plane);
-double		intersect_sphere(t_ray *ray, t_obj sphere);
-double		intersect_cylinder(t_ray *ray, t_obj cylinder);
+double		intersect_cone(t_ray ray, t_obj cone);
+double		intersect_plane(t_ray ray, t_obj plane);
+double		intersect_sphere(t_ray ray, t_obj sphere);
+double		intersect_cylinder(t_ray ray, t_obj cylinder);
 
 /* Math functions */
 
