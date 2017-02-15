@@ -6,13 +6,13 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:18:01 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/09 11:57:39 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 10:48:49 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-static double	check_other_intersect(t_obj *objs, t_ray ray, int id)
+static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 {
 	double		t;
 	double		tmp;
@@ -33,7 +33,7 @@ static double	check_other_intersect(t_obj *objs, t_ray ray, int id)
 				tmp = intersect_cone(ray, objs[i]);
 			else if (objs[i].type == CYLINDER)
 				tmp = intersect_cylinder(ray, objs[i]);
-			if ((tmp < t || t <= EPSILON) && tmp > EPSILON)
+			if ((tmp < t || t <= EPSILON) && tmp > EPSILON && tmp < max_dis)
 			{
 				t = tmp;
 				break;
@@ -55,8 +55,8 @@ int				shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id)
 	new.dir = vector_sub(lgt.pos, lgt.hitpnt);
 	max_dis = get_vector_len(new.dir);
 	new.dir = normalize_vector(new.dir);
-	t = check_other_intersect(objs, new, id);
-	if (t > EPSILON && t < max_dis)
+	t = other_intersect(objs, new, id, max_dis);
+	if (t > EPSILON && t <= max_dis)
 		return (0);
 	return (1);
 }
