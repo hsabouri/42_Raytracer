@@ -3,23 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/15 16:48:46 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/02/15 18:05:40 by qduperon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = rt
-LDFLAGS = -L./
-HFLAGS = -I./
+#===========================================================#
+#                    //   PROGRAM  \\                       #
+#===========================================================#
+
+NAME = RT
+
+#===========================================================#
+#                    //   VARIABLE  \\                      #
+#===========================================================#
+
+H_DIR = includes
+C_DIR = sources
+O_DIR = objects
+
+LINKS = -I$(H_DIR)
+
+C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c")
+C_DIRS = $(shell find $(C_DIR) -type d -print)
+
+O_DIRS = $(C_DIRS:$(C_DIR)/%=$(O_DIR)/%)
+O_FILES = $(C_FILES:$(C_DIR)/%.c=$(O_DIR)/%.o)
 
 LIBFT = libft/libft.a
-HFLAGS += -I./libft/includes/
+#FLAGS += -I./libft/includes/
 LDFALGS += -L./libft/
 
 LIBVEC = libvec/libvect.a
-HFLAGS += -I./libvec/includes/
+#HFLAGS += -I./libvec/includes/
 LDFALGS += -L./libvec/
 
 #Make the mlx lib working in 42 USA
@@ -34,44 +52,55 @@ else
 	LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit
 endif
 
-SRCDIR = sources
-SRCS = main.c \
-	  mlx.c \
-	  ray.c \
-	  init.c \
-	  light.c \
-	  camera.c \
-	  normal.c \
-	  quadra.c \
-	  shadows.c \
-	  raytrace.c \
-	  intersect.c 
-SRC = $(SRCS:%.c=$(SRCDIR)/%.c)
-
 CC = gcc
 CFLAGS = -Wall -Wextra
 #CFLAGS += -Werror
 #CFLAGS += -march=native -03
-OBJ = $(SRC:$(SRCDIR)/%.c=%.o)
+
+$(LIBRARY):
+	make -C libft
+	make -C libvec
+
+#===========================================================#
+#                  //   COMPILATION  \\                     #
+#===========================================================#
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	make -C libft/
-	make -C libvec/
-	$(CC) -o $@ $(LDFLAGS) $(LIBVEC) $(OBJ) $(CFLAGS)
+$(NAME): $(O_FILES)
+	@make -C libft
+	@make -C libvec
+	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $^ && printf "\033[0;32m" || printf "\033[031m"
+	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
-%.o: $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) $(HFLAGS) -o $@ -c $<
+$(O_DIR)/%.o: $(C_DIR)/%.c
+	@mkdir -p $(O_DIRS) $(O_DIR)
+	@gcc $(FLAGS) $(LINKS) $(HFLAGS) -I $(LIBVEC) -I $(LIBFT) -o $@ -c $< \
+		&& printf "\033[0;0m%-34s\033[1;30m -->>\t\033[0;33m$@\033[0;0m\n" "$<"
+
+#===========================================================#
+#                    //   DELETING  \\                      #
+#===========================================================#
 
 .PHONY: clean
 clean:
-	rm -rf $(OBJ)
+		@echo "\033[36mDeleting ALL Objects...\033[00m"
+		@rm -rf $(O_DIR)
+		@make clean -C libft
+		@make clean -C libvec
+		@echo "\033[36mDone\033[00m"
 
 .PHONY: fclean
 fclean: clean
-	rm -rf $(NAME)
+		@echo "\033[36mDeleting Project...\033[00m"
+		@make fclean -C libft
+		@make fclean -C libvec
+		@rm -f $(NAME)
+		@echo "\033[36mDone\033[00m"
+
+#===========================================================#
+#                    //   RETRY  \\                         #
+#===========================================================#
 
 .PHONY: re
-re: fclean
-	$(MAKE) all
+re: fclean all
