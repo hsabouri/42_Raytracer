@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 14:10:06 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 15:37:22 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	}
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
-	if (obj.rot)
-		lgt.normal = quat_rot(obj.inv, &lgt.normal);
 	lamb = scalar_product(dir, lgt.normal);
 	if (lamb < EPSILON)
 		lamb = 0;

@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:58:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 14:38:10 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 15:47:01 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ double		intersect_cylinder(t_ray ray, t_obj cylinder)
 	t_vec4	v;
 
 	if (cylinder.rot)
-		ray.dir = quat_rot(cylinder.inv, &ray.dir);
+		ray = rotate_ray(ray, cylinder.inv);
 	v = vector_sub(ray.org, cylinder.pos);
 	a = ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z;
 	b = 2 * (ray.dir.x * v.x + ray.dir.z * v.z);
@@ -37,7 +37,7 @@ double		intersect_cone(t_ray ray, t_obj cone)
 	t_vec4	v;
 
 	if (cone.rot)
-		ray.dir = quat_rot(cone.inv, &ray.dir);
+		ray = rotate_ray(ray, cone.inv);
 	v = vector_sub(ray.org, cone.pos);
 	a = (ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z)
 		- (cone.radius * cone.radius * ray.dir.y * ray.dir.y);
@@ -57,7 +57,7 @@ double		intersect_sphere(t_ray ray, t_obj sphere)
 	t_vec4	v;
 
 	if (sphere.rot)
-		ray.dir = quat_rot(sphere.inv, &ray.dir);
+		ray = rotate_ray(ray, sphere.inv);
 	v = vector_sub(ray.org, sphere.pos);
 	a = scalar_product(ray.dir, ray.dir);
 	b = 2 * scalar_product(ray.dir, v);
@@ -73,7 +73,7 @@ double		intersect_plane(t_ray ray, t_obj plane)
 	double	res;
 
 	if (plane.rot)
-		ray.dir = quat_rot(plane.inv, &ray.dir);
+		ray = rotate_ray(ray, plane.inv);
 	div = scalar_product(plane.dir, ray.dir);
 	if (div > EPSILON || div < EPSILON)
 	{

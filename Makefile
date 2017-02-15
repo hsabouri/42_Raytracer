@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/15 14:33:51 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/02/15 15:40:50 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ endif
 SRCDIR = sources
 SRCS = main.c \
 	  mlx.c \
+	  ray.c \
 	  init.c \
 	  light.c \
 	  camera.c \

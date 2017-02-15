@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 14:35:54 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 15:43:39 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ t_lgt			*init_lgts(t_env *env)
 	t_lgt	*lgts;
 
 	lgts = (t_lgt *)malloc(sizeof(t_lgt) * 4);
-	env->n_lgt = 3;
+	env->n_lgt = 2;
 
 	lgts[0].type = OMNI;
-	lgts[0].pos = new_vector(-5, 2, -5);
-	lgts[0].rgb = (t_color) {135, 135, 135, 0};
+	lgts[0].pos = new_vector(-5, 4, -5);
+	lgts[0].rgb = (t_color) {0, 0, 186, 0};
 
 	lgts[1].type = OMNI;
-	lgts[1].pos = new_vector(5, 2, -5);
-	lgts[1].rgb = (t_color) {186, 132, 36, 0};
+	lgts[1].pos = new_vector(5, 4, -5);
+	lgts[1].rgb = (t_color) {186, 0, 0, 0};
 	
 	lgts[2].type = OMNI;
 	lgts[2].pos = new_vector(0, 5, -5);
@@ -83,8 +83,8 @@ t_obj			*init_objs(void)
 	res[0].type = CYLINDER;
 	res[0].radius = 2;
 	res[0].pos = new_vector(0, 0, 0);
-	res[0].rot = NULL;
-	res[0].inv = NULL;
+	res[0].rot = rot;
+	res[0].inv = inv;
 	res[0].rgb = (t_color){255, 255, 255, 0};
 
 	res[1].type = PLANE;
@@ -117,6 +117,6 @@ t_obj			*init_objs(void)
 	res[4].inv = NULL;
 	res[4].rgb = (t_color){255, 0, 255, 0};
 	
-	res[5].type = BACKSLASH;
+	res[3].type = BACKSLASH;
 	return (res);
 }
