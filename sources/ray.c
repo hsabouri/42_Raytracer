@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 15:43:20 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 15:51:13 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_ray		rotate_ray(t_ray ray, t_quat *rot)
 {
 	t_ray	res;
 
-	res.dir = quat_rot(rot, &res.dir);
-	res.org = quat_rot(rot, &res.org);
+	res.dir = quat_rot(rot, &ray.dir);
+	res.org = quat_rot(rot, &ray.org);
 	return (ray);
 }
