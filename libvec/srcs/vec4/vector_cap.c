@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   vector_cap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/08 14:45:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/08 15:56:11 by ple-lez          ###   ########.fr       */
+/*   Created: 2017/02/15 13:57:09 by ple-lez           #+#    #+#             */
+/*   Updated: 2017/02/15 14:05:36 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "../../includes/vector.h"
 
-t_vec		vector_cap(t_vec vec, double min, double max)
+t_vec4		vector_cap(t_vec4 vec, double min, double max)
 {
-	t_vec	res;
+	t_vec4	res;
 
 	res.x = (vec.x < min) ? min : vec.x;
 	res.y = (vec.y < min) ? min : vec.y;

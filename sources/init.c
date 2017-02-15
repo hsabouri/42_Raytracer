@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 10:51:07 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/15 10:55:44 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,22 @@ t_lgt			*init_lgts(t_env *env)
 	t_lgt	*lgts;
 
 	lgts = (t_lgt *)malloc(sizeof(t_lgt) * 4);
-	env->n_lgt = 3;
+	env->n_lgt = 1;
 
 	lgts[0].type = OMNI;
-	lgts[0].pos = new_vector(-5, 2, -5);
-	lgts[0].rgb = (t_color) {255, 0, 0, 0};
+	lgts[0].pos = new_vector(-5, 4, -5);
+	lgts[0].rgb = (t_color) {186, 186, 186, 0};
 
 	lgts[1].type = OMNI;
-	lgts[1].pos = new_vector(5, 2, -5);
-	lgts[1].rgb = (t_color) {255, 0, 255, 0};
+	lgts[1].pos = new_vector(5, 4, -5);
+	lgts[1].rgb = (t_color) {186, 0, 0, 0};
 	
 	lgts[2].type = OMNI;
 	lgts[2].pos = new_vector(0, 5, -5);
-	lgts[2].rgb = (t_color) {25, 25, 255, 0};
+	lgts[2].rgb = (t_color) {185, 45, 95, 0};
 	
 	lgts[3].type = NOLIGHT;
 	return (lgts);
-}
-
-t_ray			init_ray(t_cam *cam, int x, int y)
-{
-	t_vec	v;
-	t_ray	ray;
-
-	ray.org = cam->pos;
-	v.x = (x + 0.5) / LENGTH;
-	v.y = (y + 0.5) / HEIGHT;
-	v.x = (2 * v.x) - 1;
-	v.y = 1 - (2 * v.y);
-	v.x *= (LENGTH / (double)HEIGHT) * tan((cam->fov / 2) * PI / 180);
-	v.y *= tan((cam->fov / 2) * PI / 180);
-	v.z = 1;
-	ray.dir = v;
-	if (cam->rot)
-		ray.dir = quat_rot(cam->rot, &ray.dir);
-	ray.t = EPSILON;
-	return (ray);
 }
 
 t_env 			init_env(void)
@@ -70,7 +50,7 @@ t_env 			init_env(void)
 
 t_obj			*init_objs(void)
 {
-	t_vec		axis;
+	t_vec4		axis;
 	t_obj		*res;
 	t_quat		*rot;
 	t_quat		*inv;
@@ -83,8 +63,8 @@ t_obj			*init_objs(void)
 	res[0].type = CYLINDER;
 	res[0].radius = 2;
 	res[0].pos = new_vector(0, 0, 0);
-	res[0].rot = NULL;
-	res[0].inv = NULL;
+	res[0].rot = rot;
+	res[0].inv = inv;
 	res[0].rgb = (t_color){255, 255, 255, 0};
 
 	res[1].type = PLANE;
@@ -117,6 +97,6 @@ t_obj			*init_objs(void)
 	res[4].inv = NULL;
 	res[4].rgb = (t_color){255, 0, 255, 0};
 	
-	res[5].type = BACKSLASH;
+	res[3].type = BACKSLASH;
 	return (res);
 }

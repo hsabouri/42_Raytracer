@@ -6,13 +6,13 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 09:01:46 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/15 10:55:23 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 
-t_color		apply_lambert(t_color col, t_vec coef)
+t_color		apply_lambert(t_color col, t_vec4 coef)
 {
 	t_color	res;
 
@@ -23,12 +23,12 @@ t_color		apply_lambert(t_color col, t_vec coef)
 	return (res);
 }
 
-t_vec		lambert(t_obj obj, t_ray ray, t_lgt lgt)
+t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 {
-	t_vec	tmp;
-	t_vec	dir;
+	t_vec4	tmp;
+	t_vec4	dir;
 	double	lamb;
-	t_vec	res;
+	t_vec4	res;
 
 	res = new_vector(lgt.rgb.r, lgt.rgb.g, lgt.rgb.b);
 	if (obj.rot)
@@ -46,8 +46,6 @@ t_vec		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	}
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
-	if (obj.rot)
-		lgt.normal = quat_rot(obj.inv, &lgt.normal);
 	lamb = scalar_product(dir, lgt.normal);
 	if (lamb < EPSILON)
 		lamb = 0;
@@ -61,8 +59,8 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 {
 	const unsigned int	n_lgt = env.n_lgt;
 	unsigned int		i;
-	t_vec				coef;
-	t_vec				tmp;
+	t_vec4				coef;
+	t_vec4				tmp;
 	t_color				res;
 
 	coef = new_vector(0, 0, 0);
