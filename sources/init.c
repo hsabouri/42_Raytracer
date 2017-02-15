@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 10:55:44 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/15 11:09:21 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ t_obj			*init_objs(void)
 	res[4].inv = NULL;
 	res[4].rgb = (t_color){255, 0, 255, 0};
 	
-	res[3].type = BACKSLASH;
+	res[5].type = BACKSLASH;
 	return (res);
 }

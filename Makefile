@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/15 18:05:40 by qduperon         ###   ########.fr        #
+#    Updated: 2017/02/15 11:14:34 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ endif
 CC = gcc
 CFLAGS = -Wall -Wextra
 #CFLAGS += -Werror
-#CFLAGS += -march=native -03
+CFLAGS += -march=native -O3
 
 $(LIBRARY):
 	make -C libft
