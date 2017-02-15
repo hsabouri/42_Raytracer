@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/15 14:11:14 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/02/15 14:28:19 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ HFLAGS += -I./libft/includes/
 LDFALGS += -L./libft/
 
 LIBVEC = libvec/libvec.a
-HFLAGS += -I./livec/includes/
+HFLAGS += -I./libvec/includes/
 LDFALGS += -L./libvec/
 
 #Make the mlx lib working in 42 USA
