@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/15 14:28:19 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/02/15 14:33:51 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT = libft/libft.a
 HFLAGS += -I./libft/includes/
 LDFALGS += -L./libft/
 
-LIBVEC = libvec/libvec.a
+LIBVEC = libvec/libvect.a
 HFLAGS += -I./libvec/includes/
 LDFALGS += -L./libvec/
 
@@ -56,7 +56,9 @@ OBJ = $(SRC:$(SRCDIR)/%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $@ $(LDFLAGS) $(OBJ) $(CFLAGS)
+	make -C libft/
+	make -C libvec/
+	$(CC) -o $@ $(LDFLAGS) $(LIBVEC) $(OBJ) $(CFLAGS)
 
 %.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) $(HFLAGS) -o $@ -c $<

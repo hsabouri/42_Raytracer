@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 14:07:53 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 14:35:54 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ t_lgt			*init_lgts(t_env *env)
 
 	lgts[0].type = OMNI;
 	lgts[0].pos = new_vector(-5, 2, -5);
-	lgts[0].rgb = (t_color) {255, 0, 0, 0};
+	lgts[0].rgb = (t_color) {135, 135, 135, 0};
 
 	lgts[1].type = OMNI;
 	lgts[1].pos = new_vector(5, 2, -5);
-	lgts[1].rgb = (t_color) {255, 0, 255, 0};
+	lgts[1].rgb = (t_color) {186, 132, 36, 0};
 	
 	lgts[2].type = OMNI;
 	lgts[2].pos = new_vector(0, 5, -5);
-	lgts[2].rgb = (t_color) {25, 25, 255, 0};
+	lgts[2].rgb = (t_color) {185, 45, 95, 0};
 	
 	lgts[3].type = NOLIGHT;
 	return (lgts);
