@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/09 12:34:04 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 14:07:53 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_lgt			*init_lgts(t_env *env)
 
 t_ray			init_ray(t_cam *cam, int x, int y)
 {
-	t_vec	v;
+	t_vec4	v;
 	t_ray	ray;
 
 	ray.org = cam->pos;
@@ -70,7 +70,7 @@ t_env 			init_env(void)
 
 t_obj			*init_objs(void)
 {
-	t_vec		axis;
+	t_vec4		axis;
 	t_obj		*res;
 	t_quat		*rot;
 	t_quat		*inv;

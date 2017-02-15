@@ -6,7 +6,7 @@
 #    By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/14 21:21:04 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/15 14:11:14 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,17 +38,13 @@ SRCDIR = sources
 SRCS = main.c \
 	  mlx.c \
 	  init.c \
-	  color.c \
 	  light.c \
 	  camera.c \
 	  normal.c \
 	  quadra.c \
 	  shadows.c \
 	  raytrace.c \
-	  intersect.c \
-	  vector_methods.c \
-	  vector_operations.c \
-	  quaternion_operations.c
+	  intersect.c 
 SRC = $(SRCS:%.c=$(SRCDIR)/%.c)
 
 CC = gcc

@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:58:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/09 12:36:02 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 14:08:14 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double		intersect_cylinder(t_ray ray, t_obj cylinder)
 	double	a;
 	double	b;
 	double	c;
-	t_vec	v;
+	t_vec4	v;
 
 	if (cylinder.rot)
 		ray.dir = quat_rot(cylinder.inv, &ray.dir);
@@ -34,7 +34,7 @@ double		intersect_cone(t_ray ray, t_obj cone)
 	double	a;
 	double	b;
 	double	c;
-	t_vec	v;
+	t_vec4	v;
 
 	if (cone.rot)
 		ray.dir = quat_rot(cone.inv, &ray.dir);
@@ -54,7 +54,7 @@ double		intersect_sphere(t_ray ray, t_obj sphere)
 	double	a;
 	double	b;
 	double	c;
-	t_vec	v;
+	t_vec4	v;
 
 	if (sphere.rot)
 		ray.dir = quat_rot(sphere.inv, &ray.dir);
@@ -68,7 +68,7 @@ double		intersect_sphere(t_ray ray, t_obj sphere)
 
 double		intersect_plane(t_ray ray, t_obj plane)
 {
-	t_vec	v;
+	t_vec4	v;
 	double	div;
 	double	res;
 
