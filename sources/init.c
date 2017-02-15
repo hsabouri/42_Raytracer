@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 15:43:39 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/15 16:50:37 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ t_lgt			*init_lgts(t_env *env)
 	t_lgt	*lgts;
 
 	lgts = (t_lgt *)malloc(sizeof(t_lgt) * 4);
-	env->n_lgt = 2;
+	env->n_lgt = 1;
 
 	lgts[0].type = OMNI;
 	lgts[0].pos = new_vector(-5, 4, -5);
-	lgts[0].rgb = (t_color) {0, 0, 186, 0};
+	lgts[0].rgb = (t_color) {186, 186, 186, 0};
 
 	lgts[1].type = OMNI;
 	lgts[1].pos = new_vector(5, 4, -5);
@@ -33,26 +33,6 @@ t_lgt			*init_lgts(t_env *env)
 	
 	lgts[3].type = NOLIGHT;
 	return (lgts);
-}
-
-t_ray			init_ray(t_cam *cam, int x, int y)
-{
-	t_vec4	v;
-	t_ray	ray;
-
-	ray.org = cam->pos;
-	v.x = (x + 0.5) / LENGTH;
-	v.y = (y + 0.5) / HEIGHT;
-	v.x = (2 * v.x) - 1;
-	v.y = 1 - (2 * v.y);
-	v.x *= (LENGTH / (double)HEIGHT) * tan((cam->fov / 2) * PI / 180);
-	v.y *= tan((cam->fov / 2) * PI / 180);
-	v.z = 1;
-	ray.dir = v;
-	if (cam->rot)
-		ray.dir = quat_rot(cam->rot, &ray.dir);
-	ray.t = EPSILON;
-	return (ray);
 }
 
 t_env 			init_env(void)
