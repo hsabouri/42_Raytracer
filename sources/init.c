@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 11:09:21 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/16 17:41:53 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_lgt			*init_lgts(t_env *env)
 	t_lgt	*lgts;
 
 	lgts = (t_lgt *)malloc(sizeof(t_lgt) * 4);
-	env->n_lgt = 1;
+	env->n_lgt = 2;
 
 	lgts[0].type = OMNI;
 	lgts[0].pos = new_vector(-5, 4, -5);

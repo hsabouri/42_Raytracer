@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/16 16:53:05 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/02/16 17:41:31 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 		lamb = 0;
 	if (lamb > 1.0)
 		lamb = 1.0;
-	//lamb += specular_in_progress(obj, ray, lgt);
+	lamb += specular_in_progress(obj, ray, lgt);
 	res = vector_scale(res, lamb);
 	return (res);
 }
