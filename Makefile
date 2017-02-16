@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/15 11:14:34 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/15 21:22:33 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ O_DIRS = $(C_DIRS:$(C_DIR)/%=$(O_DIR)/%)
 O_FILES = $(C_FILES:$(C_DIR)/%.c=$(O_DIR)/%.o)
 
 LIBFT = libft/libft.a
-#FLAGS += -I./libft/includes/
 LDFALGS += -L./libft/
 
 LIBVEC = libvec/libvect.a
