@@ -6,7 +6,7 @@
 #    By: qduperon <qduperon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:29:17 by qduperon          #+#    #+#              #
-#    Updated: 2017/02/15 21:22:33 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/17 10:22:19 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,9 @@ C_DIR = srcs
 O_DIR = objects
 
 LINKS = -I$(H_DIR)
+LINKS += -I../libft/
 
-C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c")
+C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c" | grep -v ".swp")
 C_DIRS = $(shell find $(C_DIR) -type d -print)
 
 O_DIRS = $(C_DIRS:$(C_DIR)/%=$(O_DIR)/%)
@@ -38,7 +39,7 @@ O_FILES = $(C_FILES:$(C_DIR)/%.c=$(O_DIR)/%.o)
 
 FLAGS = -Wextra -Wall
 #FLAGS += -Werror
-FLAGS += -O3 -march=native
+#FLAGS += -O3 -march=native
 
 #============================================================#
 #                   //  COMPILATION  \\                      #
@@ -47,7 +48,7 @@ FLAGS += -O3 -march=native
 all: $(NAME)
 
 $(NAME): $(O_FILES)
-	@ar rcs $@ $^ && printf "\033[0;32m" || printf "\033[031m"
+	@libtool -static -o $@ $^ && printf "\033[0;32m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
 $(O_DIR)/%.o: $(C_DIR)/%.c
