@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/16 18:00:24 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/02/17 21:15:43 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,7 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	lgt.hitpnt = vector_add(ray.org, tmp);
 	dir = vector_sub(lgt.hitpnt, lgt.pos);
 	dir = normalize_vector(dir);
-	if (obj.type == PLANE)
-		lgt.normal = normal_plane(ray, obj);
-	else
-	{
-		tmp = vector_sub(obj.pos, lgt.hitpnt);
-		lgt.normal = normalize_vector(tmp);
-	}
+	lgt.normal = get_normal(ray, obj, lgt);
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
 	lamb = scalar_product(dir, lgt.normal);

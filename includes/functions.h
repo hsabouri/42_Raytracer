@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 15:40:36 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/17 21:16:38 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ double		intersect_cylinder(t_ray ray, t_obj cylinder);
 /* Math functions */
 
 double		solve_quadra(double a, double b, double c);
+t_vec4      get_normal(t_ray ray, t_obj obj, t_lgt lgt);
 t_vec4		normal_plane(t_ray ray, t_obj obj);
 
 /* Initialization functions */
