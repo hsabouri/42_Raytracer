@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/17 21:15:43 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/02/19 00:09:48 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static double		specular_in_progress(t_obj obj, t_ray ray, t_lgt lgt)
 	double	spec;
 	dir = vector_sub(lgt.pos, lgt.hitpnt);
 	dir = normalize_vector(dir);
+	if (obj.rot)
+		dir = quat_rot(obj.inv, &dir);
 	tmp = vector_scale(lgt.normal, (2.0 * scalar_product(lgt.normal, dir)));
 	tmp = vector_sub(dir, tmp);
 	if ((spec = scalar_product(tmp, ray.dir)) > 0.0)

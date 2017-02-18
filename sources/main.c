@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 14:06:09 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 00:08:03 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				main(void)
 	env = init_env();
 	vec = new_vector(0, 0, -10);
 	objs = init_objs();
-	env.cam = init_cam(vec, NULL, 60);
+	env.cam = init_cam(vec, NULL, 66);
 	env.objs = objs;
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_key_hook(env.win, key_hook, &env);
