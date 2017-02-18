@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/17 21:16:38 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/02/19 00:21:53 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt);
 t_color		apply_lambert(t_color col, t_vec4 coef);
 t_color		shadow_handler(t_obj *objs, t_ray ray, t_env env, t_color color);
 int			shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id);
+
+/* Material functions */
+
+t_mat		new_material(t_color rgb, t_vec4 coef, double rf, double rr);
 
 /* Ray functions */
 

@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/15 15:26:05 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 00:24:04 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 	env.last_id = check_intersections(objs, ray);
 	if (obj.type == BACKSLASH)
 		return (res);
-	res = objs[env.last_id].rgb;
+	res = objs[env.last_id].mat.rgb;
 	res = lights(objs[env.last_id], *ray, env, res);
+	res = apply_lambert(res, objs[env.last_id].mat.coef);
 	return (res);
 }
 
