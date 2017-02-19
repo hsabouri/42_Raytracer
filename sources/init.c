@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 01:05:06 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 01:23:14 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ t_obj			*init_objs(void)
 	res[0].pos = new_vector(2, 4, 0);
 	res[0].rot = NULL;
 	res[0].inv = NULL;
-	res[0].mat.rgb = (t_color){255, 255, 255, 0};
+	res[0].mat.rgb = (t_color){12, 255, 255, 0};
 	res[0].mat.coef = new_vector(1, 0.4, 0.8);
 	res[0].mat.reflect = 0;
+	res[0].mat.refract = EPSILON;
 
 	res[1].type = PLANE;
 	res[1].radius = 1;
@@ -72,9 +73,10 @@ t_obj			*init_objs(void)
 	res[1].rot = NULL;
 	res[1].inv = NULL;
 	res[1].dir = new_vector(0, 1, 0);
-	res[1].mat.rgb = (t_color) {255, 255, 255, 0};
+	res[1].mat.rgb = (t_color) {255, 25, 255, 0};
 	res[1].mat.coef = new_vector(1, 1, 1);
 	res[1].mat.reflect = 0;
+	res[1].mat.refract = EPSILON;
 
 	res[2].type = PLANE;
 	res[2].radius = 1;
@@ -82,9 +84,10 @@ t_obj			*init_objs(void)
 	res[2].inv = NULL;
 	res[2].pos = new_vector(0, 0, 10);
 	res[2].dir = new_vector(0, 0, -1);
-	res[2].mat.rgb = (t_color){255, 255, 255, 0};
+	res[2].mat.rgb = (t_color){255, 255, 25, 0};
 	res[2].mat.coef = new_vector(1, 1, 1);
 	res[2].mat.reflect = 0;
+	res[2].mat.refract = EPSILON;
 
 	res[3].type = SPHERE;
 	res[3].radius = 2;
@@ -93,7 +96,8 @@ t_obj			*init_objs(void)
 	res[3].inv = NULL;
 	res[3].mat.rgb = (t_color){255, 255, 255, 0};
 	res[3].mat.coef = new_vector(1, 1, 1);
-	res[3].mat.reflect = 1;
+	res[3].mat.reflect = 0;
+	res[3].mat.refract = PI / 3;
 	
 	res[4].type = PLANE;
 	res[4].radius = 1;
@@ -104,6 +108,7 @@ t_obj			*init_objs(void)
 	res[4].mat.rgb = (t_color){255, 155, 0, 0};
 	res[4].mat.coef = new_vector(1, 1, 1);
 	res[4].mat.reflect = 0;
+	res[4].mat.refract = EPSILON;
 	
 	res[5].type = BACKSLASH;
 	return (res);
