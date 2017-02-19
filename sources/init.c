@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:28:32 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 04:40:22 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_obj			*init_objs(void)
 	t_obj		*res;
 	t_obj		poly;
 
-	res = (t_obj *)malloc(sizeof(t_obj) * 1);
+	res = (t_obj *)malloc(sizeof(t_obj) * 2);
 	
 	rgb = (t_color){255, 255, 255, 0};
 	res[0] = create_mesh(rgb);
@@ -62,8 +62,17 @@ t_obj			*init_objs(void)
 	poly.vert[0] = new_vector(2, 4, 2);
 	poly.vert[1] = new_vector(-1, 3, 0);
 	poly.vert[2] = new_vector(1, 2, 0);
+	poly.rot = NULL;
+	poly.inv = NULL;
 	res[0] = add_polygon(res[0], poly);
 	
+	poly.vert[0] = new_vector(1, 2, 0);
+	poly.vert[1] = new_vector(-1, 3, 0);
+	poly.vert[2] = new_vector(2, 4, 2);
+	poly.rot = NULL;
+	poly.inv = NULL;
+	res[0] = add_polygon(res[0], poly);
+
 	res[1].type = BACKSLASH;
 	return (res);
 }
