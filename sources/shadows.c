@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:18:01 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/16 16:18:54 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 01:07:14 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 		}
 		i++;
 	}
-	return t;
+	if (objs[i].type != BACKSLASH && objs[i].mat.reflect)
+		return (EPSILON);
+	return (t);
 }
 
 int				shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id)
