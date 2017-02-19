@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 02:47:21 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 03:17:10 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 03:42:53 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,9 @@ double			intersect_polygon(t_ray ray, t_obj poly)
 
 	ab = vector_sub(poly.vert[1], poly.vert[0]);
 	ac = vector_sub(poly.vert[2], poly.vert[0]);
-	poly.dir = cross_product(ab, ac);
-	len = get_vector_len(poly.dir);
-	if (fabs(scalar_product(ray.dir, poly.dir)) < EPSILON)
-		return (-1.0);
+	poly.dir = normal_polygon(poly);
 	d = scalar_product(poly.dir, poly.vert[0]);
-	ray.t = (scalar_product(ray.org, poly.dir) + d);
+	ray.t = -(scalar_product(ray.org, poly.dir) + d);
 	ray.t /= scalar_product(ray.dir, poly.dir);
 	if (ray.t < 0)
 		return (-1.0);

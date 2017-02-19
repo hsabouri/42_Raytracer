@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 17:24:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 02:41:13 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 03:45:10 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,28 @@ t_vec4		normal_plane(t_ray ray, t_obj obj)
 	return (res);
 }
 
+t_vec4		normal_polygon(t_obj poly)
+{
+	t_vec4	ab;
+	t_vec4	ac;
+	t_vec4	res;
+
+	ab = vector_sub(poly.vert[1], poly.vert[0]);
+	ac = vector_sub(poly.vert[2], poly.vert[0]);
+	res = cross_product(ab, ac);
+	res = normalize_vector(res);
+	return (res);
+}
+
 t_vec4		get_normal(t_ray ray, t_obj obj, t_vec4 pos)
 {
 	if (obj.type == PLANE)
 		return (normal_plane(ray, obj));
+	else if (obj.type == POLYGON)
+	{
+		obj.dir = normal_polygon(obj);
+		return (normal_plane(ray, obj));
+	}
 	else
 		return (normalize_vector(vector_sub(obj.pos, pos)));
 }
