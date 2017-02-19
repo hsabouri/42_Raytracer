@@ -6,11 +6,21 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 21:27:02 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/17 11:26:37 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/17 15:18:58 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "obj.h"
+
+void		check_params(int ac, char **av)
+{
+	if (ac < 2)
+	{
+		ft_putendl("\x1B[31mERROR\x1B[0m: You must give a file name");
+		usage();
+		exit(EXIT_FAILURE);
+	}
+}
 
 static int	is_file(const char *path)
 {
