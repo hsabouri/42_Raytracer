@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:22:34 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/18 22:29:02 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct		s_mat
 
 typedef struct		s_obj
 {
+	char			*name;
 	int				lst;
 	t_mat			mat;
 	struct s_obj	*chld;
