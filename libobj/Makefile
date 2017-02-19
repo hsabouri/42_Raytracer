@@ -6,7 +6,7 @@
 #    By: qduperon <qduperon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:29:17 by qduperon          #+#    #+#              #
-#    Updated: 2017/02/17 10:22:19 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/17 15:18:24 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 #===========================================================#
 
 NAME = libobj.a
+MAIN = main.c
 
 #===========================================================#
 #                    //   VARIABLE  \\                      #
@@ -45,7 +46,11 @@ FLAGS = -Wextra -Wall
 #                   //  COMPILATION  \\                      #
 #============================================================#
 
-all: $(NAME)
+.PHONY: all
+all: $(NAME) main
+
+main:
+	$(CC) $(MAIN) -I../libft/ -I./includes/ ../libft/libft.a ./libobj.a	
 
 $(NAME): $(O_FILES)
 	@libtool -static -o $@ $^ && printf "\033[0;32m" || printf "\033[031m"

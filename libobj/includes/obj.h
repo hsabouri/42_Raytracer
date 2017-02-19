@@ -6,7 +6,7 @@
 /*   By: qduperon <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/17 11:26:37 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/17 15:19:27 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #include <string.h>
 #include "libft.h"
 
-int		open_file(const char *path);
+int			open_file(const char *path);
+void		check_params(int ac, char **av);
+void		usage(void);
 
 #endif
