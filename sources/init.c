@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 01:37:03 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 01:41:46 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ t_lgt			*init_lgts(t_env *env)
 
 	lgts[1].type = OMNI;
 	lgts[1].pos = new_vector(2, 4, -6);
-	lgts[1].rgb = (t_color) {186, 0, 0, 0};
+	lgts[1].rgb = (t_color) {186, 186, 0, 0};
 	
 	lgts[2].type = OMNI;
 	lgts[2].pos = new_vector(0, 5, -5);
-	lgts[2].rgb = (t_color) {185, 45, 95, 0};
+	lgts[2].rgb = (t_color) {185, 45, 195, 0};
 	
 	lgts[3].type = NOLIGHT;
 	return (lgts);
@@ -96,8 +96,8 @@ t_obj			*init_objs(void)
 	res[3].inv = NULL;
 	res[3].mat.rgb = (t_color){255, 255, 255, 0};
 	res[3].mat.coef = new_vector(1, 1, 1);
-	res[3].mat.reflect = 0;
-	res[3].mat.refract = 0.8;
+	res[3].mat.reflect = 1;
+	res[3].mat.refract = 0;
 	
 	res[4].type = PLANE;
 	res[4].radius = 1;
@@ -107,7 +107,7 @@ t_obj			*init_objs(void)
 	res[4].dir = new_vector(0, 0, 1);
 	res[4].mat.rgb = (t_color){255, 155, 0, 0};
 	res[4].mat.coef = new_vector(1, 1, 1);
-	res[4].mat.reflect = 0;
+	res[4].mat.reflect = 1;
 	res[4].mat.refract = EPSILON;
 	
 	res[5].type = BACKSLASH;
