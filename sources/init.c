@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 01:23:14 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 01:37:03 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_lgt			*init_lgts(t_env *env)
 	t_lgt	*lgts;
 
 	lgts = (t_lgt *)malloc(sizeof(t_lgt) * 4);
-	env->n_lgt = 1;
+	env->n_lgt = 3;
 
 	lgts[0].type = OMNI;
 	lgts[0].pos = new_vector(-5, 4, -5);
@@ -28,7 +28,7 @@ t_lgt			*init_lgts(t_env *env)
 	lgts[1].rgb = (t_color) {186, 0, 0, 0};
 	
 	lgts[2].type = OMNI;
-	lgts[2].pos = new_vector(0, 5, 5);
+	lgts[2].pos = new_vector(0, 5, -5);
 	lgts[2].rgb = (t_color) {185, 45, 95, 0};
 	
 	lgts[3].type = NOLIGHT;
@@ -62,8 +62,8 @@ t_obj			*init_objs(void)
 	res[0].pos = new_vector(2, 4, 0);
 	res[0].rot = NULL;
 	res[0].inv = NULL;
-	res[0].mat.rgb = (t_color){12, 255, 255, 0};
-	res[0].mat.coef = new_vector(1, 0.4, 0.8);
+	res[0].mat.rgb = (t_color){255, 255, 255, 0};
+	res[0].mat.coef = new_vector(1, 1, 1);
 	res[0].mat.reflect = 0;
 	res[0].mat.refract = EPSILON;
 
@@ -97,7 +97,7 @@ t_obj			*init_objs(void)
 	res[3].mat.rgb = (t_color){255, 255, 255, 0};
 	res[3].mat.coef = new_vector(1, 1, 1);
 	res[3].mat.reflect = 0;
-	res[3].mat.refract = PI / 3;
+	res[3].mat.refract = 0.8;
 	
 	res[4].type = PLANE;
 	res[4].radius = 1;
