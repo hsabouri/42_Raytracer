@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/16 18:00:24 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/02/19 01:33:54 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static double		specular_in_progress(t_obj obj, t_ray ray, t_lgt lgt)
 	double	spec;
 	dir = vector_sub(lgt.pos, lgt.hitpnt);
 	dir = normalize_vector(dir);
+	if (obj.rot)
+		dir = quat_rot(obj.inv, &dir);
 	tmp = vector_scale(lgt.normal, (2.0 * scalar_product(lgt.normal, dir)));
 	tmp = vector_sub(dir, tmp);
 	if ((spec = scalar_product(tmp, ray.dir)) > 0.0)
@@ -54,13 +56,7 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	lgt.hitpnt = vector_add(ray.org, tmp);
 	dir = vector_sub(lgt.hitpnt, lgt.pos);
 	dir = normalize_vector(dir);
-	if (obj.type == PLANE)
-		lgt.normal = normal_plane(ray, obj);
-	else
-	{
-		tmp = vector_sub(obj.pos, lgt.hitpnt);
-		lgt.normal = normalize_vector(tmp);
-	}
+	lgt.normal = get_normal(ray, obj, lgt.hitpnt);
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
 	lamb = scalar_product(dir, lgt.normal);

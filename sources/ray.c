@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 16:45:44 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 01:33:08 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,34 @@ t_ray		rotate_ray(t_ray ray, t_quat *rot)
 
 	res.dir = quat_rot(rot, &ray.dir);
 	res.org = quat_rot(rot, &ray.org);
+	return (res);
+}
+
+t_ray		reflect_ray(t_obj obj, t_ray ray)
+{
+	t_ray	res;
+	t_vec4	norm;
+	double	coef;
+
+	res.org = vector_scale(ray.dir, ray.t);
+	norm = get_normal(ray, obj, res.org);
+	coef = scalar_product(norm, ray.dir);
+	res.dir = vector_add(ray.dir, vector_scale(norm, -2.0 * coef));
+	return (res);
+}
+
+t_ray		refract_ray(t_obj obj, t_ray ray, double r)
+{
+	t_ray	res;
+	t_vec4	norm;
+	double	coef;
+	double	tmp;
+
+	res.org = vector_scale(ray.dir, ray.t);
+	norm = get_normal(ray, obj, res.org);
+	coef = scalar_product(norm, ray.dir);
+	tmp = sqrt(1 - (r * r * (1 - coef * coef)));
+	res.dir = vector_scale(norm, r * coef - tmp);
+	res.dir = vector_add(vector_scale(ray.dir, r), res.dir);
 	return (res);
 }

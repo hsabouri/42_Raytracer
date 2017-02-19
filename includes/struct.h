@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 16:35:36 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 00:28:45 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,26 @@ typedef struct		s_lgt
 	t_vec4			hitpnt;
 }					t_lgt;
 
+/* Material Structures */
+
+typedef struct		s_mat
+{
+	t_color			rgb;
+	t_vec4			coef;
+	int				reflect;
+	double			refract;
+}					t_mat;
+
 /* Object Structures */
 
 typedef struct		s_obj
 {
+	t_mat			mat;
 	t_vec4			pos;
 	t_vec4			dir;
 	t_type			type;
 	t_quat			*rot;
 	t_quat			*inv;
-	t_color			rgb;
 	double			radius;
 }					t_obj;
 
