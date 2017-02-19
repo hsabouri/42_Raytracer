@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/18 23:55:29 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 00:55:30 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,18 @@ t_ray		rotate_ray(t_ray ray, t_quat *rot)
 
 	res.dir = quat_rot(rot, &ray.dir);
 	res.org = quat_rot(rot, &ray.org);
+	return (res);
+}
+
+t_ray		reflect_ray(t_obj obj, t_ray ray)
+{
+	t_ray	res;
+	t_vec4	norm;
+	double	coef;
+
+	res.org = vector_scale(ray.dir, ray.t);
+	norm = get_normal(ray, obj, res.org);
+	coef = scalar_product(norm, ray.dir);
+	res.dir = vector_add(ray.dir, vector_scale(norm, -2.0 * coef));
 	return (res);
 }

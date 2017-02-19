@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 14:01:45 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 00:42:11 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DEFINES_H
 # define PI 3.141592653
 # define EPSILON 0.000001
+# define DEPTH_MAX 1
 # define HEIGHT 1024
 # define LENGTH 1024
 # define KEY_ES 53

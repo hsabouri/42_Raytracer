@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 00:24:04 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 00:56:27 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 	t_obj			obj;
 
 	res = (t_color) {0, 0, 0, 0};
-	env.last_id = check_intersections(objs, ray);
-	if (obj.type == BACKSLASH)
+	env.last_id = check_intersections(objs, ray, 0);
+	if (objs[env.last_id].type == BACKSLASH)
 		return (res);
 	res = objs[env.last_id].mat.rgb;
 	res = lights(objs[env.last_id], *ray, env, res);
@@ -27,7 +27,7 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 	return (res);
 }
 
-int				check_intersections(t_obj *objs, t_ray *ray)
+int				check_intersections(t_obj *objs, t_ray *ray, int depth)
 {
 	double			t;
 	double			t_tmp;
@@ -58,6 +58,12 @@ int				check_intersections(t_obj *objs, t_ray *ray)
 	if (i_final == -1)
 		i_final = i;
 	ray->t = t;
+	if (objs[i_final].type != BACKSLASH && objs[i_final].mat.reflect
+			&& depth < DEPTH_MAX)
+	{
+		*ray = reflect_ray(objs[i_final], *ray);
+		return (check_intersections(objs, ray, depth + 1));
+	}
 	return (i_final);
 }
 

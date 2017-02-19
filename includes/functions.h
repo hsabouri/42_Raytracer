@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 00:21:53 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 00:41:54 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /* Algorithm Functions */
 
 int			raytrace(t_cam camera, t_obj *objs, t_env env);
-int			check_intersections(t_obj *objs, t_ray *ray);
+int			check_intersections(t_obj *objs, t_ray *ray, int depth);
 
 /* Vector Functions	*/
 
@@ -40,11 +40,12 @@ int			shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id);
 
 /* Material functions */
 
-t_mat		new_material(t_color rgb, t_vec4 coef, double rf, double rr);
+t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr);
 
 /* Ray functions */
 
 t_ray		rotate_ray(t_ray ray, t_quat *rot);
+t_ray		reflect_ray(t_obj obj, t_ray ray);
 
 /* Intersection functions */
 
@@ -56,7 +57,7 @@ double		intersect_cylinder(t_ray ray, t_obj cylinder);
 /* Math functions */
 
 double		solve_quadra(double a, double b, double c);
-t_vec4      get_normal(t_ray ray, t_obj obj, t_lgt lgt);
+t_vec4      get_normal(t_ray ray, t_obj obj, t_vec4 pos);
 t_vec4		normal_plane(t_ray ray, t_obj obj);
 
 /* Initialization functions */
