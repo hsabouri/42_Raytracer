@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 01:45:14 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 03:15:23 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int				check_intersections(t_obj *objs, t_ray *ray, int depth)
 			t_tmp = intersect_cone(*ray, objs[i]);
 		else if (objs[i].type == CYLINDER)
 			t_tmp = intersect_cylinder(*ray, objs[i]);
+		else if (objs[i].type == POLYGON)
+			t_tmp = intersect_polygon(*ray, objs[i]);
 		if ((t_tmp < t || t <= EPSILON) && t_tmp > EPSILON)
 		{
 			t = t_tmp;

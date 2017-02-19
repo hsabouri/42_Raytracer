@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 01:33:08 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 02:12:38 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_ray		refract_ray(t_obj obj, t_ray ray, double r)
 	double	coef;
 	double	tmp;
 
+	r = 1 / r;
 	res.org = vector_scale(ray.dir, ray.t);
 	norm = get_normal(ray, obj, res.org);
 	coef = scalar_product(norm, ray.dir);

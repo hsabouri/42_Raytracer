@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 00:28:45 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 02:14:57 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct		s_obj
 	t_mat			mat;
 	t_vec4			pos;
 	t_vec4			dir;
+	t_vec4			vert[3];
 	t_type			type;
 	t_quat			*rot;
 	t_quat			*inv;

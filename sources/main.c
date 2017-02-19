@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 00:08:03 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 02:58:50 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int				main(void)
 	t_vec4	vec;
 
 	env = init_env();
-	vec = new_vector(0, 0, -10);
+	vec = new_vector(-3, 0, -10);
 	objs = init_objs();
 	env.cam = init_cam(vec, NULL, 66);
 	env.objs = objs;

@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/19 00:04:37 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/02/19 01:49:17 by ple-lez          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ all: $(NAME)
 $(NAME): $(O_FILES)
 	@make -C libft
 	@make -C libvec
-	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $^ && printf "\033[0;32m" || printf "\033[031m"
+	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $^ && printf "\033[0;34m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
 $(O_DIR)/%.o: $(C_DIR)/%.c
