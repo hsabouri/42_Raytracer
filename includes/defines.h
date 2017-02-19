@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 02:42:38 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 04:02:09 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef enum	e_type
 	CONE,
 	CYLINDER,
 	POLYGON,
+	MESH,
 	BACKSLASH
 }				t_type;
 

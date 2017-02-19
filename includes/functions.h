@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 03:41:50 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 04:22:12 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_ray		refract_ray(t_obj obj, t_ray ray, double r);
 /* Intersection functions */
 
 double		intersect_cone(t_ray ray, t_obj cone);
+double		intersect_mesh(t_ray ray, t_obj *obj);
 double		intersect_polygon(t_ray ray, t_obj poly);
 double		intersect_plane(t_ray ray, t_obj plane);
 double		intersect_sphere(t_ray ray, t_obj sphere);
@@ -69,6 +70,11 @@ t_cam		init_cam(t_vec4 pos, t_quat *rot, double fov);
 t_ray		init_ray(t_cam *cam, int x, int y);
 t_obj		*init_objs(void);
 t_env		init_env(void);
+
+/* Mesh functions */
+
+t_obj		create_mesh(t_color color);
+t_obj		add_polygon(t_obj obj, t_obj poly);
 
 /* Mlx hook functions */
 

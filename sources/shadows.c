@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:18:01 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 02:32:04 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 04:34:46 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 	{
 		if (i != id)
 		{
+			if (objs[i].type == MESH)
+				tmp = intersect_mesh(ray, &objs[i]);
 			if (objs[i].type == SPHERE)
 				tmp = intersect_sphere(ray, objs[i]);
 			else if (objs[i].type == PLANE)
