@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 11:00:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/20 11:07:41 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/20 14:50:53 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ void	display_objs(t_obj *objs)
 			objs[i].dir.x,
 			objs[i].dir.y,
 			objs[i].dir.z);
+		if (objs[i].rot != NULL)
+		{
+			printf("	Object rotation : r: %f i: %f j: %f k: %f\n",
+				objs[i].rot->r,
+				objs[i].rot->i,
+				objs[i].rot->j,
+				objs[i].rot->k);
+		}
+		if (objs[i].inv != NULL)
+		{
+			printf("	Object inverse : r: %f i: %f j: %f k: %f\n",
+				objs[i].rot->r,
+				objs[i].rot->i,
+				objs[i].rot->j,
+				objs[i].rot->k);
+		}
 		i++;
 	}
 }

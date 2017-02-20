@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/20 11:44:22 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/20 14:45:34 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static t_obj	*assign2(char *line, t_obj *objs, size_t *n_obj)
 		objs[*n_obj - 1].radius = parse_double(line + 7);
 	if (ft_strnstr(line, "r ", 2))
 		objs[*n_obj - 1].radius = parse_double(line + 2);
+	if (ft_strnstr(line, "r ", 2))
+		objs[*n_obj - 1].rot = parse_quat(line + 2,  objs + *n_obj - 1);
 	return (objs);
 }
 

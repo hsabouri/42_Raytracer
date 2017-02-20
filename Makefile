@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/19 18:35:52 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/20 14:55:48 by hsabouri         ###   ########.fr        #
 #    Updated: 2017/02/18 18:16:57 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -67,6 +67,7 @@ CFLAGS += -march=native -O3
 $(LIBRARY):
 	make -C libft
 	make -C libvec
+	make -C libobj
 
 #===========================================================#
 #                  //   COMPILATION  \\                     #
@@ -77,6 +78,7 @@ all: $(NAME)
 $(NAME): $(O_FILES)
 	@make -C libft
 	@make -C libvec
+	@make -C libobj
 	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $^ && printf "\033[0;34m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
@@ -95,6 +97,7 @@ clean:
 		@rm -rf $(O_DIR)
 		@make clean -C libft
 		@make clean -C libvec
+		@make clean -C libobj
 		@echo "\033[36mDone\033[00m"
 
 .PHONY: fclean
@@ -102,6 +105,7 @@ fclean: clean
 		@echo "\033[36mDeleting Project...\033[00m"
 		@make fclean -C libft
 		@make fclean -C libvec
+		@make fclean -C libobj
 		@rm -f $(NAME)
 		@echo "\033[36mDone\033[00m"
 

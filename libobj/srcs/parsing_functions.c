@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 22:16:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 18:55:59 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/20 14:54:44 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@ t_vec4	parse_vec(char *str)
 	vector.z = ft_atof(str);
 	vector.w = get_vector_len(vector);
 	return (vector);
+}
+
+t_quat	*parse_quat(char *str, t_obj *obj)
+{
+	t_quat	*res;
+	double	r;
+	t_vec4	axis;
+
+	r = parse_double(str);
+	while (!ft_isspace(*str))
+		str++;
+	axis = parse_vec(str);
+	res = new_quat(r, axis);
+	obj->inv = get_inverse(res);
+	return (res);
 }
 
 double	parse_double(char *str)
