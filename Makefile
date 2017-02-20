@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/19 03:20:13 by ple-lez          ###   ########.fr        #
+#    Updated: 2017/02/19 18:35:52 by hsabouri         ###   ########.fr        #
 #    Updated: 2017/02/18 18:16:57 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -26,6 +26,10 @@ C_DIR = sources
 O_DIR = objects
 
 LINKS = -I$(H_DIR)
+LINKS += -I./libobj/includes
+LINKS += -I./libvec/includes
+LINKS += -I./libft/
+LINKS += -I./libmlx_elcapitan
 
 C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c")
 C_DIRS = $(shell find $(C_DIR) -type d -print)
@@ -39,6 +43,9 @@ LDFALGS += -L./libft/
 LIBVEC = libvec/libvect.a
 #HFLAGS += -I./libvec/includes/
 LDFALGS += -L./libvec/
+
+LIBOBJ = libobj/libobj.a
+LDFALGS += -L./libobj
 
 #Make the mlx lib working in 42 USA
 ifeq ($(PLACE), USA)
@@ -70,7 +77,7 @@ all: $(NAME)
 $(NAME): $(O_FILES)
 	@make -C libft
 	@make -C libvec
-	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $^ && printf "\033[0;34m" || printf "\033[031m"
+	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $^ && printf "\033[0;34m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
 $(O_DIR)/%.o: $(C_DIR)/%.c

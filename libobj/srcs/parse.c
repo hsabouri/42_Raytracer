@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 18:56:40 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/20 11:44:22 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ static t_obj *create_obj(t_type type, char *name, t_obj *objs, size_t *n_obj)
 {
 	objs[*n_obj].type = type;
 	objs[*n_obj].name = ft_strdup(name);
+	objs[*n_obj].mat.rgb = (t_color) {255, 255, 255, 0};
+	objs[*n_obj].mat.coef = new_vector(1, 1, 1);
+	objs[*n_obj].mat.reflect = 0.0;
+	objs[*n_obj].mat.refract = 0.0;
+	objs[*n_obj].rot = NULL;
 	*n_obj += 1;
 	return (objs);
 }
@@ -28,6 +33,8 @@ static t_obj	*assign2(char *line, t_obj *objs, size_t *n_obj)
 		objs[*n_obj - 1].mat.rgb = parse_color(line + 2);
 	if (ft_strnstr(line, "n ", 2))
 		objs[*n_obj - 1].dir = parse_vec(line + 2);
+	if (ft_strnstr(line, "radius ", 7))
+		objs[*n_obj - 1].radius = parse_double(line + 7);
 	if (ft_strnstr(line, "r ", 2))
 		objs[*n_obj - 1].radius = parse_double(line + 2);
 	return (objs);

@@ -6,7 +6,7 @@
 /*   By: qduperon <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 18:56:15 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/20 11:06:27 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 int			open_file(char *path);
 void		check_params(int ac);
 void		usage(void);
+void		display_objs(t_obj *objs);
 t_vec4		parse_vec(char *str);
 t_color		parse_color(char *str);
 double		parse_double(char *str);

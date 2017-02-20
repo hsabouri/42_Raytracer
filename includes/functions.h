@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:22:12 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/19 18:32:06 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_vec4		normal_polygon(t_obj poly);
 
 t_cam		init_cam(t_vec4 pos, t_quat *rot, double fov);
 t_ray		init_ray(t_cam *cam, int x, int y);
-t_obj		*init_objs(void);
+t_obj		*init_objs(int ac, char **av);
 t_env		init_env(void);
 
 /* Mesh functions */

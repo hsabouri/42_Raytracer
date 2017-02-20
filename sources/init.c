@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:56:56 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/20 11:33:18 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,41 +48,19 @@ t_env 			init_env(void)
 	return (env);
 }
 
-t_obj			*init_objs(void)
+t_obj			*init_objs(int ac, char **av)
 {
-	t_color		rgb;
 	t_obj		*res;
-	t_obj		poly;
-	t_vec4		axis;
-	t_quat		*quat;
-
-	axis = new_vector(1, 0, 0);
-	res = (t_obj *)malloc(sizeof(t_obj) * 2);
+	int			fd;
+	int			i = 0;
 	
-	rgb = (t_color){255, 255, 255, 0};
-	res[0] = create_mesh(rgb);
-	poly.type = POLYGON;
-	poly.vert[0] = new_vector(4, 0, 0);
-	poly.vert[1] = new_vector(0, 4, 0);
-	poly.vert[2] = new_vector(-4, 0, 0);
-	poly.rot = NULL;
-	poly.inv = NULL;
-	res[0] = add_polygon(res[0], poly);
-	
-	poly.vert[0] = new_vector(4, 0, 0);
-	poly.vert[1] = new_vector(0, 4, 0);
-	poly.vert[2] = new_vector(8, 0, 0);
-	poly.rot = new_quat(PI / 3, axis);
-	poly.inv = get_inverse(poly.rot);
-	res[0] = add_polygon(res[0], poly);
-	
-	poly.vert[0] = new_vector(-4, 0, 0);
-	poly.vert[1] = new_vector(0, 4, 0);
-	poly.vert[2] = new_vector(-8, 0, 0);
-	res[0] = add_polygon(res[0], poly);
-
-	res[0].mat.coef = new_vector(1, 0.5, 0.3);
-
-	res[1].type = BACKSLASH;
+	check_params(ac);
+	fd = open_file(av[1]);
+	res = parse(fd);
+	while (res[i].type != BACKSLASH)
+	{
+		res[i].rot = NULL;
+		i++;
+	}
 	return (res);
 }
