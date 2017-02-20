@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qduperon <qduperon@student.42.fr>          +#+  +:+       +#+         #
+#    By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/11/27 11:29:17 by qduperon          #+#    #+#              #
-#    Updated: 2017/02/17 15:18:24 by hsabouri         ###   ########.fr        #
+#    Created: 2017/02/15 11:29:17 by hsabouri          #+#    #+#              #
+#    Updated: 2017/02/19 09:32:52 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ O_DIR = objects
 
 LINKS = -I$(H_DIR)
 LINKS += -I../libft/
+LINKS += -I../includes/
+LINKS += -I../libmlx_elcapitan/
 
 C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c" | grep -v ".swp")
 C_DIRS = $(shell find $(C_DIR) -type d -print)
@@ -50,7 +52,7 @@ FLAGS = -Wextra -Wall
 all: $(NAME) main
 
 main:
-	$(CC) $(MAIN) -I../libft/ -I./includes/ ../libft/libft.a ./libobj.a	
+	$(CC) $(MAIN) $(LINKS) ../libft/libft.a ./libobj.a ../libvec/libvect.a
 
 $(NAME): $(O_FILES)
 	@libtool -static -o $@ $^ && printf "\033[0;32m" || printf "\033[031m"
