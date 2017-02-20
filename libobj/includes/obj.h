@@ -6,7 +6,7 @@
 /*   By: qduperon <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 09:28:49 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/19 18:56:15 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@
 # include <libft.h>
 # include <rt.h>
 
-int			open_file(const char *path);
-void		check_params(int ac, char **av);
+int			open_file(char *path);
+void		check_params(int ac);
 void		usage(void);
 t_vec4		parse_vec(char *str);
 t_color		parse_color(char *str);
+double		parse_double(char *str);
 t_obj		*parse(int fd);
 
 #endif

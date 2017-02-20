@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 16:14:42 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/19 18:56:40 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ static t_obj *create_obj(t_type type, char *name, t_obj *objs, size_t *n_obj)
 static t_obj	*assign2(char *line, t_obj *objs, size_t *n_obj)
 {
 	if (ft_strnstr(line, "p ", 2))
-		objs[*n_obj].pos = parse_vec(line + 2);
+		objs[*n_obj - 1].pos = parse_vec(line + 2);
 	if (ft_strnstr(line, "c ", 2))
-		objs[*n_obj].mat.rgb = parse_color(line + 2);
+		objs[*n_obj - 1].mat.rgb = parse_color(line + 2);
+	if (ft_strnstr(line, "n ", 2))
+		objs[*n_obj - 1].dir = parse_vec(line + 2);
+	if (ft_strnstr(line, "r ", 2))
+		objs[*n_obj - 1].radius = parse_double(line + 2);
 	return (objs);
 }
 
@@ -41,8 +45,8 @@ static t_obj	*assign(char *line, t_obj *objs, size_t *n_obj)
 		return (create_obj(CYLINDER, line + 8, objs, n_obj));
 	if (ft_strnstr(line, "plane ", 6))
 		return (create_obj(PLANE, line + 6, objs, n_obj));
-	if (ft_strnstr(line, "o ", 2))
-		return (create_obj(MESH, line + 2, objs, n_obj));
+	//if (ft_strnstr(line, "o ", 2))
+	//	return (create_obj(MESH, line + 2, objs, n_obj));
 	return (assign2(line, objs, n_obj));
 }
 

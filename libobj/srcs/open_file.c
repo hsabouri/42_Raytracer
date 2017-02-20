@@ -6,13 +6,13 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 21:27:02 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/17 15:18:58 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/19 18:48:59 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "obj.h"
+#include <obj.h>
 
-void		check_params(int ac, char **av)
+void		check_params(int ac)
 {
 	if (ac < 2)
 	{
@@ -29,10 +29,11 @@ static int	is_file(const char *path)
 	return (S_ISREG(path_stat.st_mode));
 }
 
-int			open_file(const char *path)
+int			open_file(char *path)
 {
 	int	fd;
 
+	printf("%s", path);
 	if ((fd = open(path, O_RDONLY)) > 0)
 	{
 		if (is_file(path))
@@ -43,12 +44,21 @@ int			open_file(const char *path)
 				return (fd);
 			}
 			else
+			{
+				printf("access(path, O_RDONLY) == 0\n");
 				perror("\x1B[31mERROR\x1B[0m");
+			}
 		}
 		else
+		{
+			printf("is_file(path)\n");
 			ft_putendl("\x1B[31mERROR\x1B[0m: Not a regular file");
+		}
 	}
 	else
+	{
+		printf("fd = open(path, O_RDONLY)) > 0\n");
 		perror("\x1B[31mERROR\x1B[0m");
+	}
 	exit(EXIT_FAILURE);
 }

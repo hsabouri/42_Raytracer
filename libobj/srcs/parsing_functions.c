@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 22:16:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 11:36:46 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/19 18:55:59 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ t_vec4	parse_vec(char *str)
 	vector.z = ft_atof(str);
 	vector.w = get_vector_len(vector);
 	return (vector);
+}
+
+double	parse_double(char *str)
+{
+	double res;
+
+	res = ft_atof(str);
+	return (res);
 }
 
 t_color	parse_color(char *str)
