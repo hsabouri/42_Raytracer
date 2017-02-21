@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/20 11:33:21 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/20 19:43:02 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct		s_color
 
 typedef struct		s_lgt
 {
+	char			*name;
 	t_ltype			type;
 	t_vec4			dir;
 	t_vec4			pos;
