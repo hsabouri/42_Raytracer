@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 19:17:55 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/21 09:59:01 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/21 19:47:35 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_obj			*assign_objs(char *line, t_obj *objs, size_t *n_obj)
 		return (create_obj(SPHERE, line + 7, objs, n_obj));
 	if (ft_strnstr(line, "cone ", 5))
 		return (create_obj(CONE, line + 5, objs, n_obj));
-	if (ft_strnstr(line, "cylinder ", 8))
-		return (create_obj(CYLINDER, line + 8, objs, n_obj));
+	if (ft_strnstr(line, "cylinder ", 9))
+		return (create_obj(CYLINDER, line + 9, objs, n_obj));
 	if (ft_strnstr(line, "plane ", 6))
 		return (create_obj(PLANE, line + 6, objs, n_obj));
 	//if (ft_strnstr(line, "o ", 2))
