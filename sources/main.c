@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/20 10:48:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/21 09:11:05 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,12 @@ static int		loop_hook(t_env *env)
 
 int				main(int ac, char **av)
 {
-	t_obj	*objs;
 	t_env	env;
 	t_vec4	vec;
 
-	env = init_env();
+	env = init_env(ac, av);
 	vec = new_vector(0, 1, -10);
-	objs = init_objs(ac, av);
 	env.cam = init_cam(vec, NULL, 66);
-	env.objs = objs;
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_loop_hook(env.mlx, loop_hook, &env);

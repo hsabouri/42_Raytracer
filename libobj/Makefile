@@ -6,7 +6,7 @@
 #    By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/15 11:29:17 by hsabouri          #+#    #+#              #
-#    Updated: 2017/02/20 11:40:58 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/20 19:54:29 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ FLAGS = -Wextra -Wall
 #============================================================#
 
 .PHONY: all
-all: $(NAME) main
+all: $(NAME)
 
 main:
 	$(CC) $(MAIN) $(LINKS) ../libft/libft.a ./libobj.a ../libvec/libvect.a

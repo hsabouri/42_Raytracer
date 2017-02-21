@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2001/09/11 14:07:49 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 18:44:52 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/20 19:45:46 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,6 @@ int main(int ac, char **av)
 	check_params(ac);
 	fd = open_file(av[1]);
 	objs = parse(fd);
-	while (objs[i].type != BACKSLASH)
-	{
-		printf("Object number : %zu\n	Object name : %s\n", i, objs[i].name);
-		printf("	Object color : %d %d %d\n",
-				objs[i].mat.rgb.r,
-				objs[i].mat.rgb.g,
-				objs[i].mat.rgb.b);
-		printf("	Object position : %f %f %f\n",
-				objs[i].pos.x,
-				objs[i].pos.y,
-				objs[i].pos.z);
-		printf("	Object direction : %f %f %f\n",
-				objs[i].dir.x,
-				objs[i].dir.y,
-				objs[i].dir.z);
-		i++;
-	}
+	display_objs(objs);
 	return (0);
 }

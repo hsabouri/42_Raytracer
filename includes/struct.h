@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/20 19:43:02 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/21 09:21:42 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,6 @@ typedef struct		s_obj
 
 typedef struct		s_env
 {
-	int				bpp;
-	int				size;
-	int				endian;
 	int				redraw;
 	int				shadow;
 	int				last_id;
@@ -103,6 +100,9 @@ typedef struct		s_env
 	t_lgt			*lgt;
 	t_cam			cam;
 	t_obj			*objs;
+	int				bpp;
+	int				size;
+	int				endian;
 }					t_env;
 
 #endif
