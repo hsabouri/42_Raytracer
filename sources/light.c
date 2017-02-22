@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:33:10 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/22 17:28:08 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
 	lamb = scalar_product(dir, lgt.normal);
-	if (lamb < EPSILON)
+	if (lamb < 0)
 		lamb = 0;
-	if (lamb > 1.0)
-		lamb = 1.0;
 	if (lamb > 0)
 		lamb += specular_in_progress(obj, ray, lgt);
+	lamb += 0.15; //ambient for now
+	if (lamb > 1.0)
+		lamb = 1.0;
 	res = vector_scale(res, lamb);
 	return (res);
 }
