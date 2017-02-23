@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/23 13:10:00 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/23 16:38:33 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ t_color		apply_lambert(t_color col, t_vec4 coef)
 	return (res);
 }
 
-static double		specular_in_progress(t_obj obj, t_ray ray, t_lgt lgt)
+double		specular(t_obj obj, t_ray ray, t_lgt lgt)
 {
 	t_vec4	dir;
 	t_vec4	tmp;
 	double	spec;
-	dir = vector_sub(lgt.pos, lgt.hitpnt);
-	dir = normalize_vector(dir);
+
+	dir = normalize_vector(vector_sub(lgt.pos, lgt.hitpnt));
 	if (obj.rot)
 		dir = quat_rot(obj.inv, &dir);
 	tmp = vector_scale(lgt.normal, (2.0 * scalar_product(lgt.normal, dir)));
 	tmp = vector_sub(dir, tmp);
 	if ((spec = scalar_product(tmp, ray.dir)) > 0.0)
 		spec = pow(spec, 30.0);
-	if (spec >= EPSILON && obj.type != PLANE)
+	if (spec > 0.0 && obj.type != PLANE)
 		return (spec);
 	return (0.0);
 }
@@ -60,13 +60,11 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
 	lamb = scalar_product(dir, lgt.normal);
-	if (lamb < 0)
-		lamb = 0;
-	if (lamb > 0)
-		lamb += specular_in_progress(obj, ray, lgt);
-	lamb += 0.15; //ambient for now
-	if (lamb > 1.0)
-		lamb = 1.0;
+	lamb = ft_min_max(lamb, 0.0 , 1.0);
+	if (lamb > 0.0)
+		lamb += specular(obj, ray, lgt);
+	lamb += AMBIENT;
+	lamb = ft_min_max(lamb, 0.0 , 1.0);
 	res = vector_scale(res, lamb);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:02:09 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/23 16:22:03 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define KEY_MN	78
 # define KEY_R	15
 # define KEY_S	1
-
+#define AMBIENT 0.15
 /* enum for camera
  * movement and rotations
  */
