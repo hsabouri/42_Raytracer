@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/20 14:55:48 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/22 11:18:29 by hsabouri         ###   ########.fr        #
 #    Updated: 2017/02/18 18:16:57 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -61,6 +61,7 @@ endif
 
 CC = gcc
 CFLAGS = -Wall -Wextra
+#CFLAGS += -g -fsanitize=address
 #CFLAGS += -Werror
 CFLAGS += -march=native -O3
 

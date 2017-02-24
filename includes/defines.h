@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:02:09 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/22 10:48:30 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define KEY_MN	78
 # define KEY_R	15
 # define KEY_S	1
+
+# define MALLOC_FAILED 1
 
 /* enum for camera
  * movement and rotations

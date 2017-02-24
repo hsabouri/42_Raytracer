@@ -6,13 +6,17 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/20 19:52:45 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/22 10:49:04 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
 # include "rt.h"
+
+/* Quit the program */
+
+void		error(int code);
 
 /* Algorithm Functions */
 
@@ -73,7 +77,7 @@ t_env		init_env(int ac, char **av);
 
 /* Mesh functions */
 
-t_obj		create_mesh(t_color color);
+t_obj		create_mesh(t_color color, char *name);
 t_obj		add_polygon(t_obj obj, t_obj poly);
 
 /* Mlx hook functions */
