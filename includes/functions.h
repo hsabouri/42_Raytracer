@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/22 10:49:04 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/24 11:47:10 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt);
 t_color		apply_lambert(t_color col, t_vec4 coef);
 t_color		shadow_handler(t_obj *objs, t_ray ray, t_env env, t_color color);
 int			shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id);
+double      specular(t_obj obj, t_ray ray, t_lgt lgt);
 
 /* Material functions */
 
@@ -84,5 +85,9 @@ t_obj		add_polygon(t_obj obj, t_obj poly);
 
 void		pixel_put(t_env env, unsigned int x, unsigned int y, t_color color);
 int			key_hook(int keycode, t_env *env);
+
+/* Tools functions */
+
+double      ft_min_max(double value, double min, double max);
 
 #endif

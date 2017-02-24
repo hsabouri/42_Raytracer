@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/22 10:48:30 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/24 11:46:40 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@
 # define KEY_R	15
 # define KEY_S	1
 
+/* Error codes */
+
 # define MALLOC_FAILED 1
+
+# define AMBIENT 0.15
 
 /* enum for camera
  * movement and rotations

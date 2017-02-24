@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 17:24:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 04:34:17 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/23 13:09:09 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,18 @@ t_vec4		normal_polygon(t_obj poly)
 	return (res);
 }
 
+t_vec4		normal_cylinder(t_vec4 pos, t_obj obj)
+{
+	obj.pos.y = pos.y;
+	return (normalize_vector(vector_sub(obj.pos, pos)));
+}
+
 t_vec4		get_normal(t_ray ray, t_obj obj, t_vec4 pos)
 {
 	if (obj.type == PLANE)
 		return (normal_plane(ray, obj));
+	else if (obj.type == CYLINDER)
+		return (normal_cylinder(pos, obj));
 	else if (obj.type == POLYGON)
 	{
 		obj.dir = normal_polygon(obj);
