@@ -6,7 +6,7 @@
 #    By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/15 11:29:17 by hsabouri          #+#    #+#              #
-#    Updated: 2017/02/20 19:54:29 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/25 09:27:36 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ O_FILES = $(C_FILES:$(C_DIR)/%.c=$(O_DIR)/%.o)
 #============================================================#
 
 FLAGS = -Wextra -Wall
+FLAGS += -g -fsanitize=address
 #FLAGS += -Werror
 #FLAGS += -O3 -march=native
 

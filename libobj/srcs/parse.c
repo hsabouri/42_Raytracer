@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/24 17:12:24 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/25 09:29:25 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ t_env		parse(int fd, t_env env)
 	}
 	env = create_obj(BACKSLASH, "n/a", env);
 	env = create_lgt(NOLIGHT, "n/a", env);
-	ft_putendl("LOG: Parsing finished");
+	ft_putendl("\x1B[32mLOG\x1B[0m: Parsing done");
 	return (env);
 }
