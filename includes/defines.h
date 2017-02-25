@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/24 11:46:40 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/24 17:12:32 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 /* Error codes */
 
 # define MALLOC_FAILED 1
+# define PARSING_ERROR 10
 
 # define AMBIENT 0.15
 

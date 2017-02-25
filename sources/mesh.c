@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 04:02:21 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:47:12 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/24 17:12:23 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,11 @@ double			intersect_mesh(t_ray ray, t_obj *obj)
 	return (t);
 }
 
-t_obj			create_mesh(t_color color)
+t_obj			create_mesh(t_color color, char *name)
 {
 	t_obj		mesh;
 
+	mesh.name = ft_strdup(name);
 	mesh.type = MESH;
 	mesh.chld = (t_obj *)malloc(sizeof(t_obj));
 	mesh.chld[0].type = BACKSLASH;

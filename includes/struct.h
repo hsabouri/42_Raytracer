@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/21 09:21:42 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/24 17:12:31 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,22 @@ typedef struct		s_obj
 	struct s_obj	*chld;
 	t_vec4			pos;
 	t_vec4			dir;
-	t_vec4			vert[3];
 	t_type			type;
 	t_quat			*rot;
 	t_quat			*inv;
 	double			radius;
+	t_vec4			vert[3];
 }					t_obj;
 
 /* Environement structure */
+/* Description:
+ * n_lgt : light number
+ * n_obj : obj number
+ * n_vrt : vertices number
+ * *lgt : light array
+ * *objs : obj array
+ * *vrts : vertices array
+ */
 
 typedef struct		s_env
 {
@@ -97,9 +105,12 @@ typedef struct		s_env
 	void			*img;
 	char			*addr;
 	unsigned int	n_lgt;
+	unsigned int	n_obj;
+	unsigned int	n_vrt;
 	t_lgt			*lgt;
-	t_cam			cam;
 	t_obj			*objs;
+	t_vec4			*vrts;
+	t_cam			cam;
 	int				bpp;
 	int				size;
 	int				endian;

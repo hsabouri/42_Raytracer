@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/24 11:47:10 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/02/24 17:12:28 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /* Quit the program */
 
-void		error(int code);
+void		error(int code, char *str);
 
 /* Algorithm Functions */
 
