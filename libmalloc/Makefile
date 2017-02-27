@@ -6,7 +6,7 @@
 #    By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/19 10:32:42 by hsabouri          #+#    #+#              #
-#    Updated: 2017/02/26 18:08:15 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/27 09:37:28 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ INCLUDES = ./
 CFLAGS = -Wall -Werror -Wextra
 CFLAGS = -O3 -march=native
 CC = gcc
-SRC	= ft_malloc.c ft_memzero.c
+SRC	= ft_malloc.c ft_memzero.c ft_malloc_other.c
 OBJ	= $(SRC:%.c=%.o)
 
 all: $(NAME)
