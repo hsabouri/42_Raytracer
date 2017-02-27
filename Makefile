@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/02/25 09:27:22 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/02/26 18:10:43 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ LINKS += -I./libobj/includes
 LINKS += -I./libvec/includes
 LINKS += -I./libft/
 LINKS += -I./libmlx_elcapitan
+LINKS += -I./libmalloc
 
 C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c")
 C_DIRS = $(shell find $(C_DIR) -type d -print)
@@ -45,6 +46,9 @@ LDFALGS += -L./libvec/
 
 LIBOBJ = libobj/libobj.a
 LDFALGS += -L./libobj
+
+LIBMALLOC = libmalloc/libmalloc.a
+LDFALGS += -L./libmalloc
 
 #Make the mlx lib working in 42 USA
 ifeq ($(PLACE), USA)
@@ -68,6 +72,7 @@ $(LIBRARY):
 	make -C libft
 	make -C libvec
 	make -C libobj
+	make -C libmalloc
 
 #===========================================================#
 #                  //   COMPILATION  \\                     #
@@ -79,12 +84,13 @@ $(NAME): $(O_FILES)
 	@make -C libft
 	@make -C libvec
 	@make -C libobj
-	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $^ && printf "\033[0;34m" || printf "\033[031m"
+	@make -C libmalloc
+	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $(LIBMALLOC) $^ && printf "\033[0;34m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
 $(O_DIR)/%.o: $(C_DIR)/%.c
 	@mkdir -p $(O_DIRS) $(O_DIR)
-	@gcc $(FLAGS) $(LINKS) $(HFLAGS) -I $(LIBVEC) -I $(LIBFT) -o $@ -c $< \
+	@$(CC) $(FLAGS) $(LINKS) $(HFLAGS) -I $(LIBVEC) -I $(LIBFT) -I $(LIBMALLOC) -o $@ -c $< \
 		&& printf "\033[0;0m%-34s\033[1;30m -->>\t\033[0;33m$@\033[0;0m\n" "$<"
 
 #===========================================================#
@@ -98,6 +104,7 @@ clean:
 		@make clean -C libft
 		@make clean -C libvec
 		@make clean -C libobj
+		@make clean -C libmalloc
 		@echo "\033[36mDone\033[00m"
 
 .PHONY: fclean
@@ -106,6 +113,7 @@ fclean: clean
 		@make fclean -C libft
 		@make fclean -C libvec
 		@make fclean -C libobj
+		@make fclean -C libmalloc
 		@rm -f $(NAME)
 		@echo "\033[36mDone\033[00m"
 
