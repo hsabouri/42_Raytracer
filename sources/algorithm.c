@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/28 19:44:08 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/28 20:01:51 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int				check_intersections(t_obj *objs, t_ray *ray, int depth)
 	double			t_tmp;
 	unsigned int	i;
 	int				i_final;
+	int				res;
 
 	i = 0;
 	i_final = -1;
@@ -66,7 +67,10 @@ int				check_intersections(t_obj *objs, t_ray *ray, int depth)
 			&& depth < DEPTH_MAX)
 	{
 		*ray = reflect_ray(objs[i_final], *ray);
-		return (check_intersections(objs, ray, depth + 1));
+		res = check_intersections(objs, ray, depth + 1);
+		if (objs[res].type == BACKSLASH)
+			return (i_final);
+		return (res);
 	}
 	if (objs[i_final].type != BACKSLASH && objs[i_final].mat.refract > EPSILON
 			&& depth < DEPTH_MAX)
