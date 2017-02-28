@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 17:24:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/23 13:09:09 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/02/28 19:48:29 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_vec4		normal_polygon(t_obj poly)
 	t_vec4	ac;
 	t_vec4	res;
 
-	ab = vector_sub(poly.vert[1], poly.vert[0]);
-	ac = vector_sub(poly.vert[2], poly.vert[0]);
+	ab = vector_sub(poly.vert[2], poly.vert[1]);
+	ac = vector_sub(poly.vert[0], poly.vert[1]);
 	res = cross_product(ab, ac);
 	res = normalize_vector(res);
 	return (res);
