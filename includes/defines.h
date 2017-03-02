@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/28 19:43:52 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/02 14:28:16 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # define PI 3.141592653
 # define EPSILON 0.000001
 # define DEPTH_MAX 3
-# define HEIGHT 1024
-# define LENGTH 1024
+# define HEIGHT 800
+# define LENGTH 800
 # define KEY_ES 53
 # define KEY_AUP 126
 # define KEY_ADN 125
