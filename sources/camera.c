@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:52:33 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/19 04:46:35 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/03 15:36:58 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ t_cam		camera_control(t_cam cam, t_dir dir)
 		axis = new_vector(1, 0, 0);
 	rot = new_quat(PI / 18, axis);
 	cam = rotate_cam(cam, rot);
+	free(rot);
 	return (cam);
 }
 
 t_cam		move_camera(t_cam cam, t_dir dir)
 {
 	t_vec4	tran;
-	
+
 	if (dir == FRONT)
 		tran = new_vector(0, 0, 1);
 	else if (dir == BACK)
