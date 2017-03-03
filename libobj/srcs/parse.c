@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/02 14:09:09 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/03 16:36:26 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_env		create_lgt(t_ltype type, char *name, t_env env)
 t_env		parse(int fd, t_env env)
 {
 	char		*line;
+	char		*line2;
 	t_vec4		*ver;
 
 	line = NULL;
@@ -72,11 +73,12 @@ t_env		parse(int fd, t_env env)
 	env.n_vrt = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		line = ft_strtrim(line);
-		env = objs(line, env);
-		env = lgts(line, env);
-		env = meshs(line, env);
+		line2 = ft_strtrim(line);
 		free(line);
+		env = objs(line2, env);
+		env = lgts(line2, env);
+		env = meshs(line2, env);
+		free(line2);
 	}
 	env = create_obj(BACKSLASH, "n/a", env);
 	env = create_lgt(NOLIGHT, "n/a", env);
