@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/02 14:17:04 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/06 19:22:10 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_env 			init_env(int ac, char **av)
 	env = init_objs_lgts(ac, av, env);
 	env.win = mlx_new_window(env.mlx, LENGTH, HEIGHT, "RT");
 	env.redraw = 1;
-	env.shadow = 1;
+	env.shadow = 0;
 
 	return (env);
 }

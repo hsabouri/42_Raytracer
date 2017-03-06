@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/02 13:47:28 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/06 19:21:01 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	lamb = ft_min_max(lamb, 0.0 , 1.0);
 	if (lamb > 0.0)
 		lamb += specular(obj, ray, lgt);
-	lamb += AMBIENT;
 	lamb = ft_min_max(lamb, 0.0 , 1.0);
 	res = vector_scale(res, lamb);
 	return (res);
@@ -71,7 +70,7 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 
 t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 {
-	const unsigned int	n_lgt = env.n_lgt;
+	const unsigned int	n_lgt = env.n_lgt - 1;
 	unsigned int		i;
 	t_vec4				coef;
 	t_vec4				tmp;
@@ -79,7 +78,7 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 	double				spec;
 	t_vec4				calc;
 	spec = 0;
-	coef = new_vector(0, 0, 0);
+	coef = new_vector(AMBIENT, AMBIENT, AMBIENT);
 	res = (t_color) {0, 0, 0, 0};
 	i = 0;
 	while (i < n_lgt)
@@ -92,7 +91,7 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 		}
 		i++;
 	}
-	coef = vector_cap(coef, 0.05, 1.0);
+	coef = vector_cap(coef, 0, 1.0);
 	res = apply_lambert(color, coef);
 	return (res);
 }
