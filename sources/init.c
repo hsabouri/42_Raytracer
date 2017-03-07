@@ -6,7 +6,11 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2017/03/07 12:06:42 by ple-lez          ###   ########.fr       */
+=======
+/*   Updated: 2017/03/07 11:18:59 by pmartine         ###   ########.fr       */
+>>>>>>> 71e82ebff364e04091b16541c3ca404f9aa94643
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +36,11 @@ t_env 			init_env(int ac, char **av)
 	env.win = mlx_new_window(env.mlx, LENGTH, HEIGHT, "RT");
 	env.redraw = 1;
 	env.shadow = 0;
+<<<<<<< HEAD
 	env.pr_mesh = 0;
 
+=======
+	env.supersampling = 0;
+>>>>>>> 71e82ebff364e04091b16541c3ca404f9aa94643
 	return (env);
 }

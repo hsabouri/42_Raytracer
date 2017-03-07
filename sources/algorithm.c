@@ -6,7 +6,11 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2017/03/07 12:06:49 by ple-lez          ###   ########.fr       */
+=======
+/*   Updated: 2017/03/07 11:18:45 by pmartine         ###   ########.fr       */
+>>>>>>> 71e82ebff364e04091b16541c3ca404f9aa94643
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +85,40 @@ int				check_intersections(t_obj *objs, t_ray *ray, int depth)
 		return (check_intersections(objs, ray, depth + 1));
 	}
 	return (i_final);
+}
+
+int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env env)
+{
+	unsigned int	x;
+	unsigned int	y;
+	t_ray			ray;
+	t_color			col[4];
+	t_color			color;
+
+	x = 0;
+	while (x < LENGTH)
+	{
+		y = 0;
+		while (y < HEIGHT)
+		{
+				ray = init_ray(&camera, x - 0.45, y - 0.45);
+				col[0] = pipeline(objs, &ray, env);
+				ray = init_ray(&camera, x + 0.45, y - 0.45);
+				col[1] = pipeline(objs, &ray, env);
+				ray = init_ray(&camera, x - 0.45, y + 0.45);
+				col[2] = pipeline(objs, &ray, env);
+				ray = init_ray(&camera, x + 0.45, y + 0.45);
+				col[3] = pipeline(objs, &ray, env);
+				color.r = (col[0].r + col[1].r + col[2].r + col[3].r) / 4;
+				color.g = (col[0].g + col[1].g + col[2].g + col[3].g) / 4;
+				color.b = (col[0].b + col[1].b + col[2].b + col[3].b) / 4;
+				color.a = (col[0].a + col[1].a + col[2].a + col[3].a) / 4;
+				pixel_put(env, x, y, color);
+				y++;
+		}
+		x++;
+	}
+	return (0);
 }
 
 int				raytrace(t_cam camera, t_obj *objs, t_env env)

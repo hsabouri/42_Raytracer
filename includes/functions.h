@@ -6,7 +6,11 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2017/03/07 11:48:00 by ple-lez          ###   ########.fr       */
+=======
+/*   Updated: 2017/03/07 11:06:38 by pmartine         ###   ########.fr       */
+>>>>>>> 71e82ebff364e04091b16541c3ca404f9aa94643
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +25,7 @@ void		error(int code, char *str);
 /* Algorithm Functions */
 
 int			raytrace(t_cam camera, t_obj *objs, t_env env);
+int			test_ss_raytrace(t_cam camera, t_obj *objs, t_env env);
 int			check_intersections(t_obj *objs, t_ray *ray, int depth);
 
 /* Vector Functions	*/

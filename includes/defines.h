@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/02 14:28:16 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/07 12:18:13 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define KEY_PL 69
 # define KEY_MN	78
 # define KEY_R	15
+# define KEY_P 35
 # define KEY_S	1
 
 /* Error codes */

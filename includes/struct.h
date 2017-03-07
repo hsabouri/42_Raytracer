@@ -6,7 +6,11 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2017/03/07 12:06:21 by ple-lez          ###   ########.fr       */
+=======
+/*   Updated: 2017/03/07 11:07:11 by pmartine         ###   ########.fr       */
+>>>>>>> 71e82ebff364e04091b16541c3ca404f9aa94643
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +103,7 @@ typedef struct		s_env
 {
 	int				redraw;
 	int				shadow;
+	int				supersampling;
 	int				last_id;
 	void			*mlx;
 	void			*win;
