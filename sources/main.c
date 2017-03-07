@@ -6,11 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2017/03/07 12:09:29 by ple-lez          ###   ########.fr       */
-=======
-/*   Updated: 2017/03/07 11:09:03 by pmartine         ###   ########.fr       */
->>>>>>> 71e82ebff364e04091b16541c3ca404f9aa94643
+/*   Updated: 2017/03/07 12:21:46 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +34,12 @@ static int		draw(t_env *env)
 	if (!(env->addr = mlx_get_data_addr(env->img, &env->bpp,
 					&env->size, &env->endian)))
 		exit(0);
-<<<<<<< HEAD
 	if (env->pr_mesh)
 		print_meshes(env);
-	raytrace(env->cam, env->objs, *env);
-=======
 	if (env->supersampling)
 		test_ss_raytrace(env->cam, env->objs, *env);
 	else
 		raytrace(env->cam, env->objs, *env);
->>>>>>> 71e82ebff364e04091b16541c3ca404f9aa94643
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
 	mlx_destroy_image(env->mlx, env->img);
 	return (0);
