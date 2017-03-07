@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 22:16:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/20 17:25:28 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/03/07 12:02:30 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_vec4	parse_vec(char *str)
 	while (*str != ' ' && *str)
 		str++;
 	vector.z = ft_atof(str);
-	vector.w = get_vector_len(vector);
+	vector.w = 1;
 	return (vector);
 }
 

@@ -6,7 +6,7 @@
 /*   By: qduperon <qduperon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 17:55:32 by qduperon          #+#    #+#             */
-/*   Updated: 2017/02/14 17:58:59 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/03/07 12:03:12 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void			print_vector(t_vec4 v)
 {
-	printf("Vector:\nX: %.5f\nY: %.5f\nZ: %.5f\nW: %.5f\n",
+	printf("Vector: X: %.5f Y: %.5f Z: %.5f W: %.5f\n",
 			v.x, v.y, v.z, v.w);
 }

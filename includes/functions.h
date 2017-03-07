@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/24 17:12:28 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/03/07 11:48:00 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int			key_hook(int keycode, t_env *env);
 
 /* Tools functions */
 
+void		print_mesh(t_obj obj);
 double      ft_min_max(double value, double min, double max);
 
 #endif
