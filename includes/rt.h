@@ -22,5 +22,9 @@
 # include "../libobj/includes/obj.h"
 # include <math.h>
 # include <stdio.h>
-
+# ifdef __APPLE__
+#  include <OpenCL/opencl.h>
+# else
+#  include <CL/cl.h>
+# endif
 #endif
