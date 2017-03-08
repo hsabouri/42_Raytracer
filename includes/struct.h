@@ -134,7 +134,7 @@ typedef struct		s_env
 	int				bpp;
 	int				size;
 	int				endian;
-	t_cl			cl;
+//	t_cl			cl;
 	int				pr_mesh;
 }					t_env;
 
