@@ -35,6 +35,11 @@
 
 # define AMBIENT 0.15
 
+/* OpenCL */
+
+# define MEM_SIZE (768)
+# define MAX_SOURCE_SIZE (0x100000)
+
 /* enum for camera
  * movement and rotations
  */
