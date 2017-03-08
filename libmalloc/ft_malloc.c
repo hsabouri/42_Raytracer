@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 17:07:19 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/27 09:24:00 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/03/08 19:30:30 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	*get_ptrbyid(size_t id)
 }
 
 void	*ft_free(void *ptr)
-{	
+{
 	void	**tab;
 	size_t	i;
 

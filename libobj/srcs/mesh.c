@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 18:11:00 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/28 19:57:06 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/08 19:16:21 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static t_uint3		parse_polygon(char *line, t_env env)
 {
-	t_uint3	res;
-	unsigned int *ids;
+	t_uint3			res;
+	unsigned int	*ids;
 
 	ids = (unsigned int *)(&res);
 	while (!ft_isdigit(*line))
@@ -44,7 +44,7 @@ t_env				add_poly_to_last(char *line, t_env env)
 	t_obj				poly;
 	t_uint3				s_ids;
 	unsigned int		*ids;
-	
+
 	s_ids = parse_polygon(line, env);
 	ids = (unsigned int *)(&s_ids);
 	poly.type = POLYGON;

@@ -6,13 +6,13 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 09:16:24 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/27 09:26:53 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/03/08 19:37:31 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_malloc.h>
 
-static void **ft_copy(size_t size, void **src, void **dst)
+static void		**ft_copy(size_t size, void **src, void **dst)
 {
 	size_t i;
 
@@ -25,7 +25,7 @@ static void **ft_copy(size_t size, void **src, void **dst)
 	return (dst);
 }
 
-void	**get_static(size_t current_id)
+void			**get_static(size_t current_id)
 {
 	static void		**tab = NULL;
 	static size_t	size = 10000;

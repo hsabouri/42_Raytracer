@@ -6,12 +6,12 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 17:03:03 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/26 18:08:40 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/03/08 19:36:15 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MALLOC_H
-# define FT_MALLOC_H
+#ifndef FT_LIBMALLOC_H
+# define FT_LIBMALLOC_H
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>

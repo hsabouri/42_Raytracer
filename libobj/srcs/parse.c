@@ -6,11 +6,17 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/03 16:43:45 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/03/08 19:25:27 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <obj.h>
+
+static void	free_lines(char *line, char *line2)
+{
+	free(line);
+	free(line2);
+}
 
 int			static_keeper(int new, int to_change)
 {
@@ -74,11 +80,10 @@ t_env		parse(int fd, t_env env)
 	while (get_next_line(fd, &line) > 0)
 	{
 		line2 = ft_strtrim(line);
-		free(line);
 		env = objs(line2, env);
 		env = lgts(line2, env);
 		env = meshs(line2, env);
-		free(line2);
+		free_lines(line, line2);
 	}
 	free(line);
 	env = create_obj(BACKSLASH, "n/a", env);

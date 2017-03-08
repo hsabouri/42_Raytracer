@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 21:27:02 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/19 18:48:59 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/03/08 19:15:26 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void		check_params(int ac)
 static int	is_file(const char *path)
 {
 	struct stat	path_stat;
+
 	stat(path, &path_stat);
 	return (S_ISREG(path_stat.st_mode));
 }

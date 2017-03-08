@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 19:17:55 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/28 20:04:29 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/08 19:18:59 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static t_env	step2_objs(char *line, t_env env)
 	if (ft_strnstr(line, "radius ", 7))
 		env.objs[env.n_obj - 1].radius = parse_double(line + 7);
 	if (ft_strnstr(line, "r ", 2))
-		env.objs[env.n_obj - 1].rot = \
-			parse_quat(line + 2,  env.objs + env.n_obj - 1);
+		env.objs[env.n_obj - 1].rot = parse_quat(line + 2, \
+			env.objs + env.n_obj - 1);
 	return (env);
 }
 

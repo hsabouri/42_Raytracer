@@ -6,15 +6,17 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 17:03:03 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/27 09:17:18 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/03/08 19:39:06 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MALLOC_H
 # define FT_MALLOC_H
+
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
+
 # define BASIC 0
 # define CLEAN 1
 # define SET 2
