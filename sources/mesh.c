@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 04:02:21 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/28 19:57:55 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/07 11:13:35 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ t_obj			add_polygon(t_obj obj, t_obj poly)
 	t_obj		*newchld;
 
 	i = 0;
+	poly.rot = obj.rot;
+	poly.inv = obj.inv;
 	newchld = realloc_mesh(obj);
 	free(obj.chld);
 	obj.chld = newchld;

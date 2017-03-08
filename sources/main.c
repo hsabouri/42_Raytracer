@@ -6,11 +6,26 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/02 14:28:32 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/07 12:21:46 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+static void		print_meshes(t_env *env)
+{
+	int 		i;
+
+	i = 0;
+	while (env->objs[i].type != BACKSLASH)
+	{
+		if (env->objs[i].type == MESH) {
+			ft_putendl(env->objs[i].name);
+			print_mesh(env->objs[i]);
+		}
+		i++;
+	}
+}
 
 static int		draw(t_env *env)
 {
@@ -19,7 +34,12 @@ static int		draw(t_env *env)
 	if (!(env->addr = mlx_get_data_addr(env->img, &env->bpp,
 					&env->size, &env->endian)))
 		exit(0);
-	raytrace(env->cam, env->objs, *env);
+	if (env->pr_mesh)
+		print_meshes(env);
+	if (env->supersampling)
+		test_ss_raytrace(env->cam, env->objs, *env);
+	else
+		raytrace(env->cam, env->objs, *env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
 	mlx_destroy_image(env->mlx, env->img);
 	return (0);
