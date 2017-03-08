@@ -86,23 +86,23 @@ typedef struct		s_obj
 }					t_obj;
 
 /* OpenCL structure */
-
-typedef struct		s_cl
-{
-	cl_device_id		device_id;
-	cl_context			context;
-	cl_command_queue	command_queue;
-	cl_mem				memobj;
-	cl_program			program;
-	cl_kernel			kernel;
-	cl_platform_id		platform_id;
-	cl_uint				ret_num_devices;
-	cl_uint				ret_num_platforms;
-	cl_int				ret;
-	char				str[MEM_SIZE];
-	char				*source_str;
-	size_t				source_size;
-}					t_cl;
+//
+// typedef struct		s_cl
+// {
+//     cl_device_id		device_id;
+//     cl_context			context;
+//     cl_command_queue	command_queue;
+//     cl_mem				memobj;
+//     cl_program			program;
+//     cl_kernel			kernel;
+//     cl_platform_id		platform_id;
+//     cl_uint				ret_num_devices;
+//     cl_uint				ret_num_platforms;
+//     cl_int				ret;
+//     char				str[MEM_SIZE];
+//     char				*source_str;
+//     size_t				source_size;
+// }					t_cl;
 
 /* Environement structure */
 /* Description:
