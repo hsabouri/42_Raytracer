@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/07 12:21:07 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/09 19:02:28 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 		{
 			ray = init_ray(&camera, x, y);
 			col = pipeline(objs, &ray, env);
+			if (env.sepia)
+				col = sepia(col);
 			pixel_put(env, x, y, col);
 			y++;
 		}

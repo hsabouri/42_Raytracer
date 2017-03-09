@@ -6,7 +6,7 @@
 /*   By: pmartine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 16:32:01 by pmartine          #+#    #+#             */
-/*   Updated: 2017/03/07 12:00:55 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/09 18:59:40 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,12 @@ double		ft_min_max(double value, double min, double max)
 	else if (value > max)
 		value = max;
 	return (value);
+}
+
+t_color		sepia(t_color color)
+{
+	color.r = (color.r * 0.393) + (color.g * 0.769) + (color.b * 0.189);
+	color.g = (color.r * 0.349) + (color.g * 0.686) + (color.b * 0.168);
+	color.b = (color.r * 0.272) + (color.g * 0.534) + (color.b * 0.131);
+	return (color);
 }
