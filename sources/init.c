@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/09 19:02:00 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/09 22:31:26 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_env			init_objs_lgts(int ac, char **av, t_env env)
 {
 	int			fd;
-	int			i = 0;
 	
 	check_params(ac);
 	fd = open_file(av[1]);

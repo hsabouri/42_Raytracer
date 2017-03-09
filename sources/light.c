@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/09 18:16:31 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/09 22:32:04 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	t_vec4	tmp;
 	t_vec4	dir;
 	double	lamb;
-	double spec;
 	t_vec4	res;
 
 	res = new_vector(lgt.rgb.r, lgt.rgb.g, lgt.rgb.b);
@@ -76,7 +75,7 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 	t_vec4				tmp;
 	t_color				res;
 	double				spec;
-	t_vec4				calc;
+
 	spec = 0;
 	coef = new_vector(AMBIENT, AMBIENT, AMBIENT);
 	res = (t_color) {0, 0, 0, 0};

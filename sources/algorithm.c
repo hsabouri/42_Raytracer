@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/09 19:02:28 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/09 22:31:04 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 {
 	t_color			res;
-	t_obj			obj;
 
 	res = (t_color) {0, 0, 0, 0};
 	env.last_id = check_intersections(objs, ray, 0);
