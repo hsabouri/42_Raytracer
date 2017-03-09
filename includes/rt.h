@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/26 14:30:56 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/09 22:23:43 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/09 23:03:31 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../libobj/includes/obj.h"
 # include <math.h>
 # include <stdio.h>
+
 // # ifdef __APPLE__
 // #  include <OpenCL/opencl.h>
 // # else

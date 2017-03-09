@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/03/09 22:35:09 by pmartine         ###   ########.fr        #
+#    Updated: 2017/03/09 23:10:48 by pmartine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,8 +68,8 @@ CFLAGS = -Wall -Wextra
 #CFLAGS += -Werror
 #CFLAGS += -march=native -O3
 
-GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
-GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
+#GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
+#GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
 
 $(LIBRARY):
 	make -C libft
@@ -88,12 +88,12 @@ $(NAME): $(O_FILES)
 	@make -C libvec
 	@make -C libobj
 	@make -C libmalloc
-	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $(LIBMALLOC)  $^ && printf "\033[0;34m" || printf "\033[031m"
+	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $(LIBMALLOC)  $(GTK_LDFLAGS) $^ && printf "\033[0;34m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
 $(O_DIR)/%.o: $(C_DIR)/%.c
 	@mkdir -p $(O_DIRS) $(O_DIR)
-	@$(CC) $(CFLAGS) $(LINKS) $(HFLAGS) -I $(LIBVEC) -I $(LIBFT) -I $(LIBMALLOC) -o $@ -c $< \
+	@$(CC) $(CFLAGS) $(LINKS) $(HFLAGS) -I $(LIBVEC) -I $(LIBFT) -I $(LIBMALLOC) $(GTK_CFLAGS) -o $@ -c $< \
 		&& printf "\033[0;0m%-34s\033[1;30m -->>\t\033[0;33m$@\033[0;0m\n" "$<"
 
 #===========================================================#
