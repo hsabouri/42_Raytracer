@@ -34,7 +34,6 @@ int			open_file(char *path)
 {
 	int	fd;
 
-	printf("%s", path);
 	if ((fd = open(path, O_RDONLY)) > 0)
 	{
 		if (is_file(path))
@@ -45,21 +44,12 @@ int			open_file(char *path)
 				return (fd);
 			}
 			else
-			{
-				printf("access(path, O_RDONLY) == 0\n");
 				perror("\x1B[31mERROR\x1B[0m");
-			}
 		}
 		else
-		{
-			printf("is_file(path)\n");
 			ft_putendl("\x1B[31mERROR\x1B[0m: Not a regular file");
-		}
 	}
 	else
-	{
-		printf("fd = open(path, O_RDONLY)) > 0\n");
 		perror("\x1B[31mERROR\x1B[0m");
-	}
 	exit(EXIT_FAILURE);
 }
