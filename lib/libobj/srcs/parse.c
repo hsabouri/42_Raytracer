@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/10 19:02:36 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/10 19:03:40 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_env		create_obj(t_type type, char *name, t_env env)
 		env.objs[env.n_obj].mat.coef = new_vector(1, 1, 1);
 		env.objs[env.n_obj].pos = new_vector(0, 0, 0);
 		env.objs[env.n_obj].mat.reflect = 0;
-		env.objs[env.n_onj].mat.noise = 0;
+		env.objs[env.n_obj].mat.noise = 0;
 		env.objs[env.n_obj].mat.refract = EPSILON;
 		env.objs[env.n_obj].rot = NULL;
 		env.objs[env.n_obj].inv = NULL;
