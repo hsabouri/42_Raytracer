@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mesh.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 18:11:00 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/08 19:16:21 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/03/10 14:36:03 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,14 @@ t_env				add_poly_to_last(char *line, t_env env)
 	t_obj				poly;
 	t_uint3				s_ids;
 	unsigned int		*ids;
+	char				*tmp;
 
 	s_ids = parse_polygon(line, env);
 	ids = (unsigned int *)(&s_ids);
 	poly.type = POLYGON;
-	poly.name = ft_strjoin("poly", ft_itoa(n_poly));
+	tmp = ft_itoa(n_poly);
+	poly.name = ft_strjoin("poly", tmp);
+	free(tmp);
 	poly.vert[0] = env.vrts[ids[0] - 1];
 	poly.vert[1] = env.vrts[ids[1] - 1];
 	poly.vert[2] = env.vrts[ids[2] - 1];
