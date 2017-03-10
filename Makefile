@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/03/09 23:10:48 by pmartine         ###   ########.fr        #
+#    Updated: 2017/03/10 16:37:58 by qduperon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,11 @@ C_DIR = sources
 O_DIR = objects
 
 LINKS = -I$(H_DIR)
-LINKS += -I./libobj/includes
-LINKS += -I./libvec/includes
-LINKS += -I./libft/
-LINKS += -I./libmlx_elcapitan
-LINKS += -I./libmalloc
+LINKS += -I./lib/libobj/includes
+LINKS += -I./lib/libvec/includes
+LINKS += -I./lib/libft/
+LINKS += -I./lib/libmlx_elcapitan
+LINKS += -I./lib/libmalloc
 
 C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c")
 C_DIRS = $(shell find $(C_DIR) -type d -print)
@@ -37,28 +37,28 @@ C_DIRS = $(shell find $(C_DIR) -type d -print)
 O_DIRS = $(C_DIRS:$(C_DIR)/%=$(O_DIR)/%)
 O_FILES = $(C_FILES:$(C_DIR)/%.c=$(O_DIR)/%.o)
 
-LIBFT = libft/libft.a
-LDFALGS += -L./libft/
+LIBFT = lib/libft/libft.a
+LDFALGS += -L./lib/libft/
 
-LIBVEC = libvec/libvect.a
+LIBVEC = lib/libvec/libvect.a
 #HFLAGS += -I./libvec/includes/
-LDFALGS += -L./libvec/
+LDFALGS += -L./lib/libvec/
 
-LIBOBJ = libobj/libobj.a
-LDFALGS += -L./libobj
+LIBOBJ = lib/libobj/libobj.a
+LDFALGS += -L./lib/libobj
 
-LIBMALLOC = libmalloc/libmalloc.a
-LDFALGS += -L./libmalloc
+LIBMALLOC = lib/libmalloc/libmalloc.a
+LDFALGS += -L./lib/libmalloc
 
 #Make the mlx lib working in 42 USA
 ifeq ($(PLACE), USA)
-	LIBMLX = libmlx_elcapitan/libmlx.a
-	HFLAGS += -I./libmlx_elcapitan/
+	LIBMLX = lib/libmlx_elcapitan/libmlx.a
+	HFLAGS += -I./lib/libmlx_elcapitan/
 	LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit
 else
 	#Make changes here
-	LIBMLX = libmlx_elcapitan/libmlx.a
-	HFLAGS += -I./libmlx_elcapitan/
+	LIBMLX = lib/libmlx_elcapitan/libmlx.a
+	HFLAGS += -I./lib/libmlx_elcapitan/
 	LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit
 endif
 
@@ -72,10 +72,10 @@ CFLAGS = -Wall -Wextra
 #GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
 
 $(LIBRARY):
-	make -C libft
-	make -C libvec
-	make -C libobj
-	make -C libmalloc
+	make -C lib/libft
+	make -C lib/libvec
+	make -C lib/libobj
+	make -C lib/libmalloc
 
 #===========================================================#
 #                  //   COMPILATION  \\                     #
@@ -84,10 +84,10 @@ $(LIBRARY):
 all: $(NAME)
 
 $(NAME): $(O_FILES)
-	@make -C libft
-	@make -C libvec
-	@make -C libobj
-	@make -C libmalloc
+	@make -C lib/libft
+	@make -C lib/libvec
+	@make -C lib/libobj
+	@make -C lib/libmalloc
 	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $(LIBMALLOC)  $(GTK_LDFLAGS) $^ && printf "\033[0;34m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
@@ -104,19 +104,19 @@ $(O_DIR)/%.o: $(C_DIR)/%.c
 clean:
 		@echo "\033[36mDeleting ALL Objects...\033[00m"
 		@rm -rf $(O_DIR)
-		@make clean -C libft
-		@make clean -C libvec
-		@make clean -C libobj
-		@make clean -C libmalloc
+		@make clean -C lib/libft
+		@make clean -C lib/libvec
+		@make clean -C lib/libobj
+		@make clean -C lib/libmalloc
 		@echo "\033[36mDone\033[00m"
 
 .PHONY: fclean
 fclean: clean
 		@echo "\033[36mDeleting Project...\033[00m"
-		@make fclean -C libft
-		@make fclean -C libvec
-		@make fclean -C libobj
-		@make fclean -C libmalloc
+		@make fclean -C lib/libft
+		@make fclean -C lib/libvec
+		@make fclean -C lib/libobj
+		@make fclean -C lib/libmalloc
 		@rm -f $(NAME)
 		@echo "\033[36mDone\033[00m"
 

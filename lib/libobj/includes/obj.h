@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qduperon <hsabouri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/08 19:29:02 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/03/10 16:42:11 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <errno.h>
 # include <string.h>
 # include <libft.h>
-# include <rt.h>
+# include "../../includes/rt.h"
 
 typedef struct		s_uint3
 {
