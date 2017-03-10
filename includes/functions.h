@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/09 18:54:26 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/10 18:41:52 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ t_env		init_env(int ac, char **av);
 
 t_obj		create_mesh(t_color color, char *name);
 t_obj		add_polygon(t_obj obj, t_obj poly);
+
+/* Noise functions */
+
+double		apply_perlin(t_vec4 pos);
 
 /* Mlx hook functions */
 
