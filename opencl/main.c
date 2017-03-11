@@ -18,17 +18,18 @@ int main(void)
 	int		max[3] = {CL_DEVICE_MAX_WORK_ITEM_SIZES};
 
 	cl.ret = clGetPlatformIDs(1, &cl.platform_id, &cl.ret_num_platforms);
-	printf("ret: clGetPlatformIDs: %d\n", cl.ret);
-	cl.ret = clGetDeviceIDs(cl.platform_id, CL_DEVICE_TYPE_DEFAULT, 1,
-		&cl.device_id, &cl.ret_num_devices);
-	printf("ret: clGetDeviceIDs: %d\n", cl.ret);
-	printf("x: %d, y: %d, z: %d\n\
-max compute units: %d\n\
-max work item dimension: %d\n\
-max work group size: %d\n", max[0], max[1], max[2],
+	cl.ret = clGetDeviceIDs(cl.platform_id, CL_DEVICE_TYPE_DEFAULT, 1, &cl.device_id, &cl.ret_num_devices);
+	printf("\
+		CL_DEVICE_MAX_WORK_ITEM_SIZES: x: %d, y: %d, z: %d\n\
+		CL_DEVICE_MAX_COMPUTE_UNITS: %d\n\
+		CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS: %d\n\
+		CL_DEVICE_MAX_WORK_GROUP_SIZE: %d\n\
+		CL_DEVICE_AVAILABLE: %d\n",
+		max[0], max[1], max[2],
 		CL_DEVICE_MAX_COMPUTE_UNITS,
 		CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS,
-		CL_DEVICE_MAX_WORK_GROUP_SIZE);
+		CL_DEVICE_MAX_WORK_GROUP_SIZE,
+		CL_DEVICE_AVAILABLE);
 
 	return (0);
 }
