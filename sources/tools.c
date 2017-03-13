@@ -6,7 +6,7 @@
 /*   By: pmartine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 16:32:01 by pmartine          #+#    #+#             */
-/*   Updated: 2017/03/09 18:59:40 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/13 18:51:16 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,28 @@ double		ft_min_max(double value, double min, double max)
 	return (value);
 }
 
-t_color		sepia(t_color color)
+t_color		filters(t_color c, t_env env)
 {
-	color.r = (color.r * 0.393) + (color.g * 0.769) + (color.b * 0.189);
-	color.g = (color.r * 0.349) + (color.g * 0.686) + (color.b * 0.168);
-	color.b = (color.r * 0.272) + (color.g * 0.534) + (color.b * 0.131);
-	return (color);
+	int		i;
+
+	i = (c.r + c.g + c.b) / 3;
+	if (env.filter == NB)
+		return ((t_color){i,i,i,c.a});
+	else if (env.filter == SEPIA)
+	{
+		c.r = (c.r * 0.393) + (c.g * 0.769) + (c.b * 0.189);
+	   	c.g = (c.r * 0.349) + (c.g * 0.686) + (c.b * 0.168);
+	   	c.b = (c.r * 0.272) + (c.g * 0.534) + (c.b * 0.131);
+		return (c);
+	}
+	else if (env.filter == BLUE)
+		return ((t_color){255,i,i,c.a});
+	else if (env.filter == GREEN)
+		return ((t_color){i,255,i,c.a});
+	else if (env.filter == RED)
+		return ((t_color){i,i,255,c.a});
+	else if (env.filter == NEG)
+		return ((t_color){255 - c.r, 255 - c.g, 255 - c.b, c.a});
+	else
+		return (c);
 }

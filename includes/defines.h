@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/10 17:20:16 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/13 18:17:29 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 # define KEY_R	15
 # define KEY_P 35
 # define KEY_S	1
+
+# define NB 456451
+# define SEPIA 456452
+# define RED 456453
+# define GREEN 456454
+# define BLUE 456455
+# define NEG 456456
 
 /* Error codes */
 

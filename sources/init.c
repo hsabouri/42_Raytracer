@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/09 22:31:26 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/13 18:51:49 by pmartine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_env 			init_env(int ac, char **av)
 	env.redraw = 1;
 	env.shadow = 0;
 	env.pr_mesh = 0;
-	env.sepia = 0;
+	env.filter = 1;
 	env.supersampling = 0;
 	return (env);
 }
