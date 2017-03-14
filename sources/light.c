@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/10 18:42:46 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/14 11:21:49 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,6 @@ t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
 		}
 		i++;
 	}
-	if (env.objs[env.last_id].mat.noise)
-		coef = vector_scale(coef, apply_perlin(vector_add(ray.org,
-					vector_scale(ray.dir, ray.t))));
 	coef = vector_cap(coef, 0, 1.0);
 	res = apply_lambert(color, coef);
 	return (res);

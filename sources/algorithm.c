@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/13 18:23:19 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/14 11:23:45 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 	t_ray			ray;
 	t_color			col;
 
-	objs[0].mat.noise = 1;
 	x = 0;
 	while (x < LENGTH)
 	{

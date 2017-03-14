@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/14 09:07:07 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/14 11:22:35 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,11 @@ typedef enum	e_filt
 	BLUE = 456455,
 	NEG = 456456
 }				t_filt;
+
+typedef enum	e_ntype
+{
+	NO,
+	PERLIN
+}				t_ntype;
 
 #endif
