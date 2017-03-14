@@ -10,22 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
-
-static void		print_meshes(t_env *env)
-{
-	int 		i;
-
-	i = 0;
-	while (env->objs[i].type != BACKSLASH)
-	{
-		if (env->objs[i].type == MESH) {
-			ft_putendl(env->objs[i].name);
-			print_mesh(env->objs[i]);
-		}
-		i++;
-	}
-}
+#include <rt.h>
 
 static int		draw(t_env *env)
 {
@@ -35,7 +20,7 @@ static int		draw(t_env *env)
 					&env->size, &env->endian)))
 		exit(0);
 	if (env->pr_mesh)
-		print_meshes(env);
+		display_objs(env->objs);
 	if (env->supersampling)
 		test_ss_raytrace(env->cam, env->objs, *env);
 	else
@@ -67,6 +52,7 @@ int				main(int ac, char **av)
 	t_vec4	vec;
 
 	env = init_env(ac, av);
+	env.cl = init_cl();
 	vec = new_vector(0, 1, -10);
 	env.cam = init_cam(vec, NULL, 66);
 	mlx_expose_hook(env.win, expose, &env);

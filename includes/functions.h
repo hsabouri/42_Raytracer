@@ -91,9 +91,16 @@ double		apply_perlin(t_vec4 pos);
 void		pixel_put(t_env env, unsigned int x, unsigned int y, t_color color);
 int			key_hook(int keycode, t_env *env);
 
+/* OpenCL functions */
+
+t_cl		init_cl(void);
+
 /* Tools functions */
 
-void		print_mesh(t_obj obj);
 double      ft_min_max(double value, double min, double max);
 t_color		filters(t_color color, t_env env);
+void		c_log(char *str);
+void		c_error(char *str, int code);
+int			c_open_file(char *path);
+
 #endif

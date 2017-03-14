@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   materials.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/27 17:01:03 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/02/15 14:09:04 by ple-lez          ###   ########.fr       */
+/*   Created: 2017/02/19 00:13:41 by ple-lez           #+#    #+#             */
+/*   Updated: 2017/03/10 18:19:41 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-double		solve_quadra(double a, double b, double c)
+t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr)
 {
-	double	d;
-	double	t1;
-	double	t2;
+	t_mat	res;
 
-	d = (b * b) - (4.0 * a * c);
-	if (d < EPSILON)
-		return (0);
-	else
-	{
-		d = sqrt(d);
-		t1 = (-b - d) / (2.0 * a);
-		t2 = (-b + d) / (2.0 * a);
-		if (t1 > EPSILON) {
-			return t1;
-		}
-		else if (t2 > EPSILON) {
-			return t2;
-		}
-	}
-	return (EPSILON);
+	res = (t_mat){rgb, coef, {0}, rf, rr};
+	return (res);
 }

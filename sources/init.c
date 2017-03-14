@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 t_env			init_objs_lgts(int ac, char **av, t_env env)
 {

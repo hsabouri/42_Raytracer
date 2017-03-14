@@ -14,7 +14,9 @@
 # define QUATERNION_H
 
 # include "vector.h"
-# include <stdlib.h>
+# ifndef KERNEL_H
+#  include <stdlib.h>
+# endif
 
 typedef struct	s_quat
 {

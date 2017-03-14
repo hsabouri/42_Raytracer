@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 {

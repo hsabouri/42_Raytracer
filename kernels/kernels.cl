@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   kernels.cl                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,26 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cl.h"
+#include "kernels.h"
 
-int main(void)
+global char *pixel_put(unsigned int x, unsigned int y, global char *img, t_color color)
 {
-	t_cl 	cl;
-	int		max[3] = {CL_DEVICE_MAX_WORK_ITEM_SIZES};
+	t_color *t_img = (t_color *)img;
 
-	cl.ret = clGetPlatformIDs(1, &cl.platform_id, &cl.ret_num_platforms);
-	cl.ret = clGetDeviceIDs(cl.platform_id, CL_DEVICE_TYPE_DEFAULT, 1, &cl.device_id, &cl.ret_num_devices);
-	printf("\
-		CL_DEVICE_MAX_WORK_ITEM_SIZES: x: %d, y: %d, z: %d\n\
-		CL_DEVICE_MAX_COMPUTE_UNITS: %d\n\
-		CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS: %d\n\
-		CL_DEVICE_MAX_WORK_GROUP_SIZE: %d\n\
-		CL_DEVICE_AVAILABLE: %d\n",
-		max[0], max[1], max[2],
-		CL_DEVICE_MAX_COMPUTE_UNITS,
-		CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS,
-		CL_DEVICE_MAX_WORK_GROUP_SIZE,
-		CL_DEVICE_AVAILABLE);
+	if (x < LENGTH && y < HEIGHT)
+	{
+		t_img[y * LENGTH + x] = color;
+	}
+	return (img);
+}
 
-	return (0);
+kernel void img_init(global char *img, t_color color)
+{
+	size_t id = get_global_id(0) + get_global_offset(0);
+	size_t x = id % LENGTH;
+	size_t y = id / LENGTH;
+
+	pixel_put(x, y, img, color);
 }

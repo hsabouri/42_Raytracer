@@ -27,8 +27,10 @@ O_DIR = objects
 
 LINKS = -I$(H_DIR)
 LINKS += -I../libft/
-LINKS += -I../includes/
+LINKS += -I../../includes/
 LINKS += -I../libmlx_elcapitan/
+LINKS += -I../libvec/includes/
+LINKS += -I../libmalloc/
 
 C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c" | grep -v ".swp")
 C_DIRS = $(shell find $(C_DIR) -type d -print)

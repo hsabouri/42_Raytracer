@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 t_vec4		normal_plane(t_ray ray, t_obj obj)
 {
