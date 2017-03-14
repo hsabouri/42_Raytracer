@@ -12,9 +12,10 @@
 
 #ifndef KERNEL_H
 # define KERNEL_H
-# include "struct.h"
 # include "defines.h"
+# include "struct.h"
 
-void pixel_put(unsigned int x, unsigned int y, char *img, t_color color);
+global char *pixel_put(unsigned int x, unsigned int y, global char *img,\
+	t_color color);
 
 #endif

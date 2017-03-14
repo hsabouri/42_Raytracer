@@ -20,17 +20,17 @@ NAME = RT
 #                    //   VARIABLE  \\                      #
 #===========================================================#
 
-H_DIR = ./includes
+H_DIR = includes
 C_DIR = ./sources
 C_DIR += ./opencl
 O_DIR = ./objects
 
 LINKS = -I$(H_DIR)
-LINKS += -I./lib/libobj/includes
-LINKS += -I./lib/libvec/includes
-LINKS += -I./lib/libft/
-LINKS += -I./lib/libmlx_elcapitan
-LINKS += -I./lib/libmalloc
+LINKS += -Ilib/libobj/includes/
+LINKS += -Ilib/libvec/includes/
+LINKS += -Ilib/libft/
+LINKS += -Ilib/libmlx_elcapitan
+LINKS += -Ilib/libmalloc
 
 C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c")
 C_DIRS = $(shell find $(C_DIR) -type d -print)
@@ -57,9 +57,9 @@ LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -framework OpenCL
 
 CC = gcc
 CFLAGS = -Wall -Wextra
-CFLAGS += -g -fsanitize=address
+#CFLAGS += -g -fsanitize=address
 #CFLAGS += -Werror
-#CFLAGS += -march=native -O3
+CFLAGS += -march=native -O3
 
 #GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
 #GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
@@ -86,7 +86,7 @@ $(NAME): $(O_FILES)
 
 $(O_DIR)/%.o: $(C_DIR)/%.c
 	@mkdir -p $(O_DIRS) $(O_DIR)
-	@$(CC) $(CFLAGS) $(LINKS) $(HFLAGS) -I $(LIBVEC) -I $(LIBFT) -I $(LIBMALLOC) $(GTK_CFLAGS) -o $@ -c $< \
+	@$(CC) $(CFLAGS) $(LINKS) $(GTK_CFLAGS) -o $@ -c $< \
 		&& printf "\033[0;0m%-34s\033[1;30m -->>\t\033[0;33m$@\033[0;0m\n" "$<"
 
 #===========================================================#

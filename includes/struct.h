@@ -12,8 +12,8 @@
 
 #ifndef STRUCT_H
 # define STRUCT_H
-# include "../libvec/includes/vector.h"
-# include "../libvec/includes/quaternion.h"
+# include "vector.h"
+# include "quaternion.h"
 
 /* Ray structure */
 
@@ -87,6 +87,8 @@ typedef struct		s_obj
 
 /* OpenCL structures */
 
+# ifndef KERNEL_H
+
 typedef struct		s_kernels
 {
 	cl_kernel	example;
@@ -139,5 +141,5 @@ typedef struct		s_env
 	int				size;
 	int				endian;
 }					t_env;
-
+# endif
 #endif

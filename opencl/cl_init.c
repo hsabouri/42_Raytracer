@@ -25,16 +25,18 @@ static t_cl	init_cl_program(t_cl cl)
 {
 	int		fd;
 	char	*source_str;
+	char	*flags;
 	size_t	source_size;
 
-	source_str = (char *)malloc(sizeof(char *) * MAX_SOURCE_SIZE);
+	flags = ft_strdup("-I includes -I lib/libvec/includes");
+		source_str = ft_strnew(MAX_SOURCE_SIZE);
 	c_log("Compiling OpenCL kernels...");
 	fd = c_open_file("./kernels/kernels.cl");
 	source_size = read(fd, source_str, MAX_SOURCE_SIZE);
 	close(fd);
 	cl.program = clCreateProgramWithSource(cl.context, 1,\
 		(const char **)&source_str, (const size_t *)&source_size, &cl.ret);
-	cl.ret = clBuildProgram(cl.program, 1, &cl.device_id, NULL, NULL, NULL);
+	cl.ret = clBuildProgram(cl.program, 1, &cl.device_id, flags, NULL, NULL);
 	if (cl.ret == 0)
 		c_log("Compiled successfully!");
 	else
@@ -53,6 +55,6 @@ t_cl		init_cl(void)
 		&cl.device_id, &cl.ret_num_devices);
 	cl.context = clCreateContext(NULL, 1, &cl.device_id, NULL, NULL, &cl.ret);
 	cl.command_queue = clCreateCommandQueue(cl.context, cl.device_id, 0, &cl.ret);
-	//cl = init_cl_program(cl);
+	cl = init_cl_program(cl);
 	return (cl);
 }

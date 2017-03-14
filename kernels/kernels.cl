@@ -10,21 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <kernels.h>
+#include "kernels.h"
 
-char *pixel_put(unsigned int x, unsigned int y, char *img, t_color color)
+global char *pixel_put(unsigned int x, unsigned int y, global char *img, t_color color)
 {
-	if (x < WIDTH && x >= 0 && y < LENGTH && y >= 0)
+	t_color *t_img = (t_color *)img;
+
+	if (x < LENGTH && y < HEIGHT)
 	{
-		(t_color *)img[y * WIDTH + x] = color;
+		t_img[y * LENGTH + x] = color;
 	}
+	return (img);
 }
 
-__kernel void img_init(char *img, t_color color)
+kernel void img_init(global char *img, t_color color)
 {
 	size_t id = get_global_id(0) + get_global_offset(0);
 	size_t x = id % LENGTH;
 	size_t y = id / LENGTH;
 
-	img = pixel_put(unsigned int x, unsigned int y, char *img, t_color color);
+	pixel_put(x, y, img, color);
 }
