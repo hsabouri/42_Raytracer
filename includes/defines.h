@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/13 18:17:29 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/14 09:07:07 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@
 # define KEY_R	15
 # define KEY_P 35
 # define KEY_S	1
-
-# define NB 456451
-# define SEPIA 456452
-# define RED 456453
-# define GREEN 456454
-# define BLUE 456455
-# define NEG 456456
 
 /* Error codes */
 
@@ -95,5 +88,20 @@ typedef enum	e_ltype
 	OMNI,
 	NOLIGHT
 }				t_ltype;
+
+/* filter is the enum
+ * for applied filters
+ */
+
+typedef enum	e_filt
+{
+	NONE = 0,
+	NB = 456451,
+	SEPIA = 456452,
+	RED = 456453,
+	GREEN = 456454,
+	BLUE = 456455,
+	NEG = 456456
+}				t_filt;
 
 #endif

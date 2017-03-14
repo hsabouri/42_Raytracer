@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/13 18:17:58 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/14 09:04:59 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ typedef struct		s_env
 	int				redraw;
 	int				shadow;
 	int				supersampling;
-	int				filter;
 	int				last_id;
 	void			*mlx;
 	void			*win;
@@ -132,6 +131,7 @@ typedef struct		s_env
 	t_lgt			*lgt;
 	t_obj			*objs;
 	t_vec4			*vrts;
+	t_filt			filter;
 	t_cam			cam;
 	int				bpp;
 	int				size;
