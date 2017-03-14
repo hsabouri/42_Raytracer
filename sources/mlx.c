@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 static t_cam	change_mod(t_cam cam)
 {

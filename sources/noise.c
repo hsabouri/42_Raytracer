@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 static inline double	find_prime(double x, double y)
 {

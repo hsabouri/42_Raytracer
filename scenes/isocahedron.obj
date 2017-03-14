@@ -35,6 +35,15 @@ o mesh1
 	f 5 9 1
 	c 255 255 255
 
-omni light1
-	p -3 3 -5
+plane plane1
+	p 0 -2 0
+	n 0 1 0
 	c 255 255 255
+
+omni light1
+	p 5 3 -3
+	c 255 0 0
+
+omni light2
+	p -5 3 -3
+	c 0 255 255

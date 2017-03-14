@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 t_color		apply_lambert(t_color col, t_vec4 coef)
 {

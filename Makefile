@@ -20,9 +20,10 @@ NAME = RT
 #                    //   VARIABLE  \\                      #
 #===========================================================#
 
-H_DIR = includes
-C_DIR = sources
-O_DIR = objects
+H_DIR = ./includes
+C_DIR = ./sources
+C_DIR += ./opencl
+O_DIR = ./objects
 
 LINKS = -I$(H_DIR)
 LINKS += -I./lib/libobj/includes
@@ -50,21 +51,13 @@ LDFALGS += -L./lib/libobj
 LIBMALLOC = lib/libmalloc/libmalloc.a
 LDFALGS += -L./lib/libmalloc
 
-#Make the mlx lib working in 42 USA
-ifeq ($(PLACE), USA)
-	LIBMLX = lib/libmlx_elcapitan/libmlx.a
-	HFLAGS += -I./lib/libmlx_elcapitan/
-	LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit
-else
-	#Make changes here
-	LIBMLX = lib/libmlx_elcapitan/libmlx.a
-	HFLAGS += -I./lib/libmlx_elcapitan/
-	LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit
-endif
+LIBMLX = lib/libmlx_elcapitan/libmlx.a
+HFLAGS += -I./lib/libmlx_elcapitan/
+LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -framework OpenCL
 
 CC = gcc
 CFLAGS = -Wall -Wextra
-#CFLAGS += -g -fsanitize=address
+CFLAGS += -g -fsanitize=address
 #CFLAGS += -Werror
 #CFLAGS += -march=native -O3
 
@@ -88,7 +81,7 @@ $(NAME): $(O_FILES)
 	@make -C lib/libvec
 	@make -C lib/libobj
 	@make -C lib/libmalloc
-	@$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $(LIBMALLOC)  $(GTK_LDFLAGS) $^ && printf "\033[0;34m" || printf "\033[031m"
+	@$(CC) -o $@ $(CFLAGS) $(LINKS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $(LIBMALLOC)  $(GTK_LDFLAGS) $^ && printf "\033[0;34m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
 $(O_DIR)/%.o: $(C_DIR)/%.c

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr)
 {

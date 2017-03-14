@@ -12,7 +12,6 @@
 
 #ifndef STRUCT_H
 # define STRUCT_H
-# include "defines.h"
 # include "../libvec/includes/vector.h"
 # include "../libvec/includes/quaternion.h"
 
@@ -86,24 +85,25 @@ typedef struct		s_obj
 	t_vec4			vert[3];
 }					t_obj;
 
-/* OpenCL structure */
-//
-// typedef struct		s_cl
-// {
-//     cl_device_id		device_id;
-//     cl_context			context;
-//     cl_command_queue	command_queue;
-//     cl_mem				memobj;
-//     cl_program			program;
-//     cl_kernel			kernel;
-//     cl_platform_id		platform_id;
-//     cl_uint				ret_num_devices;
-//     cl_uint				ret_num_platforms;
-//     cl_int				ret;
-//     char				str[MEM_SIZE];
-//     char				*source_str;
-//     size_t				source_size;
-// }					t_cl;
+/* OpenCL structures */
+
+typedef struct		s_kernels
+{
+	cl_kernel	example;
+}					t_kernels;
+
+typedef struct		s_cl
+{
+    cl_device_id		device_id;
+    cl_context			context;
+    cl_command_queue	command_queue;
+    cl_program			program;
+    cl_platform_id		platform_id;
+    cl_uint				ret_num_devices;
+    cl_uint				ret_num_platforms;
+	t_kernels			kernels;
+    cl_int				ret;
+}					t_cl;
 
 /* Environement structure */
 /* Description:
@@ -133,11 +133,11 @@ typedef struct		s_env
 	t_obj			*objs;
 	t_vec4			*vrts;
 	t_cam			cam;
+	t_cl			cl;
+	int				pr_mesh;
 	int				bpp;
 	int				size;
 	int				endian;
-//	t_cl			cl;
-	int				pr_mesh;
 }					t_env;
 
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 void		print_mesh(t_obj obj) {
 	int i;

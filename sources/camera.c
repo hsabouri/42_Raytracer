@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 t_cam		init_cam(t_vec4 pos, t_quat *rot, double fov)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include <rt.h>
 
 double		intersect_cylinder(t_ray ray, t_obj cylinder)
 {
