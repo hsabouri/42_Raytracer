@@ -52,7 +52,7 @@ int				main(int ac, char **av)
 	t_vec4	vec;
 
 	env = init_env(ac, av);
-	env.cl = init_cl();
+	//env.cl = init_cl();
 	vec = new_vector(0, 1, -10);
 	env.cam = init_cam(vec, NULL, 66);
 	mlx_expose_hook(env.win, expose, &env);
