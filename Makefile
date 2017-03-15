@@ -56,6 +56,7 @@ HFLAGS += -I./lib/libmlx_elcapitan/
 LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -framework OpenCL
 
 CC = gcc
+CLCC = /System/Library/Frameworks/OpenCL.framework/Libraries/openclc
 CFLAGS = -Wall -Wextra
 #CFLAGS += -g -fsanitize=address
 #CFLAGS += -Werror
@@ -88,6 +89,13 @@ $(O_DIR)/%.o: $(C_DIR)/%.c
 	@mkdir -p $(O_DIRS) $(O_DIR)
 	@$(CC) $(CFLAGS) $(LINKS) $(GTK_CFLAGS) -o $@ -c $< \
 		&& printf "\033[0;0m%-34s\033[1;30m -->>\t\033[0;33m$@\033[0;0m\n" "$<"
+
+#===========================================================#
+#                  //   COMPILATION  \\                     #
+#===========================================================#
+
+cl: all
+	$(CLCC) kernels/kernels.cl $(LINKS)
 
 #===========================================================#
 #                    //   DELETING  \\                      #
