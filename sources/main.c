@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/16 17:00:29 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/16 17:14:37 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int				main(int ac, char **av)
 	//env.cl = init_cl();
 	vec = new_vector(0, 1, -10);
 	env.cam = init_cam(vec, NULL, 66);
+	if (!ft_strcmp(av[1], "scenes/texture_test.obj"))
+		ft_putendl("cc");
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_loop_hook(env.mlx, loop_hook, &env);
