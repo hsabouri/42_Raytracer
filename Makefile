@@ -60,7 +60,7 @@ CLCC = /System/Library/Frameworks/OpenCL.framework/Libraries/openclc
 CFLAGS = -Wall -Wextra
 #CFLAGS += -g -fsanitize=address
 #CFLAGS += -Werror
-CFLAGS += -march=native -O3
+#CFLAGS += -march=native -O3
 
 #GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
 #GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
@@ -89,13 +89,6 @@ $(O_DIR)/%.o: $(C_DIR)/%.c
 	@mkdir -p $(O_DIRS) $(O_DIR)
 	@$(CC) $(CFLAGS) $(LINKS) $(GTK_CFLAGS) -o $@ -c $< \
 		&& printf "\033[0;0m%-34s\033[1;30m -->>\t\033[0;33m$@\033[0;0m\n" "$<"
-
-#===========================================================#
-#                  //   COMPILATION  \\                     #
-#===========================================================#
-
-cl: all
-	$(CLCC) kernels/kernels.cl $(LINKS)
 
 #===========================================================#
 #                    //   DELETING  \\                      #

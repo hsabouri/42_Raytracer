@@ -92,28 +92,6 @@ typedef struct		s_obj
 	t_vec4			vert[3];
 }					t_obj;
 
-/* OpenCL structures */
-
-# ifndef KERNEL_H
-
-typedef struct		s_kernels
-{
-	cl_kernel	example;
-}					t_kernels;
-
-typedef struct		s_cl
-{
-    cl_device_id		device_id;
-    cl_context			context;
-    cl_command_queue	command_queue;
-    cl_program			program;
-    cl_platform_id		platform_id;
-    cl_uint				ret_num_devices;
-    cl_uint				ret_num_platforms;
-	t_kernels			kernels;
-    cl_int				ret;
-}					t_cl;
-
 /* Environement structure */
 /* Description:
  * n_lgt : light number
@@ -148,5 +126,5 @@ typedef struct		s_env
 	int				size;
 	int				endian;
 }					t_env;
-# endif
+
 #endif

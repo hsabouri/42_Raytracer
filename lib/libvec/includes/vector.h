@@ -13,10 +13,8 @@
 #ifndef VECTOR_H
 # define VECTOR_H
 
-# ifndef KERNEL_H
-#  include <math.h>
-#  include <stdio.h>
-# endif
+# include <math.h>
+# include <stdio.h>
 
 typedef struct	s_vec4
 {

@@ -12,11 +12,6 @@
 
 #ifndef RT_H
 # define RT_H
-# ifdef __APPLE__
-#  include <OpenCL/opencl.h>
-# else
-#  include <CL/cl.h>
-# endif
 # include "mlx.h"
 # include "defines.h"
 # include "struct.h"
@@ -27,10 +22,4 @@
 # include "../libobj/includes/obj.h"
 # include <math.h>
 # include <stdio.h>
-
-// # ifdef __APPLE__
-// #  include <OpenCL/opencl.h>
-// # else
-// #  include <CL/cl.h>
-// # endif
 #endif
