@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/16 15:37:52 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/16 16:53:56 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,10 @@ t_obj		add_polygon(t_obj obj, t_obj poly);
 
 void		pixel_put(t_env env, unsigned int x, unsigned int y, t_color color);
 int			key_hook(int keycode, t_env *env);
+
+/* Texture functions */
+
+t_img		create_xpm_img(char *path, t_env env);
 
 /* Tools functions */
 

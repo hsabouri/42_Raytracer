@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/14 11:24:33 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/16 16:53:14 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_env		create_obj(t_type type, char *name, t_env env)
 		env.objs[env.n_obj].mat.reflect = 0;
 		env.objs[env.n_obj].mat.noise.type = NO;
 		env.objs[env.n_obj].mat.refract = EPSILON;
+		env.objs[env.n_obj].mat.texture.img = NULL;
 		env.objs[env.n_obj].rot = NULL;
 		env.objs[env.n_obj].inv = NULL;
 	}
