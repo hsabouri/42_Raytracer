@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/13 18:22:32 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/16 15:37:52 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		error(int code, char *str);
 
 int			raytrace(t_cam camera, t_obj *objs, t_env env);
 int			test_ss_raytrace(t_cam camera, t_obj *objs, t_env env);
-int			check_intersections(t_obj *objs, t_ray *ray, int depth);
+int			check_intersections(t_obj *objs, t_ray *ray);
 
 /* Vector Functions	*/
 
@@ -37,9 +37,9 @@ t_cam		camera_control(t_cam cam, t_dir dir);
 
 /* Light functions */
 
-t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color);
+t_color		lights(t_obj obj, t_ray ray, t_env env);
 t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt);
-t_color		apply_lambert(t_color col, t_vec4 coef);
+t_color		apply_coef(t_color col, t_vec4 coef);
 t_color		shadow_handler(t_obj *objs, t_ray ray, t_env env, t_color color);
 int			shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id);
 double      specular(t_obj obj, t_ray ray, t_lgt lgt);
@@ -82,18 +82,10 @@ t_env		init_env(int ac, char **av);
 t_obj		create_mesh(t_color color, char *name);
 t_obj		add_polygon(t_obj obj, t_obj poly);
 
-/* Noise functions */
-
-double		apply_perlin(t_vec4 pos);
-
 /* Mlx hook functions */
 
 void		pixel_put(t_env env, unsigned int x, unsigned int y, t_color color);
 int			key_hook(int keycode, t_env *env);
-
-/* OpenCL functions */
-
-t_cl		init_cl(void);
 
 /* Tools functions */
 

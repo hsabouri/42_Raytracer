@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/14 11:23:29 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/16 14:20:28 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ typedef struct		s_env
 	t_vec4			*vrts;
 	t_filt			filter;
 	t_cam			cam;
-	t_cl			cl;
 	int				pr_mesh;
 	int				bpp;
 	int				size;
