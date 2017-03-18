@@ -25,7 +25,7 @@ static void		**ft_copy(size_t size, void **src, void **dst)
 	return (dst);
 }
 
-void			**get_static(size_t current_id)
+void			**get_malloc_static(size_t current_id)
 {
 	static void		**tab = NULL;
 	static size_t	size = 10000;

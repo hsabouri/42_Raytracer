@@ -24,12 +24,13 @@ typedef struct	s_quat
 	double		k;
 }				t_quat;
 
-t_quat			*get_inverse(t_quat *q1);
-t_quat			*new_quat(float radians, t_vec4 axis);
-t_quat			*quat_mult(t_quat *q1, t_quat *q2);
+t_quat			get_inverse(t_quat q1);
+t_quat			new_quat(float radians, t_vec4 axis);
+t_quat			new_quat_null(void);
+t_quat			quat_mult(t_quat q1, t_quat q2);
 
-t_vec4			quat_rot(t_quat *rot, t_vec4 *vec);
+t_vec4			quat_rot(t_quat rot, t_vec4 vec);
 
-void			print_quat(t_quat *q1);
+void			print_quat(t_quat q1);
 
 #endif

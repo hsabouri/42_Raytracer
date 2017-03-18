@@ -31,7 +31,7 @@ t_vec4		vector_cap(t_vec4 vec, double min, double max);
 /* Camera functions */
 
 t_cam		move_camera(t_cam cam, t_dir dir);
-t_cam		rotate_cam(t_cam cam, t_quat *rot);
+t_cam		rotate_cam(t_cam cam, t_quat rot);
 t_cam		translate_cam(t_cam cam, t_vec4 tran);
 t_cam		camera_control(t_cam cam, t_dir dir);
 
@@ -50,7 +50,7 @@ t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr);
 
 /* Ray functions */
 
-t_ray		rotate_ray(t_ray ray, t_quat *rot);
+t_ray		rotate_ray(t_ray ray, t_quat rot);
 t_ray		reflect_ray(t_obj obj, t_ray ray);
 t_ray		refract_ray(t_obj obj, t_ray ray, double r);
 
@@ -72,7 +72,7 @@ t_vec4		normal_polygon(t_obj poly);
 
 /* Initialization functions */
 
-t_cam		init_cam(t_vec4 pos, t_quat *rot, double fov);
+t_cam		init_cam(t_vec4 pos, t_quat rot, double fov);
 t_ray		init_ray(t_cam *cam, int x, int y);
 t_env		init_objs_lgts(int ac, char **av, t_env env);
 t_env		init_env(int ac, char **av);
@@ -90,10 +90,6 @@ double		apply_perlin(t_vec4 pos);
 
 void		pixel_put(t_env env, unsigned int x, unsigned int y, t_color color);
 int			key_hook(int keycode, t_env *env);
-
-/* OpenCL functions */
-
-t_cl		init_cl(void);
 
 /* Tools functions */
 

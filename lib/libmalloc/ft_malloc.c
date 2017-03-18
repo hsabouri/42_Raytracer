@@ -23,7 +23,7 @@ void	*ft_malloc(size_t size, int mode)
 		id = size;
 		return (NULL);
 	}
-	tab = get_static(id);
+	tab = get_malloc_static(id);
 	if (!(ptr = (void *)malloc(size)))
 	{
 		perror("ft_malloc error:");
@@ -40,7 +40,7 @@ void	*get_ptrbyid(size_t id)
 {
 	void	**tab;
 
-	tab = get_static(0);
+	tab = get_malloc_static(0);
 	if (id >= MEMORY)
 	{
 		perror("ft_malloc error: id given to get_ptrbyid is out of range");
@@ -59,7 +59,7 @@ void	*ft_free(void *ptr)
 		perror("ft_malloc error: ptr given to ft_free is setted to NULL");
 		exit(EXIT_FAILURE);
 	}
-	tab = get_static(0);
+	tab = get_malloc_static(0);
 	i = 0;
 	while (i < 10000 && ptr != tab[i])
 		i++;
@@ -75,7 +75,7 @@ void	ft_free_all(int mode)
 	void	**tab;
 	size_t	i;
 
-	tab = get_static(0);
+	tab = get_malloc_static(0);
 	i = 0;
 	while (i < 10000)
 	{

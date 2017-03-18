@@ -69,8 +69,8 @@ t_obj			create_mesh(t_color color, char *name)
 	mesh.mat.coef = new_vector(1, 1, 1);
 	mesh.mat.reflect = 0;
 	mesh.mat.refract = EPSILON;
-	mesh.rot = NULL;
-	mesh.inv = NULL;
+	mesh.rot = new_quat_null();
+	mesh.inv = get_inverse(mesh.rot);
 	return (mesh);
 }
 

@@ -26,18 +26,17 @@ t_ray		init_ray(t_cam *cam, int x, int y)
 	v.y *= tan((cam->fov / 2) * PI / 180);
 	v.z = 1;
 	ray.dir = v;
-	if (cam->rot)
-		ray = rotate_ray(ray, cam->rot);
+	ray = rotate_ray(ray, cam->rot);
 	ray.t = EPSILON;
 	return (ray);
 }
 
-t_ray		rotate_ray(t_ray ray, t_quat *rot)
+t_ray		rotate_ray(t_ray ray, t_quat rot)
 {
 	t_ray	res;
 
-	res.dir = quat_rot(rot, &ray.dir);
-	res.org = quat_rot(rot, &ray.org);
+	res.dir = quat_rot(rot, ray.dir);
+	res.org = quat_rot(rot, ray.org);
 	return (res);
 }
 

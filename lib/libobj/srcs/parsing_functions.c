@@ -28,9 +28,9 @@ t_vec4	parse_vec(char *str)
 	return (vector);
 }
 
-t_quat	*parse_quat(char *str, t_obj *obj)
+t_quat	parse_quat(char *str, t_obj *obj)
 {
-	t_quat	*res;
+	t_quat	res;
 	double	r;
 	t_vec4	axis;
 

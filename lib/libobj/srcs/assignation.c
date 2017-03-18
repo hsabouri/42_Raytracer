@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <obj.h>
+#include "obj.h"
 
 static t_env	step2_objs(char *line, t_env env)
 {

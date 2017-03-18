@@ -19,10 +19,6 @@ void	display_objs(t_obj *objs)
 	i = 0;
 	while (objs[i].type != BACKSLASH)
 	{
-		objs[i].rot = NULL;
-		objs[i].mat.reflect = 0;
-		objs[i].mat.refract = 0.0;
-		objs[i].lst = 0;
 		printf("Object number : %d\n	Object name : %s\n", i, objs[i].name);
 		printf("	Object color : %d %d %d\n",
 			objs[i].mat.rgb.r,
@@ -36,22 +32,16 @@ void	display_objs(t_obj *objs)
 			objs[i].dir.x,
 			objs[i].dir.y,
 			objs[i].dir.z);
-		if (objs[i].rot != NULL)
-		{
-			printf("	Object rotation : r: %f i: %f j: %f k: %f\n",
-				objs[i].rot->r,
-				objs[i].rot->i,
-				objs[i].rot->j,
-				objs[i].rot->k);
-		}
-		if (objs[i].inv != NULL)
-		{
-			printf("	Object inverse : r: %f i: %f j: %f k: %f\n",
-				objs[i].rot->r,
-				objs[i].rot->i,
-				objs[i].rot->j,
-				objs[i].rot->k);
-		}
+		printf("	Object rotation : r: %f i: %f j: %f k: %f\n",
+			objs[i].rot.r,
+			objs[i].rot.i,
+			objs[i].rot.j,
+			objs[i].rot.k);
+		printf("	Object inverse : r: %f i: %f j: %f k: %f\n",
+			objs[i].inv.r,
+			objs[i].inv.i,
+			objs[i].inv.j,
+			objs[i].inv.k);
 		i++;
 	}
 }

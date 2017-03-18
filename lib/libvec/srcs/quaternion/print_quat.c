@@ -12,8 +12,8 @@
 
 #include "../../includes/quaternion.h"
 
-void			print_quat(t_quat *q1)
+void			print_quat(t_quat q1)
 {
 	printf("Quat:\nW: %.5f\nI: %.5f\nJ: %.5f\nK: %.5f\n",
-			q1->r, q1->i, q1->j, q1->k);
+			q1.r, q1.i, q1.j, q1.k);
 }

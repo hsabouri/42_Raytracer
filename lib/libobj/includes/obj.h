@@ -50,7 +50,7 @@ t_env				lgts(char *line, t_env env);
 t_env				meshs(char *line, t_env env);
 
 t_vec4				parse_vec(char *str);
-t_quat				*parse_quat(char *str, t_obj *obj);
+t_quat				parse_quat(char *str, t_obj *obj);
 t_color				parse_color(char *str);
 double				parse_double(char *str);
 

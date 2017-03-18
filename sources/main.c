@@ -54,7 +54,7 @@ int				main(int ac, char **av)
 	env = init_env(ac, av);
 	//env.cl = init_cl();
 	vec = new_vector(0, 1, -10);
-	env.cam = init_cam(vec, NULL, 66);
+	env.cam = init_cam(vec, new_quat_null(), 66);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_loop_hook(env.mlx, loop_hook, &env);

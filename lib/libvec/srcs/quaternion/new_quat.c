@@ -12,16 +12,30 @@
 
 #include "../../includes/quaternion.h"
 
-t_quat			*new_quat(float radians, t_vec4 axis)
+t_quat			new_quat(float radians, t_vec4 axis)
 {
 	float		sinf_rot;
-	t_quat		*res;
+	t_quat		res;
 
-	res = (t_quat *)malloc(sizeof(t_quat));
 	sinf_rot = sinf(radians / 2.0);
-	res->r = cosf(radians / 2.0);
-	res->i = axis.x * sinf_rot;
-	res->j = axis.y * sinf_rot;
-	res->k = axis.z * sinf_rot;
+	res.r = cosf(radians / 2.0);
+	res.i = axis.x * sinf_rot;
+	res.j = axis.y * sinf_rot;
+	res.k = axis.z * sinf_rot;
+	return (res);
+}
+
+t_quat			new_quat_null(void)
+{
+	const float		radians = 0;
+	const t_vec4	axis = (t_vec4){0, 0, 0, 0};
+	float		sinf_rot;
+	t_quat		res;
+
+	sinf_rot = sinf(radians / 2.0);
+	res.r = cosf(radians / 2.0);
+	res.i = axis.x * sinf_rot;
+	res.j = axis.y * sinf_rot;
+	res.k = axis.z * sinf_rot;
 	return (res);
 }

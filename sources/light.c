@@ -30,8 +30,7 @@ double		specular(t_obj obj, t_ray ray, t_lgt lgt)
 	double	spec;
 
 	dir = normalize_vector(vector_sub(lgt.pos, lgt.hitpnt));
-	if (obj.rot)
-		dir = quat_rot(obj.inv, &dir);
+	dir = quat_rot(obj.inv, dir);
 	tmp = vector_scale(lgt.normal, (2.0 * scalar_product(lgt.normal, dir)));
 	tmp = vector_sub(dir, tmp);
 	if ((spec = scalar_product(tmp, ray.dir)) > 0.0)
@@ -49,8 +48,7 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	t_vec4	res;
 
 	res = new_vector(lgt.rgb.r, lgt.rgb.g, lgt.rgb.b);
-	if (obj.rot)
-		ray.dir = quat_rot(obj.inv, &ray.dir);
+	ray.dir = quat_rot(obj.inv, ray.dir);
 	tmp = vector_scale(ray.dir, ray.t);
 	lgt.hitpnt = vector_add(ray.org, tmp);
 	dir = vector_sub(lgt.hitpnt, lgt.pos);

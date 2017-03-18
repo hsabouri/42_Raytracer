@@ -12,7 +12,7 @@
 
 #include <rt.h>
 
-t_cam		init_cam(t_vec4 pos, t_quat *rot, double fov)
+t_cam		init_cam(t_vec4 pos, t_quat rot, double fov)
 {
 	t_cam	cam;
 
@@ -29,18 +29,15 @@ t_cam		translate_cam(t_cam cam, t_vec4 tran)
 	return (cam);
 }
 
-t_cam		rotate_cam(t_cam cam, t_quat *rot)
+t_cam		rotate_cam(t_cam cam, t_quat rot)
 {
-	if (!cam.rot)
-		cam.rot = rot;
-	else
-		cam.rot = quat_mult(rot, cam.rot);
+	cam.rot = quat_mult(rot, cam.rot);
 	return (cam);
 }
 
 t_cam		camera_control(t_cam cam, t_dir dir)
 {
-	t_quat	*rot;
+	t_quat	rot;
 	t_vec4	axis;
 
 	if (dir == FRONT)
@@ -57,7 +54,6 @@ t_cam		camera_control(t_cam cam, t_dir dir)
 		axis = new_vector(1, 0, 0);
 	rot = new_quat(PI / 18, axis);
 	cam = rotate_cam(cam, rot);
-	free(rot);
 	return (cam);
 }
 

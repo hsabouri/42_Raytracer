@@ -29,7 +29,7 @@ typedef struct		s_ray
 typedef struct		s_cam
 {
 	t_vec4			pos;
-	t_quat			*rot;
+	t_quat			rot;
 	t_mode			control;
 	double			fov;
 }					t_cam;
@@ -86,8 +86,8 @@ typedef struct		s_obj
 	t_vec4			pos;
 	t_vec4			dir;
 	t_type			type;
-	t_quat			*rot;
-	t_quat			*inv;
+	t_quat			rot;
+	t_quat			inv;
 	double			radius;
 	t_vec4			vert[3];
 }					t_obj;
@@ -120,7 +120,6 @@ typedef struct		s_env
 	t_vec4			*vrts;
 	t_filt			filter;
 	t_cam			cam;
-	t_cl			cl;
 	int				pr_mesh;
 	int				bpp;
 	int				size;

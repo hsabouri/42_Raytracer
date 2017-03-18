@@ -45,8 +45,8 @@ t_env		create_obj(t_type type, char *name, t_env env)
 		env.objs[env.n_obj].mat.reflect = 0;
 		env.objs[env.n_obj].mat.noise.type = NO;
 		env.objs[env.n_obj].mat.refract = EPSILON;
-		env.objs[env.n_obj].rot = NULL;
-		env.objs[env.n_obj].inv = NULL;
+		env.objs[env.n_obj].rot = new_quat_null();
+		env.objs[env.n_obj].inv = new_quat_null();
 	}
 	env.n_obj += 1;
 	return (env);
@@ -74,7 +74,7 @@ t_env		parse(int fd, t_env env)
 	ver = NULL;
 	env.objs = (t_obj *)malloc(sizeof(t_obj) * 200);
 	env.lgt = (t_lgt *)malloc(sizeof(t_lgt) * 200);
-	env.vrts = (t_vec4 *)malloc(sizeof(t_vec4) * 600);
+	env.vrts = (t_vec4 *)malloc(sizeof(t_vec4) * 1000);
 	env.n_lgt = 0;
 	env.n_obj = 0;
 	env.n_vrt = 0;

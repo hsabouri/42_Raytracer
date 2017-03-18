@@ -17,16 +17,28 @@
 # include <string.h>
 # include <stdio.h>
 
+# define DEFAULT 0
 # define BASIC 0
 # define CLEAN 1
 # define SET 2
+# define GET 0
 # define MEMORY 10000
 
-void	*ft_memzero(void *ptr, size_t size);
+typedef struct		s_array
+{
+	size_t		id;
+	void		*value;
+	size_t		length;
+	size_t		start_length;
+}					t_array;
+
+t_array	new_array(size_t start_length, size_t sizeof_content);
+
+void	*ft_memzero(void *ptr, size_t start_length);
 void	*ft_malloc(size_t size, int mode);
 void	*ft_free(void *ptr);
 void	ft_free_all(int mode);
 void	*get_ptrbyid(size_t id);
-void	**get_static(size_t current_id);
+void	**get_malloc_static(size_t current_id);
 
 #endif
