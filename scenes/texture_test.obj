@@ -1,7 +1,7 @@
 # Simple sphere for test purposes
 
 sphere sphere1
-radius 1.0
+radius 3.0
 p 0.0 0.0 0.0
 c 0 0 255
 

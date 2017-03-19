@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/16 16:46:28 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 13:05:24 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int				key_hook(int keycode, t_env *env)
 	else if (keycode == KEY_S)
 		env->shadow = 1 - env->shadow;
 	else if (keycode == KEY_P)
-		env->pr_mesh = env->pr_mesh ? 0 : 1;
+		mlx_put_image_to_window(env->mlx, env->win, env->objs[0].mat.texture.img, 0, 0);
+		//env->pr_mesh = env->pr_mesh ? 0 : 1;
 	else if (keycode == KEY_AUP || keycode == KEY_ADN ||
 			keycode == KEY_ALF || keycode == KEY_ART ||
 			keycode == KEY_PL || keycode == KEY_MN)
