@@ -6,11 +6,18 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/16 16:43:08 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 17:02:58 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+void			init_texture(t_env *env)
+{	
+	env->objs[0].mat.texture = create_xpm_img("textures/wall.xpm", *env);
+	env->objs[1].mat.texture.type = CHECKER;
+	env->objs[2].mat.texture = create_xpm_img("textures/earth.xpm", *env);
+}
 
 t_env			init_objs_lgts(int ac, char **av, t_env env)
 {

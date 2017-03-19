@@ -6,37 +6,56 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:58:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/19 15:07:35 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 16:56:18 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-#define WHITE 0xffffff
-#define RED 0xff0000
 
-unsigned int		bricks(t_vec4 pos)
+static t_color		bricks(t_obj obj, t_vec4 pos)
 {
 	int				tx;
 	int				ty;
 	int				odd;
 	int				edge;
+	t_color			res;
 
 	tx = (int)((double)10 * pos.x);
 	ty = (int)((double)10 * pos.y);
 	odd = (tx & 0x01) == (ty & 0x01);
 	edge = ((10 * pos.x - tx < 0.1) && odd) || (10 * pos.y - ty < 0.1);
-	return (edge ? WHITE : RED);
+	res = color_scale(obj.mat.rgb, (edge ? 0 : 1));
+	return (res);
+}
+
+static double		mod(double x)
+{
+	return (x - floor(x));
+}
+
+static t_color		checker(t_obj obj, t_vec4 pos)
+{
+	double			scl_u;
+	double			scl_v;
+	double			pattern;
+	t_color			res;
+
+	scl_u = 10;
+	scl_v = 10;
+	pattern = (mod(pos.y * scl_v) < 0.5) ^ (mod(pos.x * scl_u) < 0.5);
+	res = color_scale(obj.mat.rgb, pattern);
+	return (res);
 }
 
 t_color				get_pixel_procedure(t_obj obj, t_vec4 pos)
 {
-	unsigned int	tmp;
 	t_color			res;
 
 	if (obj.mat.texture.type == BRICKS)
-		tmp = bricks(pos);
+		res = bricks(obj, pos);
+	else if (obj.mat.texture.type == CHECKER)
+		res = checker(obj, pos);
 	else
-		return (res = (t_color){0, 0, 0, 0});
-	res = uint_to_color(tmp);
+		res = (t_color){0, 0, 0, 0};
 	return (res);
 }
