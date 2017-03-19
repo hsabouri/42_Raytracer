@@ -1,8 +1,8 @@
 # Simple sphere for test purposes
 
 sphere sphere1
-radius 3.0
-p 0.0 0.0 0.0
+radius 15.0
+p 0.0 0.0 30.0
 c 0 0 255
 
 omni light1

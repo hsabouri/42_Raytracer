@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/19 13:06:52 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 14:18:55 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 	if (objs[env.last_id].type == BACKSLASH)
 		return (res);
 	if (objs[env.last_id].mat.texture.addr != NULL)
-		res = get_pixel_color(objs[env.last_id], *ray);
-	else
-		res = lights(objs[env.last_id], *ray, env);
+		env.objs[env.last_id].mat.rgb = get_pixel_color(objs[env.last_id], *ray);
+	res = lights(objs[env.last_id], *ray, env);
 	return (res);
 }
 

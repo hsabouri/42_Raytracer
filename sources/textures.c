@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 17:19:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/19 13:53:10 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 14:19:40 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static t_vec4	get_sphere_pixel(t_obj obj, t_vec4 hit)
 	t_vec4		pos;
 
 	nrm = normalize_vector(vector_sub(obj.pos, hit));
-	u = 0.5 + atan2(nrm.y, nrm.x) / (2 * PI);
-	v = 0.5 - asin(nrm.z) / PI;
+	u = 0.5 + atan2(nrm.z, nrm.x) / (2 * PI);
+	v = 0.5 - asin(nrm.y) / PI;
 	pos.x = u;
 	pos.y = v;
 	pos.w = 1;
