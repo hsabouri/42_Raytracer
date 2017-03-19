@@ -6,7 +6,7 @@
 /*   By: pmartine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 16:32:01 by pmartine          #+#    #+#             */
-/*   Updated: 2017/03/14 09:04:18 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 15:07:27 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ void		print_mesh(t_obj obj) {
 		ft_putendl("Pas un mesh");
 		ft_putendl(obj.name);
 	}
+}
+
+t_color		uint_to_color(unsigned int i)
+{
+	t_color	res;
+
+	res.b = i;
+	res.g = i >> 8;
+	res.r = i >> 16;
+	res.a = 0;
+	return (res);
 }
 
 double		ft_min_max(double value, double min, double max)

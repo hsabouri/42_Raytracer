@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/16 17:33:54 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 15:06:59 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int			key_hook(int keycode, t_env *env);
 
 /* Texture functions */
 
+t_color		get_pixel_procedure(t_obj obj, t_vec4 pos);
 t_color		get_pixel_color(t_obj obj, t_ray ray);
 t_img		create_xpm_img(char *path, t_env env);
 
@@ -96,6 +97,7 @@ t_img		create_xpm_img(char *path, t_env env);
 
 double      ft_min_max(double value, double min, double max);
 t_color		filters(t_color color, t_env env);
+t_color		uint_to_color(unsigned int i);
 void		c_log(char *str);
 void		c_error(char *str, int code);
 int			c_open_file(char *path);

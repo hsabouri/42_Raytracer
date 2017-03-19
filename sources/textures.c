@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 17:19:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/19 14:19:40 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 15:24:15 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static t_color	get_pixel_from_uv(t_obj obj, t_vec4 pos)
 	res.a = 0;
 	return (res);
 }
-
 
 static t_vec4	get_sphere_pixel(t_obj obj, t_vec4 hit)
 {
@@ -57,6 +56,9 @@ t_color			get_pixel_color(t_obj obj, t_ray ray)
 	pos = (t_vec4) {0, 0, 0, 0};
 	if (obj.type == SPHERE)
 		pos = get_sphere_pixel(obj, hit);
-	res = get_pixel_from_uv(obj, pos);
+	if (TEX.type == IMAGE)
+		res = get_pixel_from_uv(obj, pos);
+	else
+		res = get_pixel_procedure(obj, pos);
 	return (res);
 }

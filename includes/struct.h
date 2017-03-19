@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/19 12:49:09 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 15:02:25 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct		s_noise
 
 typedef struct		s_img
 {
+	t_ttype			type;
 	void			*img;
 	char			*addr;
 	int				bpp;
