@@ -6,67 +6,86 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 17:36:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/10 18:59:41 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 17:45:59 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+#define INTER(x, y, s) (x + s * (y - x))
 
-static inline double	find_prime(double x, double y)
+static int hash[] = {208,34,231,213,32,248,233,56,161,78,24,140,71,48,140,254,245,255,247,247,40,
+185,248,251,245,28,124,204,204,76,36,1,107,28,234,163,202,224,245,128,167,204,
+9,92,217,54,239,174,173,102,193,189,190,121,100,108,167,44,43,77,180,204,8,81,
+70,223,11,38,24,254,210,210,177,32,81,195,243,125,8,169,112,32,97,53,195,13,
+203,9,47,104,125,117,114,124,165,203,181,235,193,206,70,180,174,0,167,181,41,
+164,30,116,127,198,245,146,87,224,149,206,57,4,192,210,65,210,129,240,178,105,
+228,108,245,148,140,40,35,195,38,58,65,207,215,253,65,85,208,76,62,3,237,55,89,
+232,50,217,64,244,157,199,121,252,90,17,212,203,149,152,140,187,234,177,73,174,
+193,100,192,143,97,53,145,135,19,103,13,90,135,151,199,91,239,247,33,39,145,
+101,120,99,3,186,86,99,41,237,203,111,79,220,135,158,42,30,154,120,67,87,167,
+135,176,183,191,253,115,184,21,233,58,129,233,142,39,128,211,118,137,139,255,
+114,20,218,113,154,27,127,246,250,1,8,198,250,209,92,222,173,21,88,102,219};
+
+static double			inter(double x, double y, double s)
 {
-	int					n;
-	int					nn;
-
-	n = (int)x + (int)y * 57;
-	n = (n << 13) ^ n;
-	nn = (n * (n * n * 60493 + 19990303) + 1376312589) & 0x7fffffff;
-	return (1.0 - ((double)nn / 1073741824.0));
+	return (INTER(x, y, s * s * (3 - 2 * s)));
 }
 
-static inline double	interpolate(double a, double b, double x)
+static int				noise2(int x, int y)
 {
-	double				ft;
-	double				f;
+	int					tmp;
 
-	ft = x * PI;
-	f = (1.0 - cos(ft)) * 0.5;
-	return (a * (1.0 - f) + b * f);
+	tmp = hash[y % 256];
+	return (hash[(tmp + x) % 256]);
 }
 
-double					perlin_noise(double x, double y)
+static double			noise(double x, double y)
 {
-	t_vec4				f;
-	t_vec4				vec;
-	t_vec4				inter;
+	int					xi = (int)x;
+	int					yi = (int)y;
+	int					s;
+	int					t;
+	double				lo;
+	double				hi;
 
-	f.x = (int)x;
-	f.y = (int)y;
-	vec.x = find_prime(f.x    , f.y    );
-	vec.y = find_prime(f.x + 1, f.y    );
-	vec.z = find_prime(f.x    , f.y + 1);
-	vec.w = find_prime(f.x + 1, f.y + 1);
-	inter.x = interpolate(vec.x, vec.y, x - f.x);
-	inter.y = interpolate(vec.z, vec.w, x - f.x);
-	return interpolate(inter.x, inter.y, y - f.y);
+	s = noise2(xi, yi);
+	t = noise2(xi + 1, y);
+	lo = inter(s, t, x - xi);
+	s = noise2(xi, yi+1);
+	t = noise2(xi+1, yi+1);
+	hi = inter(s, t, x - xi);
+	return (inter(lo, hi, y - yi));
 }
 
-double					apply_perlin(t_vec4 pos)
+static double			perlin_handle(t_vec4 pos, double freq, int depth)
 {
-	int					oct;
-	double				coef;
-	double				freq;
-	double				amp;
+	double				xa = pos.x * freq;
+	double				ya = pos.y * freq;
+	double				amp = 1.0;
+	double				coef = 0;
+	double				div = 0.0;
 
-	oct = 0;
-	coef = 0.0;
-	while (oct < 2)
+	int i;
+	for (i = 0; i < depth; i++)
 	{
-		freq = pow(2, oct);
-		amp = pow(1 / 2, oct);
-		coef += perlin_noise(pos.x * freq, pos.y * freq) * amp;
-		oct++;
+		div += 256 * amp;
+		coef += noise(xa, ya) * amp;
+		amp /= 2;
+		xa *= 2;
+		ya *= 2;
 	}
+	return (coef / div);
+}
+
+t_color					apply_perlin(t_obj obj, t_vec4 pos)
+{
+	double				coef;
+	t_color				res;
+
+	res = obj.mat.rgb;
+	coef = perlin_handle(pos, 0.1, 4);
 	coef += 1;
 	coef /= 2.0;
-	return (coef);
+	res = color_scale(res, coef);
+	return (res);
 }
