@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/07 12:21:54 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/16 16:46:28 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ int				key_hook(int keycode, t_env *env)
 void			pixel_put(t_env env, unsigned int x, unsigned int y, t_color color)
 {
 	if (x < LENGTH && y < HEIGHT)
-		((t_color *)(env.addr))[x + y * LENGTH] = color;
+		((t_color *)(env.img.addr))[x + y * LENGTH] = color;
 }

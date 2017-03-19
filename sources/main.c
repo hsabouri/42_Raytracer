@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/09 23:04:52 by pmartine         ###   ########.fr       */
+/*   Updated: 2017/03/16 17:32:34 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int		draw(t_env *env)
 {
-	if (!(env->img = mlx_new_image(env->mlx, LENGTH, HEIGHT)))
+	if (!(env->img.img = mlx_new_image(env->mlx, LENGTH, HEIGHT)))
 		exit(0);
-	if (!(env->addr = mlx_get_data_addr(env->img, &env->bpp,
-					&env->size, &env->endian)))
+	if (!(env->img.addr = mlx_get_data_addr(env->img.img, &env->img.bpp,
+					&env->img.size, &env->img.endian)))
 		exit(0);
 	if (env->pr_mesh)
 		display_objs(env->objs);
@@ -25,8 +25,8 @@ static int		draw(t_env *env)
 		test_ss_raytrace(env->cam, env->objs, *env);
 	else
 		raytrace(env->cam, env->objs, *env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	mlx_destroy_image(env->mlx, env->img);
+	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
+	mlx_destroy_image(env->mlx, env->img.img);
 	return (0);
 }
 
@@ -55,6 +55,8 @@ int				main(int ac, char **av)
 	//env.cl = init_cl();
 	vec = new_vector(0, 1, -10);
 	env.cam = init_cam(vec, new_quat_null(), 66);
+	if (!ft_strcmp(av[1], "scenes/texture_test.obj"))
+		env.objs[0].mat.texture = create_xpm_img("textures/curves.xpm", env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_loop_hook(env.mlx, loop_hook, &env);

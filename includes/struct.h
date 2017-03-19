@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/14 11:23:29 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/16 17:34:40 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,27 @@ typedef struct		s_lgt
 	t_vec4			hitpnt;
 }					t_lgt;
 
-/* Noise Structure */
+/* Noise structure */
 
 typedef struct		s_noise
 {
 	t_ntype			type;
 }					t_noise;
 
-/* Material Structures */
+/* Image Structure */
+
+typedef struct		s_img
+{
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				size;
+	int				endian;
+	int				width;
+	int				height;
+}					t_img;
+
+/* Material Structure */
 
 typedef struct		s_mat
 {
@@ -73,9 +86,10 @@ typedef struct		s_mat
 	t_noise			noise;
 	int				reflect;
 	double			refract;
+	t_img			texture;
 }					t_mat;
 
-/* Object Structures */
+/* Object Structure */
 
 typedef struct		s_obj
 {
@@ -91,6 +105,7 @@ typedef struct		s_obj
 	double			radius;
 	t_vec4			vert[3];
 }					t_obj;
+
 
 /* Environement structure */
 /* Description:
@@ -110,8 +125,7 @@ typedef struct		s_env
 	int				last_id;
 	void			*mlx;
 	void			*win;
-	void			*img;
-	char			*addr;
+	t_img			img;
 	unsigned int	n_lgt;
 	unsigned int	n_obj;
 	unsigned int	n_vrt;
@@ -121,9 +135,6 @@ typedef struct		s_env
 	t_filt			filter;
 	t_cam			cam;
 	int				pr_mesh;
-	int				bpp;
-	int				size;
-	int				endian;
 }					t_env;
 
 #endif

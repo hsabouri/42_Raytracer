@@ -6,13 +6,13 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/14 11:21:49 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/16 17:15:34 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-t_color		apply_lambert(t_color col, t_vec4 coef)
+t_color		apply_coef(t_color col, t_vec4 coef)
 {
 	t_color	res;
 
@@ -62,33 +62,5 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 		lamb += specular(obj, ray, lgt);
 	lamb = ft_min_max(lamb, 0.0 , 1.0);
 	res = vector_scale(res, lamb);
-	return (res);
-}
-
-t_color		lights(t_obj obj, t_ray ray, t_env env, t_color color)
-{
-	const unsigned int	n_lgt = env.n_lgt - 1;
-	unsigned int		i;
-	t_vec4				coef;
-	t_vec4				tmp;
-	t_color				res;
-	double				spec;
-
-	spec = 0;
-	coef = new_vector(AMBIENT, AMBIENT, AMBIENT);
-	res = (t_color) {0, 0, 0, 0};
-	i = 0;
-	while (i < n_lgt)
-	{
-		if (env.shadow || shadows(env.objs, ray, env.lgt[i], env.last_id))
-		{
-			tmp = lambert(obj, ray, env.lgt[i]);
-			tmp = vector_scale(tmp, 1.0 / 255);
-			coef = vector_add(coef, tmp);
-		}
-		i++;
-	}
-	coef = vector_cap(coef, 0, 1.0);
-	res = apply_lambert(color, coef);
 	return (res);
 }

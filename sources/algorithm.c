@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/14 11:23:45 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/16 17:40:02 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,22 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 	t_color			res;
 
 	res = (t_color) {0, 0, 0, 0};
-	env.last_id = check_intersections(objs, ray, 0);
+	env.last_id = check_intersections(objs, ray);
 	if (objs[env.last_id].type == BACKSLASH)
 		return (res);
-	res = objs[env.last_id].mat.rgb;
-	res = lights(objs[env.last_id], *ray, env, res);
-	res = apply_lambert(res, objs[env.last_id].mat.coef);
+	if (objs[env.last_id].mat.texture.addr != NULL)
+		res = get_pixel_color(objs[env.last_id], *ray);
+	else
+		res = lights(objs[env.last_id], *ray, env);
 	return (res);
 }
 
-int				check_intersections(t_obj *objs, t_ray *ray, int depth)
+int				check_intersections(t_obj *objs, t_ray *ray)
 {
 	double			t;
 	double			t_tmp;
 	unsigned int	i;
 	int				i_final;
-	int				res;
-	t_ray			ref;
 
 	i = 0;
 	i_final = -1;
@@ -63,22 +62,6 @@ int				check_intersections(t_obj *objs, t_ray *ray, int depth)
 	if (i_final == -1)
 		i_final = i;
 	ray->t = t;
-	if (objs[i_final].type != BACKSLASH && objs[i_final].mat.reflect
-			&& depth < DEPTH_MAX)
-	{
-		ref = reflect_ray(objs[i_final], *ray);
-		res = check_intersections(objs, &ref, depth + 1);
-		if (objs[res].type == BACKSLASH)
-			return (i_final);
-		*ray = ref;
-		return (res);
-	}
-	if (objs[i_final].type != BACKSLASH && objs[i_final].mat.refract > EPSILON
-			&& depth < DEPTH_MAX)
-	{
-		*ray = refract_ray(objs[i_final], *ray, objs[i_final].mat.refract);
-		return (check_intersections(objs, ray, depth + 1));
-	}
 	return (i_final);
 }
 

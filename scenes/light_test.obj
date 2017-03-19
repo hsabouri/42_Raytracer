@@ -1,0 +1,19 @@
+# Simple sphere for test purposes
+
+sphere sphere1
+radius 2.0
+p -1.0 2.0 0.0
+c 0 0 255
+
+plane plan1
+n 0.0 1.0 0.0
+p 0.0 -1.0 0.0
+c 255 0 0
+
+omni light1
+p -12.0 3.0 -5.0
+c 255 255 255
+
+omni light2
+p 6.0 5.0 -5.0
+c 255 255 255
