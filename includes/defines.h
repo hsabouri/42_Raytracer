@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/19 17:23:32 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/20 13:15:44 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,9 @@ typedef enum	e_ttype
 	IMAGE,
 	BRICKS,
 	CHECKER,
-	NOISE
+	NOISE,
+	WOOD,
+	MARBLE
 }				t_ttype;
 
 #endif

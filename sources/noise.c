@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 17:36:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/20 12:54:24 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/20 13:19:44 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static double			noise_handle(t_vec4 pos)
 	return (inter(res[0], res[1], frval[1]));
 }
 
-static double			perlin_handle(t_vec4 pos, double gain, int oct, int grid)
+static double			perlin_handle(t_vec4 pos, int oct)
 {
 	int					i;
 	double				coef;
@@ -65,15 +65,15 @@ static double			perlin_handle(t_vec4 pos, double gain, int oct, int grid)
 	double				lac;
 
 	coef = 0.0f;
-	freq = 1.0f / (double)grid;
-	amp = gain;
+	freq = 1.0f;
+	amp = 2.0;
 	lac = 2.0;
 	i = 0;
 	while (i < oct)
 	{
 		coef += noise_handle(vector_scale(pos, freq)) * amp;
 		freq *= lac;
-		amp *= gain;
+		amp *= 2.0;
 		i++;
 	}
 	return (coef);
@@ -85,7 +85,7 @@ t_color					apply_perlin(t_obj obj, t_vec4 pos)
 	t_color				res;
 
 	res = obj.mat.rgb;
-	coef = perlin_handle(pos, 2, 4, 1);
+	coef = perlin_handle(pos, 4);
 	res = color_scale(res, coef);
 	return (res);
 }
