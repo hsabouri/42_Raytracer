@@ -25,17 +25,17 @@ static t_cam	cam_handle(int keycode, t_cam cam)
 {
 	t_dir	dir;
 
-	if (keycode == KEY_AUP)
+	if (keycode == A_UP)
 		dir = UP;
-	else if (keycode == KEY_ADN)
+	else if (keycode == A_DOWN)
 		dir = DOWN;
-	else if (keycode == KEY_ALF)
+	else if (keycode == A_LEFT)
 		dir = LEFT;
-	else if (keycode == KEY_ART)
+	else if (keycode == A_RIGHT)
 		dir = RIGHT;
-	else if (keycode == KEY_PL)
+	else if (keycode == N_ADD)
 		dir = FRONT;
-	else if (keycode == KEY_MN)
+	else if (keycode == N_SUB)
 		dir = BACK;
 	if (cam.control == MOVEMENT)
 		cam = move_camera(cam, dir);
@@ -47,7 +47,7 @@ static t_cam	cam_handle(int keycode, t_cam cam)
 int				key_hook(int keycode, t_env *env)
 {
 	env->redraw = 1;
-	if (keycode == KEY_ES)
+	if (keycode == KEY_ESC)
 		exit(0);
 	else if (keycode == KEY_R)
 		env->cam = change_mod(env->cam);
@@ -55,15 +55,16 @@ int				key_hook(int keycode, t_env *env)
 		env->shadow = 1 - env->shadow;
 	else if (keycode == KEY_P)
 		env->pr_mesh = env->pr_mesh ? 0 : 1;
-	else if (keycode == KEY_AUP || keycode == KEY_ADN ||
-			keycode == KEY_ALF || keycode == KEY_ART ||
-			keycode == KEY_PL || keycode == KEY_MN)
+	else if (keycode == A_UP || keycode == A_DOWN ||
+			keycode == A_LEFT || keycode == A_RIGHT ||
+			keycode == N_ADD || keycode == N_SUB)
 		env->cam = cam_handle(keycode, env->cam);
 	return (0);
 }
 
-void			pixel_put(t_env env, unsigned int x, unsigned int y, t_color color)
+t_img			pixel_put(t_img img, unsigned int x, unsigned int y, t_color color)
 {
 	if (x < LENGTH && y < HEIGHT)
-		((t_color *)(env.img.addr))[x + y * LENGTH] = color;
+		((t_color *)(img.addr))[x + y * LENGTH] = color;
+	return (img);
 }

@@ -12,33 +12,44 @@
 
 #ifndef DEFINES_H
 # define DEFINES_H
+# include "key_define.h"
 # define PI 3.141592653
 # define EPSILON 0.000001
 # define DEPTH_MAX 3
 # define HEIGHT 800
 # define LENGTH 800
-# define KEY_ES 53
-# define KEY_AUP 126
-# define KEY_ADN 125
-# define KEY_ALF 123
-# define KEY_ART 124
-# define KEY_PL 69
-# define KEY_MN	78
-# define KEY_R	15
-# define KEY_P 35
-# define KEY_S	1
 
 /* Error codes */
 
 # define MALLOC_FAILED 1
 # define PARSING_ERROR 10
-
 # define AMBIENT 0.15
 
-/* OpenCL */
+/* Mlx and X-server defines */
 
-# define MEM_SIZE (768)
-# define MAX_SOURCE_SIZE (0x100000)
+# define KEYPRESSEVENT 2
+# define KEYPRESSMASK (1L << 0)
+# define BUTTONPRESS 4
+# define BUTTONRELEASE 5
+
+# define KEYRELEASEEVENT 3
+# define KEYRELEASEMASK (1L << 1)
+# define POINTERMOTIONMASK (1L<<6)
+# define MOTIONNOTIFY 6
+# define DESTROYNOTIFY 17
+# define STRUCTURENOTIFYMASK (1L<<17)
+# define BUTTONPRESSMASK (1L<<2)
+# define BUTTONRELEASEMASK (1L<<3)
+
+
+/* Mouse enum and defines */
+
+typedef enum	e_status
+{
+	ACTION,
+	IDLE,
+	HOVER
+}				t_status;
 
 /* enum for camera
  * movement and rotations

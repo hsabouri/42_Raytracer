@@ -56,14 +56,13 @@ HFLAGS += -I./lib/libmlx_elcapitan/
 LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -framework OpenCL
 
 CC = gcc
-CLCC = /System/Library/Frameworks/OpenCL.framework/Libraries/openclc
 CFLAGS = -Wall -Wextra
-#CFLAGS += -g -fsanitize=address
-#CFLAGS += -Werror
-#CFLAGS += -march=native -O3
+# CFLAGS += -g -fsanitize=address
+# CFLAGS += -Werror
+CFLAGS += -march=native -O3
 
-#GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
-#GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
+# GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
+# GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
 
 $(LIBRARY):
 	make -C lib/libft
@@ -82,7 +81,7 @@ $(NAME): $(O_FILES)
 	@make -C lib/libvec
 	@make -C lib/libobj
 	@make -C lib/libmalloc
-	@$(CC) -o $@ $(CFLAGS) $(LINKS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $(LIBMALLOC)  $(GTK_LDFLAGS) $^ && printf "\033[0;34m" || printf "\033[031m"
+	@$(CC) -o $@ $(CFLAGS) $(LINKS) $(LDFLAGS) $(LIBVEC) $(LIBFT) $(LIBOBJ) $(LIBMALLOC) $(GTK_LDFLAGS) $^ && printf "\033[0;34m" || printf "\033[031m"
 	@printf "%-34s \033[1;30m<<--\033[0;0m\n" "$@"
 
 $(O_DIR)/%.o: $(C_DIR)/%.c

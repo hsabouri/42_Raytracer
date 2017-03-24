@@ -30,19 +30,34 @@ static int		draw(t_env *env)
 	return (0);
 }
 
+static int		destroy(t_env *env)
+{
+	exit(EXIT_SUCCESS);
+}
+
 static int		expose(t_env *env)
 {
-	env->redraw = 1;
+	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
+	env->ui->redraw = 1;
 	return (0);
 }
 
 static int		loop_hook(t_env *env)
 {
-	if (env->redraw)
+	int ret;
+
+	if (env->redraw > 0)
 	{
-		draw(env);
-		env->redraw = 0;
+		ret = draw(env);
+		env->redraw--;
 	}
+	if (env->ui->redraw > 0)
+	{
+		ret = ui_loop(env);
+		env->ui->redraw--;
+	}
+	else
+		mlx_put_image_to_window(env->mlx, env->win, env->ui->img.img, 0, 0);
 	return (0);
 }
 
@@ -52,14 +67,19 @@ int				main(int ac, char **av)
 	t_vec4	vec;
 
 	env = init_env(ac, av);
-	//env.cl = init_cl();
 	vec = new_vector(0, 1, -10);
 	env.cam = init_cam(vec, new_quat_null(), 66);
 	if (!ft_strcmp(av[1], "scenes/texture_test.obj"))
 		env.objs[0].mat.texture = create_xpm_img("textures/curves.xpm", env);
 	mlx_expose_hook(env.win, expose, &env);
-	mlx_key_hook(env.win, key_hook, &env);
 	mlx_loop_hook(env.mlx, loop_hook, &env);
+	mlx_key_hook(env.win, key_hook, &env);
+	mlx_hook(env.win, KEYPRESSEVENT, KEYPRESSMASK, &keypress, &env.ui);
+	mlx_hook(env.win, KEYRELEASEEVENT, KEYRELEASEMASK, &keyrelease, &env.ui);
+	mlx_hook(env.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, &destroy, &env);
+	mlx_hook(env.win, MOTIONNOTIFY, POINTERMOTIONMASK, &mouse, &env);
+	mlx_hook(env.win, BUTTONPRESS, BUTTONPRESSMASK, &button_press, &env);
+	mlx_hook(env.win, BUTTONRELEASE, BUTTONRELEASEMASK, &button_release, &env);
 	mlx_loop(env.mlx);
 	return (0);
 }

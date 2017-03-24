@@ -91,7 +91,7 @@ int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env env)
 				color.g = (col[0].g + col[1].g + col[2].g + col[3].g) / 4;
 				color.b = (col[0].b + col[1].b + col[2].b + col[3].b) / 4;
 				color.a = (col[0].a + col[1].a + col[2].a + col[3].a) / 4;
-				pixel_put(env, x, y, color);
+				env.img = pixel_put(env.img, x, y, color);
 				y++;
 		}
 		x++;
@@ -116,7 +116,7 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 			col = pipeline(objs, &ray, env);
 			if (env.filter)
 				col = filters(col, env);
-			pixel_put(env, x, y, col);
+			env.img = pixel_put(env.img, x, y, col);
 			y++;
 		}
 		x++;

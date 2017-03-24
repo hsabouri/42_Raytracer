@@ -12,14 +12,16 @@
 
 #ifndef RT_H
 # define RT_H
+# include "../lib/libft/libft.h"
+# include "../lib/libvec/includes/vector.h"
+# include "../lib/libvec/includes/quaternion.h"
+# include "../lib/libmalloc/ft_malloc.h"
 # include "mlx.h"
 # include "defines.h"
 # include "struct.h"
 # include "functions.h"
-# include "../libft/libft.h"
-# include "../libvec/includes/vector.h"
-# include "../libvec/includes/quaternion.h"
-# include "../libobj/includes/obj.h"
+# include "../lib/libobj/includes/obj.h"
+# include "components.h"
 # include <math.h>
 # include <stdio.h>
 #endif

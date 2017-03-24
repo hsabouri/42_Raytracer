@@ -106,7 +106,6 @@ typedef struct		s_obj
 	t_vec4			vert[3];
 }					t_obj;
 
-
 /* Environement structure */
 /* Description:
  * n_lgt : light number
@@ -134,7 +133,40 @@ typedef struct		s_env
 	t_vec4			*vrts;
 	t_filt			filter;
 	t_cam			cam;
+	struct s_ui		*ui;
 	int				pr_mesh;
 }					t_env;
+
+/* UI structures */
+
+typedef struct		s_compnt
+{
+	void			*value;
+	t_status		status;
+	int				x;
+	int				y;
+	int				w;
+	int				h;
+	t_color			bg;
+	t_color			bg_hv;
+	t_color			color;
+	unsigned int	font_size;
+	int				clickable;
+	struct s_compnt	(*action)(struct s_compnt, t_env);
+	struct s_compnt	(*hover)(struct s_compnt, t_env);
+	struct s_compnt	(*idle)(struct s_compnt, t_env);
+}					t_compnt;
+
+typedef struct		s_ui
+{
+	t_compnt		*compnts;
+	size_t			n_compnts;
+	int				mouse_x;
+	int				mouse_y;
+	int				click;
+	t_img			img;
+	int				redraw;
+	int				keystatus[127];
+}					t_ui;
 
 #endif
