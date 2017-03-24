@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/03 16:22:09 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/03/24 15:27:22 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ t_ray		rotate_ray(t_ray ray, t_quat rot)
 	return (res);
 }
 
-t_ray		reflect_ray(t_obj obj, t_ray ray)
+t_ray		reflect_ray(t_obj obj, t_ray ray, t_env env)
 {
-	t_ray	res;
+	t_ray		res;
 	t_vec4	norm;
 	double	coef;
 
-	res.org = vector_scale(ray.dir, ray.t);
+	res.org = env.lgt->hitpnt;
 	norm = get_normal(ray, obj, res.org);
 	coef = scalar_product(norm, ray.dir);
-	res.dir = vector_add(ray.dir, vector_scale(norm, -2.0 * coef));
+	res.dir = vector_sub(ray.dir, vector_scale(norm, -2.0 * coef));
 	return (res);
 }
 

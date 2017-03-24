@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/03/10 16:37:58 by qduperon         ###   ########.fr        #
+#    Updated: 2017/03/24 15:00:44 by qduperon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -framework OpenCL
 
 CC = gcc
 CFLAGS = -Wall -Wextra
-# CFLAGS += -g -fsanitize=address
+#CFLAGS += -g -fsanitize=address
 # CFLAGS += -Werror
 CFLAGS += -march=native -O3
 
