@@ -52,7 +52,7 @@ static t_compnt	ui_calls(t_compnt compnt, t_ui ui, t_env env)
 	return (compnt);
 }
 
-int				ui_loop(t_env *env)
+int				ui(t_env *env)
 {
 	size_t	i;
 

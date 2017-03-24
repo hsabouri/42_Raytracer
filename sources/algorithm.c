@@ -19,6 +19,7 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 
 	res = (t_color) {0, 0, 0, 0};
 	env.last_id = check_intersections(objs, ray);
+	//env.ui->obj_map = pixel_put(env.ui->obj_map, ray->x, ray->y, *(t_color *)&env.last_id);
 	if (objs[env.last_id].type == BACKSLASH)
 		return (res);
 	tmp = objs[env.last_id].mat.rgb;

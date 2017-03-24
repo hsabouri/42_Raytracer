@@ -23,6 +23,12 @@ t_ui			*init_ui(t_env env)
 	if (!(ui->img.addr = mlx_get_data_addr(ui->img.img, &ui->img.bpp,
 					&ui->img.size, &ui->img.endian)))
 		exit(0);
+	if (!(ui->obj_map.img = mlx_new_image(env.mlx, LENGTH, HEIGHT)))
+		exit(0);
+	if (!(ui->obj_map.addr = mlx_get_data_addr(ui->obj_map.img, &ui->obj_map.bpp,
+					&ui->obj_map.size, &ui->obj_map.endian)))
+		exit(0);
+	ui->obj_map = init_img(ui->obj_map, (t_color){255, 255, 255, 0});
 	ui->n_compnts = 1;
 	ui->compnts = (t_compnt *)ft_malloc(sizeof(t_compnt) * 1, CLEAN);
 	ui->compnts[0].value = ft_strdup("Hello World !");
@@ -35,6 +41,7 @@ t_ui			*init_ui(t_env env)
 	ui->compnts[0].idle = &idle_test;
 	ui->compnts[0].hover = &hover_test;
 	ui->compnts[0].action = &action_test;
+	ui->redraw = 1;
 	return (ui);
 }
 
@@ -62,7 +69,13 @@ t_env 			init_env(int ac, char **av)
 	env.mlx = mlx_init();
 	env = init_objs_lgts(ac, av, env);
 	env.win = mlx_new_window(env.mlx, LENGTH, HEIGHT, "RT");
+	if (!(env.img.img = mlx_new_image(env.mlx, LENGTH, HEIGHT)))
+		exit(0);
+	if (!(env.img.addr = mlx_get_data_addr(env.img.img, &env.img.bpp,\
+	&env.img.size, &env.img.endian)))
+		exit(0);
 	env.redraw = 1;
+	env.drawing = 0;
 	env.shadow = 1;
 	env.pr_mesh = 0;
 	env.filter = NONE;

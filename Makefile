@@ -53,7 +53,7 @@ LDFALGS += -L./lib/libmalloc
 
 LIBMLX = lib/libmlx_elcapitan/libmlx.a
 HFLAGS += -I./lib/libmlx_elcapitan/
-LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -framework OpenCL
+LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -lpthread -D_REENTRANT
 
 CC = gcc
 CFLAGS = -Wall -Wextra

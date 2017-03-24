@@ -65,6 +65,26 @@ int				key_hook(int keycode, t_env *env)
 	return (0);
 }
 
+int				exit_clean(t_env *env)
+{
+	if (env->drawing)
+		pthread_cancel(env->render_thread);
+	exit(EXIT_SUCCESS);
+}
+
+t_img			init_img(t_img img, t_color color)
+{
+	int i;
+
+	i = 0;
+	while (i < img.width * img.height)
+	{
+		img = pixel_put(img, i % LENGTH, i / LENGTH, color);
+		i++;
+	}
+	return (img);
+}
+
 t_img			pixel_put(t_img img, unsigned int x, unsigned int y, t_color color)
 {
 	if (x < LENGTH && y < HEIGHT)

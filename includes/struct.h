@@ -19,6 +19,8 @@
 
 typedef struct		s_ray
 {
+	int				x;
+	int				y;
 	t_vec4			org;
 	t_vec4			dir;
 	double			t;
@@ -111,7 +113,6 @@ typedef struct		s_obj
 
 typedef struct		s_env
 {
-	int				redraw;
 	int				shadow;
 	int				supersampling;
 	int				last_id;
@@ -127,7 +128,10 @@ typedef struct		s_env
 	t_filt			filter;
 	t_cam			cam;
 	struct s_ui		*ui;
+	pthread_t		render_thread;
 	int				pr_mesh;
+	int				drawing;
+	int				redraw;
 }					t_env;
 
 /* UI structures */
@@ -158,6 +162,7 @@ typedef struct		s_ui
 	int				mouse_y;
 	int				click;
 	t_img			img;
+	t_img			obj_map;
 	int				redraw;
 	int				keystatus[127];
 }					t_ui;

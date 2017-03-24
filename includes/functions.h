@@ -87,12 +87,14 @@ t_obj		add_polygon(t_obj obj, t_obj poly);
 /* Mlx hook functions */
 
 t_img		pixel_put(t_img img, unsigned int x, unsigned int y, t_color color);
+t_img		init_img(t_img img, t_color color);
 int			key_hook(int keycode, t_env *env);
 int			mouse(int x, int y, t_env *env);
-int			keypress(int keycode, t_ui *ui);
-int			keyrelease(int keycode, t_ui *ui);
+int			keypress(int keycode, t_env *env);
+int			keyrelease(int keycode, t_env *env);
 int			button_press(int button, int x, int y, t_env *env);
 int			button_release(int button, int x, int y, t_env *env);
+int			exit_clean(t_env *env);
 
 /* Texture functions */
 
@@ -117,7 +119,12 @@ t_compnt	set_compnt_size(unsigned int width, unsigned int height,\
 			t_compnt compnt);
 t_compnt	set_compnt_cols(t_color bg_default, t_color txt_color,\
 			t_color bg_hover, t_compnt compnt);
+int			ui(t_env *env);
 t_img 		ui_draw(t_img img, t_compnt compnt);
-int			ui_loop(t_env *env);
+
+/* Multi Thread and loops */
+
+void		render_coroutine(t_env *env);
+void 		*draw(void *arg);
 
 #endif

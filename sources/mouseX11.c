@@ -22,6 +22,7 @@ int	mouse(int x, int y, t_env *env)
 
 int button_press(int button, int x, int y, t_env *env)
 {
+	printf("%d\n", button);
 	env->ui->mouse_x = x;
 	env->ui->mouse_y = y;
 	env->ui->click = 1;
@@ -31,6 +32,7 @@ int button_press(int button, int x, int y, t_env *env)
 
 int button_release(int button, int x, int y, t_env *env)
 {
+	printf("%d\n", button);
 	env->ui->mouse_x = x;
 	env->ui->mouse_y = y;
 	env->ui->click = 0;

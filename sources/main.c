@@ -12,27 +12,21 @@
 
 #include <rt.h>
 
-static int		draw(t_env *env)
+void			*draw(void *arg)
 {
-	if (!(env->img.img = mlx_new_image(env->mlx, LENGTH, HEIGHT)))
-		exit(0);
-	if (!(env->img.addr = mlx_get_data_addr(env->img.img, &env->img.bpp,
-					&env->img.size, &env->img.endian)))
-		exit(0);
+	t_env *env;
+
+	env = (t_env *)arg;
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+	env->drawing = 1;
 	if (env->pr_mesh)
 		display_objs(env->objs);
 	if (env->supersampling)
 		test_ss_raytrace(env->cam, env->objs, *env);
 	else
 		raytrace(env->cam, env->objs, *env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
-	mlx_destroy_image(env->mlx, env->img.img);
-	return (0);
-}
-
-static int		destroy(t_env *env)
-{
-	exit(EXIT_SUCCESS);
+	env->drawing = 0;
+	return (NULL);
 }
 
 static int		expose(t_env *env)
@@ -42,22 +36,21 @@ static int		expose(t_env *env)
 	return (0);
 }
 
-static int		loop_hook(t_env *env)
+static int 		draw_loop(t_env *env)
 {
-	int ret;
-
 	if (env->redraw > 0)
 	{
-		ret = draw(env);
-		env->redraw--;
+		render_coroutine(env);
+		env->redraw -= 1;
+		env->ui->redraw += 1;
 	}
 	if (env->ui->redraw > 0)
 	{
-		ret = ui_loop(env);
-		env->ui->redraw--;
+		ui(env);
+		env->ui->redraw -= 1;
 	}
-	else
-		mlx_put_image_to_window(env->mlx, env->win, env->ui->img.img, 0, 0);
+	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
+	mlx_put_image_to_window(env->mlx, env->win, env->ui->img.img, 0, 0);
 	return (0);
 }
 
@@ -72,11 +65,11 @@ int				main(int ac, char **av)
 	if (!ft_strcmp(av[1], "scenes/texture_test.obj"))
 		init_texture(&env);
 	mlx_expose_hook(env.win, expose, &env);
-	mlx_loop_hook(env.mlx, loop_hook, &env);
+	mlx_loop_hook(env.mlx, draw_loop, &env);
 	mlx_key_hook(env.win, key_hook, &env);
 	mlx_hook(env.win, KEYPRESSEVENT, KEYPRESSMASK, &keypress, &env.ui);
 	mlx_hook(env.win, KEYRELEASEEVENT, KEYRELEASEMASK, &keyrelease, &env.ui);
-	mlx_hook(env.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, &destroy, &env);
+	mlx_hook(env.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, &exit_clean, &env);
 	mlx_hook(env.win, MOTIONNOTIFY, POINTERMOTIONMASK, &mouse, &env);
 	mlx_hook(env.win, BUTTONPRESS, BUTTONPRESSMASK, &button_press, &env);
 	mlx_hook(env.win, BUTTONRELEASE, BUTTONRELEASEMASK, &button_release, &env);

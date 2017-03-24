@@ -18,6 +18,8 @@ t_ray		init_ray(t_cam *cam, int x, int y)
 	t_ray	ray;
 
 	ray.org = cam->pos;
+	ray.x = x;
+	ray.y = y;
 	v.x = (x + 0.5) / LENGTH;
 	v.y = (y + 0.5) / HEIGHT;
 	v.x = (2 * v.x) - 1;

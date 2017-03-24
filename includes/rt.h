@@ -12,6 +12,7 @@
 
 #ifndef RT_H
 # define RT_H
+# include <pthread.h>
 # include "../lib/libft/libft.h"
 # include "../lib/libvec/includes/vector.h"
 # include "../lib/libvec/includes/quaternion.h"
