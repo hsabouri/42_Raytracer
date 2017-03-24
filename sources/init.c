@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/16 16:43:08 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/20 11:37:16 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ t_ui			*init_ui(t_env env)
 	ui->compnts[0].hover = &hover_test;
 	ui->compnts[0].action = &action_test;
 	return (ui);
+}
+
+void			init_texture(t_env *env)
+{
+	env->objs[0].mat.texture = create_xpm_img("textures/wall.xpm", *env);
+	env->objs[1].mat.texture.type = NOISE;
+	env->objs[2].mat.texture = create_xpm_img("textures/earth.xpm", *env);
 }
 
 t_env			init_objs_lgts(int ac, char **av, t_env env)

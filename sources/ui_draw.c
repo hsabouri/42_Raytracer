@@ -12,7 +12,7 @@
 
 #include <rt.h>
 
-static t_img 	ui_draw(t_img img, t_compnt compnt)
+t_img 	ui_draw(t_img img, t_compnt compnt)
 {
 	unsigned int	x;
 	unsigned int	y;

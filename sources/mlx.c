@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/16 16:46:28 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 13:05:24 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int				key_hook(int keycode, t_env *env)
 	else if (keycode == A_UP || keycode == A_DOWN ||
 			keycode == A_LEFT || keycode == A_RIGHT ||
 			keycode == N_ADD || keycode == N_SUB)
+	{
+		//env->pr_mesh = env->pr_mesh ? 0 : 1;
 		env->cam = cam_handle(keycode, env->cam);
+	}
 	return (0);
 }
 

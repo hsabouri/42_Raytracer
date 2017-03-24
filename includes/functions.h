@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/16 17:33:54 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 17:41:04 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ double		intersect_cylinder(t_ray ray, t_obj cylinder);
 
 double		solve_quadra(double a, double b, double c);
 t_vec4      get_normal(t_ray ray, t_obj obj, t_vec4 pos);
+t_vec4		normal_cylinder(t_vec4 pos, t_obj obj);
 t_vec4		normal_plane(t_ray ray, t_obj obj);
 t_vec4		normal_polygon(t_obj poly);
 
@@ -76,6 +77,7 @@ t_cam		init_cam(t_vec4 pos, t_quat rot, double fov);
 t_ray		init_ray(t_cam *cam, int x, int y);
 t_env		init_objs_lgts(int ac, char **av, t_env env);
 t_env		init_env(int ac, char **av);
+void		init_texture(t_env *env);
 
 /* Mesh functions */
 
@@ -94,6 +96,8 @@ int			button_release(int button, int x, int y, t_env *env);
 
 /* Texture functions */
 
+t_color		apply_perlin(t_obj obj, t_vec4 pos);
+t_color		get_pixel_procedure(t_obj obj, t_vec4 pos);
 t_color		get_pixel_color(t_obj obj, t_ray ray);
 t_img		create_xpm_img(char *path, t_env env);
 
@@ -101,6 +105,7 @@ t_img		create_xpm_img(char *path, t_env env);
 
 double      ft_min_max(double value, double min, double max);
 t_color		filters(t_color color, t_env env);
+t_color		color_scale(t_color col, double val);
 void		c_log(char *str);
 void		c_error(char *str, int code);
 int			c_open_file(char *path);
@@ -112,6 +117,7 @@ t_compnt	set_compnt_size(unsigned int width, unsigned int height,\
 			t_compnt compnt);
 t_compnt	set_compnt_cols(t_color bg_default, t_color txt_color,\
 			t_color bg_hover, t_compnt compnt);
+t_img 		ui_draw(t_img img, t_compnt compnt);
 int			ui_loop(t_env *env);
 
 #endif

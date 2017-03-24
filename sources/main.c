@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/16 17:32:34 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 16:21:48 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int				main(int ac, char **av)
 	vec = new_vector(0, 1, -10);
 	env.cam = init_cam(vec, new_quat_null(), 66);
 	if (!ft_strcmp(av[1], "scenes/texture_test.obj"))
-		env.objs[0].mat.texture = create_xpm_img("textures/curves.xpm", env);
+		init_texture(&env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_loop_hook(env.mlx, loop_hook, &env);
 	mlx_key_hook(env.win, key_hook, &env);

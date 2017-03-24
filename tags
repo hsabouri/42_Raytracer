@@ -266,6 +266,7 @@ action_test	/nfs/2017/h/hsabouri/Documents/RT/sources/actions.c	/^t_compnt actio
 add_polygon	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_obj		add_polygon(t_obj obj, t_obj poly);$/;"	p	signature:(t_obj obj, t_obj poly)
 addr	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	char			*addr;$/;"	m	struct:s_img	access:public
 apply_coef	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_color		apply_coef(t_color col, t_vec4 coef);$/;"	p	signature:(t_color col, t_vec4 coef)
+apply_perlin	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_color		apply_perlin(t_obj obj, t_vec4 pos);$/;"	p	signature:(t_obj obj, t_vec4 pos)
 b	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	unsigned char	b;$/;"	m	struct:s_color	access:public
 bg	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_color			bg;$/;"	m	struct:s_compnt	access:public
 bg_color	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_color			bg_color;$/;"	m	struct:s_button	access:public
@@ -299,6 +300,7 @@ clickable	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	int				clickabl
 clickable	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	int				clickable;$/;"	m	struct:s_compnt	access:public
 coef	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_vec4			coef;$/;"	m	struct:s_mat	access:public
 color	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_color			color;$/;"	m	struct:s_compnt	access:public
+color_scale	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_color		color_scale(t_color col, double val);$/;"	p	signature:(t_color col, double val)
 compnts	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_compnt		*compnts;$/;"	m	struct:s_ui	access:public
 compnts	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_compnt	*compnts;$/;"	m	struct:s_ui	access:public
 control	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_mode			control;$/;"	m	struct:s_cam	access:public
@@ -336,6 +338,7 @@ g_mouse	/nfs/2017/h/hsabouri/Documents/RT/sources/mlx.c	/^int				g_mouse(int x, 
 g_mouse_click	/nfs/2017/h/hsabouri/Documents/RT/sources/mlx.c	/^int				g_mouse_click(int button, int x, int y, t_env *env);$/;"	p	file:	signature:(int button, int x, int y, t_env *env)
 get_normal	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_vec4      get_normal(t_ray ray, t_obj obj, t_vec4 pos);$/;"	p	signature:(t_ray ray, t_obj obj, t_vec4 pos)
 get_pixel_color	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_color		get_pixel_color(t_obj obj, t_ray ray);$/;"	p	signature:(t_obj obj, t_ray ray)
+get_pixel_procedure	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_color		get_pixel_procedure(t_obj obj, t_vec4 pos);$/;"	p	signature:(t_obj obj, t_vec4 pos)
 h	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	int				h;$/;"	m	struct:s_compnt	access:public
 h	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	unsigned int	h;$/;"	m	struct:s_compnt	access:public
 height	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	int				height;$/;"	m	struct:s_img	access:public
@@ -366,6 +369,8 @@ init_env	/nfs/2017/h/hsabouri/Documents/RT/sources/init.c	/^t_env 			init_env(in
 init_objs_lgts	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_env		init_objs_lgts(int ac, char **av, t_env env);$/;"	p	signature:(int ac, char **av, t_env env)
 init_objs_lgts	/nfs/2017/h/hsabouri/Documents/RT/sources/init.c	/^t_env			init_objs_lgts(int ac, char **av, t_env env)$/;"	f	signature:(int ac, char **av, t_env env)
 init_ray	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_ray		init_ray(t_cam *cam, int x, int y);$/;"	p	signature:(t_cam *cam, int x, int y)
+init_texture	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^void		init_texture(t_env *env);$/;"	p	signature:(t_env *env)
+init_texture	/nfs/2017/h/hsabouri/Documents/RT/sources/init.c	/^void			init_texture(t_env *env)$/;"	f	signature:(t_env *env)
 init_ui	/nfs/2017/h/hsabouri/Documents/RT/sources/init.c	/^t_button		init_ui(void)$/;"	f	signature:(void)
 init_ui	/nfs/2017/h/hsabouri/Documents/RT/sources/init.c	/^t_compnt		init_ui(void)$/;"	f	signature:(void)
 init_ui	/nfs/2017/h/hsabouri/Documents/RT/sources/init.c	/^t_ui			*init_ui(env)$/;"	f
@@ -432,6 +437,7 @@ name	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	char *name;$/;"	m	st
 new_material	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr);$/;"	p	signature:(t_color rgb, t_vec4 coef, int rf, double rr)
 noise	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_noise			noise;$/;"	m	struct:s_mat	access:public
 normal	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_vec4			normal;$/;"	m	struct:s_lgt	access:public
+normal_cylinder	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_vec4		normal_cylinder(t_vec4 pos, t_obj obj);$/;"	p	signature:(t_vec4 pos, t_obj obj)
 normal_plane	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_vec4		normal_plane(t_ray ray, t_obj obj);$/;"	p	signature:(t_ray ray, t_obj obj)
 normal_polygon	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_vec4		normal_polygon(t_obj poly);$/;"	p	signature:(t_obj poly)
 objs	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_obj			*objs;$/;"	m	struct:s_env	access:public
@@ -706,10 +712,12 @@ ui_calls	/nfs/2017/h/hsabouri/Documents/RT/sources/actions.c	/^static t_compnt	u
 ui_calls	/nfs/2017/h/hsabouri/Documents/RT/sources/ui.c	/^static t_compnt	ui_calls(t_compnt compnt, t_ui ui, t_env env)$/;"	f	file:	signature:(t_compnt compnt, t_ui ui, t_env env)
 ui_calls	/nfs/2017/h/hsabouri/Documents/RT/sources/ui_draw.c	/^static t_compnt	ui_calls(t_compnt compnt, t_ui ui, t_env env)$/;"	f	file:	signature:(t_compnt compnt, t_ui ui, t_env env)
 ui_calls	/nfs/2017/h/hsabouri/Documents/RT/sources/ui_draw.c	/^tatic t_compnt	ui_calls(t_compnt compnt, t_ui ui, t_env env)$/;"	f	signature:(t_compnt compnt, t_ui ui, t_env env)
+ui_draw	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^t_img 		ui_draw(t_img img, t_compnt compnt);$/;"	p	signature:(t_img img, t_compnt compnt)
 ui_draw	/nfs/2017/h/hsabouri/Documents/RT/sources/actions.c	/^static t_img 	ui_draw(t_img img, t_compnt compnt)$/;"	f	file:	signature:(t_img img, t_compnt compnt)
 ui_draw	/nfs/2017/h/hsabouri/Documents/RT/sources/actions.c	/^static t_img 	ui_draw(t_img img, t_compnt compnt, t_env env)$/;"	f	file:	signature:(t_img img, t_compnt compnt, t_env env)
 ui_draw	/nfs/2017/h/hsabouri/Documents/RT/sources/ui.c	/^static t_img 	ui_draw(t_img img, t_compnt compnt)$/;"	f	file:	signature:(t_img img, t_compnt compnt)
 ui_draw	/nfs/2017/h/hsabouri/Documents/RT/sources/ui_draw.c	/^static t_img 	ui_draw(t_img img, t_compnt compnt)$/;"	f	file:	signature:(t_img img, t_compnt compnt)
+ui_draw	/nfs/2017/h/hsabouri/Documents/RT/sources/ui_draw.c	/^t_img 	ui_draw(t_img img, t_compnt compnt)$/;"	f	signature:(t_img img, t_compnt compnt)
 ui_img	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_img			ui_img;$/;"	m	struct:s_env	access:public
 ui_img	/nfs/2017/h/hsabouri/Documents/RT/includes/struct.h	/^	t_img			ui_img;$/;"	m	struct:s_ui	access:public
 ui_loop	/nfs/2017/h/hsabouri/Documents/RT/includes/functions.h	/^int			ui_loop(t_env *env);$/;"	p	signature:(t_env *env)

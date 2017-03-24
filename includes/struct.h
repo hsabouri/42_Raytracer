@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/16 17:34:40 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 17:24:40 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,11 @@ typedef struct		s_lgt
 	t_vec4			hitpnt;
 }					t_lgt;
 
-/* Noise structure */
-
-typedef struct		s_noise
-{
-	t_ntype			type;
-}					t_noise;
-
 /* Image Structure */
 
 typedef struct		s_img
 {
+	t_ttype			type;
 	void			*img;
 	char			*addr;
 	int				bpp;
@@ -83,7 +77,6 @@ typedef struct		s_mat
 {
 	t_color			rgb;
 	t_vec4			coef;
-	t_noise			noise;
 	int				reflect;
 	double			refract;
 	t_img			texture;

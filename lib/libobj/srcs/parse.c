@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/16 16:53:14 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 17:24:09 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ t_env		create_obj(t_type type, char *name, t_env env)
 		env.objs[env.n_obj].mat.coef = new_vector(1, 1, 1);
 		env.objs[env.n_obj].pos = new_vector(0, 0, 0);
 		env.objs[env.n_obj].mat.reflect = 0;
-		env.objs[env.n_obj].mat.noise.type = NO;
 		env.objs[env.n_obj].mat.refract = EPSILON;
 		env.objs[env.n_obj].rot = new_quat_null();
 		env.objs[env.n_obj].inv = get_inverse(env.objs[env.n_obj].rot);
 		env.objs[env.n_obj].mat.texture.img = NULL;
+		env.objs[env.n_obj].mat.texture.type = NOTEX;
 	}
 	env.n_obj += 1;
 	return (env);

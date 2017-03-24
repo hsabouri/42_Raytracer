@@ -25,7 +25,7 @@ int button_press(int button, int x, int y, t_env *env)
 	env->ui->mouse_x = x;
 	env->ui->mouse_y = y;
 	env->ui->click = 1;
-	env->ui->re raw = 2;
+	env->ui->redraw = 2;
 	return (0);
 }
 
