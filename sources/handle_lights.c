@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/20 16:42:06 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/03/24 15:53:40 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,6 @@ static t_color			add_colors(t_color c1, t_color c2)
 	return (res);
 }
 
-/* define D ? and the vector N */
-
-/*static t_ray			reflects(t_color pix, t_ray ray, t_lgt lgt)
-{
-	t_ray res;
-	t_ray tmp;
-	double d;
-
-	tmp = vector_scale(D, -1);
-	res = normalize_vector(??);
-	d = scalar_product(res, tmp);
-	d *= 2;
-	res = vector_scale(res, d);
-	res = vector_add(res, D);
-	reflects();
-}*/
-
 static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb)
 {
 	t_vec4				coef;
@@ -51,10 +34,6 @@ static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb)
 	coef = vector_cap(coef, 0, 1.0);
 	res = apply_coef(res, coef);
 	res = add_colors(res, rgb);
-	//if (obj.mat.reflect == 1)
-	//{
-		//reflects(res, ray, lgt);
-//	}
 	return (res);
 }
 
