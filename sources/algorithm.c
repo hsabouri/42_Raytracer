@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/24 15:53:32 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/03/26 15:42:21 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 
 	res = (t_color) {0, 0, 0, 0};
 	env.last_id = check_intersections(objs, ray);
-	//env.ui->obj_map = pixel_put(env.ui->obj_map, ray->x, ray->y, *(t_color *)&env.last_id);
+	env.ui->obj_map = pixel_put(env.ui->obj_map, ray->x, ray->y, *(t_color *)&env.last_id);
 	if (objs[env.last_id].type == BACKSLASH)
 		return (res);
 	tmp = objs[env.last_id].mat.rgb;
