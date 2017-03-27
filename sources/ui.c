@@ -63,6 +63,5 @@ int				ui(t_env *env)
 		env->ui->img = ui_draw(env->ui->img, env->ui->compnts[i]);
 		i++;
 	}
-	mlx_put_image_to_window(env->mlx, env->win, env->ui->img.img, 0, 0);
 	return (0);
 }

@@ -17,6 +17,7 @@
 /* Quit the program */
 
 void		error(int code, char *str);
+int			exit_clean(t_env *env);
 
 /* Algorithm Functions */
 
@@ -30,6 +31,8 @@ t_vec4		vector_cap(t_vec4 vec, double min, double max);
 
 /* Camera functions */
 
+t_cam		change_mod(t_cam cam);
+t_cam		cam_handle(t_cam cam, t_env *env);
 t_cam		move_camera(t_cam cam, t_dir dir);
 t_cam		rotate_cam(t_cam cam, t_quat rot);
 t_cam		translate_cam(t_cam cam, t_vec4 tran);
@@ -84,17 +87,17 @@ void		init_texture(t_env *env);
 t_obj		create_mesh(t_color color, char *name);
 t_obj		add_polygon(t_obj obj, t_obj poly);
 
-/* Mlx hook functions */
+/* Mlx functions */
 
 t_img		pixel_put(t_img img, unsigned int x, unsigned int y, t_color color);
+t_img		line(t_img image, t_pix start, t_pix end, t_color color);
 t_img		init_img(t_img img, t_color color);
-int			key_hook(int keycode, t_env *env);
 int			mouse(int x, int y, t_env *env);
 int			keypress(int keycode, t_env *env);
 int			keyrelease(int keycode, t_env *env);
 int			button_press(int button, int x, int y, t_env *env);
 int			button_release(int button, int x, int y, t_env *env);
-int			exit_clean(t_env *env);
+t_env		*key_actions(t_env *env);
 
 /* Texture functions */
 
@@ -125,6 +128,7 @@ t_img 		ui_draw(t_img img, t_compnt compnt);
 /* Multi Thread and loops */
 
 void		render_coroutine(t_env *env);
+void		cancel_coroutine(t_env *env);
 void 		*draw(void *arg);
 
 #endif

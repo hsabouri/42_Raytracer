@@ -120,6 +120,12 @@ int				raytrace(t_cam camera, t_obj *objs, t_env env)
 			if (env.filter)
 				col = filters(col, env);
 			env.img = pixel_put(env.img, x, y, col);
+			if (env.redraw == 1)
+			{
+				x = 0;
+				y = 0;
+				env.redraw = 0;
+			}
 			y++;
 		}
 		x++;

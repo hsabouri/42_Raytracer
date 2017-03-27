@@ -12,7 +12,17 @@
 
 #include <rt.h>
 
-void			render_coroutine(t_env *env)
+void	cancel_coroutine(t_env *env)
+{
+	if (env->drawing && env->frame % 10 == 0)
+	{
+		pthread_cancel(env->render_thread);
+		env->drawing = 0;
+		env->redraw = 1;
+	}
+}
+
+void	render_coroutine(t_env *env)
 {
 	if (env->drawing == 1)
 		pthread_cancel(env->render_thread);

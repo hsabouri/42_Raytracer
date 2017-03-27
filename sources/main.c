@@ -17,8 +17,8 @@ void			*draw(void *arg)
 	t_env *env;
 
 	env = (t_env *)arg;
-	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	env->drawing = 1;
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	if (env->pr_mesh)
 		display_objs(env->objs);
 	if (env->supersampling)
@@ -38,7 +38,9 @@ static int		expose(t_env *env)
 
 static int 		draw_loop(t_env *env)
 {
-	if (env->redraw > 0)
+	env->frame += 1;
+	env = key_actions(env);
+	if (env->redraw > 0 && env->drawing == 0)
 	{
 		render_coroutine(env);
 		env->redraw -= 1;
@@ -66,9 +68,8 @@ int				main(int ac, char **av)
 		init_texture(&env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_loop_hook(env.mlx, draw_loop, &env);
-	mlx_key_hook(env.win, key_hook, &env);
-	mlx_hook(env.win, KEYPRESSEVENT, KEYPRESSMASK, &keypress, &env.ui);
-	mlx_hook(env.win, KEYRELEASEEVENT, KEYRELEASEMASK, &keyrelease, &env.ui);
+	mlx_hook(env.win, KEYPRESSEVENT, KEYPRESSMASK, &keypress, &env);
+	mlx_hook(env.win, KEYRELEASEEVENT, KEYRELEASEMASK, &keyrelease, &env);
 	mlx_hook(env.win, DESTROYNOTIFY, STRUCTURENOTIFYMASK, &exit_clean, &env);
 	mlx_hook(env.win, MOTIONNOTIFY, POINTERMOTIONMASK, &mouse, &env);
 	mlx_hook(env.win, BUTTONPRESS, BUTTONPRESSMASK, &button_press, &env);

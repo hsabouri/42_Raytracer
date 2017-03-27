@@ -52,7 +52,7 @@ t_cam		camera_control(t_cam cam, t_dir dir)
 		axis = new_vector(-1, 0, 0);
 	else
 		axis = new_vector(1, 0, 0);
-	rot = new_quat(PI / 18, axis);
+	rot = new_quat(PI / 180, axis);
 	cam = rotate_cam(cam, rot);
 	return (cam);
 }
@@ -62,17 +62,17 @@ t_cam		move_camera(t_cam cam, t_dir dir)
 	t_vec4	tran;
 
 	if (dir == FRONT)
-		tran = new_vector(0, 0, 1);
+		tran = new_vector(0, 0, 0.1);
 	else if (dir == BACK)
-		tran = new_vector(0, 0, -1);
+		tran = new_vector(0, 0, -0.1);
 	else if (dir == RIGHT)
-		tran = new_vector(1, 0, 0);
+		tran = new_vector(0.1, 0, 0);
 	else if (dir == LEFT)
-		tran = new_vector(-1, 0, 0);
+		tran = new_vector(-0.1, 0, 0);
 	else if (dir == DOWN)
-		tran = new_vector(0, -1, 0);
+		tran = new_vector(0, -0.1, 0);
 	else
-		tran = new_vector(0, 1, 0);
+		tran = new_vector(0, 0.1, 0);
 	cam = translate_cam(cam, tran);
 	return (cam);
 }

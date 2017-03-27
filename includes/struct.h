@@ -132,9 +132,27 @@ typedef struct		s_env
 	int				pr_mesh;
 	int				drawing;
 	int				redraw;
+	int				frame;
 }					t_env;
 
 /* UI structures */
+
+typedef struct		s_pix
+{
+	int		x;
+	int		y;
+}					t_pix;
+
+typedef struct		s_line
+{
+	int dx;
+	int dy;
+	int xinc;
+	int yinc;
+	int cumul;
+	int x;
+	int y;
+}					t_line;
 
 typedef struct		s_compnt
 {
@@ -164,7 +182,7 @@ typedef struct		s_ui
 	t_img			img;
 	t_img			obj_map;
 	int				redraw;
-	int				keystatus[127];
+	int				*keystatus;
 }					t_ui;
 
 #endif

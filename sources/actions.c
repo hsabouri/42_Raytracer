@@ -28,6 +28,13 @@ t_compnt		hover_test(struct s_compnt compnt, t_env env)
 
 t_compnt		idle_test(struct s_compnt compnt, t_env env)
 {
+	//t_vec4 first;
+	//t_quat rot;
+
 	compnt.status = IDLE;
+	//first = (t_vec4) {1, 0, 0, 1};
+	//rot = env.cam.rot;
+	//first = quat_rot(rot, first);
+	//print_vector(first);
 	return (compnt);
 }
