@@ -6,12 +6,13 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 17:36:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/20 13:19:44 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/26 15:46:06 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 # define inter(a, b, x) (a * (1 - (1 - cos(x * PI)) * 0.5) + b * x)
+# define NOISE_BUF EPSILON
 
 static double			noise(int x, int y)
 {
@@ -56,7 +57,7 @@ static double			noise_handle(t_vec4 pos)
 	return (inter(res[0], res[1], frval[1]));
 }
 
-static double			perlin_handle(t_vec4 pos, int oct)
+static double			perlin_handle(t_vec4 pos, int oct, double buf)
 {
 	int					i;
 	double				coef;
@@ -66,14 +67,14 @@ static double			perlin_handle(t_vec4 pos, int oct)
 
 	coef = 0.0f;
 	freq = 1.0f;
-	amp = 2.0;
+	amp = buf;
 	lac = 2.0;
 	i = 0;
 	while (i < oct)
 	{
 		coef += noise_handle(vector_scale(pos, freq)) * amp;
 		freq *= lac;
-		amp *= 2.0;
+		amp *= buf;
 		i++;
 	}
 	return (coef);
@@ -81,11 +82,13 @@ static double			perlin_handle(t_vec4 pos, int oct)
 
 t_color					apply_perlin(t_obj obj, t_vec4 pos)
 {
+	static double		buf = 2.0;
 	double				coef;
 	t_color				res;
 
 	res = obj.mat.rgb;
-	coef = perlin_handle(pos, 4);
+	coef = perlin_handle(pos, 4, buf);
+	buf += NOISE_BUF;
 	res = color_scale(res, coef);
 	return (res);
 }
