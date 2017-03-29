@@ -22,9 +22,9 @@ void			*draw(void *arg)
 	if (env->pr_mesh)
 		display_objs(env->objs);
 	if (env->supersampling)
-		test_ss_raytrace(env->cam, env->objs, *env);
+		test_ss_raytrace(env->cam, env->objs, env);
 	else
-		raytrace(env->cam, env->objs, *env);
+		raytrace(env->cam, env->objs, env);
 	env->drawing = 0;
 	return (NULL);
 }

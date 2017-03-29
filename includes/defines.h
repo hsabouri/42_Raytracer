@@ -16,8 +16,8 @@
 # define PI 3.141592653
 # define EPSILON 0.000001
 # define DEPTH_MAX 3
-# define HEIGHT 600
-# define LENGTH 600
+# define HEIGHT 800
+# define LENGTH 800
 
 /* Error codes */
 

@@ -6,11 +6,11 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 16:46:50 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/19 15:02:41 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/19 15:02:41 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt.h"
+#include "rt.h"
 
 t_img			create_xpm_img(char *path, t_env env)
 {

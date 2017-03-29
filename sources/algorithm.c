@@ -68,7 +68,7 @@ int				check_intersections(t_obj *objs, t_ray *ray)
 	return (i_final);
 }
 
-int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env env)
+int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env *env)
 {
 	unsigned int	x;
 	unsigned int	y;
@@ -82,53 +82,90 @@ int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env env)
 		y = 0;
 		while (y < HEIGHT)
 		{
-				ray = init_ray(&camera, x - 0.45, y - 0.45);
-				col[0] = pipeline(objs, &ray, env);
-				ray = init_ray(&camera, x + 0.45, y - 0.45);
-				col[1] = pipeline(objs, &ray, env);
-				ray = init_ray(&camera, x - 0.45, y + 0.45);
-				col[2] = pipeline(objs, &ray, env);
-				ray = init_ray(&camera, x + 0.45, y + 0.45);
-				col[3] = pipeline(objs, &ray, env);
-				color.r = (col[0].r + col[1].r + col[2].r + col[3].r) / 4;
-				color.g = (col[0].g + col[1].g + col[2].g + col[3].g) / 4;
-				color.b = (col[0].b + col[1].b + col[2].b + col[3].b) / 4;
-				color.a = (col[0].a + col[1].a + col[2].a + col[3].a) / 4;
-				env.img = pixel_put(env.img, x, y, color);
-				y++;
+			ray = init_ray(&camera, x - 0.45, y - 0.45);
+			col[0] = pipeline(objs, &ray, *env);
+			ray = init_ray(&camera, x + 0.45, y - 0.45);
+			col[1] = pipeline(objs, &ray, *env);
+			ray = init_ray(&camera, x - 0.45, y + 0.45);
+			col[2] = pipeline(objs, &ray, *env);
+			ray = init_ray(&camera, x + 0.45, y + 0.45);
+			col[3] = pipeline(objs, &ray, *env);
+			color.r = (col[0].r + col[1].r + col[2].r + col[3].r) / 4;
+			color.g = (col[0].g + col[1].g + col[2].g + col[3].g) / 4;
+			color.b = (col[0].b + col[1].b + col[2].b + col[3].b) / 4;
+			color.a = (col[0].a + col[1].a + col[2].a + col[3].a) / 4;
+			env->img = pixel_put(env->img, x, y, color);
+			y++;
+			if (env->redraw == 1)
+				return (0);
 		}
 		x++;
 	}
 	return (0);
 }
 
-int				raytrace(t_cam camera, t_obj *objs, t_env env)
+/** int				raytrace(t_cam camera, t_obj *objs, t_env *env) */
+/** { */
+/**     unsigned int	i; */
+/**     unsigned int	x; */
+/**     unsigned int	y; */
+/**     t_ray			ray; */
+/**     t_color			col; */
+/**  */
+/**     i = 0; */
+/**     while (i < 16) */
+/**     { */
+/**         x = i; */
+/**         while (x < LENGTH) */
+/**         { */
+/**             y = i; */
+/**             while (y < HEIGHT) */
+/**             { */
+/**                 ray = init_ray(&camera, x, y); */
+/**                 col = pipeline(objs, &ray, *env); */
+/**                 if (env->filter) */
+/**                     col = filters(col, *env); */
+/**                 env->img = pixel_put(env->img, x, y, col); */
+/**                 y++; */
+/**                 if (env->redraw == 1) */
+/**                     return (0); */
+/**             } */
+/**             x += 4; */
+/**         } */
+/**         i++; */
+/**     } */
+/**     return (0); */
+/** } */
+
+int				raytrace(t_cam camera, t_obj *objs, t_env *env)
 {
+	unsigned int	i;
 	unsigned int	x;
 	unsigned int	y;
 	t_ray			ray;
 	t_color			col;
 
-	x = 0;
-	while (x < LENGTH)
+	i = 0;
+	while (i < 16)
 	{
-		y = 0;
+		y = i / 4;
 		while (y < HEIGHT)
 		{
-			ray = init_ray(&camera, x, y);
-			col = pipeline(objs, &ray, env);
-			if (env.filter)
-				col = filters(col, env);
-			env.img = pixel_put(env.img, x, y, col);
-			if (env.redraw == 1)
+			x = i % 4;
+			while (x < LENGTH)
 			{
-				x = 0;
-				y = 0;
-				env.redraw = 0;
+				ray = init_ray(&camera, x, y);
+				col = pipeline(objs, &ray, *env);
+				if (env->filter)
+					col = filters(col, *env);
+				env->img = pixel_put(env->img, x, y, col);
+				x += 4;
+				if (env->redraw == 1)
+					return (0);
 			}
-			y++;
+			y += 4;
 		}
-		x++;
+		i++;
 	}
 	return (0);
 }

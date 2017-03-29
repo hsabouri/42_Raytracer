@@ -21,8 +21,8 @@ int			exit_clean(t_env *env);
 
 /* Algorithm Functions */
 
-int			raytrace(t_cam camera, t_obj *objs, t_env env);
-int			test_ss_raytrace(t_cam camera, t_obj *objs, t_env env);
+int			raytrace(t_cam camera, t_obj *objs, t_env *env);
+int			test_ss_raytrace(t_cam camera, t_obj *objs, t_env *env);
 int			check_intersections(t_obj *objs, t_ray *ray);
 
 /* Vector Functions	*/
@@ -114,6 +114,8 @@ t_color		color_scale(t_color col, double val);
 void		c_log(char *str);
 void		c_error(char *str, int code);
 int			c_open_file(char *path);
+t_color		int_to_color(int color);
+int			color_to_int(t_color color);
 
 /* Ui functions */
 

@@ -57,9 +57,9 @@ LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -lpthread -D_REENTRANT
 
 CC = gcc
 CFLAGS = -Wall -Wextra
-CFLAGS += -g -fsanitize=address
+# CFLAGS += -g -fsanitize=address
 # CFLAGS += -Werror
-#CFLAGS += -march=native -O3
+# CFLAGS += -march=native -O3
 
 # GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
 # GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
