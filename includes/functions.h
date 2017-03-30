@@ -105,6 +105,7 @@ t_color		apply_perlin(t_obj obj, t_vec4 pos);
 t_color		get_pixel_procedure(t_obj obj, t_vec4 pos);
 t_color		get_pixel_color(t_obj obj, t_ray ray);
 t_img		create_xpm_img(char *path, t_env env);
+t_img		merge_img(t_img bg, t_img fg, int x, int y);
 
 /* Tools functions */
 

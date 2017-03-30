@@ -36,7 +36,7 @@ t_color bg_hover, t_compnt compnt)
 	return (compnt);
 }
 
-static t_compnt	ui_calls(t_compnt compnt, t_ui ui, t_env env)
+static t_compnt	ui_calls(t_compnt compnt, t_ui ui, t_env *env)
 {
 	if (ui.mouse_x >= compnt.x && ui.mouse_y >= compnt.y &&\
 		ui.mouse_x < compnt.x + compnt.w &&\
@@ -59,7 +59,7 @@ int				ui(t_env *env)
 	i = 0;
 	while (i < env->ui->n_compnts)
 	{
-		env->ui->compnts[i] = ui_calls(env->ui->compnts[i], *env->ui, *env);
+		env->ui->compnts[i] = ui_calls(env->ui->compnts[i], *env->ui, env);
 		env->ui->img = ui_draw(env->ui->img, env->ui->compnts[i]);
 		i++;
 	}

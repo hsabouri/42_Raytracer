@@ -22,7 +22,6 @@ NAME = RT
 
 H_DIR = includes
 C_DIR = ./sources
-C_DIR += ./opencl
 O_DIR = ./objects
 
 LINKS = -I$(H_DIR)
@@ -59,7 +58,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra
 # CFLAGS += -g -fsanitize=address
 # CFLAGS += -Werror
-# CFLAGS += -march=native -O3
+CFLAGS += -march=native -O3
 
 # GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
 # GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`

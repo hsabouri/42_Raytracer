@@ -14,8 +14,8 @@
 # define COMPONENTS_H
 # include <rt.h>
 
-t_compnt		action_test(struct s_compnt compnt, t_env env);
-t_compnt		hover_test(struct s_compnt compnt, t_env env);
-t_compnt		idle_test(struct s_compnt compnt, t_env env);
+t_compnt		action_test(struct s_compnt compnt, t_env *env);
+t_compnt		hover_test(struct s_compnt compnt, t_env *env);
+t_compnt		idle_test(struct s_compnt compnt, t_env *env);
 
 #endif

@@ -165,11 +165,10 @@ typedef struct		s_compnt
 	t_color			bg;
 	t_color			bg_hv;
 	t_color			color;
-	unsigned int	font_size;
-	int				clickable;
-	struct s_compnt	(*action)(struct s_compnt, t_env);
-	struct s_compnt	(*hover)(struct s_compnt, t_env);
-	struct s_compnt	(*idle)(struct s_compnt, t_env);
+	t_img			img;
+	struct s_compnt	(*action)(struct s_compnt, t_env *);
+	struct s_compnt	(*hover)(struct s_compnt, t_env *);
+	struct s_compnt	(*idle)(struct s_compnt, t_env *);
 }					t_compnt;
 
 typedef struct		s_ui

@@ -12,29 +12,27 @@
 
 #include <rt.h>
 
-t_compnt		action_test(struct s_compnt compnt, t_env env)
+t_compnt		action_test(struct s_compnt compnt, t_env *env)
 {
-	env.ui->redraw = 1;
+	static int status = 0;
+
 	compnt.status = ACTION;
+	if (status == 0)
+	{
+
+		status = 1;
+	}
 	return (compnt);
 }
 
-t_compnt		hover_test(struct s_compnt compnt, t_env env)
+t_compnt		hover_test(struct s_compnt compnt, t_env *env)
 {
-	env.ui->redraw = 1;
 	compnt.status = HOVER;
 	return (compnt);
 }
 
-t_compnt		idle_test(struct s_compnt compnt, t_env env)
+t_compnt		idle_test(struct s_compnt compnt, t_env *env)
 {
-	//t_vec4 first;
-	//t_quat rot;
-
 	compnt.status = IDLE;
-	//first = (t_vec4) {1, 0, 0, 1};
-	//rot = env.cam.rot;
-	//first = quat_rot(rot, first);
-	//print_vector(first);
 	return (compnt);
 }
