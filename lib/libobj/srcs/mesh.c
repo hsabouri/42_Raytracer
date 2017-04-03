@@ -6,11 +6,39 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 18:11:00 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/10 14:36:03 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/03 20:59:38 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <obj.h>
+
+t_obj				optimesh2000(t_obj obj, t_env env)
+{
+	t_vec4			average;
+	const t_vec4	*vrts = env.vrts;
+	double			len;
+	double			max;
+	unsigned int	i;
+
+	if (obj.type == MESH)
+	{
+		max = EPSILON;
+		average = new_vector(EPSILON, EPSILON, EPSILON);
+		i = 0;
+		while (i < env.n_vrt)
+		{
+			average = vector_add(average, vrts[i]);
+			if ((len = get_vector_len(vrts[i])) > max)
+				max = len;
+			i++;
+		}
+		average = vector_scale(average, env.n_vrt);
+		obj.radius = max;
+		obj.pos = average;
+	}
+	display_objs(&obj);
+	return (obj);
+}
 
 static t_uint3		parse_polygon(char *line, t_env env)
 {

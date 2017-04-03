@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/10 16:42:11 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/03 21:00:02 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void				display_objs(t_obj *objs);
 
 t_env				create_lgt(t_ltype type, char *name, t_env env);
 t_env				create_obj(t_type type, char *name, t_env env);
+t_obj				optimesh2000(t_obj obj, t_env env);
 
 t_env				add_poly_to_last(char *line, t_env env);
 t_env				create_vrt(char *line, t_env env);
