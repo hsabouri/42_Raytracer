@@ -6,13 +6,12 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 17:36:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/26 15:46:06 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/03/30 14:51:31 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 # define inter(a, b, x) (a * (1 - (1 - cos(x * PI)) * 0.5) + b * x)
-# define NOISE_BUF EPSILON
 
 static double			noise(int x, int y)
 {
@@ -88,7 +87,6 @@ t_color					apply_perlin(t_obj obj, t_vec4 pos)
 
 	res = obj.mat.rgb;
 	coef = perlin_handle(pos, 4, buf);
-	buf += NOISE_BUF;
 	res = color_scale(res, coef);
 	return (res);
 }
