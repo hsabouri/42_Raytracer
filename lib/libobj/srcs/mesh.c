@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 18:11:00 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/03 20:59:38 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/03 21:25:22 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_obj				optimesh2000(t_obj obj, t_env env)
 		obj.radius = max;
 		obj.pos = average;
 	}
-	display_objs(&obj);
+	display_objs(&obj, 1);
 	return (obj);
 }
 

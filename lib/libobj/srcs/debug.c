@@ -6,18 +6,18 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 11:00:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/21 09:37:51 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/03 21:25:13 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <obj.h>
 
-void	display_objs(t_obj *objs)
+void	display_objs(t_obj *objs, unsigned int n_obj)
 {
 	unsigned int i;
 
 	i = 0;
-	while (objs[i].type != BACKSLASH)
+	while (i < n_obj - 1)
 	{
 		printf("Object number : %d\n	Object name : %s\n", i, objs[i].name);
 		printf("	Object color : %d %d %d\n",

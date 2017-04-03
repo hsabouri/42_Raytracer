@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/03 21:02:52 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/03 22:47:43 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ t_env		parse(int fd, t_env env)
 		env = objs(line2, env);
 		env = lgts(line2, env);
 		env = meshs(line2, env);
-		env.objs[env.n_obj - 1] = optimesh2000(env.objs[env.n_obj - 1], env);
+		if (env.n_obj > 0 && env.objs[env.n_obj - 1].type == MESH)
+			env.objs[env.n_obj - 1] = optimesh2000(env.objs[env.n_obj - 1], env);
 		free_lines(line, line2);
 	}
 	free(line);
