@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/03 20:56:45 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/03 21:02:52 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int			static_keeper(int new, int to_change)
 t_env		create_obj(t_type type, char *name, t_env env)
 {
 	static_keeper(1, 1);
-	if (type == MESH && env.n_obj < 200)
+	if (type == MESH && env.n_obj < 1000)
 	{
 		env.objs[env.n_obj] = create_mesh((t_color) {255, 255, 255, 0}, name);
 		env.n_vrt = 0;
 	}
-	else if (env.n_obj < 200)
+	else if (env.n_obj < 1000)
 	{
 		env.objs[env.n_obj].type = type;
 		env.objs[env.n_obj].name = ft_strdup(name);
@@ -73,9 +73,9 @@ t_env		parse(int fd, t_env env)
 
 	line = NULL;
 	ver = NULL;
-	env.objs = (t_obj *)malloc(sizeof(t_obj) * 200);
-	env.lgt = (t_lgt *)malloc(sizeof(t_lgt) * 200);
-	env.vrts = (t_vec4 *)malloc(sizeof(t_vec4) * 1000);
+	env.objs = (t_obj *)malloc(sizeof(t_obj) * 1000);
+	env.lgt = (t_lgt *)malloc(sizeof(t_lgt) * 1000);
+	env.vrts = (t_vec4 *)malloc(sizeof(t_vec4) * 4000);
 	env.n_lgt = 0;
 	env.n_obj = 0;
 	env.n_vrt = 0;

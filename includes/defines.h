@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/26 15:36:34 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/03 13:56:39 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define PI 3.141592653
 # define EPSILON 0.000001
 # define DEPTH_MAX 3
-# define HEIGHT 500
-# define LENGTH 500
+# define HEIGHT 1000
+# define LENGTH 1000
 
 /* Error codes */
 
