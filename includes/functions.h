@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/24 15:22:33 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/03 15:19:44 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr);
 /* Ray functions */
 
 t_ray		rotate_ray(t_ray ray, t_quat rot);
-t_ray		reflect_ray(t_obj obj, t_ray ray, t_env env);
+t_ray		reflect_ray(t_obj obj, t_ray ray);
 t_ray		refract_ray(t_obj obj, t_ray ray, double r);
 
 /* Intersection functions */
