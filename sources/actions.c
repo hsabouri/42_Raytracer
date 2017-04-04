@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/02 11:51:47 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/04 12:07:39 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_compnt		action_test(struct s_compnt compnt, t_env *env)
 {
 	compnt.status = ACTION;
-	
 	return (compnt);
 }
 

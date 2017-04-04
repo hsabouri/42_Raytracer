@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/03 19:14:53 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/04 12:06:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ typedef struct		s_compnt
 {
 	void			*value;
 	t_status		status;
+	int				draw_img;
 	int				x;
 	int				y;
 	int				w;

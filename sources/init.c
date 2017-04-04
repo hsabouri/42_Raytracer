@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/20 11:37:16 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/04 12:21:16 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,15 @@ t_ui			*init_ui(t_env env)
 	ui->compnts = (t_compnt *)ft_malloc(sizeof(t_compnt) * 1, CLEAN);
 	ui->compnts[0].value = ft_strdup("Camera Mode");
 	ui->compnts[0] = set_compnt_pos(30, 30, ui->compnts[0]);
-	ui->compnts[0] = set_compnt_size(0, 0, ui->compnts[0]);
+	ui->compnts[0] = set_compnt_size(30, 30, ui->compnts[0]);
 	ui->compnts[0] = set_compnt_cols((t_color){50, 50, 50, 0},\
 		(t_color){255, 255, 255, 0}, (t_color){70, 70, 70, 0}, ui->compnts[0]);
 	ui->compnts[0].idle = &idle_test;
 	ui->compnts[0].hover = &hover_test;
 	ui->compnts[0].action = &action_test;
-	ui->compnts[0].img = create_xpm_img("textures/curves.xpm", env);
+	ui->compnts[0].img = create_xpm_img("assets/axes_xz.xpm", env);
+	//mlx_put_image_to_window(env.mlx, env.win, ui->compnts[0].img.img);
+	ui->compnts[0].draw_img = 1;
 	ui->redraw = 1;
 	return (ui);
 }
