@@ -1,46 +1,51 @@
-# Test file for RT
+# Simple sphere for test purposes
 
-# Bottom
-# 1 2
-# 3 4
-# Top
-# 5 6
-# 7 8
+sphere sphere1
+radius 1.0
+p 0.0 0.0 0.0
+c 255 0 0
+reflect 1
 
-o mesh1
-	v -1.0 -1.0 1.0
-	v 1.0 -1.0 1.0
-	v -1.0 -1.0 -1.0
-	v 1.0 -1.0 -1.0
-	v -1.0 1.0 1.0
-	v 1.0 1.0 1.0
-	v -1.0 1.0 -1.0
-	v 1.0 1.0 -1.0
-	f 1 2 4
-	f 1 3 4
-	f 5 6 8
-	f 5 7 8
-	f 5 6 2
-	f 1 2 5
-	f 1 3 5
-	f 5 7 3
-	f 2 4 6
-	f 6 8 4
-	f 3 4 7
-	f 7 8 4
-	c 255 255 255
+plane plan1
+n 0.0 1.0 0.0
+p 0.0 -2.0 0.0
+c 255 0 255
+reflect 1
 
-sphere skybox
-	radius 100
-	p 0.0 0.0 0.0
-	reflect 1
-	c 255 255 255
+plane plan2
+n 0.0 -1.0 0.0
+p 0.0 2.0 0.0
+c 255 255 0
+reflect 1
+
+plane plan3
+n 0.0 0.0 1.0
+p 0.0 0.0 -10.0
+c 0 255 0
+reflect 1
+
+plane plan4
+n 0.0 0.0 -1.0
+p 0.0 0.0 2.0
+c 0 255 255
+reflect 1
+
+plane plan5
+n -1.0 0.0 0.0
+p 2.0 0.0 0.0
+c 0 0 255
+reflect 1
+
+plane plan1
+n 1.0 0.0 0.0
+p -2.0 0.0 0.0
+c 78 176 255
+reflect 1
 
 omni light1
-	p -3.0000000 3.0000000 -5.0000000
-	c 255 000 000
+p -2.0 0.0 -5.0
+c 255 255 255
 
-spot light2
-	p 3.0000000 3.0000000 -5.0000000
-	c 000 255 000
-	n -1.0000000 -1.000000 2.00000000
+omni light2
+p 2.0 0.0 -5.0
+c 255 255 255
