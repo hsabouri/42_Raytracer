@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/03 15:19:44 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/04 16:11:18 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ t_cam		camera_control(t_cam cam, t_dir dir);
 
 /* Light functions */
 
-t_color		lights(t_obj obj, t_ray ray, t_env env);
+t_color		lights(t_obj obj, t_ray ray, t_env env, int depth);
 t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt);
 t_color		apply_coef(t_color col, t_vec4 coef);
+t_color		sum_lights(t_obj obj, t_ray ray, t_env env);
+t_color		handle_reflect(t_ray ray, t_env env, int depth);
 t_color		shadow_handler(t_obj *objs, t_ray ray, t_env env, t_color color);
 int			shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id);
 double      specular(t_obj obj, t_ray ray, t_lgt lgt);
@@ -81,6 +83,7 @@ t_ray		init_ray(t_cam *cam, int x, int y);
 t_env		init_objs_lgts(int ac, char **av, t_env env);
 t_env		init_env(int ac, char **av);
 void		init_texture(t_env *env);
+void		init_reflect(t_env *env);
 
 /* Mesh functions */
 
