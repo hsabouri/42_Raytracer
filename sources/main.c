@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/03 22:03:00 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/04 18:50:11 by rbejot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+>>>>>>> b34e610078efdd3dea573dfcb49e33f754ba508a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +66,10 @@ int				main(int ac, char **av)
 	t_vec4	vec;
 
 	env = init_env(ac, av);
-	vec = new_vector(0, 0, -2);
+	vec = new_vector(0, 0, -8);
 	env.cam = init_cam(vec, new_quat_null(), 66);
-	if (!ft_strcmp(av[1], "scenes/texture_test.obj"))
-		init_texture(&env);
+	if (!ft_strcmp(av[1], "scenes/reflect_test.obj"))
+		init_reflect(&env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_loop_hook(env.mlx, draw_loop, &env);
 	mlx_hook(env.win, KEYPRESSEVENT, KEYPRESSMASK, &keypress, &env);

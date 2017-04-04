@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/24 15:53:40 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/04 16:03:52 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,34 @@ static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb)
 	return (res);
 }
 
-t_color					lights(t_obj obj, t_ray ray, t_env env)
+t_color					sum_lights(t_obj obj, t_ray ray, t_env env)
 {
-	const unsigned int	n_lgt = env.n_lgt - 1;
-	unsigned int		i;
 	t_color				res;
+	unsigned int		i;
+	const unsigned int	n = env.n_lgt - 1;
 
-	res = (t_color) {0, 0, 0, 0};
 	i = 0;
-	while (i < n_lgt)
+	res = (t_color) {0, 0, 0, 0};
+	while (i < n)
 	{
 		if (!env.shadow || shadows(env.objs, ray, env.lgt[i], env.last_id))
 			res = add_light(obj, ray, env.lgt[i], res);
 		i++;
 	}
+	return (res);
+}
+
+t_color					lights(t_obj obj, t_ray ray, t_env env, int depth)
+{
+	t_color				res;
+	t_ray				sec;
+
+	if (obj.mat.reflect && depth < DEPTH_MAX)
+	{
+		sec = reflect_ray(obj, ray);
+		res = handle_reflect(sec, env, depth);
+	}
+	else
+		res = sum_lights(obj, ray, env);
 	return (res);
 }

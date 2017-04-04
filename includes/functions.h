@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 12:50:24 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/04 18:51:25 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ t_cam		camera_control(t_cam cam, t_dir dir);
 
 /* Light functions */
 
-t_color		lights(t_obj obj, t_ray ray, t_env env);
+t_color		lights(t_obj obj, t_ray ray, t_env env, int depth);
 t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt);
 t_color		apply_coef(t_color col, t_vec4 coef);
+t_color		sum_lights(t_obj obj, t_ray ray, t_env env);
+t_color		handle_reflect(t_ray ray, t_env env, int depth);
 t_color		shadow_handler(t_obj *objs, t_ray ray, t_env env, t_color color);
 int			shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id);
 double      specular(t_obj obj, t_ray ray, t_lgt lgt);

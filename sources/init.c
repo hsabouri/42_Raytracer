@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 12:21:16 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/04 18:51:47 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,6 @@ t_ui			*init_ui(t_env env)
 	ui->compnts[0].draw_img = 1;
 	ui->redraw = 1;
 	return (ui);
-}
-
-void			init_texture(t_env *env)
-{
-	env->objs[0].mat.texture = create_xpm_img("textures/wall.xpm", *env);
-	env->objs[1].mat.texture.type = NOISE;
-	env->objs[2].mat.texture = create_xpm_img("textures/earth.xpm", *env);
 }
 
 t_env			init_objs_lgts(int ac, char **av, t_env env)

@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/03 19:55:02 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/04 17:10:19 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_ray		reflect_ray(t_obj obj, t_ray ray)
 	res.org = vector_add(ray.org, tmp);
 	norm = get_normal(ray, obj, res.org);
 	coef = scalar_product(norm, ray.dir);
-	coef *= 2.0f;
+	coef *= 2.0;
 	tmp = vector_scale(norm, coef);
 	res.dir = vector_sub(ray.dir, tmp);
 	return (res);

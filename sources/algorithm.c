@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/26 15:42:21 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/04 17:14:25 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 	tmp = objs[env.last_id].mat.rgb;
 	if (objs[env.last_id].mat.texture.type != NOTEX)
 		objs[env.last_id].mat.rgb = get_pixel_color(objs[env.last_id], *ray);
-	res = lights(objs[env.last_id], *ray, env);
+	res = lights(objs[env.last_id], *ray, env, 0);
 	objs[env.last_id].mat.rgb = tmp;
 	return (res);
 }

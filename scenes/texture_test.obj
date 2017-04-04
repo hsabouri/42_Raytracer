@@ -4,16 +4,19 @@ sphere sphere1
 radius 10.0
 p 5.0 0.0 30.0
 c 255 0 0
+type NOISE
 
 sphere sphere2
 radius 6.5
 p -8.0 -5.0 18.0
 c 0 0 255
+texture textures/earth.xpm
 
 sphere sphere3
 radius 10.0
 p -10.0 8.0 25.0
 c 0 255 0
+texture textures/wall.xpm
 
 omni light1
 p -12.0 3.0 -5.0
