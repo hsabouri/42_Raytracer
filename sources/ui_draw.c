@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/16 17:34:40 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/04 12:17:51 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ t_img 	ui_draw(t_img img, t_compnt compnt)
 		}
 		y++;
 	}
+	if (compnt.draw_img == 1)
+		img = merge_img(img, compnt.img, compnt.x, compnt.y);
 	return (img);
 }

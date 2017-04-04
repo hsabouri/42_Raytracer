@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/16 16:46:28 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/04 12:16:36 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	mouse(int x, int y, t_env *env)
 
 int button_press(int button, int x, int y, t_env *env)
 {
-	printf("%d\n", button);
 	env->ui->mouse_x = x;
 	env->ui->mouse_y = y;
 	env->ui->click = 1;
@@ -32,7 +31,6 @@ int button_press(int button, int x, int y, t_env *env)
 
 int button_release(int button, int x, int y, t_env *env)
 {
-	printf("%d\n", button);
 	env->ui->mouse_x = x;
 	env->ui->mouse_y = y;
 	env->ui->click = 0;

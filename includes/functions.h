@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 18:53:28 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/04 18:56:18 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ t_color		apply_perlin(t_obj obj, t_vec4 pos);
 t_color		get_pixel_procedure(t_obj obj, t_vec4 pos);
 t_color		get_pixel_color(t_obj obj, t_ray ray);
 t_img		create_xpm_img(char *path, t_env env);
+t_color		merge_color(t_color bg, t_color fg);
 t_img		merge_img(t_img bg, t_img fg, int x, int y);
 
 /* Tools functions */
