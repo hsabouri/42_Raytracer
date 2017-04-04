@@ -6,7 +6,11 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 18:44:18 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/04 18:50:11 by rbejot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+>>>>>>> b34e610078efdd3dea573dfcb49e33f754ba508a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +66,7 @@ int				main(int ac, char **av)
 	t_vec4	vec;
 
 	env = init_env(ac, av);
-	vec = new_vector(0, 2.5, -2);
+	vec = new_vector(0, 0, -8);
 	env.cam = init_cam(vec, new_quat_null(), 66);
 	if (!ft_strcmp(av[1], "scenes/reflect_test.obj"))
 		init_reflect(&env);

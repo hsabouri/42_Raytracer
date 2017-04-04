@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 16:11:18 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/04 17:25:07 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_ray		init_ray(t_cam *cam, int x, int y);
 t_env		init_objs_lgts(int ac, char **av, t_env env);
 t_env		init_env(int ac, char **av);
 void		init_texture(t_env *env);
-void		init_reflect(t_env *env);
 
 /* Mesh functions */
 
