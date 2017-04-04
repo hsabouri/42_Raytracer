@@ -6,19 +6,11 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 15:51:30 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 16:30:32 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/04 17:24:50 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-
-void		init_reflect(t_env *env)
-{
-	env->objs[0].mat.texture = create_xpm_img("textures/earth.xpm", *env);
-	env->objs[2].mat.texture = create_xpm_img("textures/wall.xpm", *env);
-	env->objs[4].mat.reflect = 1;
-	env->objs[3].mat.reflect = 1;
-}
 
 t_color		handle_reflect(t_ray ray, t_env env, int depth)
 {
