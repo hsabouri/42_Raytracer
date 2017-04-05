@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 13:26:48 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/05 13:35:12 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ t_color					sum_lights(t_obj obj, t_ray ray, t_env env)
 t_color					lights(t_obj obj, t_ray ray, t_env env, int depth)
 {
 	t_color				res;
+	t_color				add;
 	t_ray				sec;
 
-	if (obj.mat.reflect > -1.0 && depth < DEPTH_MAX)
+	res = sum_lights(obj, ray, env);
+	if (depth < DEPTH_MAX && obj.mat.reflect > -1.0)
 	{
 		sec = reflect_ray(obj, ray);
-		res = handle_reflect(sec, env, depth);
+		add = handle_reflect(sec, env, depth);
+		add = color_scale(add, obj.mat.reflect);
+		res = add_colors(res, add);
 	}
-	else
-		res = sum_lights(obj, ray, env);
 	return (res);
 }
