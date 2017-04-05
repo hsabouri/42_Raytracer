@@ -17,6 +17,7 @@ o mesh1
 	f 6 2 1
 	f 6 1 5
 	c 255 255 255
+type NOISE
 
 omni light1
 	p -3 3 -5
