@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 18:52:31 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 12:45:29 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static int 		draw_loop(t_env *env)
 		env->ui->redraw -= 1;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
-	mlx_put_image_to_window(env->mlx, env->win, env->ui->img.img, 0, 0);
+	mlx_put_image_to_window(env->mlx, env->win, env->ui->lay1.img, 0, 0);
+	mlx_put_image_to_window(env->mlx, env->win, env->ui->lay2.img, 0, 0);
 	return (0);
 }
 
@@ -64,8 +65,6 @@ int				main(int ac, char **av)
 	env = init_env(ac, av);
 	vec = new_vector(0, 0, -8);
 	env.cam = init_cam(vec, new_quat_null(), 66);
-	if (!ft_strcmp(av[1], "scenes/reflect_test.obj"))
-		init_reflect(&env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_loop_hook(env.mlx, draw_loop, &env);
 	mlx_hook(env.win, KEYPRESSEVENT, KEYPRESSMASK, &keypress, &env);

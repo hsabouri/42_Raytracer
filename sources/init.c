@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 18:51:47 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:07:39 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,10 @@ t_ui			*init_ui(t_env env)
 
 	ui = (t_ui *)ft_malloc(sizeof(t_ui), CLEAN);
 	ui->keystatus = (int *)ft_malloc(sizeof(int) * 127, CLEAN);
-	if (!(ui->img.img = mlx_new_image(env.mlx, LENGTH, HEIGHT)))
-		exit(0);
-	if (!(ui->img.addr = mlx_get_data_addr(ui->img.img, &ui->img.bpp,
-					&ui->img.size, &ui->img.endian)))
-		exit(0);
-	if (!(ui->obj_map.img = mlx_new_image(env.mlx, LENGTH, HEIGHT)))
-		exit(0);
-	if (!(ui->obj_map.addr = mlx_get_data_addr(ui->obj_map.img, &ui->obj_map.bpp,
-					&ui->obj_map.size, &ui->obj_map.endian)))
-		exit(0);
+	create_img(&ui->lay1, LENGTH, HEIGHT, env.mlx);
+	create_img(&ui->lay2, LENGTH, HEIGHT, env.mlx);
+	ui->lay1 = init_img(ui->lay1, (t_color){0, 0, 0, 255});
+	ui->lay2 = init_img(ui->lay2, (t_color){0, 0, 0, 255});
 	ui->obj_map = init_img(ui->obj_map, (t_color){255, 255, 255, 255});
 	ui->n_compnts = 1;
 	ui->compnts = (t_compnt *)ft_malloc(sizeof(t_compnt) * 1, CLEAN);
@@ -40,7 +34,6 @@ t_ui			*init_ui(t_env env)
 	ui->compnts[0].hover = &hover_test;
 	ui->compnts[0].action = &action_test;
 	ui->compnts[0].img = create_xpm_img("assets/axes_xz.xpm", env);
-	//mlx_put_image_to_window(env.mlx, env.win, ui->compnts[0].img.img);
 	ui->compnts[0].draw_img = 1;
 	ui->redraw = 1;
 	return (ui);
@@ -63,11 +56,7 @@ t_env 			init_env(int ac, char **av)
 	env.mlx = mlx_init();
 	env = init_objs_lgts(ac, av, env);
 	env.win = mlx_new_window(env.mlx, LENGTH, HEIGHT, "RT");
-	if (!(env.img.img = mlx_new_image(env.mlx, LENGTH, HEIGHT)))
-		exit(0);
-	if (!(env.img.addr = mlx_get_data_addr(env.img.img, &env.img.bpp,\
-	&env.img.size, &env.img.endian)))
-		exit(0);
+	create_img(&env.img, LENGTH, HEIGHT, env.mlx);
 	env.redraw = 1;
 	env.drawing = 0;
 	env.shadow = 1;

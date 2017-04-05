@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/04 17:14:25 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:02:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ int				check_intersections(t_obj *objs, t_ray *ray)
 
 int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env *env)
 {
-	unsigned int	x;
-	unsigned int	y;
-	t_ray			ray;
-	t_color			col[4];
-	t_color			color;
+	int			x;
+	int			y;
+	t_ray		ray;
+	t_color		col[4];
+	t_color		color;
 
 	x = 0;
 	while (x < LENGTH)
@@ -139,11 +139,11 @@ int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env *env)
 
 int				raytrace(t_cam camera, t_obj *objs, t_env *env)
 {
-	unsigned int	i;
-	unsigned int	x;
-	unsigned int	y;
-	t_ray			ray;
-	t_color			col;
+	int			i;
+	int			x;
+	int			y;
+	t_ray		ray;
+	t_color		col;
 
 	i = 0;
 	while (i < 16)

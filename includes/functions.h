@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 18:51:25 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:08:01 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_obj		add_polygon(t_obj obj, t_obj poly);
 
 /* Mlx functions */
 
-t_img		pixel_put(t_img img, unsigned int x, unsigned int y, t_color color);
+t_img		pixel_put(t_img img, int x, int y, t_color color);
 t_img		line(t_img image, t_pix start, t_pix end, t_color color);
 t_img		init_img(t_img img, t_color color);
 int			mouse(int x, int y, t_env *env);
@@ -100,6 +100,7 @@ int			keyrelease(int keycode, t_env *env);
 int			button_press(int button, int x, int y, t_env *env);
 int			button_release(int button, int x, int y, t_env *env);
 t_env		*key_actions(t_env *env);
+t_img		*create_img(t_img *res, int width, int height, void *mlx);
 
 /* Texture functions */
 
@@ -129,7 +130,7 @@ t_compnt	set_compnt_size(unsigned int width, unsigned int height,\
 t_compnt	set_compnt_cols(t_color bg_default, t_color txt_color,\
 			t_color bg_hover, t_compnt compnt);
 int			ui(t_env *env);
-t_img 		ui_draw(t_img img, t_compnt compnt);
+t_ui 		*ui_draw(t_ui *ui, t_compnt compnt);
 
 /* Multi Thread and loops */
 
