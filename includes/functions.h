@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 15:08:01 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:13:31 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ t_cam		init_cam(t_vec4 pos, t_quat rot, double fov);
 t_ray		init_ray(t_cam *cam, int x, int y);
 t_env		init_objs_lgts(int ac, char **av, t_env env);
 t_env		init_env(int ac, char **av);
-void		init_texture(t_env *env);
 
 /* Mesh functions */
 
@@ -120,6 +119,7 @@ void		c_log(char *str);
 void		c_error(char *str, int code);
 int			c_open_file(char *path);
 t_color		int_to_color(int color);
+t_color		add_colors(t_color c1, t_color c2);
 int			color_to_int(t_color color);
 
 /* Ui functions */

@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 19:17:55 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/04 18:43:08 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/05 13:20:19 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static t_env	step2_objs(char *line, t_env env)
 	if (ft_strnstr(line, "refract ", 8))
 		env.objs[env.n_obj - 1].mat.refract = parse_double(line + 8);
 	if (ft_strnstr(line, "reflect ", 8))
-		env.objs[env.n_obj - 1].mat.reflect = ft_atoi(line + 8);
+		env.objs[env.n_obj - 1].mat.reflect = ft_atof(line + 8);
 	if (ft_strnstr(line, "texture ", 8))
 		env.objs[env.n_obj - 1].mat.texture = create_xpm_img(line + 8, env);
-	// if (ft_strnstr(line, "type ", 5))
-		// env.objs[env.n_obj - 1].mat.texture.type = line + 5;
+	if (ft_strnstr(line, "type ", 5))
+		env.objs[env.n_obj - 1].mat.texture.type = type_of_objs(line + 5);
 	if (ft_strnstr(line, "r ", 2))
 		env.objs[env.n_obj - 1].rot = parse_quat(line + 2, \
 			env.objs + env.n_obj - 1);

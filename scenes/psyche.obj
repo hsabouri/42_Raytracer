@@ -4,7 +4,8 @@ sphere sphere1
 radius 1.0
 p 0.0 0.0 0.0
 c 255 0 0
-reflect 1
+reflect 0.5
+texture textures/earth.xpm
 
 plane plan1
 n 0.0 1.0 0.0

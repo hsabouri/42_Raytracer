@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_define.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 21:02:30 by hsabouri          #+#    #+#             */
-/*   Updated: 2016/12/17 11:28:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 11:43:15 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define KEY_ROPT 262
 # define KEY_RCTR 269
 # define KEY_RMAJ 258
+# define KEY_SPACE 49
 
 # define KEY_Q 12
 # define KEY_W 13

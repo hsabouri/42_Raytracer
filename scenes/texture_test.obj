@@ -4,7 +4,7 @@ sphere sphere1
 radius 10.0
 p 5.0 0.0 30.0
 c 255 0 0
-type NOISE
+type CHECKER 
 
 sphere sphere2
 radius 6.5

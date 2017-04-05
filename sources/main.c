@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 12:45:29 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:15:14 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int				main(int ac, char **av)
 	t_vec4	vec;
 
 	env = init_env(ac, av);
-	vec = new_vector(0, 0, -8);
+	vec = new_vector(0, 2.5, -2);
 	env.cam = init_cam(vec, new_quat_null(), 66);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_loop_hook(env.mlx, draw_loop, &env);
