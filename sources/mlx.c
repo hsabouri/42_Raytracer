@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 15:05:58 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:42:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_img			init_img(t_img img, t_color color)
 	i = 0;
 	while (i < img.width * img.height)
 	{
-		img = pixel_put(img, i % LENGTH, i / LENGTH, color);
+		img = pixel_put(img, i % img.width, i / img.width, color);
 		i++;
 	}
 	return (img);

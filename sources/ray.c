@@ -6,13 +6,13 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 17:10:19 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/05 15:49:23 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-t_ray		init_ray(t_cam *cam, int x, int y)
+t_ray		init_ray(t_cam *cam, int x, int y, t_env *env)
 {
 	t_vec4	v;
 	t_ray	ray;
@@ -20,11 +20,11 @@ t_ray		init_ray(t_cam *cam, int x, int y)
 	ray.org = cam->pos;
 	ray.x = x;
 	ray.y = y;
-	v.x = (x + 0.5) / LENGTH;
-	v.y = (y + 0.5) / HEIGHT;
+	v.x = (x + 0.5) / env->width;
+	v.y = (y + 0.5) / env->height;
 	v.x = (2 * v.x) - 1;
 	v.y = 1 - (2 * v.y);
-	v.x *= (LENGTH / (double)HEIGHT) * tan((cam->fov / 2) * PI / 180);
+	v.x *= (env->width / (double)env->height) * tan((cam->fov / 2) * PI / 180);
 	v.y *= tan((cam->fov / 2) * PI / 180);
 	v.z = 1;
 	ray.dir = v;

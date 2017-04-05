@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 15:17:12 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:51:18 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,18 @@ int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env *env)
 	t_color		color;
 
 	x = 0;
-	while (x < LENGTH)
+	while (x < env->width)
 	{
 		y = 0;
-		while (y < HEIGHT)
+		while (y < env->height)
 		{
-			ray = init_ray(&camera, x - 0.45, y - 0.45);
+			ray = init_ray(&camera, x - 0.45, y - 0.45, env);
 			col[0] = pipeline(objs, &ray, *env);
-			ray = init_ray(&camera, x + 0.45, y - 0.45);
+			ray = init_ray(&camera, x + 0.45, y - 0.45, env);
 			col[1] = pipeline(objs, &ray, *env);
-			ray = init_ray(&camera, x - 0.45, y + 0.45);
+			ray = init_ray(&camera, x - 0.45, y + 0.45, env);
 			col[2] = pipeline(objs, &ray, *env);
-			ray = init_ray(&camera, x + 0.45, y + 0.45);
+			ray = init_ray(&camera, x + 0.45, y + 0.45, env);
 			col[3] = pipeline(objs, &ray, *env);
 			color.r = (col[0].r + col[1].r + col[2].r + col[3].r) / 4;
 			color.g = (col[0].g + col[1].g + col[2].g + col[3].g) / 4;
@@ -116,12 +116,12 @@ int				raytrace(t_cam camera, t_obj *objs, t_env *env)
 	while (i < 16)
 	{
 		y = i / 4;
-		while (y < HEIGHT)
+		while (y < env->height)
 		{
 			x = i % 4;
-			while (x < LENGTH)
+			while (x < env->width)
 			{
-				ray = init_ray(&camera, x, y);
+				ray = init_ray(&camera, x, y, env);
 				col = pipeline(objs, &ray, *env);
 				if (env->filter)
 					col = filters(col, *env);

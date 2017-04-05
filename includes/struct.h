@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 15:13:47 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:52:30 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ typedef struct		s_env
 	int				drawing;
 	int				redraw;
 	int				frame;
+	int				width;
+	int				height;
 }					t_env;
 
 /* UI structures */
@@ -184,6 +186,8 @@ typedef struct		s_ui
 	t_img			obj_map;
 	int				redraw;
 	int				*keystatus;
+	int				width;
+	int				height;
 }					t_ui;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 11:26:41 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/05 16:57:47 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_obj				optimesh2000(t_obj obj, t_env env);
 
 t_env				add_poly_to_last(char *line, t_env env);
 t_env				create_vrt(char *line, t_env env);
+t_img				create_xpm_img(char *path, t_env env);
 t_obj				add_polygon(t_obj obj, t_obj poly);
 
 t_env				objs(char *line, t_env env);
@@ -54,6 +55,7 @@ t_vec4				parse_vec(char *str);
 t_quat				parse_quat(char *str, t_obj *obj);
 t_color				parse_color(char *str);
 double				parse_double(char *str);
+t_img				parse_asset(char *path, t_env env);
 t_ttype				type_of_objs(char *str);
 
 t_env				parse(int fd, t_env env);

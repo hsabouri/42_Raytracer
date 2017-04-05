@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 15:14:03 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:53:45 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ t_ui			*init_ui(t_env env)
 	t_ui	*ui;
 
 	ui = (t_ui *)ft_malloc(sizeof(t_ui), CLEAN);
+	ui->width = env.width;
+	ui->height = env.height;
 	ui->keystatus = (int *)ft_malloc(sizeof(int) * 127, CLEAN);
-	create_img(&ui->lay1, LENGTH, HEIGHT, env.mlx);
-	create_img(&ui->lay2, LENGTH, HEIGHT, env.mlx);
+	create_img(&ui->lay1, env.width, env.height, env.mlx);
+	create_img(&ui->lay2, env.width, env.height, env.mlx);
 	ui->lay1 = init_img(ui->lay1, (t_color){0, 0, 0, 255});
 	ui->lay2 = init_img(ui->lay2, (t_color){0, 0, 0, 255});
 	ui->obj_map = init_img(ui->obj_map, (t_color){255, 255, 255, 255});
@@ -53,10 +55,12 @@ t_env 			init_env(int ac, char **av)
 {
 	t_env env;
 
+	env.width = 1400;
+	env.height = 1400;
 	env.mlx = mlx_init();
 	env = init_objs_lgts(ac, av, env);
-	env.win = mlx_new_window(env.mlx, LENGTH, HEIGHT, "RT");
-	create_img(&env.img, LENGTH, HEIGHT, env.mlx);
+	env.win = mlx_new_window(env.mlx, env.width, env.height, "RT");
+	create_img(&env.img, env.width, env.height, env.mlx);
 	env.redraw = 1;
 	env.drawing = 0;
 	env.shadow = 1;
