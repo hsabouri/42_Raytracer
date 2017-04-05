@@ -17,7 +17,7 @@ plane planeR
 p 4.0 0.0 0.0
 n -1.0 0.0 0.0
 c 255 0 255
-type BRICKS
+texture textures/wall.xpm
 
 plane planeB
 p 0.0 -1.0 0.0
@@ -29,7 +29,7 @@ plane planeL
 p -4.0 0.0 0.0
 n 1.0 0.0 0.0
 c 255 0 255
-type CHECKER
+texture textures/wall.xpm
 
 plane planeT
 p 0.0 2.8 0.0
@@ -38,12 +38,13 @@ c 255 255 255
 texture textures/curves.xpm
 
 plane planeB
-p 0.0 0.0 -10.0
+p 0.0 0.0 -6.0
 n 0.0 0.0 1.0
-c 125 125 125
+c 0 0 0
+reflect 1
 
 plane planeF
-p 0.0 0.0 10.0
+p 0.0 0.0 4.0
 n 0.0 0.0 -1.0
 c 0 0 0
 reflect 1
