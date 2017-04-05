@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/16 17:34:40 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 12:58:26 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int				ui(t_env *env)
 	while (i < env->ui->n_compnts)
 	{
 		env->ui->compnts[i] = ui_calls(env->ui->compnts[i], *env->ui, env);
-		env->ui->img = ui_draw(env->ui->img, env->ui->compnts[i]);
+		env->ui = ui_draw(env->ui, env->ui->compnts[i]);
 		i++;
 	}
 	return (0);
