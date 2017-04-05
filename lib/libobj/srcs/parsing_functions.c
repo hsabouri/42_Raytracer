@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 22:16:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 11:25:22 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/05 12:55:01 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ t_ttype	type_of_objs(char *str)
 
 	if (ft_strnstr(str, "NOISE", 5))
 		type = NOISE;
+	if (ft_strnstr(str, "WOOD", 4))
+		type = WOOD;
+	if (ft_strnstr(str, "MARBLE", 6))
+		type = MARBLE;
 	if (ft_strnstr(str, "BRICKS", 6))
 		type = BRICKS;
 	if (ft_strnstr(str, "CHECKER", 7))
