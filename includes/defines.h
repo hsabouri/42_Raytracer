@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 15:33:46 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 17:05:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 # include "key_define.h"
 # define PI 3.141592653
 # define EPSILON 0.000001
-# define DEPTH_MAX 14
+# define DEPTH_MAX 12
+
+# define LENGTH 800
+# define HEIGHT 800
 
 /* Error codes */
 
