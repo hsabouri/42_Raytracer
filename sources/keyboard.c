@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 20:20:20 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/01/12 15:15:14 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 11:55:46 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_env*	key_hook(int keycode, t_env *env)
 		env->shadow = 1 - env->shadow;
 	if (keycode == KEY_P)
 		env->pr_mesh = env->pr_mesh ? 0 : 1;
+	// if (keycode == KEY_SPACE)
 	return (0);
 }
 
