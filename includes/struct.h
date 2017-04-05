@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 12:06:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 13:02:06 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct		s_mat
 {
 	t_color			rgb;
 	t_vec4			coef;
-	int				reflect;
+	double			reflect;
 	double			refract;
 	t_img			texture;
 }					t_mat;

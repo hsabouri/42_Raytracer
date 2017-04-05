@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/04 18:56:18 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/05 12:54:51 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void		c_log(char *str);
 void		c_error(char *str, int code);
 int			c_open_file(char *path);
 t_color		int_to_color(int color);
+t_color		add_colors(t_color c1, t_color c2);
 int			color_to_int(t_color color);
 
 /* Ui functions */
