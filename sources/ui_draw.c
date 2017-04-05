@@ -6,13 +6,13 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/04 12:17:51 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 12:59:10 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-t_img 	ui_draw(t_img img, t_compnt compnt)
+t_ui 	*ui_draw(t_ui *ui, t_compnt compnt)
 {
 	unsigned int	x;
 	unsigned int	y;
@@ -28,7 +28,7 @@ t_img 	ui_draw(t_img img, t_compnt compnt)
 		x = 0;
 		while (x < LENGTH)
 		{
-			img = pixel_put(img, x, y, (t_color){0, 0, 0, 255});
+			ui->lay1 = pixel_put(ui->lay1, x, y, (t_color){0, 0, 0, 255});
 			x++;
 		}
 		y++;
@@ -39,12 +39,12 @@ t_img 	ui_draw(t_img img, t_compnt compnt)
 		x = 0;
 		while (x < (unsigned int)compnt.w)
 		{
-			img = pixel_put(img, x + compnt.x, y + compnt.y, color);
+			ui->lay1 = pixel_put(ui->lay1, x + compnt.x, y + compnt.y, color);
 			x++;
 		}
 		y++;
 	}
 	if (compnt.draw_img == 1)
-		img = merge_img(img, compnt.img, compnt.x, compnt.y);
-	return (img);
+		ui->lay2 = merge_img(ui->lay2, compnt.img, compnt.x, compnt.y);
+	return (ui);
 }

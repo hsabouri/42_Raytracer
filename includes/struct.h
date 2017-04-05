@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 13:04:59 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/05 15:13:47 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct		s_mat
 {
 	t_color			rgb;
 	t_vec4			coef;
-	int				reflect;
+	double			reflect;
 	double			refract;
 	t_img			texture;
 }					t_mat;
@@ -179,7 +179,8 @@ typedef struct		s_ui
 	int				mouse_x;
 	int				mouse_y;
 	int				click;
-	t_img			img;
+	t_img			lay1;
+	t_img			lay2;
 	t_img			obj_map;
 	int				redraw;
 	int				*keystatus;
