@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 12:54:51 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:42:42 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ int			keyrelease(int keycode, t_env *env);
 int			button_press(int button, int x, int y, t_env *env);
 int			button_release(int button, int x, int y, t_env *env);
 t_env		*key_actions(t_env *env);
+
+/* UV Mapping functions */
+
+t_vec4		get_plane_pixel(t_obj obj, t_vec4 hit);
+t_vec4		get_sphere_pixel(t_obj obj, t_vec4 hit);
 
 /* Texture functions */
 

@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 17:19:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 14:57:55 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:43:07 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,6 @@ static t_color	get_pixel_from_uv(t_obj obj, t_vec4 pos)
 	return (res);
 }
 
-static t_vec4	get_sphere_pixel(t_obj obj, t_vec4 hit)
-{
-	double		u;
-	double		v;
-	t_vec4		nrm;
-	t_vec4		pos;
-
-	nrm = normalize_vector(vector_sub(hit, obj.pos));
-	u = 0.5 + atan2(nrm.z, nrm.x) / (2 * PI);
-	v = 0.5 - asin(nrm.y) / PI;
-	pos.x = u;
-	pos.y = v;
-	pos.w = 1;
-	return (pos);
-}
-
 t_color			get_pixel_color(t_obj obj, t_ray ray)
 {
 	t_color		res;
@@ -56,6 +40,8 @@ t_color			get_pixel_color(t_obj obj, t_ray ray)
 	pos = (t_vec4) {0, 0, 0, 0};
 	if (obj.type == SPHERE)
 		pos = get_sphere_pixel(obj, hit);
+	else if (obj.type == PLANE)
+		pos = get_plane_pixel(obj, hit);
 	if (TEX.type == IMAGE)
 		res = get_pixel_from_uv(obj, pos);
 	else
