@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 15:02:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:17:12 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,39 +103,6 @@ int				test_ss_raytrace(t_cam camera, t_obj *objs, t_env *env)
 	}
 	return (0);
 }
-
-/** int				raytrace(t_cam camera, t_obj *objs, t_env *env) */
-/** { */
-/**     unsigned int	i; */
-/**     unsigned int	x; */
-/**     unsigned int	y; */
-/**     t_ray			ray; */
-/**     t_color			col; */
-/**  */
-/**     i = 0; */
-/**     while (i < 16) */
-/**     { */
-/**         x = i; */
-/**         while (x < LENGTH) */
-/**         { */
-/**             y = i; */
-/**             while (y < HEIGHT) */
-/**             { */
-/**                 ray = init_ray(&camera, x, y); */
-/**                 col = pipeline(objs, &ray, *env); */
-/**                 if (env->filter) */
-/**                     col = filters(col, *env); */
-/**                 env->img = pixel_put(env->img, x, y, col); */
-/**                 y++; */
-/**                 if (env->redraw == 1) */
-/**                     return (0); */
-/**             } */
-/**             x += 4; */
-/**         } */
-/**         i++; */
-/**     } */
-/**     return (0); */
-/** } */
 
 int				raytrace(t_cam camera, t_obj *objs, t_env *env)
 {
