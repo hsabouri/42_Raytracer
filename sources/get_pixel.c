@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 15:24:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 16:30:57 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/06 13:58:10 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_vec4	get_in_bounds(t_vec4 pos)
 		while (pos.x > 1.0)
 			pos.x -= 1.0;
 	}
-	if (pos.x < 0.0) {
+	else if (pos.x < 0.0) {
 		while (pos.x < 0.0)
 			pos.x += 1.0;
 	}
@@ -26,7 +26,7 @@ static t_vec4	get_in_bounds(t_vec4 pos)
 		while (pos.y > 1.0)
 			pos.y -= 1.0;
 	}
-	if (pos.y < 0.0) {
+	else if (pos.y < 0.0) {
 		while (pos.y < 0.0)
 			pos.y += 1.0;
 	}
@@ -61,6 +61,28 @@ t_vec4			get_plane_pixel(t_obj obj, t_vec4 hit)
 	va = cross_product(ua, obj.dir);
 	u = scalar_product(hit, ua);
 	v = scalar_product(hit, va);
+	pos.x = u;
+	pos.y = v;
+	pos.w = 1;
+	pos = get_in_bounds(pos);
+	return (pos);
+}
+
+t_vec4			get_cylinder_pixel(t_obj obj, t_vec4 hit)
+{
+	double		r;
+	double		t;
+	double		u;
+	double		v;
+	t_vec4		pos;
+
+	pos.y = hit.y;
+	hit = normal_cylinder(hit, obj);
+	hit.y = pos.y;
+	r = sqrt((hit.x * hit.x) + (hit.z * hit.z));
+	t = atan2(hit.z, hit.x);
+	u = t;
+	v = hit.y;
 	pos.x = u;
 	pos.y = v;
 	pos.w = 1;

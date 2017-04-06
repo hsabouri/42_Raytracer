@@ -1,54 +1,9 @@
-#UV mapping test
-
-sphere sphereL
-p -2.0 1.0 0.0
-radius 1
-c 125 138 225
-reflect 0.5
-type NOISE
-
-sphere sphereR
-p 2.0 1.0 0.0
-radius 1
-c 0 195 215
-reflect 1
-
-plane planeR
-p 4.0 0.0 0.0
-n -1.0 0.0 0.0
-c 255 0 255
-texture textures/wall.xpm
-
-plane planeB
-p 0.0 -1.0 0.0
-n 0.0 1.0 0.0
+cylinder cyl1
+radius 1.5
+p 0.0 0.0 2.0
 c 255 255 255
-texture textures/grass.xpm
-
-plane planeL
-p -4.0 0.0 0.0
-n 1.0 0.0 0.0
-c 255 0 255
 texture textures/wall.xpm
-
-plane planeT
-p 0.0 2.8 0.0
-n 0.0 -1.0 0.0
-c 255 255 255
-texture textures/curves.xpm
-
-plane planeB
-p 0.0 0.0 -6.0
-n 0.0 0.0 1.0
-c 0 0 0
-reflect 1
-
-plane planeF
-p 0.0 0.0 4.0
-n 0.0 0.0 -1.0
-c 0 0 0
-reflect 1
 
 omni light1
-p 1.0 2.0 0.0
+p -2.0 0.0 -10
 c 255 255 255
