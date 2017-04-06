@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 17:19:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 16:49:39 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/06 14:25:30 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_color			get_pixel_color(t_obj obj, t_ray ray)
 		pos = get_sphere_pixel(obj, hit);
 	else if (obj.type == PLANE)
 		pos = get_plane_pixel(obj, hit);
+	else if (obj.type == CYLINDER || obj.type == CONE)
+		pos = get_cylinder_pixel(obj, hit);
 	if (TEX.type == IMAGE)
 		res = get_pixel_from_uv(obj, pos);
 	else

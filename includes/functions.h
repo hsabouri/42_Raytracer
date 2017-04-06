@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 17:04:14 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/06 14:25:34 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ t_img		*create_img(t_img *res, int width, int height, void *mlx);
 
 t_vec4		get_plane_pixel(t_obj obj, t_vec4 hit);
 t_vec4		get_sphere_pixel(t_obj obj, t_vec4 hit);
+t_vec4		get_cylinder_pixel(t_obj obj, t_vec4 hit);
 
 /* Texture functions */
 
