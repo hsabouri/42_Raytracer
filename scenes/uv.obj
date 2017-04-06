@@ -1,8 +1,8 @@
-cylinder cyl1
-radius 1.5
+cone con1
+radius 1
 p 0.0 0.0 2.0
 c 255 255 255
-texture textures/wall.xpm
+type CHECKER
 
 omni light1
 p -2.0 0.0 -10
