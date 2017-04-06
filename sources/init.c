@@ -6,11 +6,17 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 17:05:40 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/06 14:36:01 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+static void		verify_data(t_env env)
+{
+	if (env.cam.fov > 180 || env.width < 50 || env.height < 50)
+		error(0, "Corrupted scene file");
+}
 
 t_ui			*init_ui(t_env env)
 {
@@ -48,16 +54,20 @@ t_env			init_objs_lgts(int ac, char **av, t_env env)
 	check_params(ac);
 	fd = open_file(av[1]);
 	env = parse(fd, env);
+	verify_data(env);
 	return (env);
 }
 
 t_env 			init_env(int ac, char **av)
 {
 	t_env env;
+	t_vec4	vec;
 
+	vec = new_vector(0, 0, -4);
 	env.width = LENGTH;
 	env.height = HEIGHT;
 	env.mlx = mlx_init();
+	env.cam = init_cam(vec, new_quat_null(), 66);
 	env = init_objs_lgts(ac, av, env);
 	env.win = mlx_new_window(env.mlx, env.width, env.height, "RT");
 	create_img(&env.img, env.width, env.height, env.mlx);

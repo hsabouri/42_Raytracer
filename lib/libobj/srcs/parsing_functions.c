@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 22:16:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 12:55:01 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/06 15:52:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec4	parse_vec(char *str)
 	t_vec4 vector;
 
 	vector.x = ft_atof(str);
-	while (*str != ' ' && *str)
+	while (!ft_isspace(*str) && *str)
 		str++;
 	vector.y = ft_atof(str);
 	str++;
@@ -45,18 +45,25 @@ t_vec4	parse_vec(char *str)
 	return (vector);
 }
 
-t_quat	parse_quat(char *str, t_obj *obj)
+t_quat	parse_quat(char *str, t_quat *inv)
 {
 	t_quat	res;
-	double	r;
 	t_vec4	axis;
 
-	r = parse_double(str);
-	while (!ft_isspace(*str))
+	axis.x = parse_double(str);
+	while (!ft_isspace(*str) && *str)
 		str++;
-	axis = parse_vec(str);
-	res = new_quat(r, axis);
-	obj->inv = get_inverse(res);
+	while (ft_isspace(*str) && *str)
+		str++;
+	axis.y = parse_double(str);
+	while (!ft_isspace(*str) && *str)
+		str++;
+	while (ft_isspace(*str) && *str)
+		str++;
+	axis.z = parse_double(str);
+	res = new_quat(M_PI / 180, axis);
+	if (inv)
+		*inv = get_inverse(res);
 	return (res);
 }
 

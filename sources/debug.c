@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/02 14:28:16 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/06 15:00:57 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@ void	c_log(char *str)
 {
 	ft_putstr("\x1b[32mLOG:\x1b[0m ");
 	ft_putendl(str);
+}
+
+void	error(int code, char *str)
+{
+	if (code == MALLOC_FAILED)
+		perror("\x1B[31mERROR\x1B[0m");
+	if (code == PARSING_ERROR)
+		ft_putstr("\x1B[31mPARSING ERROR:\x1B[0m ");
+	if (str != NULL)
+	{
+		ft_putstr("\x1B[31mERROR: \x1B[0m");
+		ft_putendl_fd(str, 2);
+	}
+	exit(EXIT_FAILURE);
 }
 
 void	c_error(char *str, int code)

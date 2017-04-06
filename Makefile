@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/04/05 15:08:33 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/04/06 16:02:09 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ LIBFT = lib/libft/libft.a
 LDFALGS += -L./lib/libft/
 
 LIBVEC = lib/libvec/libvect.a
-#HFLAGS += -I./libvec/includes/
 LDFALGS += -L./lib/libvec/
 
 LIBOBJ = lib/libobj/libobj.a
@@ -59,9 +58,6 @@ CFLAGS = -Wall -Wextra
 #CFLAGS += -g -fsanitize=address
 #CFLAGS += -Werror
 CFLAGS += -march=native -O3
-
-# GTK_CFLAGS = `pkg-config --cflags gtk+-3.0`
-# GTK_LDFLAGS = `pkg-config --libs gtk+-3.0`
 
 $(LIBRARY):
 	make -C lib/libft
@@ -85,7 +81,7 @@ $(NAME): $(O_FILES)
 
 $(O_DIR)/%.o: $(C_DIR)/%.c
 	@mkdir -p $(O_DIRS) $(O_DIR)
-	@$(CC) $(CFLAGS) $(LINKS) $(GTK_CFLAGS) -o $@ -c $< \
+	@$(CC) $(CFLAGS) $(LINKS) -o $@ -c $< \
 		&& printf "\033[0;0m%-34s\033[1;30m -->>\t\033[0;33m$@\033[0;0m\n" "$<"
 
 #===========================================================#

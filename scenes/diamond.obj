@@ -1,5 +1,12 @@
 # diamond.obj
 
+width 200
+height 200
+
+camera
+	p 0.0 0.0 -20.0
+	r 0.0 0.0 0.0
+
 o mesh1
 	v 0 2 0
 	v 1 0 2
@@ -17,7 +24,7 @@ o mesh1
 	f 6 2 1
 	f 6 1 5
 	c 255 255 255
-type NOISE
+	type NOISE
 
 omni light1
 	p -3 3 -5

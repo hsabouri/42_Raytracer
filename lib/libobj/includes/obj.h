@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 16:57:47 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/06 14:14:13 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ t_obj				add_polygon(t_obj obj, t_obj poly);
 t_env				objs(char *line, t_env env);
 t_env				lgts(char *line, t_env env);
 t_env				meshs(char *line, t_env env);
+t_env				env_feed(char *line, t_env env);
 
 t_vec4				parse_vec(char *str);
-t_quat				parse_quat(char *str, t_obj *obj);
+t_quat				parse_quat(char *str, t_quat *inv);
 t_color				parse_color(char *str);
 double				parse_double(char *str);
 t_img				parse_asset(char *path, t_env env);
