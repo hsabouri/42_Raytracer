@@ -1,5 +1,8 @@
 #UV mapping test
 
+width 2640
+height 1440
+
 sphere sphereL
 p -2.0 1.0 0.0
 radius 1
