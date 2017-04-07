@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 12:58:26 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/07 17:00:05 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static t_compnt	ui_calls(t_compnt compnt, t_ui ui, t_env *env)
 		ui.mouse_y < compnt.y + compnt.h)
 	{
 		if (compnt.hover)
-			compnt = (*compnt.hover)((struct s_compnt)compnt, env);
-		if (compnt.action && ui.click)
-			compnt = (*compnt.action)((struct s_compnt)compnt, env);
+			compnt = compnt.hover((struct s_compnt)compnt, env);
+		if (compnt.action && ui.click && ui.last_click == 0)
+			compnt = compnt.action((struct s_compnt)compnt, env);
 	}
 	else if (compnt.idle)
 		compnt = (*compnt.idle)((struct s_compnt)compnt, env);

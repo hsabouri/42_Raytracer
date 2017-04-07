@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/06 14:36:01 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/07 17:01:18 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,10 @@ t_ui			*init_ui(t_env env)
 	ui->lay1 = init_img(ui->lay1, (t_color){0, 0, 0, 255});
 	ui->lay2 = init_img(ui->lay2, (t_color){0, 0, 0, 255});
 	ui->obj_map = init_img(ui->obj_map, (t_color){255, 255, 255, 255});
-	ui->n_compnts = 1;
-	ui->compnts = (t_compnt *)ft_malloc(sizeof(t_compnt) * 1, CLEAN);
-	ui->compnts[0].value = ft_strdup("Camera Mode");
-	ui->compnts[0] = set_compnt_pos(30, 30, ui->compnts[0]);
-	ui->compnts[0] = set_compnt_size(30, 30, ui->compnts[0]);
-	ui->compnts[0] = set_compnt_cols((t_color){50, 50, 50, 0},\
-		(t_color){255, 255, 255, 0}, (t_color){70, 70, 70, 0}, ui->compnts[0]);
-	ui->compnts[0].idle = &idle_test;
-	ui->compnts[0].hover = &hover_test;
-	ui->compnts[0].action = &action_test;
-	ui->compnts[0].img = create_xpm_img("assets/axes_xz.xpm", env);
-	ui->compnts[0].draw_img = 1;
+	ui = init_compnts(ui, env);
 	ui->redraw = 1;
+	ui->click = 0;
+	ui->last_click = 0;
 	return (ui);
 }
 
@@ -78,6 +69,7 @@ t_env 			init_env(int ac, char **av)
 	env.filter = NONE;
 	env.supersampling = 0;
 	env.ui = init_ui(env);
+	env.render = 1;
 	env.frame = 0;
 	return (env);
 }

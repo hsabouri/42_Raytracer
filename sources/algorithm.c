@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 15:51:18 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/07 18:20:57 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 
 	res = (t_color) {0, 0, 0, 0};
 	env.last_id = check_intersections(objs, ray);
-	env.ui->obj_map = pixel_put(env.ui->obj_map, ray->x, ray->y, *(t_color *)&env.last_id);
 	if (objs[env.last_id].type == BACKSLASH)
 		return (res);
 	tmp = objs[env.last_id].mat.rgb;
-	if (objs[env.last_id].mat.texture.type != NOTEX)
+	if (objs[env.last_id].mat.texture.type != NOTEX && env.render)
 		objs[env.last_id].mat.rgb = get_pixel_color(objs[env.last_id], *ray);
 	res = lights(objs[env.last_id], *ray, env, 0);
 	objs[env.last_id].mat.rgb = tmp;
@@ -123,7 +122,7 @@ int				raytrace(t_cam camera, t_obj *objs, t_env *env)
 			{
 				ray = init_ray(&camera, x, y, env);
 				col = pipeline(objs, &ray, *env);
-				if (env->filter)
+				if (env->filter && env->render)
 					col = filters(col, *env);
 				env->img = pixel_put(env->img, x, y, col);
 				x += 4;

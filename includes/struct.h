@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 15:52:30 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/07 16:59:51 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct		s_env
 	int				shadow;
 	int				supersampling;
 	int				last_id;
+	int				render;
 	void			*mlx;
 	void			*win;
 	t_img			img;
@@ -158,6 +159,7 @@ typedef struct		s_line
 
 typedef struct		s_compnt
 {
+	int				id;
 	void			*value;
 	t_status		status;
 	int				draw_img;
@@ -181,6 +183,7 @@ typedef struct		s_ui
 	int				mouse_x;
 	int				mouse_y;
 	int				click;
+	int				last_click;
 	t_img			lay1;
 	t_img			lay2;
 	t_img			obj_map;

@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/06 14:34:46 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/07 17:02:10 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,8 @@ static int 		draw_loop(t_env *env)
 		env->redraw -= 1;
 		env->ui->redraw += 1;
 	}
-	if (env->ui->redraw > 0)
-	{
-		ui(env);
-		env->ui->redraw -= 1;
-	}
+	ui(env);
+	env->ui->last_click = env->ui->click;
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	mlx_put_image_to_window(env->mlx, env->win, env->ui->lay1.img, 0, 0);
 	mlx_put_image_to_window(env->mlx, env->win, env->ui->lay2.img, 0, 0);

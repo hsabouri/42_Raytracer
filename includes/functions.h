@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/06 14:25:34 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/07 12:25:11 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_cam		init_cam(t_vec4 pos, t_quat rot, double fov);
 t_ray		init_ray(t_cam *cam, int x, int y, t_env *env);
 t_env		init_objs_lgts(int ac, char **av, t_env env);
 t_env		init_env(int ac, char **av);
+t_ui 		*init_compnts(t_ui *ui, t_env env);
 
 /* Mesh functions */
 

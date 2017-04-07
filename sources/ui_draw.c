@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 15:54:25 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/07 13:51:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,12 @@ t_ui 	*ui_draw(t_ui *ui, t_compnt compnt)
 	int		y;
 	t_color	color;
 
-	y = 0;
 	if (compnt.status == IDLE || compnt.status == ACTION)
 		color = compnt.bg;
 	if (compnt.status == HOVER)
 		color = compnt.bg_hv;
-	while (y < ui->height)
-	{
-		x = 0;
-		while (x < ui->width)
-		{
-			ui->lay1 = pixel_put(ui->lay1, x, y, (t_color){0, 0, 0, 255});
-			x++;
-		}
-		y++;
-	}
+//	ui->lay1 = init_img(ui->lay1, (t_color){0, 0, 0, 255});
+//	ui->lay2 = init_img(ui->lay2, (t_color){0, 0, 0, 255});
 	y = 0;
 	while (y < compnt.h)
 	{
