@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/09 16:24:08 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/09 18:18:07 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,15 @@ t_color					lights(t_obj obj, t_ray ray, t_env env, int depth)
 		sec = reflect_ray(obj, ray);
 		add = handle_reflect(sec, env, depth);
 		add = color_scale(add, obj.mat.reflect);
+		res = add_colors(res, add);
+	}
+	if (obj.mat.alpha > EPSILON)
+	{
+		sec.org = vector_add(ray.org, vector_scale(ray.dir, ray.t));
+		sec.dir = ray.dir;
+		add = handle_reflect(sec, env, depth);
+		add = color_scale(add, obj.mat.alpha);
+		res = color_scale(res, 1 - obj.mat.alpha);
 		res = add_colors(res, add);
 	}
 	return (res);
