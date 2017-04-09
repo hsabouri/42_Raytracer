@@ -1,5 +1,8 @@
 # Simple sphere for test purposes
 
+width 150
+height 150
+
 sphere sphere1
 radius 10.0
 p 5.0 0.0 30.0

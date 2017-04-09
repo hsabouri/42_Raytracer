@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/07 18:26:44 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/09 15:08:48 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ t_color					add_colors(t_color c1, t_color c2)
 static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb)
 {
 	t_vec4				coef;
+	double				spec;
 	t_color				res;
+	t_color				s;
 
 	res = obj.mat.rgb;
 	coef = lambert(obj, ray, lgt);
@@ -34,6 +36,12 @@ static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb)
 	coef = vector_cap(coef, 0, 1.0);
 	res = apply_coef(res, coef);
 	res = add_colors(res, rgb);
+	spec = specular(obj, ray, lgt);
+	s.r = (spec * (double)lgt.rgb.r > 255) ? 255 : spec * (double)lgt.rgb.r;
+	s.g = (spec * (double)lgt.rgb.g > 255) ? 255 : spec * (double)lgt.rgb.g;
+	s.g = (spec * (double)lgt.rgb.b > 255) ? 255 : spec * (double)lgt.rgb.b;
+	s.a = (spec * (double)lgt.rgb.a > 255) ? 255 : spec * (double)lgt.rgb.a;
+	res = add_colors(res, s);
 	return (res);
 }
 

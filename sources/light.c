@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/07 18:06:00 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/09 15:09:36 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ double		specular(t_obj obj, t_ray ray, t_lgt lgt)
 	t_vec4	tmp;
 	double	spec;
 
+	ray.dir = quat_rot(obj.inv, ray.dir);
+	tmp = vector_scale(ray.dir, ray.t);
+	lgt.hitpnt = vector_add(ray.org, tmp);
+	dir = vector_sub(lgt.hitpnt, lgt.pos);
+	dir = normalize_vector(dir);
+	lgt.normal = get_normal(ray, obj, lgt.hitpnt);
 	dir = normalize_vector(vector_sub(lgt.pos, lgt.hitpnt));
 	dir = quat_rot(obj.inv, dir);
 	tmp = vector_scale(lgt.normal, (2.0 * scalar_product(lgt.normal, dir)));
@@ -57,9 +63,6 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
 	lamb = scalar_product(dir, lgt.normal);
-	lamb = ft_min_max(lamb, 0.0 , 1.0);
-	if (lamb > 0.0)
-		lamb += specular(obj, ray, lgt);
 	lamb = ft_min_max(lamb, 0.0 , 1.0);
 	res = vector_scale(res, lamb);
 	return (res);
