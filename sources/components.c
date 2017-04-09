@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 12:08:36 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/07 16:56:49 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/09 17:32:33 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ static t_compnt	compnts_default(t_compnt compnt, int x_offset, int y_offset)
 		(t_color){255, 255, 255, 0}, (t_color){90, 90, 90, 0}, compnt);
 	compnt.draw_img = 1;
 	return (compnt);
+}
+
+static t_ui		*init_compnts3(t_ui *ui, t_env env)
+{
+	return (ui);
 }
 
 static t_ui		*init_compnts2(t_ui *ui, t_env env)
@@ -37,7 +42,7 @@ static t_ui		*init_compnts2(t_ui *ui, t_env env)
 	ui->compnts[2].img = parse_asset("assets/draft.xpm", env);
 	ui->compnts[3].img = parse_asset("assets/render.xpm", env);
 	ui->compnts[3].action(ui->compnts[3], &env);
-	return (ui);
+	return (init_compnts3(ui, env));
 }
 
 t_ui 			*init_compnts(t_ui *ui, t_env env)

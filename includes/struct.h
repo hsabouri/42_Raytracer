@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/07 16:59:51 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/09 17:26:10 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct		s_mat
 	t_vec4			coef;
 	double			reflect;
 	double			refract;
+	double			alpha;
 	t_img			texture;
 }					t_mat;
 

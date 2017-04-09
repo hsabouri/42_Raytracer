@@ -1,0 +1,29 @@
+#test file for RT
+
+height 800
+width 800
+
+camera
+	p 0.0 1.0 -8.0
+
+sphere sphere1
+	radius 1.0
+	p 2.0 2.0 0.0
+	alpha 0.5
+	c 255 0 0
+	reflect 0.0
+	refract 0.0
+
+plane plane1
+	p 0.0 -1.0 0.0
+	n 0.0 1.0 0.0
+	c 255 255 255
+
+plane plane2
+	p 0.0 0.0 2.0
+	n 0.0 0.0 1.0
+	c 255 255 255
+
+omni light1
+	p 2.0 4.0 -2.0
+	c 255 255 255

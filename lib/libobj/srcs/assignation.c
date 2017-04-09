@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 19:17:55 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/06 13:43:18 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/09 17:29:10 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static t_env	step2_objs(char *line, t_env env)
 		env.objs[env.n_obj - 1].radius = parse_double(line + 7);
 	if (ft_strnstr(line, "refract ", 8))
 		env.objs[env.n_obj - 1].mat.refract = parse_double(line + 8);
+	if (ft_strnstr(line, "alpha ", 6))
+		env.objs[env.n_obj - 1].mat.alpha = parse_double(line + 6);
 	if (ft_strnstr(line, "reflect ", 8))
 		env.objs[env.n_obj - 1].mat.reflect = ft_atof(line + 8);
 	if (ft_strnstr(line, "texture ", 8))
