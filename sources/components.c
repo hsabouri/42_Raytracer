@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 12:08:36 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 16:26:58 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 18:19:34 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static t_compnt	compnts_default(t_compnt compnt, int x_offset, int y_offset)
 
 static t_ui		*init_compnts3(t_ui *ui, t_env env)
 {
-	ui->compnts[4].idle = action_a;
+	ui->compnts[4].idle = idle_a;
 	ui->compnts[4].hover = hover_a;
-	ui->compnts[4].action = idle_a;
+	ui->compnts[4].action = action_a;
 	ui->compnts[4].draw_img = 1;
 	ui->compnts[5] = ui->compnts[4];
 	ui->compnts[6] = ui->compnts[4];
@@ -44,13 +44,15 @@ static t_ui		*init_compnts3(t_ui *ui, t_env env)
 	ui->compnts[6].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
 	ui->compnts[7].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
 	((t_obj *)ui->compnts[4].value)->type = SPHERE;
-	((t_obj *)ui->compnts[4].value)->mat.rgb = (t_color){244, 244, 244, 0};
+	((t_obj *)ui->compnts[4].value)->mat.rgb = (t_color){255, 255, 255, 0};
 	((t_obj *)ui->compnts[4].value)->mat.alpha = 0;
-	((t_obj *)ui->compnts[4].value)->mat.reflect = 0;
-	((t_obj *)ui->compnts[4].value)->mat.refract = 0;
-	((t_obj *)ui->compnts[4].value)->mat.coef = new_vector(0, 0, 0);
+	((t_obj *)ui->compnts[4].value)->mat.reflect = -1.0;
+	((t_obj *)ui->compnts[4].value)->mat.refract = -1.0;
+	((t_obj *)ui->compnts[4].value)->mat.coef = new_vector(1, 1, 1);
 	((t_obj *)ui->compnts[4].value)->mat.texture.type = NOTEX;
 	((t_obj *)ui->compnts[4].value)->radius = 1;
+	((t_obj *)ui->compnts[4].value)->rot = new_quat_null();
+	((t_obj *)ui->compnts[4].value)->inv = get_inverse(new_quat_null());
 	((t_obj *)ui->compnts[4].value)->pos = new_vector(0, 0, 0);
 	((t_obj *)ui->compnts[4].value)->dir = new_vector(0, 1, 0);
 	*((t_obj *)ui->compnts[5].value) = *(t_obj *)ui->compnts[4].value;

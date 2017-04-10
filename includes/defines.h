@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 18:32:26 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 18:33:43 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 
 # define BUTTONPRESSMASK (1L<<2)
 # define BUTTONRELEASEMASK (1L<<3)
-
 
 /* Mouse enum and defines */
 

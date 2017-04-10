@@ -1,0 +1,14 @@
+height 800
+width 800
+
+plane plane1
+	p 0.0 -1.0 0.0
+	n 0.0 1.0 0.0
+	c 255 255 255
+	reflect 0.0
+	refract 0.0
+	alpha 0.0
+
+omni light1
+	p -1.0 1.0 -1.0
+	c 255 255 255
