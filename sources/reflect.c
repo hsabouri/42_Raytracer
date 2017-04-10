@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 15:51:30 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 15:55:13 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 17:28:48 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ t_color			handle_reflect(t_ray ray, t_env env, int depth)
 		res = lights(env.objs[id], ray, env, depth + 1);
 		env.objs[id].mat.rgb = tmp;
 	}
+	else
+		res = get_skybox(ray, env);
 	return (res);
 }
