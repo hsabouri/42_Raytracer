@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 14:18:57 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 15:11:21 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ typedef struct		s_ui
 	int				redraw;
 	int				*keystatus;
 	int				width;
+	t_type			place;
 	int				height;
 }					t_ui;
 
