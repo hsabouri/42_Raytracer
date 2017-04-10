@@ -6,17 +6,17 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 17:01:03 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 16:55:26 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 18:01:28 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-double		solve_quadra(double a, double b, double c)
+double			solve_quadra(double a, double b, double c)
 {
-	double	d;
-	double	t1;
-	double	t2;
+	double		d;
+	double		t1;
+	double		t2;
 
 	d = (b * b) - (4.0 * a * c);
 	if (d < EPSILON)

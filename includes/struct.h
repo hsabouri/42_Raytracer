@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 17:01:52 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 18:32:55 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ typedef struct		s_obj
 	t_quat			rot;
 	t_quat			inv;
 	double			radius;
-	double			rtube;
 	t_vec4			vert[3];
 }					t_obj;
 
