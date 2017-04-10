@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 13:56:22 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 14:38:54 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_env 			init_env(int ac, char **av)
 	env.win = mlx_new_window(env.mlx, env.width, env.height, "RT");
 	create_img(&env.img, env.width, env.height, env.mlx);
 	env.img = init_img(env.img, (t_color){255, 255, 255, 0});
+	env.objs[env.n_obj - 1] = init_skybox(env);
 	env.redraw = 1;
 	env.drawing = 0;
 	env.shadow = 1;

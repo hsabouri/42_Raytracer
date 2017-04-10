@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/09 15:06:41 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 14:03:38 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_cam		init_cam(t_vec4 pos, t_quat rot, double fov);
 t_ray		init_ray(t_cam *cam, int x, int y, t_env *env);
 t_env		init_objs_lgts(int ac, char **av, t_env env);
 t_env		init_env(int ac, char **av);
+t_obj		init_skybox(t_env env);
 t_ui 		*init_compnts(t_ui *ui, t_env env);
 
 /* Mesh functions */
@@ -107,6 +108,7 @@ t_img		*create_img(t_img *res, int width, int height, void *mlx);
 t_vec4		get_plane_pixel(t_obj obj, t_vec4 hit);
 t_vec4		get_sphere_pixel(t_obj obj, t_vec4 hit);
 t_vec4		get_cylinder_pixel(t_obj obj, t_vec4 hit);
+t_color		get_pixel_from_uv(t_obj obj, t_vec4 pos);
 
 /* Texture functions */
 
@@ -115,6 +117,7 @@ t_color		get_pixel_procedure(t_obj obj, t_vec4 pos);
 t_color		get_pixel_color(t_obj obj, t_ray ray);
 t_color		merge_color(t_color bg, t_color fg);
 t_img		merge_img(t_img bg, t_img fg, int x, int y);
+t_color		get_skybox(t_ray ray, t_env env);
 
 /* Tools functions */
 
