@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 16:40:30 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 18:09:16 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	mouse_hook(int x, int y, t_env *env)
 	[y * env->ui->lay1.width + x].a == 255 && env->ui->place.type != BACKSLASH)
 	{
 		place_obj(x, y, env, env->ui->place);
+		display_objs(env->objs, env->n_obj);
 		env->ui->place.type = BACKSLASH;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 11:00:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/03 21:25:13 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 18:06:30 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,22 @@ void	display_objs(t_obj *objs, unsigned int n_obj)
 	unsigned int i;
 
 	i = 0;
-	while (i < n_obj - 1)
+	while (i < n_obj)
 	{
+		if (objs[i].type == SPHERE)
+			printf("Object type : SPHERE\n");
+		if (objs[i].type == PLANE)
+			printf("Object type : PLANE\n");
+		if (objs[i].type == BACKSLASH)
+			printf("Object type : BACKSLASH\n");
+		if (objs[i].type == CONE)
+			printf("Object type : CONE\n");
+		if (objs[i].type == CYLINDER)
+			printf("Object type : CYLINDER\n");
+		if (objs[i].type == MESH)
+			printf("Object type : MESH\n");
 		printf("Object number : %d\n	Object name : %s\n", i, objs[i].name);
+		printf("	Object radius: %f\n", objs[i].radius);
 		printf("	Object color : %d %d %d\n",
 			objs[i].mat.rgb.r,
 			objs[i].mat.rgb.g,
