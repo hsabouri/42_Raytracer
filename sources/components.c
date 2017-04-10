@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 12:08:36 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/09 18:58:24 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 16:26:58 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,41 @@ static t_compnt	compnts_default(t_compnt compnt, int x_offset, int y_offset)
 
 static t_ui		*init_compnts3(t_ui *ui, t_env env)
 {
-	ui->compnts[4].idle = NULL;
-	ui->compnts[4].hover = NULL;
-	ui->compnts[4].action = NULL;
+	ui->compnts[4].idle = action_a;
+	ui->compnts[4].hover = hover_a;
+	ui->compnts[4].action = idle_a;
 	ui->compnts[4].draw_img = 1;
 	ui->compnts[5] = ui->compnts[4];
 	ui->compnts[6] = ui->compnts[4];
 	ui->compnts[7] = ui->compnts[4];
-	ui->compnts[8] = ui->compnts[4];
 	ui->compnts[4] = compnts_default(ui->compnts[4], 15, 60);
 	ui->compnts[5] = compnts_default(ui->compnts[5], 15, 91);
 	ui->compnts[6] = compnts_default(ui->compnts[6], 15, 122);
 	ui->compnts[7] = compnts_default(ui->compnts[7], 15, 153);
-	ui->compnts[8] = compnts_default(ui->compnts[8], 15, 184);
 	ui->compnts[4].img = parse_asset("assets/sphere.xpm", env);
 	ui->compnts[5].img = parse_asset("assets/plane.xpm", env);
 	ui->compnts[6].img = parse_asset("assets/cylinder.xpm", env);
 	ui->compnts[7].img = parse_asset("assets/cone.xpm", env);
+	ui->compnts[4].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
+	ui->compnts[5].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
+	ui->compnts[6].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
+	ui->compnts[7].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
+	((t_obj *)ui->compnts[4].value)->type = SPHERE;
+	((t_obj *)ui->compnts[4].value)->mat.rgb = (t_color){244, 244, 244, 0};
+	((t_obj *)ui->compnts[4].value)->mat.alpha = 0;
+	((t_obj *)ui->compnts[4].value)->mat.reflect = 0;
+	((t_obj *)ui->compnts[4].value)->mat.refract = 0;
+	((t_obj *)ui->compnts[4].value)->mat.coef = new_vector(0, 0, 0);
+	((t_obj *)ui->compnts[4].value)->mat.texture.type = NOTEX;
+	((t_obj *)ui->compnts[4].value)->radius = 1;
+	((t_obj *)ui->compnts[4].value)->pos = new_vector(0, 0, 0);
+	((t_obj *)ui->compnts[4].value)->dir = new_vector(0, 1, 0);
+	*((t_obj *)ui->compnts[5].value) = *(t_obj *)ui->compnts[4].value;
+	*((t_obj *)ui->compnts[6].value) = *(t_obj *)ui->compnts[4].value;
+	*((t_obj *)ui->compnts[7].value) = *(t_obj *)ui->compnts[4].value;
+	((t_obj *)ui->compnts[5].value)->type = PLANE;
+	((t_obj *)ui->compnts[6].value)->type = CYLINDER;
+	((t_obj *)ui->compnts[7].value)->type = CONE;
 	return (ui);
 }
 
@@ -64,7 +82,7 @@ static t_ui		*init_compnts2(t_ui *ui, t_env env)
 
 t_ui 			*init_compnts(t_ui *ui, t_env env)
 {
-	ui->n_compnts = 9;
+	ui->n_compnts = 8;
 	ui->compnts = (t_compnt *)ft_malloc(sizeof(t_compnt) * 9, CLEAN);
 	ui->compnts[0].idle = &idle_r;
 	ui->compnts[0].hover = &hover_r;
