@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 15:40:52 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 16:34:58 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ t_ray		init_ray(t_cam *cam, int x, int y, t_env *env)
 	ray.dir = v;
 	ray = rotate_ray(ray, cam->rot);
 	ray.t = EPSILON;
-	ray.tab[0] = 1;
-	ray.tab[1] = NOENV;
-	ray.tab[2] = NOENV;
-	ray.tab[3] = NOENV;
+	ray.env.x = 1;
+	ray.env.y = NOENV;
+	ray.env.z = NOENV;
+	ray.env.w = NOENV;
 	return (ray);
 }
 
@@ -72,21 +72,26 @@ t_ray		refract_ray(t_obj obj, t_ray ray)
 	double	c1;
 	double	c2;
 	t_vec4	tmp;
-	int	i;
 
-	i = -1;
 	tmp = vector_scale(ray.dir, ray.t);
 	res.org = vector_add(ray.org, tmp);
 	norm = get_normal(ray, obj, res.org);
 	teta1 = scalar_product(ray.dir, norm);
-	res.tab[0] = ray.tab[0];
-	while (ray.tab[++i] != NOENV)
-		res.tab[i] = ray.tab[i];
-	res.tab[i] = obj.mat.refract;
-	n = res.tab[i - 1]/res.tab[i];
-	tmp = vector_scale(ray.dir, n);
-	c1 = scalar_product(ray.dir, norm);
-	c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
-	res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
+	if (teta1 < 0)
+	{
+		n = ray.env.x / obj.mat.refract;
+		tmp = vector_scale(ray.dir, n);
+		c1 = scalar_product(ray.dir, norm);
+		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
+		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
+	}
+	else
+	{
+		n = obj.mat.refract / ray.env.x;
+		tmp = vector_scale(ray.dir, n);
+		c1 = scalar_product(ray.dir, norm);
+		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(-teta1), 2)));
+		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
+	}
 	return (res);
 }
