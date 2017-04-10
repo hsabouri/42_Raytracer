@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 15:24:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 14:08:55 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 14:22:53 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_vec4			get_sphere_pixel(t_obj obj, t_vec4 hit)
 	pos.x = u;
 	pos.y = v;
 	pos.w = 1;
+	pos = get_in_bounds(pos);
 	return (pos);
 }
 
