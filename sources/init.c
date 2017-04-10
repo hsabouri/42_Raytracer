@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 15:53:54 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 16:32:20 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_ui			*init_ui(t_env env)
 	ui->redraw = 1;
 	ui->click = 0;
 	ui->last_click = 0;
+	ui->place.type = BACKSLASH;
 	return (ui);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 15:39:29 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 16:39:32 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ t_env		parse(int fd, t_env env)
 
 	line = NULL;
 	ver = NULL;
-	env.objs = (t_obj *)malloc(sizeof(t_obj) * 1000);
-	env.lgt = (t_lgt *)malloc(sizeof(t_lgt) * 1000);
-	env.vrts = (t_vec4 *)malloc(sizeof(t_vec4) * 4000);
+	env.objs = (t_obj *)ft_malloc(sizeof(t_obj) * 1000, CLEAN);
+	env.lgt = (t_lgt *)ft_malloc(sizeof(t_lgt) * 1000, CLEAN);
+	env.vrts = (t_vec4 *)ft_malloc(sizeof(t_vec4) * 4000, CLEAN);
 	env.n_lgt = 0;
 	env.n_obj = 0;
 	env.n_vrt = 0;
