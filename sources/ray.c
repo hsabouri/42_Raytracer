@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 15:49:23 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/07 17:01:28 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ t_ray		init_ray(t_cam *cam, int x, int y, t_env *env)
 	ray.dir = v;
 	ray = rotate_ray(ray, cam->rot);
 	ray.t = EPSILON;
+	ray.tab[0] = 1;
+	ray.tab[1] = NOENV;
+	ray.tab[2] = NOENV;
+	ray.tab[3] = NOENV;
 	return (ray);
 }
 
@@ -59,19 +63,30 @@ t_ray		reflect_ray(t_obj obj, t_ray ray)
 	return (res);
 }
 
-t_ray		refract_ray(t_obj obj, t_ray ray, double r)
+t_ray		refract_ray(t_obj obj, t_ray ray)
 {
-	t_ray	res;
+	t_ray		res;
 	t_vec4	norm;
-	double	coef;
-	double	tmp;
+	double	teta1;
+	double	n;
+	double	c1;
+	double	c2;
+	t_vec4	tmp;
+	int	i;
 
-	r = 1 / r;
-	res.org = vector_scale(ray.dir, ray.t);
+	i = -1;
+	tmp = vector_scale(ray.dir, ray.t);
+	res.org = vector_add(ray.org, tmp);
 	norm = get_normal(ray, obj, res.org);
-	coef = scalar_product(norm, ray.dir);
-	tmp = sqrt(1 - (r * r * (1 - coef * coef)));
-	res.dir = vector_scale(norm, r * coef - tmp);
-	res.dir = vector_add(vector_scale(ray.dir, r), res.dir);
+	teta1 = scalar_product(ray.dir, norm);
+	res.tab[0] = ray.tab[0];
+	while (ray.tab[++i] != NOENV)
+		res.tab[i] = ray.tab[i];
+	res.tab[i] = obj.mat.refract;
+	n = res.tab[i - 1]/res.tab[i];
+	tmp = vector_scale(ray.dir, n);
+	c1 = scalar_product(ray.dir, norm);
+	c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
+	res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
 	return (res);
 }
