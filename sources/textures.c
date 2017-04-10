@@ -6,14 +6,14 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 17:19:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/06 14:25:30 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 13:56:49 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
 #define TEX obj.mat.texture
 
-static t_color	get_pixel_from_uv(t_obj obj, t_vec4 pos)
+t_color			get_pixel_from_uv(t_obj obj, t_vec4 pos)
 {
 	t_color		res;
 	int			x;

@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/07 18:20:57 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 14:10:12 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 	res = (t_color) {0, 0, 0, 0};
 	env.last_id = check_intersections(objs, ray);
 	if (objs[env.last_id].type == BACKSLASH)
-		return (res);
+		return (get_skybox(*ray, env));
 	tmp = objs[env.last_id].mat.rgb;
 	if (objs[env.last_id].mat.texture.type != NOTEX && env.render)
 		objs[env.last_id].mat.rgb = get_pixel_color(objs[env.last_id], *ray);
