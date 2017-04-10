@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 16:31:42 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 18:03:54 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,13 @@ double		intersect_cone(t_ray ray, t_obj cone);
 double		intersect_mesh(t_ray ray, t_obj *obj);
 double		intersect_polygon(t_ray ray, t_obj poly);
 double		intersect_plane(t_ray ray, t_obj plane);
+double		intersect_torus(t_ray ray, t_obj torus);
 double		intersect_sphere(t_ray ray, t_obj sphere);
 double		intersect_cylinder(t_ray ray, t_obj cylinder);
 
 /* Math functions */
 
+double		solve_quartic(t_vec4 coef, double e);
 double		solve_quadra(double a, double b, double c);
 t_vec4      get_normal(t_ray ray, t_obj obj, t_vec4 pos);
 t_vec4		normal_cylinder(t_vec4 pos, t_obj obj);
