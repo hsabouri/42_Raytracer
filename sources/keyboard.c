@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 20:20:20 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 15:18:19 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/10 16:28:11 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static t_env*	key_hook(int keycode, t_env *env)
 {
 	t_ui *test;
+	t_vec4 vec_reset;
+
 	test = (t_ui *)ft_malloc(sizeof(t_ui), CLEAN);
 	if (keycode == KEY_R && (env->redraw = 1))
 		env->cam = change_mod(env->cam);
@@ -22,7 +24,12 @@ static t_env*	key_hook(int keycode, t_env *env)
 		env->shadow = 1 - env->shadow;
 	if (keycode == KEY_P)
 		env->pr_mesh = env->pr_mesh ? 0 : 1;
-	// if (keycode == KEY_SPACE)
+	if (keycode == KEY_SPACE)
+	{
+		vec_reset = new_vector(0, 0, -4);
+		env->cam = init_cam(vec_reset, new_quat_null(), 66);
+		env->redraw = 1;
+	}
 	return (0);
 }
 
