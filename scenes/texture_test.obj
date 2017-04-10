@@ -1,7 +1,7 @@
 # Simple sphere for test purposes
 
-width 150
-height 150
+width 2640
+height 1440
 
 sphere sphere1
 radius 10.0

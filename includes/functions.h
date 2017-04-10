@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 14:03:38 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 15:51:54 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr);
 
 t_ray		rotate_ray(t_ray ray, t_quat rot);
 t_ray		reflect_ray(t_obj obj, t_ray ray);
-t_ray		refract_ray(t_obj obj, t_ray ray, double r);
+t_ray		refract_ray(t_obj obj, t_ray ray);
 
 /* Intersection functions */
 
@@ -140,6 +140,7 @@ t_compnt	set_compnt_cols(t_color bg_default, t_color txt_color,\
 			t_color bg_hover, t_compnt compnt);
 int			ui(t_env *env);
 t_ui 		*ui_draw(t_ui *ui, t_compnt compnt);
+int			place_obj(double x, double y, t_env env, t_obj obj);
 
 /* Multi Thread and loops */
 

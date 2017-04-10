@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/06 14:13:51 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 15:39:29 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_env		create_obj(t_type type, char *name, t_env env)
 		env.objs[env.n_obj].mat.coef = new_vector(1, 1, 1);
 		env.objs[env.n_obj].pos = new_vector(0, 0, 0);
 		env.objs[env.n_obj].mat.reflect = -1.0;
-		env.objs[env.n_obj].mat.refract = EPSILON;
+		env.objs[env.n_obj].mat.refract = -1.0;
 		env.objs[env.n_obj].rot = new_quat_null();
 		env.objs[env.n_obj].inv = get_inverse(env.objs[env.n_obj].rot);
 		env.objs[env.n_obj].mat.texture.img = NULL;

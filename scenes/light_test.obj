@@ -1,5 +1,8 @@
 # Simple sphere for test purposes
 
+width 2640
+height 1440
+
 camera
 	p 0.0 2.0 -6.0
 

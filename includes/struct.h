@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 15:11:21 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/10 15:57:31 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct		s_ray
 	t_vec4			org;
 	t_vec4			dir;
 	double			t;
+	double			tab[4];
 }					t_ray;
 
 /* Camera structure */

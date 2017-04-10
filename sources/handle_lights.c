@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/09 18:18:07 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 15:39:07 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ t_color					lights(t_obj obj, t_ray ray, t_env env, int depth)
 		sec = reflect_ray(obj, ray);
 		add = handle_reflect(sec, env, depth);
 		add = color_scale(add, obj.mat.reflect);
+		res = add_colors(res, add);
+	}
+	if (depth < DEPTH_MAX && obj.mat.refract > -1.0 && env.render)
+	{
+		sec = refract_ray(obj, ray);
+		add = handle_reflect(sec, env, depth);
 		res = add_colors(res, add);
 	}
 	if (obj.mat.alpha > EPSILON)

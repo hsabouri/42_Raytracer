@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/09 18:24:35 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 14:48:06 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define PI 3.141592653
 # define EPSILON 0.000001
 # define DEPTH_MAX 5
+
+# define NOENV -1
 
 # define LENGTH 800
 # define HEIGHT 800
