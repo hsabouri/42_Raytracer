@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 16:34:58 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/10 17:40:24 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,13 @@ t_ray		refract_ray(t_obj obj, t_ray ray)
 		c1 = scalar_product(ray.dir, norm);
 		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
 		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
+		if (c2 < 0)
+			res.dir = ray.dir;
+		if (teta1 < scalar_product(res.dir, norm))
+		{
+			res.dir = ray.dir;
+			reflect_ray(obj, res);
+		}
 	}
 	else
 	{
@@ -92,6 +99,13 @@ t_ray		refract_ray(t_obj obj, t_ray ray)
 		c1 = scalar_product(ray.dir, norm);
 		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(-teta1), 2)));
 		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
+		if (c2 < 0)
+			res.dir = ray.dir;
+		if (teta1 < scalar_product(res.dir, norm))
+			{
+				res.dir = ray.dir;
+				reflect_ray(obj, res);
+			}
 	}
 	return (res);
 }
