@@ -11,8 +11,6 @@ sphere sphere1
 	p 2.0 2.0 0.0
 	alpha 0.5
 	c 255 0 0
-	reflect 0.0
-	refract 0.0
 
 plane plane1
 	p 0.0 -1.0 0.0
