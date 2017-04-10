@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 15:46:14 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/10 15:51:54 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ t_compnt	set_compnt_cols(t_color bg_default, t_color txt_color,\
 			t_color bg_hover, t_compnt compnt);
 int			ui(t_env *env);
 t_ui 		*ui_draw(t_ui *ui, t_compnt compnt);
-int			place_obj(double x, double y, t_env env, t_type type);
+int			place_obj(double x, double y, t_env env, t_obj obj);
 
 /* Multi Thread and loops */
 
