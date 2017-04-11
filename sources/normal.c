@@ -6,11 +6,21 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 17:24:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 18:09:13 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/11 17:24:08 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+t_vec4		normal_child(t_ray ray, t_obj obj, t_vec4 pos)
+{
+	t_vec4	res;
+
+	res = get_normal(ray, obj.chld[obj.lst], pos);
+	if (obj.ch_type == INVERSE)
+		return (vector_scale(res, -1));
+	return (res);
+}
 
 t_vec4		normal_plane(t_ray ray, t_obj obj)
 {
@@ -44,6 +54,10 @@ t_vec4		normal_cylinder(t_vec4 pos, t_obj obj)
 
 t_vec4		get_normal(t_ray ray, t_obj obj, t_vec4 pos)
 {
+	if (obj.type == MESH)
+		return (get_normal(ray, obj.chld[obj.lst], pos));
+	if (obj.chld && obj.chld[obj.lst].type != BACKSLASH)
+		return (normal_child(ray, obj, pos));
 	if (obj.type == PLANE)
 		return (normal_plane(ray, obj));
 	else if (obj.type == CYLINDER)
@@ -53,8 +67,6 @@ t_vec4		get_normal(t_ray ray, t_obj obj, t_vec4 pos)
 		obj.dir = normal_polygon(obj);
 		return (normal_plane(ray, obj));
 	}
-	else if (obj.type == MESH)
-		return (get_normal(ray, obj.chld[obj.lst], pos));
 	else
 		return (normalize_vector(vector_sub(obj.pos, pos)));
 }

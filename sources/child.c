@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 15:44:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/11 16:33:13 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/11 17:24:22 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ static double	intersect_pipeline(t_ray ray, t_obj obj)
 		return (intersect_cylinder(ray, obj));
 }
 
-double			intersect_child(t_ray ray, t_obj obj)
+double			intersect_child(t_ray ray, t_obj *obj)
 {
 	double	t;
 
-	t = intersect_pipeline(ray, obj);
-	if (obj.ch_type == CHILD)
+	t = intersect_pipeline(ray, *obj);
+	if (obj->ch_type == CHILD)
 	{
-		obj.lst = check_intersections(obj.chld, &ray);
-		if (obj.chld[obj.lst].type == BACKSLASH && t <= EPSILON)
+		obj->lst = check_intersections(obj->chld, &ray);
+		if (obj->chld[obj->lst].type == BACKSLASH && t <= EPSILON)
 			return (-1.0);
 		else if (t > EPSILON && ray.t <= EPSILON)
 			return (t);
@@ -65,12 +65,14 @@ double			intersect_child(t_ray ray, t_obj obj)
 		else
 			return (MIN(t, ray.t));
 	}
-	else if (obj.ch_type == INVERSE)
+	else if (obj->ch_type == INVERSE)
 	{
 		if (t <= EPSILON)
 			return (-1.0);
-		obj.lst = check_intersections(obj.chld, &ray);
-		if (obj.chld[obj.lst].type == BACKSLASH)
+		obj->lst = check_intersections(obj->chld, &ray);
+		if (obj->chld[obj->lst].type == BACKSLASH)
+			return (t);
+		else if (t < ray.t)
 			return (t);
 		else
 			return (-1.0);
