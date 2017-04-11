@@ -6,39 +6,11 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 18:11:00 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/03 21:25:22 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/11 14:22:24 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <obj.h>
-
-t_obj				optimesh2000(t_obj obj, t_env env)
-{
-	t_vec4			average;
-	const t_vec4	*vrts = env.vrts;
-	double			len;
-	double			max;
-	unsigned int	i;
-
-	if (obj.type == MESH)
-	{
-		max = EPSILON;
-		average = new_vector(EPSILON, EPSILON, EPSILON);
-		i = 0;
-		while (i < env.n_vrt)
-		{
-			average = vector_add(average, vrts[i]);
-			if ((len = get_vector_len(vrts[i])) > max)
-				max = len;
-			i++;
-		}
-		average = vector_scale(average, env.n_vrt);
-		obj.radius = max;
-		obj.pos = average;
-	}
-	display_objs(&obj, 1);
-	return (obj);
-}
 
 static t_uint3		parse_polygon(char *line, t_env env)
 {
@@ -78,7 +50,7 @@ t_env				add_poly_to_last(char *line, t_env env)
 	ids = (unsigned int *)(&s_ids);
 	poly.type = POLYGON;
 	tmp = ft_itoa(n_poly);
-	poly.name = ft_strjoin("poly", tmp);
+	poly.name = ft_strjoin("poly ", tmp);
 	free(tmp);
 	poly.vert[0] = env.vrts[ids[0] - 1];
 	poly.vert[1] = env.vrts[ids[1] - 1];

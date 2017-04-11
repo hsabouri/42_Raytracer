@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 16:39:32 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/11 14:19:47 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_env		create_obj(t_type type, char *name, t_env env)
 		env.objs[env.n_obj].pos = new_vector(0, 0, 0);
 		env.objs[env.n_obj].mat.reflect = -1.0;
 		env.objs[env.n_obj].mat.refract = -1.0;
+		env.objs[env.n_obj].dir = new_vector(0, 1, 0);
 		env.objs[env.n_obj].rot = new_quat_null();
 		env.objs[env.n_obj].inv = get_inverse(env.objs[env.n_obj].rot);
 		env.objs[env.n_obj].mat.texture.img = NULL;
@@ -86,13 +87,12 @@ t_env		parse(int fd, t_env env)
 		env = lgts(line2, env);
 		env = meshs(line2, env);
 		env = env_feed(line2, env);
-		if (env.n_obj > 0 && env.objs[env.n_obj - 1].type == MESH)
-			env.objs[env.n_obj - 1] = optimesh2000(env.objs[env.n_obj - 1], env);
 		free_lines(line, line2);
 	}
 	free(line);
 	env = create_obj(BACKSLASH, "n/a", env);
 	env = create_lgt(NOLIGHT, "n/a", env);
+	display_objs(env.objs, env.n_obj);
 	ft_putendl("\x1B[32mLOG\x1B[0m: Parsing done");
 	return (env);
 }
