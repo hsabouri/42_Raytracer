@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/11 14:19:47 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/11 16:10:43 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_env		create_obj(t_type type, char *name, t_env env)
 	}
 	else if (env.n_obj < 1000)
 	{
+		env.objs[env.n_obj].chld = NULL;
 		env.objs[env.n_obj].type = type;
 		env.objs[env.n_obj].name = ft_strdup(name);
 		env.objs[env.n_obj].mat.rgb = (t_color) {255, 255, 255, 0};
