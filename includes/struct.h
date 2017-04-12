@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/11 16:31:05 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 14:28:55 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct		s_obj
 	t_mat			mat;
 	struct s_obj	*chld;
 	t_chtype		ch_type;
+	t_lmtype		lm_type;
 	t_vec4			pos;
 	t_vec4			dir;
 	t_type			type;
