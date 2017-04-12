@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/07 13:51:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 14:47:34 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ t_ui 	*ui_draw(t_ui *ui, t_compnt compnt)
 		color = compnt.bg;
 	if (compnt.status == HOVER)
 		color = compnt.bg_hv;
-//	ui->lay1 = init_img(ui->lay1, (t_color){0, 0, 0, 255});
-//	ui->lay2 = init_img(ui->lay2, (t_color){0, 0, 0, 255});
 	y = 0;
 	while (y < compnt.h)
 	{

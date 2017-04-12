@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:43:42 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 16:49:24 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 15:29:32 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int				place_obj(int x, int y, t_env *env, t_obj obj)
 	if (env->objs[id].type == BACKSLASH)
 		return (0);
 	obj.pos = vector_add(ray.org, vector_scale(ray.dir, ray.t));
+	obj.mat.rgb = env->ui->color;
 	env->objs = add_object(env, obj);
 	return (1);
 }

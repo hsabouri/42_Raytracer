@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 15:42:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 13:54:09 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,31 @@ t_img			*create_img(t_img *res, int width, int height, void *mlx)
 	res->width = width;
 	res->height = height;
 	return (res);
+}
+
+t_env			*del_square(t_env *env, int x, int y, int side)
+{
+	int		c_x;
+	int		c_y;
+	t_img	lay1;
+	t_img	bg;
+	t_color	color;
+	
+	lay1 = env->ui->lay2;
+	bg = env->img;
+	c_x = 0;
+	while (c_x < side)
+	{
+		c_y = 0;
+		while (c_y < side)
+		{
+			color = ((t_color *)bg.addr)[(y + c_y) * bg.width + c_x + x];
+			lay1 = pixel_put(lay1, x + c_x, y + c_y, color);
+			c_y++;
+		}
+		c_x++;
+	}
+	return (env);
 }
 
 t_img			init_img(t_img img, t_color color)
