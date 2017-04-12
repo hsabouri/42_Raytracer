@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/11 17:14:59 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 16:13:14 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ t_color		shadow_handler(t_obj *objs, t_ray ray, t_env env, t_color color);
 int			shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id);
 double      specular(t_obj obj, t_ray ray, t_lgt lgt);
 
+/* Limit functions */
+
+double		limit_object(t_obj *obj, t_ray ray, double t1, double t2);
+
 /* Material functions */
 
 t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr);
@@ -72,8 +76,7 @@ double		intersect_cylinder(t_ray ray, t_obj cylinder);
 
 /* Math functions */
 
-double		solve_quartic(t_vec4 coef, double e);
-double		solve_quadra(double a, double b, double c);
+double		solve_quadra(t_obj obj, t_ray ray, double a, double b, double c);
 t_vec4      get_normal(t_ray ray, t_obj obj, t_vec4 pos);
 t_vec4		normal_cylinder(t_vec4 pos, t_obj obj);
 t_vec4		normal_plane(t_ray ray, t_obj obj);

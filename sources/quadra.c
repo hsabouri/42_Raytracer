@@ -6,13 +6,13 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 17:01:03 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 18:01:28 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 16:42:48 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-double			solve_quadra(double a, double b, double c)
+double			solve_quadra(t_obj obj, t_ray ray, double a, double b, double c)
 {
 	double		d;
 	double		t1;
@@ -26,6 +26,8 @@ double			solve_quadra(double a, double b, double c)
 		d = sqrt(d);
 		t1 = (-b - d) / (2.0 * a);
 		t2 = (-b + d) / (2.0 * a);
+		if (obj.ch_type == LIMIT)
+			return (limit_object(&obj, ray, t2, t1));
 		if (t1 > EPSILON) {
 			return t1;
 		}

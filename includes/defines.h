@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 14:48:57 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 15:43:07 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,14 +137,7 @@ typedef enum	e_chtype
 	NOCHILD,
 	INVERSE,
 	CHILD,
-	LIMIT_AR,
-	LIMIT_PR
+	LIMIT
 }				t_chtype;
-
-typedef enum	e_lmtype
-{
-	MAX,
-	MIN
-}				t_lmtype;
 
 #endif
