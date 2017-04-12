@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 14:00:06 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 15:35:21 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ t_ray		refract_ray(t_obj obj, t_ray ray);
 
 double		intersect_cone(t_ray ray, t_obj cone);
 double		intersect_mesh(t_ray ray, t_obj *obj);
-double		intersect_polygon(t_ray ray, t_obj poly);
+double		intersect_child(t_ray ray, t_obj *obj);
 double		intersect_plane(t_ray ray, t_obj plane);
 double		intersect_torus(t_ray ray, t_obj torus);
 double		intersect_sphere(t_ray ray, t_obj sphere);
+double		intersect_polygon(t_ray ray, t_obj poly);
 double		intersect_cylinder(t_ray ray, t_obj cylinder);
 
 /* Math functions */
@@ -149,5 +150,8 @@ int			place_obj(int x, int y, t_env *env, t_obj obj);
 void		render_coroutine(t_env *env);
 void		cancel_coroutine(t_env *env);
 void 		*draw(void *arg);
+
+/* TEMP */
+void		temp_init(t_env *env);
 
 #endif

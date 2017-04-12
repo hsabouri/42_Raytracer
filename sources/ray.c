@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 17:40:24 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/11 18:44:50 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,35 +77,36 @@ t_ray		refract_ray(t_obj obj, t_ray ray)
 	res.org = vector_add(ray.org, tmp);
 	norm = get_normal(ray, obj, res.org);
 	teta1 = scalar_product(ray.dir, norm);
-	if (teta1 < 0)
+	if (teta1 > 0)
 	{
 		n = ray.env.x / obj.mat.refract;
 		tmp = vector_scale(ray.dir, n);
 		c1 = scalar_product(ray.dir, norm);
+		c1 *= -1;
 		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
 		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
 		if (c2 < 0)
 			res.dir = ray.dir;
-		if (teta1 < scalar_product(res.dir, norm))
+		/*if (teta1 < scalar_product(res.dir, norm))
 		{
 			res.dir = ray.dir;
 			reflect_ray(obj, res);
-		}
+		}*/
 	}
 	else
 	{
 		n = obj.mat.refract / ray.env.x;
 		tmp = vector_scale(ray.dir, n);
 		c1 = scalar_product(ray.dir, norm);
-		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(-teta1), 2)));
+		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
 		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
-		if (c2 < 0)
-			res.dir = ray.dir;
-		if (teta1 < scalar_product(res.dir, norm))
+		/*if (c2 < 0)
+			res.dir = ray.dir;*/
+		/*if (teta1 < scalar_product(res.dir, norm))
 			{
 				res.dir = ray.dir;
 				reflect_ray(obj, res);
-			}
+			}*/
 	}
 	return (res);
 }

@@ -1,0 +1,14 @@
+height 800
+width 800
+
+camera
+	p 0.0 0.0 -8.0
+
+sphere cyl1
+	p 0.0 0.0 0.0
+	radius 2.5
+	c 255 0 0
+
+omni light1
+	p 0.0 0.0 -3.0
+	c 255 255 255

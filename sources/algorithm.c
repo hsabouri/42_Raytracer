@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 19:15:08 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 14:03:18 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int				check_intersections(t_obj *objs, t_ray *ray)
 	{
 		if (objs[i].type == MESH)
 			t_tmp = intersect_mesh(*ray, &objs[i]);
+		else if (objs[i].chld)
+			t_tmp = intersect_child(*ray, &objs[i]);
 		else if (objs[i].type == SPHERE)
 			t_tmp = intersect_sphere(*ray, objs[i]);
 		else if (objs[i].type == PLANE)
