@@ -6,11 +6,20 @@
 /*   By: pmartine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 16:32:01 by pmartine          #+#    #+#             */
-/*   Updated: 2017/04/09 16:25:18 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 17:25:51 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+void		ft_fswap(double *a, double *b)
+{
+	double	c;
+
+	c = *a;
+	*a = *b;
+	*b = c;
+}
 
 void		print_mesh(t_obj obj) {
 	int i;

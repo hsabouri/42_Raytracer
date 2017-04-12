@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 15:44:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 16:39:25 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 17:35:27 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,23 @@ static t_obj	init_child(t_obj obj)
 
 void			temp_init(t_env *env)
 {
+	env->objs[0].rot = new_quat(PI / 3, (t_vec4){0, 0, 1, 0});
+	env->objs[0].inv = get_inverse(env->objs[0].rot);
 	env->objs[0].ch_type = LIMIT;
 	env->objs[0].lmt.mode = ROTATION;
 	env->objs[0].lmt.axis = (t_vec4){0, 1, 0, 0};
-	env->objs[0].lmt.coef_min = (t_vec4){0, -1, 0, 0};
-	env->objs[0].lmt.coef_max = (t_vec4){0, 2, 0, 0};
+	env->objs[0].lmt.coef_min = (t_vec4){-0.5, -1, -0.5, 0};
+	env->objs[0].lmt.coef_max = (t_vec4){1, 2, 1, 0};
 	env->objs[0] = init_child(env->objs[0]);
 }
 
-static double	intersect_pipeline(t_ray ray, t_obj obj)
+static double	intersect_pipeline(t_ray ray, t_obj *obj)
 {
-	if (obj.type == SPHERE)
+	if (obj->type == SPHERE)
 		return (intersect_sphere(ray, obj));
-	else if (obj.type == PLANE)
+	else if (obj->type == PLANE)
 		return (intersect_plane(ray, obj));
-	else if (obj.type == CONE)
+	else if (obj->type == CONE)
 		return (intersect_cone(ray, obj));
 	else
 		return (intersect_cylinder(ray, obj));
@@ -57,7 +59,7 @@ double			intersect_child(t_ray ray, t_obj *obj)
 {
 	double	t;
 
-	t = intersect_pipeline(ray, *obj);
+	t = intersect_pipeline(ray, obj);
 	if (obj->ch_type == CHILD)
 	{
 		obj->lst = check_intersections(obj->chld, &ray);

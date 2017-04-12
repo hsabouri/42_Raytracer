@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 16:43:56 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 17:29:14 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,17 @@ t_ray		refract_ray(t_obj obj, t_ray ray);
 
 /* Intersection functions */
 
-double		intersect_cone(t_ray ray, t_obj cone);
+double		intersect_cone(t_ray ray, t_obj *cone);
 double		intersect_mesh(t_ray ray, t_obj *obj);
 double		intersect_child(t_ray ray, t_obj *obj);
-double		intersect_plane(t_ray ray, t_obj plane);
-double		intersect_torus(t_ray ray, t_obj torus);
-double		intersect_sphere(t_ray ray, t_obj sphere);
+double		intersect_plane(t_ray ray, t_obj *plane);
+double		intersect_sphere(t_ray ray, t_obj *sphere);
 double		intersect_polygon(t_ray ray, t_obj poly);
-double		intersect_cylinder(t_ray ray, t_obj cylinder);
+double		intersect_cylinder(t_ray ray, t_obj *cylinder);
 
 /* Math functions */
 
-double		solve_quadra(t_obj obj, t_ray ray, double a, double b, double c);
+double		solve_quadra(t_obj *obj, t_ray ray, double a, double b, double c);
 t_vec4      get_normal(t_ray ray, t_obj obj, t_vec4 pos);
 t_vec4		normal_cylinder(t_vec4 pos, t_obj obj);
 t_vec4		normal_plane(t_ray ray, t_obj obj);
@@ -127,6 +126,7 @@ t_color		get_skybox(t_ray ray, t_env env);
 
 /* Tools functions */
 
+void		ft_fswap(double *a, double *b);
 double      ft_min_max(double value, double min, double max);
 t_color		filters(t_color color, t_env env);
 t_color		color_scale(t_color col, double val);

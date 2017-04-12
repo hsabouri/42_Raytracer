@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 13:48:40 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/11 15:34:59 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 17:07:42 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_color		get_skybox(t_ray ray, t_env env)
 	t_vec4	pos;
 	t_vec4	hit;
 
-	ray.t = intersect_sphere(ray, env.objs[env.n_obj - 1]);
+	ray.t = intersect_sphere(ray, &env.objs[env.n_obj - 1]);
 	hit = vector_add(ray.org, vector_scale(ray.dir, ray.t));
 	pos = get_sphere_pixel(env.objs[env.n_obj - 1], hit);
 	res = get_pixel_from_uv(env.objs[env.n_obj - 1], pos);

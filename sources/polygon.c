@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 02:47:21 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/03 14:34:59 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 17:06:51 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ double			intersect_polygon(t_ray ray, t_obj poly)
 	ac = vector_sub(poly.vert[1], poly.vert[2]);
 	poly.dir = normal_polygon(poly);
 	poly.pos = poly.vert[0];
-	ray.t = intersect_plane(ray, poly);
+	ray.t = intersect_plane(ray, &poly);
 	if (!(ray.t < EPSILON))
 		ray.t = inside_out(ray, poly);
 	return (ray.t);

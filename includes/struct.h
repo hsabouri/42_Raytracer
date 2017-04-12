@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 16:43:40 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 16:49:52 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct		s_mat
 
 typedef struct		s_lmt
 {
+	t_vec4			dir;
 	t_mode			mode;
 	t_vec4			axis;
 	t_vec4			coef_min;

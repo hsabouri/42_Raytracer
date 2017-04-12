@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/12 16:37:53 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 17:05:36 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int				check_intersections(t_obj *objs, t_ray *ray)
 		else if (objs[i].ch_type != NOCHILD && objs[i].ch_type != LIMIT)
 			t_tmp = intersect_child(*ray, &objs[i]);
 		else if (objs[i].type == SPHERE)
-			t_tmp = intersect_sphere(*ray, objs[i]);
+			t_tmp = intersect_sphere(*ray, &objs[i]);
 		else if (objs[i].type == PLANE)
-			t_tmp = intersect_plane(*ray, objs[i]);
+			t_tmp = intersect_plane(*ray, &objs[i]);
 		else if (objs[i].type == CONE)
-			t_tmp = intersect_cone(*ray, objs[i]);
+			t_tmp = intersect_cone(*ray, &objs[i]);
 		else if (objs[i].type == CYLINDER)
-			t_tmp = intersect_cylinder(*ray, objs[i]);
+			t_tmp = intersect_cylinder(*ray, &objs[i]);
 		else if (objs[i].type == POLYGON)
 			t_tmp = intersect_polygon(*ray, objs[i]);
 		if ((t_tmp < t || t <= EPSILON) && t_tmp > EPSILON)
