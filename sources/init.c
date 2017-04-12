@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/11 14:14:03 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/11 16:04:52 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_ui			*init_ui(t_env env)
 	ui->lay2 = init_img(ui->lay2, (t_color){0, 0, 0, 255});
 	ui->obj_map = init_img(ui->obj_map, (t_color){255, 255, 255, 255});
 	ui = init_compnts(ui, env);
+	ui->color = (t_color){255, 255, 255, 0};
 	ui->redraw = 1;
 	ui->click = 0;
 	ui->last_click = 0;

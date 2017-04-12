@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 16:13:14 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 16:43:56 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_obj		add_polygon(t_obj obj, t_obj poly);
 /* Mlx functions */
 
 t_img		pixel_put(t_img img, int x, int y, t_color color);
-t_img		line(t_img image, t_pix start, t_pix end, t_color color);
+t_env		*del_square(t_env *env, int x, int y, int side);
 t_img		init_img(t_img img, t_color color);
 int			mouse(int x, int y, t_env *env);
 int			keypress(int keycode, t_env *env);

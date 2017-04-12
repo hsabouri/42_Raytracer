@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 16:39:32 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 16:43:40 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ typedef struct		s_ui
 	int				mouse_x;
 	int				mouse_y;
 	int				click;
+	t_color			color;
 	int				last_click;
 	t_img			lay1;
 	t_img			lay2;
