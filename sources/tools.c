@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmartine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pmartine <pmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 16:32:01 by pmartine          #+#    #+#             */
-/*   Updated: 2017/04/12 17:25:51 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 19:10:56 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ t_color		filters(t_color c, t_env env)
 	if (env.filter == NB)
 		return ((t_color){i,i,i,c.a});
 	else if (env.filter == SEPIA)
+	{
+		c.r = (c.r * 0.393) + (c.g * 0.769) + (c.b * 0.189);
+	   	c.g = (c.r * 0.349) + (c.g * 0.686) + (c.b * 0.168);
+	   	c.b = (c.r * 0.272) + (c.g * 0.534) + (c.b * 0.131);
+		return (c);
+	}
+	else if (env.filter == TRY)
 	{
 		c.r = (c.r * 0.393) + (c.g * 0.769) + (c.b * 0.189);
 	   	c.g = (c.r * 0.349) + (c.g * 0.686) + (c.b * 0.168);
