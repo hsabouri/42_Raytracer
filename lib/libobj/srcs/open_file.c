@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 21:27:02 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/05 17:00:16 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 17:51:45 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	is_file(const char *path)
 	return (S_ISREG(path_stat.st_mode));
 }
 
-t_img			create_xpm_img(char *path, t_env env)
+t_img		create_xpm_img(char *path, t_env env)
 {
 	t_img		res;
 

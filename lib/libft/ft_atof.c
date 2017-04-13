@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:15:31 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/02/15 18:08:03 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 17:42:32 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,45 @@ static double	ft_dzero(void)
 	return (res);
 }
 
-double			ft_atof(const char *number)
+static	int		ft_sign(char *str)
 {
-	double	res;
-	char	*str;
 	int		sign;
-	int		power;
-	
-	str = (char *)number;
-	res = ft_dzero();
+
+	sign = 1;
 	while (ft_isspace(*str))
 		str++;
-	sign = 1;
-	power = 1;
 	if (*str == '-')
-	{
 		sign = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
+	return (sign);
+}
+
+static	double	first_part(char *str, double res, int sign)
+{
 	while (ft_isdigit(*str))
 	{
 		res *= 10;
 		res += (*str - '0') * sign;
 		str++;
 	}
+	return (res);
+}
+
+double			ft_atof(const char *number)
+{
+	double	res;
+	char	*str;
+	int		power;
+	int		sign;
+
+	str = (char *)number;
+	res = ft_dzero();
+	sign = ft_sign(str);
+	power = 1;
+	while (!ft_isdigit(*str))
+		str++;
+	res = first_part(str, res, sign);
+	while (ft_isdigit(*str))
+		str++;
 	if (*str == '.' || *str == ',')
 	{
 		str++;
