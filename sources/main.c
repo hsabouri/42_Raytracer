@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 17:27:20 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/13 18:14:20 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		expose(t_env *env)
 	return (0);
 }
 
-static int 		draw_loop(t_env *env)
+static int		draw_loop(t_env *env)
 {
 	env->frame += 1;
 	env = key_actions(env);

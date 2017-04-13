@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:18:01 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 17:03:36 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/13 18:23:58 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 {
 	double		t;
 	double		tmp;
-	int 		i;
+	int			i;
 
 	i = 0;
 	t = EPSILON;
@@ -40,7 +40,7 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 			if ((tmp < t || t <= EPSILON) && tmp > EPSILON && tmp < max_dis)
 			{
 				t = tmp;
-				break;
+				break ;
 			}
 		}
 		i++;

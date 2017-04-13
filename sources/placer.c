@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:43:42 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 15:29:32 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 18:20:27 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_obj		*add_object(t_env *env, t_obj obj)
 	return (res);
 }
 
-int				place_obj(int x, int y, t_env *env, t_obj obj)
+int					place_obj(int x, int y, t_env *env, t_obj obj)
 {
 	int			id;
 	t_ray		ray;
@@ -48,7 +48,7 @@ int				place_obj(int x, int y, t_env *env, t_obj obj)
 	return (1);
 }
 
-int				select_obj(int x, int y, t_env *env)
+int					select_obj(int x, int y, t_env *env)
 {
 	t_ray		ray;
 

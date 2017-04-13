@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/12 13:54:09 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 18:15:12 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_env			*del_square(t_env *env, int x, int y, int side)
 	t_img	lay1;
 	t_img	bg;
 	t_color	color;
-	
+
 	lay1 = env->ui->lay2;
 	bg = env->img;
 	c_x = 0;

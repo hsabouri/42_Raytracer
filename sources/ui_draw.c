@@ -6,13 +6,13 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/12 14:47:34 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 18:30:04 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-t_ui 	*ui_draw(t_ui *ui, t_compnt compnt)
+t_ui	*ui_draw(t_ui *ui, t_compnt compnt)
 {
 	int		x;
 	int		y;

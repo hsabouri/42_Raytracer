@@ -6,20 +6,20 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 18:02:05 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 18:29:18 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-t_compnt	set_compnt_pos(int pos_x, int pos_y, t_compnt compnt)
+t_compnt		set_compnt_pos(int pos_x, int pos_y, t_compnt compnt)
 {
 	compnt.x = pos_x;
 	compnt.y = pos_y;
 	return (compnt);
 }
 
-t_compnt	set_compnt_size(unsigned int width, unsigned int height,\
+t_compnt		set_compnt_size(unsigned int width, unsigned int height,\
 t_compnt compnt)
 {
 	compnt.w = width;
@@ -27,7 +27,7 @@ t_compnt compnt)
 	return (compnt);
 }
 
-t_compnt	set_compnt_cols(t_color bg_default, t_color txt_color,\
+t_compnt		set_compnt_cols(t_color bg_default, t_color txt_color,\
 t_color bg_hover, t_compnt compnt)
 {
 	compnt.bg = bg_default;

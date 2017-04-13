@@ -6,15 +6,15 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 20:20:20 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 16:54:44 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/13 18:12:29 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-static t_env*	key_hook(int keycode, t_env *env)
+static t_env	*key_hook(int keycode, t_env *env)
 {
-	t_ui *test;
+	t_ui		*test;
 
 	test = (t_ui *)ft_malloc(sizeof(t_ui), CLEAN);
 	if (keycode == KEY_R && (env->redraw = 1))
@@ -48,7 +48,6 @@ t_env			*key_actions(t_env *env)
 	env->cam = cam_handle(env->cam, env);
 	return (env);
 }
-
 
 int				keypress(int keycode, t_env *env)
 {

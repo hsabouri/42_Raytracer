@@ -6,19 +6,19 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/06 15:00:57 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 18:04:02 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
 
-void	c_log(char *str)
+void		c_log(char *str)
 {
 	ft_putstr("\x1b[32mLOG:\x1b[0m ");
 	ft_putendl(str);
 }
 
-void	error(int code, char *str)
+void		error(int code, char *str)
 {
 	if (code == MALLOC_FAILED)
 		perror("\x1B[31mERROR\x1B[0m");
@@ -32,7 +32,7 @@ void	error(int code, char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	c_error(char *str, int code)
+void		c_error(char *str, int code)
 {
 	ft_putstr("\x1b[31mERROR ");
 	ft_putnbr(code);
@@ -50,7 +50,7 @@ static int	is_file(const char *path)
 	return (S_ISREG(path_stat.st_mode));
 }
 
-int		c_open_file(char *path)
+int			c_open_file(char *path)
 {
 	int	fd;
 	int err;

@@ -6,7 +6,7 @@
 /*   By: pmartine <pmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 16:32:01 by pmartine          #+#    #+#             */
-/*   Updated: 2017/04/12 19:10:56 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/13 18:32:55 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ void		ft_fswap(double *a, double *b)
 	*b = c;
 }
 
-void		print_mesh(t_obj obj) {
+void		print_mesh(t_obj obj)
+{
 	int i;
 
 	i = 0;
-	if (obj.type == MESH) {
-		while (obj.chld[i].type != BACKSLASH) {
+	if (obj.type == MESH)
+	{
+		while (obj.chld[i].type != BACKSLASH)
+		{
 			ft_putstr("Polygon ");
 			ft_putnbr(i);
 			ft_putchar('\n');
@@ -37,7 +40,8 @@ void		print_mesh(t_obj obj) {
 			i++;
 		}
 	}
-	else {
+	else
+	{
 		ft_putendl("Pas un mesh");
 		ft_putendl(obj.name);
 	}
@@ -67,27 +71,27 @@ t_color		filters(t_color c, t_env env)
 
 	i = (c.r + c.g + c.b) / 3;
 	if (env.filter == NB)
-		return ((t_color){i,i,i,c.a});
+		return ((t_color){i, i, i, c.a});
 	else if (env.filter == SEPIA)
 	{
 		c.r = (c.r * 0.393) + (c.g * 0.769) + (c.b * 0.189);
-	   	c.g = (c.r * 0.349) + (c.g * 0.686) + (c.b * 0.168);
-	   	c.b = (c.r * 0.272) + (c.g * 0.534) + (c.b * 0.131);
+		c.g = (c.r * 0.349) + (c.g * 0.686) + (c.b * 0.168);
+		c.b = (c.r * 0.272) + (c.g * 0.534) + (c.b * 0.131);
 		return (c);
 	}
 	else if (env.filter == TRY)
 	{
 		c.r = (c.r * 0.393) + (c.g * 0.769) + (c.b * 0.189);
-	   	c.g = (c.r * 0.349) + (c.g * 0.686) + (c.b * 0.168);
-	   	c.b = (c.r * 0.272) + (c.g * 0.534) + (c.b * 0.131);
+		c.g = (c.r * 0.349) + (c.g * 0.686) + (c.b * 0.168);
+		c.b = (c.r * 0.272) + (c.g * 0.534) + (c.b * 0.131);
 		return (c);
 	}
 	else if (env.filter == BLUE)
-		return ((t_color){255,i,i,c.a});
+		return ((t_color){255, i, i, c.a});
 	else if (env.filter == GREEN)
-		return ((t_color){i,255,i,c.a});
+		return ((t_color){i, 255, i, c.a});
 	else if (env.filter == RED)
-		return ((t_color){i,i,255,c.a});
+		return ((t_color){i, i, 255, c.a});
 	else if (env.filter == NEG)
 		return ((t_color){255 - c.r, 255 - c.g, 255 - c.b, c.a});
 	else

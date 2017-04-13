@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/05 15:24:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 14:22:53 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/13 18:03:03 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 
 static t_vec4	get_in_bounds(t_vec4 pos)
 {
-	if (pos.x > 1.0) {
+	if (pos.x > 1.0)
+	{
 		while (pos.x > 1.0)
 			pos.x -= 1.0;
 	}
-	else if (pos.x < 0.0) {
+	else if (pos.x < 0.0)
+	{
 		while (pos.x < 0.0)
 			pos.x += 1.0;
 	}
-	if (pos.y > 1.0) {
+	if (pos.y > 1.0)
+	{
 		while (pos.y > 1.0)
 			pos.y -= 1.0;
 	}
-	else if (pos.y < 0.0) {
+	else if (pos.y < 0.0)
+	{
 		while (pos.y < 0.0)
 			pos.y += 1.0;
 	}

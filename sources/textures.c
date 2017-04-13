@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 17:19:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 15:04:37 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/13 18:25:59 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_color	get_color_from_uv(t_obj obj, int x, int y)
 	int			p;
 
 	p = (x * (TEX.bpp / 8)) + (y * TEX.size);
-	res.b = TEX.addr[p    ];
+	res.b = TEX.addr[p];
 	res.g = TEX.addr[p + 1];
 	res.r = TEX.addr[p + 2];
 	res.a = 0;

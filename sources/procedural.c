@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/19 14:58:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/05 16:16:18 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/13 18:22:49 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_color				get_pixel_procedure(t_obj obj, t_vec4 pos)
 	else if (TEX.type == CHECKER)
 		res = checker(obj, pos);
 	else if (TEX.type == NOISE || TEX.type == WOOD || TEX.type == MARBLE)
-	   res = apply_perlin(obj, pos);	
+		res = apply_perlin(obj, pos);
 	else
 		res = (t_color){0, 0, 0, 0};
 	return (res);

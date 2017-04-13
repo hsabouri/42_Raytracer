@@ -6,12 +6,12 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/10 17:36:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/03/30 14:51:31 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/13 18:19:49 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
-# define inter(a, b, x) (a * (1 - (1 - cos(x * PI)) * 0.5) + b * x)
+#define INTER(A, B, X) (A * (1 - (1 - cos(X * PI)) * 0.5) + B * X)
 
 static double			noise(int x, int y)
 {
@@ -19,7 +19,7 @@ static double			noise(int x, int y)
 
 	n = x + y * 57;
 	n = (n << 13) ^ n;
-	return (1.0 - ( (n * ((n * n * 15731) + 789221) + 1376312589)
+	return (1.0 - ((n * ((n * n * 15731) + 789221) + 1376312589)
 				& 0x7fffffff) / 1073741824.0);
 }
 
@@ -47,13 +47,13 @@ static double			noise_handle(t_vec4 pos)
 	intval[1] = (int)pos.y;
 	frval[0] = pos.x - intval[0];
 	frval[1] = pos.y - intval[1];
-	val[0] = smooth(intval[0]    , intval[1]    );
-	val[1] = smooth(intval[0] + 1, intval[1]    );
-	val[2] = smooth(intval[0]    , intval[1] + 1);
+	val[0] = smooth(intval[0], intval[1]);
+	val[1] = smooth(intval[0] + 1, intval[1]);
+	val[2] = smooth(intval[0], intval[1] + 1);
 	val[3] = smooth(intval[0] + 1, intval[1] + 1);
-	res[0] = inter(val[0], val[1], frval[0]);
-	res[1] = inter(val[2], val[3], frval[0]);
-	return (inter(res[0], res[1], frval[1]));
+	res[0] = INTER(val[0], val[1], frval[0]);
+	res[1] = INTER(val[2], val[3], frval[0]);
+	return (INTER(res[0], res[1], frval[1]));
 }
 
 static double			perlin_handle(t_vec4 pos, int oct, double buf)
