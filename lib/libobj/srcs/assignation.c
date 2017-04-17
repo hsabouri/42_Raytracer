@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 19:17:55 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/09 17:29:10 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 17:49:40 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ static t_env	step2_objs(char *line, t_env env)
 		&env.objs[env.n_obj - 1].inv);
 	return (env);
 }
-
-
 
 static t_env	step2_lgts(char *line, t_env env)
 {

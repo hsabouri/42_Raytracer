@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 15:35:21 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 17:29:14 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ t_color		shadow_handler(t_obj *objs, t_ray ray, t_env env, t_color color);
 int			shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id);
 double      specular(t_obj obj, t_ray ray, t_lgt lgt);
 
+/* Limit functions */
+
+double		limit_object(t_obj *obj, t_ray ray, double t1, double t2);
+
 /* Material functions */
 
 t_mat		new_material(t_color rgb, t_vec4 coef, int rf, double rr);
@@ -61,19 +65,17 @@ t_ray		refract_ray(t_obj obj, t_ray ray);
 
 /* Intersection functions */
 
-double		intersect_cone(t_ray ray, t_obj cone);
+double		intersect_cone(t_ray ray, t_obj *cone);
 double		intersect_mesh(t_ray ray, t_obj *obj);
 double		intersect_child(t_ray ray, t_obj *obj);
-double		intersect_plane(t_ray ray, t_obj plane);
-double		intersect_torus(t_ray ray, t_obj torus);
-double		intersect_sphere(t_ray ray, t_obj sphere);
+double		intersect_plane(t_ray ray, t_obj *plane);
+double		intersect_sphere(t_ray ray, t_obj *sphere);
 double		intersect_polygon(t_ray ray, t_obj poly);
-double		intersect_cylinder(t_ray ray, t_obj cylinder);
+double		intersect_cylinder(t_ray ray, t_obj *cylinder);
 
 /* Math functions */
 
-double		solve_quartic(t_vec4 coef, double e);
-double		solve_quadra(double a, double b, double c);
+double		solve_quadra(t_obj *obj, t_ray ray, double a, double b, double c);
 t_vec4      get_normal(t_ray ray, t_obj obj, t_vec4 pos);
 t_vec4		normal_cylinder(t_vec4 pos, t_obj obj);
 t_vec4		normal_plane(t_ray ray, t_obj obj);
@@ -124,6 +126,7 @@ t_color		get_skybox(t_ray ray, t_env env);
 
 /* Tools functions */
 
+void		ft_fswap(double *a, double *b);
 double      ft_min_max(double value, double min, double max);
 t_color		filters(t_color color, t_env env);
 t_color		color_scale(t_color col, double val);

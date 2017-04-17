@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 14:48:57 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 18:56:33 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ typedef enum	e_filt
 	RED = 456453,
 	GREEN = 456454,
 	BLUE = 456455,
-	NEG = 456456
+	NEG = 456456,
+	TRY = 456457
 }				t_filt;
 
 typedef enum	e_ttype
@@ -137,14 +138,7 @@ typedef enum	e_chtype
 	NOCHILD,
 	INVERSE,
 	CHILD,
-	LIMIT_AR,
-	LIMIT_PR
+	LIMIT
 }				t_chtype;
-
-typedef enum	e_lmtype
-{
-	MAX,
-	MIN
-}				t_lmtype;
 
 #endif

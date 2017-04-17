@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/11 18:44:50 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/13 14:54:13 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_ray		refract_ray(t_obj obj, t_ray ray)
 	double	n;
 	double	c1;
 	double	c2;
+	double	tmp2;
 	t_vec4	tmp;
 
 	tmp = vector_scale(ray.dir, ray.t);
@@ -80,13 +81,14 @@ t_ray		refract_ray(t_obj obj, t_ray ray)
 	if (teta1 > 0)
 	{
 		n = ray.env.x / obj.mat.refract;
-		tmp = vector_scale(ray.dir, n);
 		c1 = scalar_product(ray.dir, norm);
-		c1 *= -1;
-		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
-		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
-		if (c2 < 0)
-			res.dir = ray.dir;
+		c1 *= n;
+		c2 = sqrt(1 - pow(n, 2) * (1 - pow(scalar_product(ray.dir, norm), 2)));
+		tmp2 = c1 - c2;
+		tmp = vector_scale(norm, tmp2);
+		res.dir = vector_sub(tmp, vector_scale(ray.dir, n));
+		/*if (c2 < 0)
+			res.dir = ray.dir;*/
 		/*if (teta1 < scalar_product(res.dir, norm))
 		{
 			res.dir = ray.dir;
@@ -96,10 +98,17 @@ t_ray		refract_ray(t_obj obj, t_ray ray)
 	else
 	{
 		n = obj.mat.refract / ray.env.x;
+		c1 = scalar_product(ray.dir, norm);
+		c1 *= n * -1;
+		c2 = sqrt(1 - pow(n, 2) * (1 - pow(scalar_product(ray.dir, norm), 2)));
+		tmp2 = c1 - c2;
+		tmp = vector_scale(norm, tmp2);
+		res.dir = vector_sub(tmp, vector_scale(ray.dir, n));
+		/*n = obj.mat.refract / ray.env.x;
 		tmp = vector_scale(ray.dir, n);
 		c1 = scalar_product(ray.dir, norm);
 		c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
-		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
+		res.dir = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));*/
 		/*if (c2 < 0)
 			res.dir = ray.dir;*/
 		/*if (teta1 < scalar_product(res.dir, norm))

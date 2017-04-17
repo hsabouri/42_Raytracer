@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 17:20:16 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/17 14:11:45 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,17 @@ typedef struct		s_mat
 	t_img			texture;
 }					t_mat;
 
+/* Limit Structure */
+
+typedef struct		s_lmt
+{
+	t_vec4			dir;
+	t_mode			mode;
+	t_vec4			axis;
+	t_vec4			coef_min;
+	t_vec4			coef_max;
+}					t_lmt;
+
 /* Object Structure */
 
 typedef struct		s_obj
@@ -95,7 +106,6 @@ typedef struct		s_obj
 	t_mat			mat;
 	struct s_obj	*chld;
 	t_chtype		ch_type;
-	t_lmtype		lm_type;
 	t_vec4			pos;
 	t_vec4			dir;
 	t_type			type;
@@ -103,6 +113,7 @@ typedef struct		s_obj
 	t_quat			inv;
 	double			radius;
 	t_vec4			vert[3];
+	t_lmt			lmt;
 }					t_obj;
 
 /* Environement structure */

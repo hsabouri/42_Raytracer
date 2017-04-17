@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/09 15:09:36 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 18:13:09 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt)
 	if (obj.type == CONE)
 		lgt.normal.z *= 2;
 	lamb = scalar_product(dir, lgt.normal);
-	lamb = ft_min_max(lamb, 0.0 , 1.0);
+	lamb = ft_min_max(lamb, 0.0, 1.0);
 	res = vector_scale(res, lamb);
 	return (res);
 }

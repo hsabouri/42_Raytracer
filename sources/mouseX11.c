@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/10 18:09:16 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/13 18:16:06 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,3 @@ int			button_release(int button, int x, int y, t_env *env)
 	env->ui->click = 0;
 	return (0);
 }
-
-

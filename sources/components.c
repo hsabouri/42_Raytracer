@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 12:08:36 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/12 17:33:50 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/17 14:12:02 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static t_ui		*init_compnts2(t_ui *ui, t_env env)
 	return (init_compnts3(ui, env));
 }
 
-t_ui 			*init_compnts(t_ui *ui, t_env env)
+t_ui			*init_compnts(t_ui *ui, t_env env)
 {
 	ui->n_compnts = 10;
 	ui->compnts = (t_compnt *)ft_malloc(sizeof(t_compnt) * 10, CLEAN);

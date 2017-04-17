@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:18:01 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/10 18:32:39 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/13 18:23:58 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 {
 	double		t;
 	double		tmp;
-	int 		i;
+	int			i;
 
 	i = 0;
 	t = EPSILON;
@@ -28,19 +28,19 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 			if (objs[i].type == MESH)
 				tmp = intersect_mesh(ray, &objs[i]);
 			if (objs[i].type == SPHERE)
-				tmp = intersect_sphere(ray, objs[i]);
+				tmp = intersect_sphere(ray, &objs[i]);
 			else if (objs[i].type == PLANE)
-				tmp = intersect_plane(ray, objs[i]);
+				tmp = intersect_plane(ray, &objs[i]);
 			else if (objs[i].type == CONE)
-				tmp = intersect_cone(ray, objs[i]);
+				tmp = intersect_cone(ray, &objs[i]);
 			else if (objs[i].type == CYLINDER)
-				tmp = intersect_cylinder(ray, objs[i]);
+				tmp = intersect_cylinder(ray, &objs[i]);
 			else if (objs[i].type == POLYGON)
 				tmp = intersect_polygon(ray, objs[i]);
 			if ((tmp < t || t <= EPSILON) && tmp > EPSILON && tmp < max_dis)
 			{
 				t = tmp;
-				break;
+				break ;
 			}
 		}
 		i++;

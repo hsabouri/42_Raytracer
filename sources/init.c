@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 17:20:34 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/17 14:12:13 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void		verify_data(t_env env)
 {
-	if (env.cam.fov > 180 || env.width < 50 || env.height < 50 || env.n_obj <= 0)
+	if (env.cam.fov > 180 || env.width < 50 || \
+			env.height < 50 || env.n_obj <= 0)
 		error(0, "Corrupted scene file");
 }
 
@@ -52,9 +53,9 @@ t_env			init_objs_lgts(int ac, char **av, t_env env)
 	return (env);
 }
 
-t_env 			init_env(int ac, char **av)
+t_env			init_env(int ac, char **av)
 {
-	t_env env;
+	t_env	env;
 	t_vec4	vec;
 
 	vec = new_vector(0, 0, -4);
