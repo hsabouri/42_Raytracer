@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 18:11:00 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/11 14:22:24 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 16:15:45 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_env				add_poly_to_last(char *line, t_env env)
 	s_ids = parse_polygon(line, env);
 	ids = (unsigned int *)(&s_ids);
 	poly.type = POLYGON;
+	poly.lst = 0;
 	tmp = ft_itoa(n_poly);
 	poly.name = ft_strjoin("poly ", tmp);
 	free(tmp);

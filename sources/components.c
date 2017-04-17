@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 12:08:36 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/12 15:30:52 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 17:33:50 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_ui		*init_compnts4(t_ui *ui, t_env env)
 static t_ui		*init_compnts3(t_ui *ui, t_env env)
 {
 	ui->compnts[4].idle = idle_a;
-	ui->compnts[4].hover = hover_a;
+	ui->compnts[4].hover = hover_def;
 	ui->compnts[4].action = action_a;
 	ui->compnts[8].idle = idle_col;
 	ui->compnts[8].hover = hover_col;
@@ -89,21 +89,27 @@ static t_ui		*init_compnts2(t_ui *ui, t_env env)
 	ui->compnts[3].id = 3;
 	ui->compnts[2] = compnts_default(ui->compnts[2], 91, 15);
 	ui->compnts[3] = compnts_default(ui->compnts[3], 122, 15);
+	ui->compnts[9] = compnts_default(ui->compnts[9], 76, 184);
 	ui->compnts[2].img = parse_asset("assets/draft.xpm", env);
 	ui->compnts[3].img = parse_asset("assets/render.xpm", env);
+	ui->compnts[9].img = parse_asset("assets/delete.xpm", env);
 	ui->compnts[3].action(ui->compnts[3], &env);
+	ui->compnts[9].action = action_del;
+	ui->compnts[9].hover = hover_def;
+	ui->compnts[9].idle = idle_del;
 	return (init_compnts3(ui, env));
 }
 
 t_ui 			*init_compnts(t_ui *ui, t_env env)
 {
-	ui->n_compnts = 9;
-	ui->compnts = (t_compnt *)ft_malloc(sizeof(t_compnt) * 9, CLEAN);
+	ui->n_compnts = 10;
+	ui->compnts = (t_compnt *)ft_malloc(sizeof(t_compnt) * 10, CLEAN);
 	ui->compnts[0].idle = &idle_r;
 	ui->compnts[0].hover = &hover_r;
 	ui->compnts[0].action = &action_r;
 	ui->compnts[0].draw_img = 1;
 	ui->compnts[1] = ui->compnts[0];
+	ui->compnts[9] = ui->compnts[0];
 	ui->compnts[0].value = ui->compnts + 1;
 	ui->compnts[1].value = ui->compnts + 0;
 	ui->compnts[0].id = 0;

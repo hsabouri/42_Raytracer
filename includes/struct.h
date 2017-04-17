@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 15:35:14 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 17:20:16 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,6 @@ typedef struct		s_ui
 	int				mouse_x;
 	int				mouse_y;
 	int				click;
-	t_color			color;
 	int				last_click;
 	t_img			lay1;
 	t_img			lay2;
@@ -195,8 +194,10 @@ typedef struct		s_ui
 	int				redraw;
 	int				*keystatus;
 	int				width;
-	t_obj			place;
 	int				height;
+	t_obj			place;
+	t_color			color;
+	int				delete;
 }					t_ui;
 
 #endif

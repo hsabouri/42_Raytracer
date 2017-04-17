@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions_add.c                                      :+:      :+:    :+:   */
+/*   actions_add_del.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 14:33:41 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/11 15:54:00 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/12 17:31:07 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+t_compnt		action_del(struct s_compnt compnt, t_env *env)
+{
+	compnt.status = ACTION;
+	if (env->ui->delete == 1)
+		env->ui->delete = 0;
+	else
+		env->ui->delete = 1;
+	return (compnt);
+}
 
 t_compnt		action_a(struct s_compnt compnt, t_env *env)
 {
@@ -19,7 +29,7 @@ t_compnt		action_a(struct s_compnt compnt, t_env *env)
 	return (compnt);
 }
 
-t_compnt		hover_a(struct s_compnt compnt, t_env *env)
+t_compnt		hover_def(struct s_compnt compnt, t_env *env)
 {
 	compnt.status = HOVER;
 	return (compnt);
@@ -27,6 +37,18 @@ t_compnt		hover_a(struct s_compnt compnt, t_env *env)
 
 t_compnt		idle_a(struct s_compnt compnt, t_env *env)
 {
-	compnt.status = IDLE;
+	if (((t_obj *)compnt.value)->type == env->ui->place.type)
+		compnt.status = HOVER;
+	else
+		compnt.status = IDLE;
+	return (compnt);
+}
+
+t_compnt		idle_del(struct s_compnt compnt, t_env *env)
+{
+	if (env->ui->delete == 1)
+		compnt.status = HOVER;
+	else
+		compnt.status = IDLE;
 	return (compnt);
 }

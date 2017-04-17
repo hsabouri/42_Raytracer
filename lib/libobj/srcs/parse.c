@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/12 14:03:54 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/12 16:13:57 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_env		create_obj(t_type type, char *name, t_env env)
 		env.objs[env.n_obj].chld = NULL;
 		env.objs[env.n_obj].ch_type = NOCHILD;
 		env.objs[env.n_obj].type = type;
+		env.objs[env.n_obj].lst = 0;
 		env.objs[env.n_obj].name = ft_strdup(name);
 		env.objs[env.n_obj].mat.rgb = (t_color) {255, 255, 255, 0};
 		env.objs[env.n_obj].mat.coef = new_vector(1, 1, 1);
