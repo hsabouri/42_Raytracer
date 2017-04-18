@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/17 14:12:13 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/18 13:40:56 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ t_env			init_env(int ac, char **av)
 	env.win = mlx_new_window(env.mlx, env.width, env.height, "RT");
 	create_img(&env.img, env.width, env.height, env.mlx);
 	env.img = init_img(env.img, (t_color){0, 0, 0, 0});
+	env.sky = parse_asset("textures/mountain.xpm", env); 
 	env.objs[env.n_obj - 1] = init_skybox(env);
 	env.redraw = 1;
 	env.drawing = 0;
 	env.shadow = 1;
-	env.pr_mesh = 0;
 	env.filter = NONE;
 	env.supersampling = 0;
 	env.ui = init_ui(env);

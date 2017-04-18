@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/12 17:05:36 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/18 12:44:09 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,10 @@ int				raytrace(t_cam camera, t_obj *objs, t_env *env)
 				env->img = pixel_put(env->img, x, y, col);
 				x += 4;
 				if (env->redraw == 1)
+				{
+					env->drawing = 0;
 					return (0);
+				}
 			}
 			y += 4;
 		}

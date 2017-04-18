@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/17 14:11:45 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/18 13:40:26 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct		s_env
 	void			*mlx;
 	void			*win;
 	t_img			img;
+	t_img			sky;
 	unsigned int	n_lgt;
 	unsigned int	n_obj;
 	unsigned int	n_vrt;
@@ -145,7 +146,6 @@ typedef struct		s_env
 	t_cam			cam;
 	struct s_ui		*ui;
 	pthread_t		render_thread;
-	int				pr_mesh;
 	int				drawing;
 	int				redraw;
 	int				frame;

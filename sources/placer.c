@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:43:42 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/17 14:15:24 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/18 13:38:49 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static t_obj		*add_object(t_env *env, t_obj obj)
 {
 	t_obj			*res;
+	t_obj			*tmp;
 	unsigned int	i;
 
 	i = 0;
@@ -26,22 +27,25 @@ static t_obj		*add_object(t_env *env, t_obj obj)
 	}
 	res[i] = obj;
 	res[i + 1] = init_skybox(*env);
-	ft_free(env->objs);
-	env->objs = res;
-	env->n_obj++;
 	env->redraw = 1;
+	tmp = env->objs;
+	env->objs = res;
+	ft_free(tmp);
+	env->n_obj++;
 	return (res);
 }
 
 static t_obj		*del_object(t_env *env, unsigned int id)
 {
 	t_obj			*res;
+	t_obj			*tmp;
 	unsigned int	i;
 	unsigned int	adding;
 
 	i = 0;
 	adding = 0;
 	res = (t_obj *)ft_malloc(sizeof(t_obj) * (env->n_obj), CLEAN);
+	res[env->n_obj] = init_skybox(*env);
 	while (i + adding < env->n_obj)
 	{
 		if (i == id)
@@ -49,11 +53,11 @@ static t_obj		*del_object(t_env *env, unsigned int id)
 		res[i] = env->objs[i + adding];
 		i++;
 	}
-	res[i] = init_skybox(*env);
-	ft_free(env->objs);
-	env->objs = res;
 	env->n_obj--;
 	env->redraw = 1;
+	tmp = env->objs;
+	env->objs = res;
+	ft_free(tmp);
 	return (res);
 }
 
@@ -74,7 +78,7 @@ int					place_obj(int x, int y, t_env *env, t_obj obj)
 		return (0);
 	obj.pos = vector_add(ray.org, vector_scale(ray.dir, ray.t));
 	obj.mat.rgb = env->ui->color;
-	env->objs = add_object(env, obj);
+	add_object(env, obj);
 	return (0);
 }
 
