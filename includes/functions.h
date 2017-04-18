@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 17:29:14 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/18 13:38:30 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,6 @@ void		cancel_coroutine(t_env *env);
 void 		*draw(void *arg);
 
 /* TEMP */
-void		temp_init(t_env *env);
+void		temp_init(t_env *env, int n_obj);
 
 #endif

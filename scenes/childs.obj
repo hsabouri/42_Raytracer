@@ -7,7 +7,13 @@ camera
 cylinder cyl1
 	p 0.0 0.0 0.0
 	radius 2.5
+	c 42 0 0
+
+cylinder cyl1
+	p 0.0 0.0 0.0
+	radius 2.5
 	c 255 0 0
+	child SPHERE
 
 omni light1
 	p 0.0 0.0 -3.0

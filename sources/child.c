@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   child.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 15:44:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 17:35:27 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/18 13:46:13 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_obj	init_child(t_obj obj)
 		obj.chld[0].rot = new_quat_null();
 		obj.chld[0].inv = new_quat_null();
 		obj.chld[0].pos = vector_add(obj.pos, (t_vec4){obj.radius, 0, 0, 0});
-		obj.chld[0].type = SPHERE;
+		obj.chld[0].type = CONE;
 		obj.chld[0].radius = obj.radius;
 		obj.chld[0].mat = obj.mat;
 		obj.chld[0].chld = NULL;
@@ -31,16 +31,16 @@ static t_obj	init_child(t_obj obj)
 	return (obj);
 }
 
-void			temp_init(t_env *env)
+void			temp_init(t_env *env, int n_obj)
 {
-	env->objs[0].rot = new_quat(PI / 3, (t_vec4){0, 0, 1, 0});
-	env->objs[0].inv = get_inverse(env->objs[0].rot);
-	env->objs[0].ch_type = LIMIT;
-	env->objs[0].lmt.mode = ROTATION;
-	env->objs[0].lmt.axis = (t_vec4){0, 1, 0, 0};
-	env->objs[0].lmt.coef_min = (t_vec4){-0.5, -1, -0.5, 0};
-	env->objs[0].lmt.coef_max = (t_vec4){1, 2, 1, 0};
-	env->objs[0] = init_child(env->objs[0]);
+	env->objs[n_obj].rot = new_quat(PI / 3, (t_vec4){0, 0, 1, 0});
+	env->objs[n_obj].inv = get_inverse(env->objs[n_obj].rot);
+	env->objs[n_obj].ch_type = LIMIT;
+	env->objs[n_obj].lmt.mode = ROTATION;
+	env->objs[n_obj].lmt.axis = (t_vec4){0, 1, 0, 0};
+	env->objs[n_obj].lmt.coef_min = (t_vec4){-0.5, -1, -0.5, 0};
+	env->objs[n_obj].lmt.coef_max = (t_vec4){1, 2, 1, 0};
+	env->objs[n_obj] = init_child(env->objs[n_obj]);
 }
 
 static double	intersect_pipeline(t_ray ray, t_obj *obj)
