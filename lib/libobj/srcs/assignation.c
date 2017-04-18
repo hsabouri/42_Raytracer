@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 19:17:55 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/13 17:49:40 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/18 14:06:38 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static t_env	step2_objs(char *line, t_env env)
 	if (ft_strnstr(line, "r ", 2))
 		env.objs[env.n_obj - 1].rot = parse_quat(line + 2,\
 		&env.objs[env.n_obj - 1].inv);
+	if (ft_strnstr(line, "child", 6))
+		temp_init(&env, env.n_obj - 1);
 	return (env);
 }
 

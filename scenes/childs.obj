@@ -8,6 +8,7 @@ cylinder cyl1
 	p 0.0 0.0 0.0
 	radius 2.5
 	c 255 0 0
+	child
 
 omni light1
 	p 0.0 0.0 -3.0
