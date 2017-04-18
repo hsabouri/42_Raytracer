@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 14:08:36 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/18 15:09:42 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_color					add_colors(t_color c1, t_color c2)
 	return (res);
 }
 
-static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb)
+static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb, double min)
 {
 	t_vec4				coef;
 	double				spec;
@@ -31,7 +31,7 @@ static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb)
 	t_color				s;
 
 	res = obj.mat.rgb;
-	coef = lambert(obj, ray, lgt);
+	coef = lambert(obj, ray, lgt, min);
 	coef = vector_scale(coef, 1.0 / 255);
 	coef = vector_cap(coef, 0, 1.0);
 	res = apply_coef(res, coef);
@@ -53,7 +53,7 @@ t_color					sum_lights(t_obj obj, t_ray ray, t_env env)
 	while (i < n)
 	{
 		if (!env.shadow || shadows(env.objs, ray, env.lgt[i], env.last_id))
-			res = add_light(obj, ray, env.lgt[i], res);
+			res = add_light(obj, ray, env.lgt[i], res, env.ambient);
 		i++;
 	}
 	return (res);

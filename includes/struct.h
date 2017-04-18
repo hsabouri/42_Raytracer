@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 13:40:26 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/18 15:07:23 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ typedef struct		s_env
 	int				frame;
 	int				width;
 	int				height;
+	double			ambient;
 }					t_env;
 
 /* UI structures */

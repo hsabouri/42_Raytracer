@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 13:55:31 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/18 15:10:01 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_cam		camera_control(t_cam cam, t_dir dir);
 /* Light functions */
 
 t_color		lights(t_obj obj, t_ray ray, t_env env, int depth);
-t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt);
+t_vec4		lambert(t_obj obj, t_ray ray, t_lgt lgt, double min);
 t_color		apply_coef(t_color col, t_vec4 coef);
 t_color		sum_lights(t_obj obj, t_ray ray, t_env env);
 t_color		handle_reflect(t_ray ray, t_env env, int depth);

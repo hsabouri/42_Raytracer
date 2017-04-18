@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 13:40:56 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/18 15:15:39 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,14 @@ t_env			init_env(int ac, char **av)
 	vec = new_vector(0, 0, -4);
 	env.width = LENGTH;
 	env.height = HEIGHT;
+	env.ambient = 0.2;
 	env.mlx = mlx_init();
 	env.cam = init_cam(vec, new_quat_null(), 66);
 	env = init_objs_lgts(ac, av, env);
 	env.win = mlx_new_window(env.mlx, env.width, env.height, "RT");
 	create_img(&env.img, env.width, env.height, env.mlx);
 	env.img = init_img(env.img, (t_color){0, 0, 0, 0});
-	env.sky = parse_asset("textures/mountain.xpm", env); 
+	env.sky = parse_asset("textures/skybox.xpm", env); 
 	env.objs[env.n_obj - 1] = init_skybox(env);
 	env.redraw = 1;
 	env.drawing = 0;
