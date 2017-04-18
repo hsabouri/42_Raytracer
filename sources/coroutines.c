@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/03/20 11:37:16 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/17 22:47:14 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	cancel_coroutine(t_env *env)
 	{
 		pthread_cancel(env->render_thread);
 		env->drawing = 0;
-		env->redraw = 1;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 13:48:40 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 17:07:42 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/17 15:36:24 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_obj		init_skybox(t_env env)
 	res.type = BACKSLASH;
 	res.pos = env.cam.pos;
 	res.radius = 200;
-	res.mat.texture = create_xpm_img("textures/mountain.xpm", env);
+	res.mat.texture = env.sky;
 	return (res);
 }
 

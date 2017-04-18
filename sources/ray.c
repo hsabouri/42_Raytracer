@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/13 14:54:13 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/17 14:30:48 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_ray		reflect_ray(t_obj obj, t_ray ray)
 
 t_ray		refract_ray(t_obj obj, t_ray ray)
 {
-	t_ray		res;
+	t_ray	res;
 	t_vec4	norm;
 	double	teta1;
 	double	n;

@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/12 18:56:33 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/17 14:32:43 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 # define PI 3.141592653
 # define EPSILON 0.000001
 # define DEPTH_MAX 5
-
 # define NOENV -1
 
 # define LENGTH 800
 # define HEIGHT 800
+
+/* MACROS */
+
+# define MIN(a, b) ((a < b) ? a : b)
 
 /* Error codes */
 

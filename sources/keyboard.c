@@ -6,11 +6,28 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 20:20:20 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/13 18:12:29 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/18 13:40:35 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+static t_env	*key_hook2(int keycode, t_env *env)
+{
+	if (keycode == KEY_N1)
+	{
+		env->cam = init_cam(new_vector(1, 1, -10), new_quat_null(), 66);
+		env->redraw = 1;
+	}
+	if (keycode == KEY_N2)
+	{
+		env->cam = init_cam(new_vector(3, 1, -10), new_quat_null(), 66);
+		env->cam = rotate_cam(env->cam, new_quat(PI / 180,\
+			new_vector(3, 4, -10)));
+		env->redraw = 1;
+	}
+	return (env);
+}
 
 static t_env	*key_hook(int keycode, t_env *env)
 {
@@ -21,26 +38,12 @@ static t_env	*key_hook(int keycode, t_env *env)
 		env->cam = change_mod(env->cam);
 	if (keycode == KEY_S && (env->redraw = 1))
 		env->shadow = 1 - env->shadow;
-	if (keycode == KEY_P)
-		env->pr_mesh = env->pr_mesh ? 0 : 1;
 	if (keycode == KEY_SPACE || keycode == KEY_N0)
 	{
 		env->cam = init_cam(new_vector(0, 0, -4), new_quat_null(), 66);
 		env->redraw = 1;
 	}
-	//camera pos
-	if (keycode == KEY_N1)
-	{
-		env->cam = init_cam(new_vector(1, 1, -10), new_quat_null(), 66);
-		env->redraw = 1;
-	}
-	if (keycode == KEY_N2)
-	{
-		env->cam = init_cam(new_vector(3, 1, -10), new_quat_null(), 66);
-		env->cam = rotate_cam(env->cam, new_quat(PI / 180, new_vector(3, 4, -10)));
-		env->redraw = 1;
-	}
-	return (0);
+	return (key_hook2(keycode, env));
 }
 
 t_env			*key_actions(t_env *env)

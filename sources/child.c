@@ -6,12 +6,11 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 15:44:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 13:46:13 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/18 13:55:05 by rbejot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
-#define MIN(a, b) ((a < b) ? a : b)
 
 static t_obj	init_child(t_obj obj)
 {
@@ -67,7 +66,7 @@ double			intersect_child(t_ray ray, t_obj *obj)
 			return (-1.0);
 		else if (t > EPSILON && ray.t <= EPSILON)
 			return (t);
-		else if (ray.t > EPSILON && t <=  EPSILON)
+		else if (ray.t > EPSILON && t <= EPSILON)
 			return (ray.t);
 		else
 			return (MIN(t, ray.t));
