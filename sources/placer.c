@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:43:42 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 16:14:24 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/18 18:11:30 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static t_obj		*add_object(t_env *env, t_obj obj)
 	}
 	res[i] = obj;
 	res[i + 1] = init_skybox(*env);
+	res[i + 1].name = env->objs[i].name;
 	env->redraw = 1;
 	tmp = env->objs;
 	c_log("Waiting render thread...");
