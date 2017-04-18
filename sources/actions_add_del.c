@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 14:33:41 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/17 14:53:38 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/18 14:02:31 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ t_compnt		action_del(struct s_compnt compnt, t_env *env)
 t_compnt		action_a(struct s_compnt compnt, t_env *env)
 {
 	compnt.status = ACTION;
-	env->ui->place = *((t_obj *)compnt.value);
+	if (env->ui->place.type == BACKSLASH ||\
+	(*((t_obj *)compnt.value)).type != env->ui->place.type)
+		env->ui->place = *((t_obj *)compnt.value);
+	else
+		env->ui->place.type = BACKSLASH;
 	env->ui->delete = 0;
 	return (compnt);
 }
