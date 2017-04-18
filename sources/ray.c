@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:37:39 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 18:40:27 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/18 19:50:54 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,23 @@ static t_vec4	refract_tool(t_obj obj, t_ray ray, double mult, t_vec4 norm)
 	double teta1;
 	double n;
 	double c2;
-	double tmp;
+	double c1;
 
 	teta1 = scalar_product(ray.dir, norm);
 	n = obj.mat.refract / ray.env.x;
-	tmp = vector_scale(ray.dir, n);
 	c1 = scalar_product(ray.dir, norm);
 	c1 *= mult;
 	c2 = sqrt(1 - pow(n, 2) * (1 - pow(cos(teta1), 2)));
-	res = vector_add(tmp, vector_scale(norm, (n * c1 - c2)));
+	res = vector_add(vector_scale(ray.dir, n),\
+			vector_scale(norm, (n * c1 - c2)));
 }
 
 t_ray			refract_ray(t_obj obj, t_ray ray)
 {
 	t_ray	res;
 	t_vec4	norm;
+	double	teta1;
+	t_vec4	tmp;
 
 	tmp = vector_scale(ray.dir, ray.t);
 	res.org = vector_add(ray.org, tmp);
