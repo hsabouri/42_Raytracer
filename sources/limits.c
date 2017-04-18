@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 15:47:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 15:49:22 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/18 15:52:28 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,22 +86,19 @@ double			limit_object(t_obj *obj, t_ray ray, double t1, double t2)
 	if (obj->lmt.axis.x != 0)
 	{
 		tmp = check_in(obj, ray, t, 'x');
-		if (tmp < EPSILON)
-			return (-1.0);
+		tmp = (tmp < EPSILON) ? -1.0 : EPSILON;
 		res = ((res == -1.0) || (tmp < res)) ? tmp : res;
 	}
 	if (obj->lmt.axis.y != 0)
 	{
 		tmp = check_in(obj, ray, t, 'y');
-		if (tmp < EPSILON)
-			return (-1.0);
+		tmp = (tmp < EPSILON) ? -1.0 : EPSILON;
 		res = ((res == -1.0) || (tmp < res)) ? tmp : res;
 	}
 	if (obj->lmt.axis.z != 0)
 	{
 		tmp = check_in(obj, ray, t, 'z');
-		if (tmp < EPSILON)
-			return (-1.0);
+		tmp = (tmp < EPSILON) ? -1.0 : EPSILON;
 		res = ((res == -1.0) || (tmp < res)) ? tmp : res;
 	}
 	return (res);
