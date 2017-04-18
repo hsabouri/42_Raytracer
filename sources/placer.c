@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:43:42 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 13:38:49 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/18 16:14:24 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ static t_obj		*add_object(t_env *env, t_obj obj)
 	res[i + 1] = init_skybox(*env);
 	env->redraw = 1;
 	tmp = env->objs;
+	c_log("Waiting render thread...");
+	while (env->drawing == 1)
+		usleep(1000);
 	env->objs = res;
 	ft_free(tmp);
 	env->n_obj++;
@@ -45,7 +48,7 @@ static t_obj		*del_object(t_env *env, unsigned int id)
 	i = 0;
 	adding = 0;
 	res = (t_obj *)ft_malloc(sizeof(t_obj) * (env->n_obj), CLEAN);
-	res[env->n_obj] = init_skybox(*env);
+	res[env->n_obj - 1] = init_skybox(*env);
 	while (i + adding < env->n_obj)
 	{
 		if (i == id)
@@ -53,8 +56,11 @@ static t_obj		*del_object(t_env *env, unsigned int id)
 		res[i] = env->objs[i + adding];
 		i++;
 	}
-	env->n_obj--;
+	env->n_obj = (env->n_obj > 0) ? env->n_obj - 1 : 0;
 	env->redraw = 1;
+	c_log("Waiting render thread...");
+	while (env->drawing == 1)
+		usleep(1000);
 	tmp = env->objs;
 	env->objs = res;
 	ft_free(tmp);
@@ -68,15 +74,16 @@ int					place_obj(int x, int y, t_env *env, t_obj obj)
 
 	ray = init_ray(&env->cam, x, y, env);
 	id = check_intersections(env->objs, &ray);
-	if (env->ui->delete == 1)
+	if (env->ui->delete == 1 && env->objs[id].type != BACKSLASH)
 	{
 		del_object(env, id);
 		env->ui->delete = 0;
 		return (0);
 	}
 	if (env->objs[id].type == BACKSLASH)
-		return (0);
-	obj.pos = vector_add(ray.org, vector_scale(ray.dir, ray.t));
+		obj.pos = new_vector(0, 0, 0);
+	else
+		obj.pos = vector_add(ray.org, vector_scale(ray.dir, ray.t));
 	obj.mat.rgb = env->ui->color;
 	add_object(env, obj);
 	return (0);

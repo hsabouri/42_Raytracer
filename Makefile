@@ -6,7 +6,7 @@
 #    By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/31 16:22:08 by ple-lez           #+#    #+#              #
-#    Updated: 2017/04/17 22:56:50 by hsabouri         ###   ########.fr        #
+#    Updated: 2017/04/18 15:53:59 by hsabouri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,9 +55,9 @@ LDFLAGS += $(LIBMLX) -framework OpenGL -framework AppKit -lpthread -D_REENTRANT
 
 CC = gcc
 CFLAGS = -Wall -Wextra
-# CFLAGS += -g -fsanitize=address
-# CFLAGS += -Werror
-CFLAGS += -march=native -O3
+#CFLAGS += -g -fsanitize=address
+#CFLAGS += -Werror
+#CFLAGS += -march=native -O3
 
 $(LIBRARY):
 	make -C lib/libft
