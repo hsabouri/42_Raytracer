@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 04:02:21 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/11 15:43:19 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/18 14:07:21 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ t_obj			create_mesh(t_color color, char *name)
 	mesh.chld[0].type = BACKSLASH;
 	mesh.mat.rgb = color;
 	mesh.mat.coef = new_vector(1, 1, 1);
-	mesh.mat.reflect = 0;
-	mesh.mat.refract = EPSILON;
+	mesh.mat.reflect = -1.0;
+	mesh.mat.refract = -1.0;
 	mesh.rot = new_quat_null();
 	mesh.inv = get_inverse(mesh.rot);
+	mesh.ch_type = NOCHILD;
 	return (mesh);
 }
 

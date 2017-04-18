@@ -4,9 +4,10 @@ sphere sphere1
 radius 2.5
 p 2.0 -0.5 3.0
 c 255 0 0
-type BRICKS 
+type BRICKS
 reflect 0.7
 alpha 0.7
+child
 
 sphere sphere2
 radius 2.5
