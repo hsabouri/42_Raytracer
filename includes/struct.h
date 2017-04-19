@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 15:50:54 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/19 14:23:23 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 # include "vector.h"
 # include "quaternion.h"
 
-/* Ray structure */
+/*
+** Ray structure
+*/
 
 typedef struct		s_ray
 {
@@ -27,7 +29,9 @@ typedef struct		s_ray
 	t_vec4			env;
 }					t_ray;
 
-/* Camera structure */
+/*
+** Camera structure
+*/
 
 typedef struct		s_cam
 {
@@ -37,7 +41,9 @@ typedef struct		s_cam
 	double			fov;
 }					t_cam;
 
-/* Color structure */
+/*
+** Color structure
+*/
 
 typedef struct		s_color
 {
@@ -47,7 +53,9 @@ typedef struct		s_color
 	unsigned char	a;
 }					t_color;
 
-/* Light structure */
+/*
+** Light structure
+*/
 
 typedef struct		s_lgt
 {
@@ -60,7 +68,9 @@ typedef struct		s_lgt
 	t_vec4			hitpnt;
 }					t_lgt;
 
-/* Image Structure */
+/*
+** Image Structure
+*/
 
 typedef struct		s_img
 {
@@ -74,7 +84,9 @@ typedef struct		s_img
 	int				height;
 }					t_img;
 
-/* Material Structure */
+/*
+** Material Structure
+*/
 
 typedef struct		s_mat
 {
@@ -86,7 +98,9 @@ typedef struct		s_mat
 	t_img			texture;
 }					t_mat;
 
-/* Limit Structure */
+/*
+** Limit Structure
+*/
 
 typedef struct		s_lmt
 {
@@ -97,7 +111,9 @@ typedef struct		s_lmt
 	t_vec4			coef_max;
 }					t_lmt;
 
-/* Object Structure */
+/*
+** Object Structure
+*/
 
 typedef struct		s_obj
 {
@@ -116,15 +132,9 @@ typedef struct		s_obj
 	t_lmt			lmt;
 }					t_obj;
 
-/* Environement structure */
-/* Description:
- * n_lgt : light number
- * n_obj : obj number
- * n_vrt : vertices number
- * *lgt : light array
- * *objs : obj array
- * *vrts : vertices array
- */
+/*
+** Environement structure
+*/
 
 typedef struct		s_env
 {
@@ -154,7 +164,9 @@ typedef struct		s_env
 	double			ambient;
 }					t_env;
 
-/* UI structures */
+/*
+** UI structures
+*/
 
 typedef struct		s_pix
 {

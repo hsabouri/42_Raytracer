@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:24:22 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 15:07:01 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/19 14:14:15 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,26 @@
 # define EPSILON 0.000001
 # define DEPTH_MAX 5
 # define NOENV -1
-
 # define LENGTH 800
 # define HEIGHT 800
 
-/* MACROS */
+/*
+** MACROS
+*/
 
 # define MIN(a, b) ((a < b) ? a : b)
 
-/* Error codes */
+/*
+** Error codes
+*/
 
 # define MALLOC_FAILED 1
 # define PARSING_ERROR 10
 # define AMBIENT 0.15
 
-/* Mlx and X-server defines */
+/*
+** Mlx and X-server defines
+*/
 
 # define KEYPRESSEVENT 2
 # define KEYPRESSMASK (1L << 0)
@@ -51,7 +56,9 @@
 # define BUTTONPRESSMASK (1L<<2)
 # define BUTTONRELEASEMASK (1L<<3)
 
-/* Mouse enum and defines */
+/*
+** Mouse enum and defines
+*/
 
 typedef enum	e_status
 {
@@ -60,9 +67,10 @@ typedef enum	e_status
 	HOVER
 }				t_status;
 
-/* enum for camera
- * movement and rotations
- */
+/*
+** enum for camera
+** movement and rotations
+*/
 
 typedef enum	e_dir
 {
@@ -74,9 +82,10 @@ typedef enum	e_dir
 	UP
 }				t_dir;
 
-/* enum for
- * camera control
- */
+/*
+** enum for
+** camera control
+*/
 
 typedef enum	e_mode
 {
@@ -84,12 +93,13 @@ typedef enum	e_mode
 	ROTATION
 }				t_mode;
 
-/* t_type is an enum for
- * type of object
- *
- * Backslah should always be the
- * Last Element in the array
- */
+/*
+** t_type is an enum for
+** type of object
+**
+** Backslah should always be the
+** Last Element in the array
+*/
 
 typedef enum	e_type
 {
@@ -109,9 +119,10 @@ typedef enum	e_ltype
 	NOLIGHT
 }				t_ltype;
 
-/* filter is the enum
- * for applied filters
- */
+/*
+** filter is the enum
+** for applied filters
+*/
 
 typedef enum	e_filt
 {
