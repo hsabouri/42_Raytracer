@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/18 18:14:17 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/19 18:03:46 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,7 @@ t_env		create_obj(t_type type, char *name, t_env env)
 		env.n_vrt = 0;
 	}
 	else if (env.n_obj < 1000)
-	{
-		env.objs[env.n_obj].chld = NULL;
-		env.objs[env.n_obj].ch_type = NOCHILD;
-		env.objs[env.n_obj].type = type;
-		env.objs[env.n_obj].lst = 0;
-		env.objs[env.n_obj].name = ft_strdup(name);
-		env.objs[env.n_obj].mat.rgb = (t_color) {255, 255, 255, 0};
-		env.objs[env.n_obj].mat.coef = new_vector(1, 1, 1);
-		env.objs[env.n_obj].pos = new_vector(0, 0, 0);
-		env.objs[env.n_obj].mat.reflect = -1.0;
-		env.objs[env.n_obj].mat.refract = -1.0;
-		env.objs[env.n_obj].dir = new_vector(0, 1, 0);
-		env.objs[env.n_obj].rot = new_quat_null();
-		env.objs[env.n_obj].inv = get_inverse(env.objs[env.n_obj].rot);
-		env.objs[env.n_obj].mat.texture.img = NULL;
-		env.objs[env.n_obj].mat.texture.type = NOTEX;
-	}
+		env.objs[env.n_obj] = obj_default(type, name);
 	env.n_obj += 1;
 	return (env);
 }
@@ -77,19 +61,16 @@ t_env		parse(int fd, t_env env)
 
 	line = NULL;
 	ver = NULL;
-	env.objs = (t_obj *)ft_malloc(sizeof(t_obj) * 1000, CLEAN);
-	env.lgt = (t_lgt *)ft_malloc(sizeof(t_lgt) * 1000, CLEAN);
-	env.vrts = (t_vec4 *)ft_malloc(sizeof(t_vec4) * 4000, CLEAN);
+	env.objs = (t_obj *)ft_malloc(sizeof(t_obj) * 10000, CLEAN);
+	env.lgt = (t_lgt *)ft_malloc(sizeof(t_lgt) * 10000, CLEAN);
+	env.vrts = (t_vec4 *)ft_malloc(sizeof(t_vec4) * 40000, CLEAN);
 	env.n_lgt = 0;
 	env.n_obj = 0;
 	env.n_vrt = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
 		line2 = ft_strtrim(line);
-		env = objs(line2, env);
-		env = lgts(line2, env);
-		env = meshs(line2, env);
-		env = env_feed(line2, env);
+		env = parse_pipeline(env, line, line2);
 		free_lines(line, line2);
 	}
 	free(line);

@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/18 13:39:43 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/19 18:04:37 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void				usage(void);
 
 t_env				create_lgt(t_ltype type, char *name, t_env env);
 t_env				create_obj(t_type type, char *name, t_env env);
+t_obj				obj_default(t_type type, char *name);
 t_obj				optimesh2000(t_obj obj, t_env env);
 
 t_env				add_poly_to_last(char *line, t_env env);
@@ -59,5 +60,6 @@ t_img				parse_asset(char *path, t_env env);
 t_ttype				type_of_objs(char *str);
 
 t_env				parse(int fd, t_env env);
+t_env				parse_pipeline(t_env env, char *line, char *line2);
 
 #endif

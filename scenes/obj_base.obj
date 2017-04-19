@@ -13,7 +13,7 @@ sphere sphere2
 radius 2.0000000
 p 3.0000000 3.0000000 0.0000000
 c 255 0 0
-refract 1.5
+reflect 0.5
 
 plane plan1
 n 0.0000000 1.0000000 0.0000000
