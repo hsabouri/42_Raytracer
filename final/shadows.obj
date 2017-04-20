@@ -20,7 +20,7 @@ sphere sphere1
 	p 0.0 2.0 0.0
 	radius 1.0
 	c 255 255 255 
-	reflect 0.1
+	reflect 0.3
 
 sphere sphere2
 	p -3.0 2.0 1.0
