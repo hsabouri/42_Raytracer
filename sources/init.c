@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 18:41:03 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/20 14:45:43 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_env			init_env(int ac, char **av)
 	vec = new_vector(0, 0, -4);
 	env.width = LENGTH;
 	env.height = HEIGHT;
-	env.ambient = 0.2;
+	env.ambient = 0.1;
 	env.mlx = mlx_init();
 	env.cam = init_cam(vec, new_quat_null(), 66);
 	env = init_objs_lgts(ac, av, env);
@@ -74,7 +74,6 @@ t_env			init_env(int ac, char **av)
 	env.drawing = 0;
 	env.shadow = 1;
 	env.filter = NONE;
-	env.supersampling = 0;
 	env.ui = init_ui(env);
 	env.render = 1;
 	env.frame = 0;

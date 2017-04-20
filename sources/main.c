@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 15:40:58 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/20 10:52:52 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void			*draw(void *arg)
 	env = (t_env *)arg;
 	env->drawing = 1;
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
-	if (env->supersampling)
-		test_ss_raytrace(env->cam, env->objs, env);
-	else
-		raytrace(env->cam, env->objs, env);
+	raytrace(env->cam, env->objs, env);
 	env->drawing = 0;
 	return (NULL);
 }

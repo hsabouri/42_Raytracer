@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:18:01 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/13 18:23:58 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/20 13:43:30 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 	tmp = -1.0;
 	while (objs[i].type != BACKSLASH)
 	{
-		if (i != id)
-		{
 			if (objs[i].type == MESH)
 				tmp = intersect_mesh(ray, &objs[i]);
 			if (objs[i].type == SPHERE)
@@ -42,11 +40,9 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 				t = tmp;
 				break ;
 			}
-		}
 		i++;
 	}
-	if (objs[i].type != BACKSLASH &&
-			(objs[i].mat.reflect || objs[i].mat.refract > EPSILON))
+	if (objs[i].type == BACKSLASH || i == id)
 		return (EPSILON);
 	return (t);
 }

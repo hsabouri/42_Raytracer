@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 20:36:10 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 15:09:44 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/20 15:01:05 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ double		specular(t_obj obj, t_ray ray, t_lgt lgt)
 	dir = quat_rot(obj.inv, dir);
 	tmp = vector_scale(lgt.normal, (2.0 * scalar_product(lgt.normal, dir)));
 	tmp = vector_sub(dir, tmp);
-	if ((spec = scalar_product(tmp, ray.dir)) > 0.0)
-		spec = pow(spec, 30.0);
+	if ((spec = scalar_prduct(tmp, ray.dir)) > 0.0)
+		spec = pow(spec, 40.0);
 	if (spec > 0.0 && obj.type != PLANE)
 		return (spec);
 	return (0.0);

@@ -1,0 +1,47 @@
+width 800
+height 800
+
+camera
+	p 0.0 1.0 -6.0
+
+plane plane1
+	p 0.0 0.0 0.0
+	n 0.0 1.0 0.0
+	c 255 255 255
+	reflect 0.0
+
+plane plane2
+	p 0.0 0.0 3.0
+	n 0.0 0.0 -1.0
+	c 255 255 255
+	reflect 0.0
+
+sphere sphere1
+	p 0.0 2.0 0.0
+	radius 1.0
+	c 255 255 255 
+	reflect 0.1
+
+sphere sphere2
+	p -3.0 2.0 1.0
+	radius 1.0
+	c 255 255 255
+	reflect 0.0
+
+sphere sphere3
+	p 3.0 2.0 1.0
+	radius 1.0
+	c 255 255 255
+	reflect 0.0
+
+omni light1
+	p -1.0 3.0 -2.0
+	c 255 0 0
+
+omni light2
+	p 1.0 3.0 -2.0
+	c 0 0 255
+
+omni light3
+	p 0.0 3.0 -2.0
+	c 0 255 0

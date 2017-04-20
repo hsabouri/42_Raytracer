@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/19 14:18:34 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 12:32:09 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int			exit_clean(t_env *env);
 */
 
 int			raytrace(t_cam camera, t_obj *objs, t_env *env);
-int			test_ss_raytrace(t_cam camera, t_obj *objs, t_env *env);
 int			check_intersections(t_obj *objs, t_ray *ray);
 
 /*

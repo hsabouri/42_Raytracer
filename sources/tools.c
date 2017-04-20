@@ -6,7 +6,7 @@
 /*   By: pmartine <pmartine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 16:32:01 by pmartine          #+#    #+#             */
-/*   Updated: 2017/04/13 18:32:55 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/20 12:10:47 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void		print_mesh(t_obj obj)
 
 t_color		color_scale(t_color col, double val)
 {
-	col.r = (col.r * val <= 255) ? col.r * val : 255;
-	col.g = (col.g * val <= 255) ? col.g * val : 255;
-	col.b = (col.b * val <= 255) ? col.b * val : 255;
+	col.r = ((double)col.r * val <= 255) ? (double)col.r * val : 255;
+	col.g = ((double)col.g * val <= 255) ? (double)col.g * val : 255;
+	col.b = ((double)col.b * val <= 255) ? (double)col.b * val : 255;
 	col.a = 0;
 	return (col);
 }

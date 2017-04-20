@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/19 14:23:23 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 14:34:59 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,13 @@ typedef struct		s_obj
 typedef struct		s_env
 {
 	int				shadow;
-	int				supersampling;
-	int				last_id;
 	int				render;
+	int				drawing;
+	int				redraw;
+	int				frame;
+	int				width;
+	int				height;
+	double			ambient;
 	void			*mlx;
 	void			*win;
 	t_img			img;
@@ -154,14 +158,9 @@ typedef struct		s_env
 	t_vec4			*vrts;
 	t_filt			filter;
 	t_cam			cam;
-	struct s_ui		*ui;
 	pthread_t		render_thread;
-	int				drawing;
-	int				redraw;
-	int				frame;
-	int				width;
-	int				height;
-	double			ambient;
+	struct s_ui		*ui;
+	int				last_id;
 }					t_env;
 
 /*

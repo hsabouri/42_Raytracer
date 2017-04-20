@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 15:09:42 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/20 14:55:52 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb, double 
 t_color					sum_lights(t_obj obj, t_ray ray, t_env env)
 {
 	t_color				res;
+	t_color				ambient;
 	unsigned int		i;
 	const unsigned int	n = env.n_lgt - 1;
 
@@ -74,12 +75,6 @@ t_color					lights(t_obj obj, t_ray ray, t_env env, int depth)
 		sec = reflect_ray(obj, ray);
 		add = handle_reflect(sec, env, depth);
 		add = color_scale(add, obj.mat.reflect);
-		res = add_colors(res, add);
-	}
-	if (depth < DEPTH_MAX && obj.mat.refract > -1.0 && env.render)
-	{
-		sec = refract_ray(obj, ray);
-		add = handle_reflect(sec, env, depth);
 		res = add_colors(res, add);
 	}
 	if (obj.mat.alpha > EPSILON)
