@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 19:15:42 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/13 18:01:01 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/20 16:26:01 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ t_cam			cam_handle(t_cam cam, t_env *env)
 	else if (env->ui->keystatus[A_RIGHT] == 1 && \
 			env->ui->keystatus[A_LEFT] != 1)
 		cam = cam_execute(cam, RIGHT, env);
-	if (env->ui->keystatus[N_ADD] == 1 && env->ui->keystatus[N_SUB] != 1)
+	if (env->ui->keystatus[N_SUB] == 1 && env->ui->keystatus[N_ADD] != 1)
 		cam = cam_execute(cam, FRONT, env);
-	else if (env->ui->keystatus[N_SUB] == 1 && env->ui->keystatus[N_ADD] != 1)
+	else if (env->ui->keystatus[N_ADD] == 1 && env->ui->keystatus[N_SUB] != 1)
 		cam = cam_execute(cam, BACK, env);
 	return (cam);
 }

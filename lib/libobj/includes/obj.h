@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 17:43:21 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/19 18:04:37 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 16:19:01 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ t_img				parse_asset(char *path, t_env env);
 t_ttype				type_of_objs(char *str);
 
 t_env				parse(int fd, t_env env);
-t_env				parse_pipeline(t_env env, char *line, char *line2);
+t_env				parse_pipeline(t_env env, char *line2);
 
 #endif

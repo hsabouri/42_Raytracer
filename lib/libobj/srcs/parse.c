@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/19 18:03:46 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 16:19:29 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_env		parse(int fd, t_env env)
 	while (get_next_line(fd, &line) > 0)
 	{
 		line2 = ft_strtrim(line);
-		env = parse_pipeline(env, line, line2);
+		env = parse_pipeline(env, line2);
 		free_lines(line, line2);
 	}
 	free(line);

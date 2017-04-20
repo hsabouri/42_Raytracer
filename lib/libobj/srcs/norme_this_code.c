@@ -6,13 +6,13 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:52:13 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/19 18:03:36 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 16:18:47 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <obj.h>
 
-t_env	parse_pipeline(t_env env, char *line, char *line2)
+t_env	parse_pipeline(t_env env, char *line2)
 {
 	env = objs(line2, env);
 	env = lgts(line2, env);

@@ -6,11 +6,30 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/20 10:52:36 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 16:14:42 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt.h"
+
+static double	if_forest(t_obj *objs, t_ray *ray, double t_tmp, unsigned int i)
+{
+	if (objs[i].type == MESH)
+		t_tmp = intersect_mesh(*ray, &objs[i]);
+	else if (objs[i].ch_type != NOCHILD && objs[i].ch_type != LIMIT)
+		t_tmp = intersect_child(*ray, &objs[i]);
+	else if (objs[i].type == SPHERE)
+		t_tmp = intersect_sphere(*ray, &objs[i]);
+	else if (objs[i].type == PLANE)
+		t_tmp = intersect_plane(*ray, &objs[i]);
+	else if (objs[i].type == CONE)
+		t_tmp = intersect_cone(*ray, &objs[i]);
+	else if (objs[i].type == CYLINDER)
+		t_tmp = intersect_cylinder(*ray, &objs[i]);
+	else if (objs[i].type == POLYGON)
+		t_tmp = intersect_polygon(*ray, objs[i]);
+	return (t_tmp);
+}
 
 static t_color	pipeline(t_obj *objs, t_ray *ray, t_env env)
 {
@@ -42,20 +61,7 @@ int				check_intersections(t_obj *objs, t_ray *ray)
 	t_tmp = -1.0;
 	while (objs[i].type != BACKSLASH)
 	{
-		if (objs[i].type == MESH)
-			t_tmp = intersect_mesh(*ray, &objs[i]);
-		else if (objs[i].ch_type != NOCHILD && objs[i].ch_type != LIMIT)
-			t_tmp = intersect_child(*ray, &objs[i]);
-		else if (objs[i].type == SPHERE)
-			t_tmp = intersect_sphere(*ray, &objs[i]);
-		else if (objs[i].type == PLANE)
-			t_tmp = intersect_plane(*ray, &objs[i]);
-		else if (objs[i].type == CONE)
-			t_tmp = intersect_cone(*ray, &objs[i]);
-		else if (objs[i].type == CYLINDER)
-			t_tmp = intersect_cylinder(*ray, &objs[i]);
-		else if (objs[i].type == POLYGON)
-			t_tmp = intersect_polygon(*ray, objs[i]);
+		t_tmp = if_forest(objs, ray, t_tmp, i);
 		if ((t_tmp < t || t <= EPSILON) && t_tmp > EPSILON)
 		{
 			t = t_tmp;
