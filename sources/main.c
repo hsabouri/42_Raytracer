@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 16:24:58 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 16:36:03 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			*draw(void *arg)
 	env = (t_env *)arg;
 	env->drawing = 1;
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
-	raytrace(env->cam, env->objs, env);
+	raytrace(env->cam, env);
 	env->drawing = 0;
 	return (NULL);
 }

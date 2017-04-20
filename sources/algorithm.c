@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/28 20:29:56 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/20 16:14:42 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 16:41:53 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,25 @@ int				check_intersections(t_obj *objs, t_ray *ray)
 	return (i_final);
 }
 
-int				raytrace(t_cam camera, t_obj *objs, t_env *env)
+static t_img	raytrace_2(t_cam camera, t_env *env, int x, int y)
+{
+	t_ray		ray;
+	t_color		col;
+	t_obj		*objs;
+
+	objs = env->objs;
+	ray = init_ray(&camera, x, y, env);
+	col = pipeline(objs, &ray, *env);
+	if (env->filter && env->render)
+		col = filters(col, *env);
+	return (pixel_put(env->img, x, y, col));
+}
+
+int				raytrace(t_cam camera, t_env *env)
 {
 	int			i;
 	int			x;
 	int			y;
-	t_ray		ray;
-	t_color		col;
 
 	i = 0;
 	while (i < 16)
@@ -92,17 +104,10 @@ int				raytrace(t_cam camera, t_obj *objs, t_env *env)
 			x = i % 4;
 			while (x < env->width)
 			{
-				ray = init_ray(&camera, x, y, env);
-				col = pipeline(objs, &ray, *env);
-				if (env->filter && env->render)
-					col = filters(col, *env);
-				env->img = pixel_put(env->img, x, y, col);
+				env->img = raytrace_2(camera, env, x, y);
 				x += 4;
 				if (env->redraw == 1)
-				{
-					env->drawing = 0;
-					return (0);
-				}
+					return (env->drawing = 0);
 			}
 			y += 4;
 		}
