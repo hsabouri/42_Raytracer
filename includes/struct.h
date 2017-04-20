@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 14:34:59 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 18:25:01 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ typedef struct		s_env
 	int				frame;
 	int				width;
 	int				height;
+	int				count;
 	double			ambient;
 	void			*mlx;
 	void			*win;

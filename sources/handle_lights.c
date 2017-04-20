@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 17:07:57 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/20 18:29:00 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_color					add_colors(t_color c1, t_color c2)
 	return (res);
 }
 
-static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb, double min)
+static t_color			add_light(t_obj obj, t_ray ray, t_color rgb, t_env env)
 {
 	t_vec4				coef;
 	double				spec;
@@ -31,13 +31,13 @@ static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb, double 
 	t_color				s;
 
 	res = obj.mat.rgb;
-	coef = lambert(obj, ray, lgt, min);
+	coef = lambert(obj, ray, env.lgt[env.count], env.ambient);
 	coef = vector_scale(coef, 1.0 / 255);
 	coef = vector_cap(coef, 0, 1.0);
 	res = apply_coef(res, coef);
 	res = add_colors(res, rgb);
-	spec = specular(obj, ray, lgt);
-	s = color_scale(lgt.rgb, spec);
+	spec = specular(obj, ray, env.lgt[env.count]);
+	s = color_scale(env.lgt[env.count].rgb, spec);
 	res = add_colors(res, s);
 	return (res);
 }
@@ -45,16 +45,16 @@ static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb, double 
 t_color					sum_lights(t_obj obj, t_ray ray, t_env env)
 {
 	t_color				res;
-	unsigned int		i;
 	const unsigned int	n = env.n_lgt - 1;
 
-	i = 0;
+	env.count = 0;
 	res = (t_color) {0, 0, 0, 0};
-	while (i < n)
+	while (env.count < (int)n)
 	{
-		if (!env.shadow || shadows(env.objs, ray, env.lgt[i], env.last_id))
-			res = add_light(obj, ray, env.lgt[i], res, env.ambient);
-		i++;
+		if (!env.shadow || shadows(env.objs, ray,\
+					env.lgt[env.count], env.last_id))
+			res = add_light(obj, ray, res, env);
+		env.count++;
 	}
 	return (res);
 }
