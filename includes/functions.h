@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 12:32:09 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 15:11:09 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int			mouse(int x, int y, t_env *env);
 int			keypress(int keycode, t_env *env);
 int			keyrelease(int keycode, t_env *env);
 int			button_press(int button, int x, int y, t_env *env);
-int			button_release(int button, int x, int y, t_env *env);
+int			button_release(int x, int y, t_env *env);
 t_env		*key_actions(t_env *env);
 t_img		*create_img(t_img *res, int width, int height, void *mlx);
 

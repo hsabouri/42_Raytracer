@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 14:55:52 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 15:08:34 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb, double 
 t_color					sum_lights(t_obj obj, t_ray ray, t_env env)
 {
 	t_color				res;
-	t_color				ambient;
 	unsigned int		i;
 	const unsigned int	n = env.n_lgt - 1;
 

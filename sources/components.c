@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 12:08:36 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/17 14:12:02 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 15:13:19 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_compnt	compnts_default(t_compnt compnt, int x_offset, int y_offset)
 	return (compnt);
 }
 
-static t_ui		*init_compnts4(t_ui *ui, t_env env)
+static t_ui		*init_compnts4(t_ui *ui)
 {
 	((t_obj *)ui->compnts[4].value)->type = SPHERE;
 	((t_obj *)ui->compnts[4].value)->mat.rgb = (t_color){255, 255, 255, 0};
@@ -74,7 +74,7 @@ static t_ui		*init_compnts3(t_ui *ui, t_env env)
 	ui->compnts[5].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
 	ui->compnts[6].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
 	ui->compnts[7].value = (t_obj *)ft_malloc(sizeof(t_obj), CLEAN);
-	return (init_compnts4(ui, env));
+	return (init_compnts4(ui));
 }
 
 static t_ui		*init_compnts2(t_ui *ui, t_env env)
