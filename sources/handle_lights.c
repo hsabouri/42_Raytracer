@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 16:35:55 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/20 17:07:57 by qduperon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,13 @@ t_color					add_colors(t_color c1, t_color c2)
 	return (res);
 }
 
-static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, double min)
+static t_color			add_light(t_obj obj, t_ray ray, t_lgt lgt, t_color rgb, double min)
 {
 	t_vec4				coef;
 	double				spec;
 	t_color				res;
 	t_color				s;
-	t_color				rgb;
 
-	rgb = (t_color) {0, 0, 0, 0};
 	res = obj.mat.rgb;
 	coef = lambert(obj, ray, lgt, min);
 	coef = vector_scale(coef, 1.0 / 255);
@@ -55,7 +53,7 @@ t_color					sum_lights(t_obj obj, t_ray ray, t_env env)
 	while (i < n)
 	{
 		if (!env.shadow || shadows(env.objs, ray, env.lgt[i], env.last_id))
-			res = add_light(obj, ray, env.lgt[i], env.ambient);
+			res = add_light(obj, ray, env.lgt[i], res, env.ambient);
 		i++;
 	}
 	return (res);
