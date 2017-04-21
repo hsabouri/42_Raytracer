@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 15:23:37 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/21 15:55:35 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/21 17:40:44 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_color					sum_lights(t_obj obj, t_ray ray, t_env env)
 	res = (t_color) {0, 0, 0, 0};
 	while (env.count < (int)n)
 	{
-		if (!env.shadow || shadows(env.objs, ray, env.lgt[env.count]))
+		if (!env.shadow || shadows(env, env.objs, ray, env.lgt[env.count]))
 			res = add_light(obj, ray, res, env);
 		env.count++;
 	}
