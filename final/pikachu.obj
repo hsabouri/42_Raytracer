@@ -634,8 +634,6 @@ o pikachu_1gen_flowalistik
 	f 193 194 196
 	f 203 204 202
 	f 201 202 204
-	reflect -1.0
-	alpha 0.0
 
 omni light01
 	p -4.0 1.0 6.0
