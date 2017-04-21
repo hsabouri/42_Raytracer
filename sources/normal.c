@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 17:24:15 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/18 14:08:16 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/21 15:54:16 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_vec4		normal_child(t_ray ray, t_obj obj, t_vec4 pos)
 {
 	t_vec4	res;
 
+	if (obj.type == MESH)
+		return (get_normal(ray, obj.chld[obj.lst], pos));
 	if (obj.ch_type == LIMIT)
 	{
 		if (obj.lmt.dir.x == 42)
