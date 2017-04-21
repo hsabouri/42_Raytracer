@@ -1,5 +1,6 @@
 width 1000
 height 1000
+ambient 0.2
 
 camera
 	p -1.0 1.0 -8.0
@@ -22,7 +23,6 @@ sphere left
 	radius 1.0
 	c 255 255 255
 	reflect 0.0
-	alpha 0.5
 
 sphere center
 	p 0.0 2.0 0.0
@@ -34,7 +34,8 @@ sphere right
 	p 3.0 2.0 1.0
 	radius 1.0
 	c 255 255 255
-	reflect 0.0
+	reflect 0.5
+	texture textures/earth.xpm
 
 cone greenCenter
 	radius 0.8

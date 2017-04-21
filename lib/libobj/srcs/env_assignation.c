@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 11:33:53 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/06 14:25:54 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/21 14:27:15 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ t_env			env_feed(char *line, t_env env)
 {
 	if (ft_strnstr(line, "camera", 6))
 		return (set_camera(env));
+	if (ft_strnstr(line, "bounds ", 7))
+		env.bounds = ft_atoi(line + 7);
+	if (ft_strnstr(line, "ambient ", 8))
+		env.ambient = parse_double(line + 8);
 	if (ft_strnstr(line, "width ", 6))
 		env.width = ft_atoi(line + 6);
 	if (ft_strnstr(line, "height ", 7))

@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 18:30:05 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/20 16:19:29 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/21 15:01:24 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int			static_keeper(int new, int to_change)
 t_env		create_obj(t_type type, char *name, t_env env)
 {
 	static_keeper(1, 1);
+	env.objs[env.n_obj].id = env.n_obj;
 	if (type == MESH && env.n_obj < 1000)
 	{
 		env.objs[env.n_obj] = create_mesh((t_color) {255, 255, 255, 0}, name);
