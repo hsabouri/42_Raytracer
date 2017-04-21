@@ -2,6 +2,7 @@
 
 width 2640
 height 1440
+ambient 0.2
 
 sphere sphere1
 radius 10.0

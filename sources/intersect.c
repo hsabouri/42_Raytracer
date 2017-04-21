@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 16:58:46 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/18 15:45:28 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/21 17:05:18 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ double		intersect_cylinder(t_ray ray, t_obj *cylinder)
 	a = ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z;
 	b = 2 * (ray.dir.x * v.x + ray.dir.z * v.z);
 	c = (v.x * v.x + v.z * v.z) - cylinder->radius * cylinder->radius;
-	ray.t = solve_quadra(cylinder, ray, a, b, c);
+	ray.t = solve_quadra(cylinder, ray, (t_vec4){a, b, c, 0});
 	return (ray.t);
 }
 
@@ -43,7 +43,7 @@ double		intersect_cone(t_ray ray, t_obj *cone)
 		- (cone->radius * cone->radius * ray.dir.y * v.y));
 	c = (v.x * v.x + v.z * v.z)
 		- (cone->radius * cone->radius * v.y * v.y);
-	ray.t = solve_quadra(cone, ray, a, b, c);
+	ray.t = solve_quadra(cone, ray, (t_vec4){a, b, c, 0});
 	return (ray.t);
 }
 
@@ -59,7 +59,7 @@ double		intersect_sphere(t_ray ray, t_obj *sphere)
 	a = scalar_product(ray.dir, ray.dir);
 	b = 2 * scalar_product(ray.dir, v);
 	c = scalar_product(v, v) - sphere->radius * sphere->radius;
-	ray.t = solve_quadra(sphere, ray, a, b, c);
+	ray.t = solve_quadra(sphere, ray, (t_vec4){a, b, c, 0});
 	return (ray.t);
 }
 

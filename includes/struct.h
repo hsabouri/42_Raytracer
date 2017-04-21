@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/21 15:43:40 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/21 16:54:29 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct		s_lmt
 
 typedef struct		s_obj
 {
+	int				id;
 	char			*name;
 	int				lst;
 	t_mat			mat;
@@ -161,6 +162,7 @@ typedef struct		s_env
 	pthread_t		render_thread;
 	struct s_ui		*ui;
 	int				last_id;
+	int				bounds;
 }					t_env;
 
 /*

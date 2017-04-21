@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 04:02:21 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/21 15:56:48 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/21 17:06:53 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ static t_obj	*realloc_mesh(t_obj obj)
 	return (res);
 }
 
-static void		swap_poly(t_obj *obj1, t_obj *obj2)
-{
-	t_obj	tmp;
-
-	tmp = *obj1;
-	*obj1 = *obj2;
-	*obj2 = tmp;
-}
-
 double			intersect_mesh(t_ray ray, t_obj *obj)
 {
 	int			i;
@@ -61,7 +52,6 @@ double			intersect_mesh(t_ray ray, t_obj *obj)
 		}
 		i++;
 	}
-	//swap_poly(obj->chld, obj->chld + i);
 	if (obj->lst == -1)
 		obj->lst = i;
 	return (t);
