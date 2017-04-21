@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 12:08:36 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/20 15:13:19 by qduperon         ###   ########.fr       */
+/*   Updated: 2017/04/20 21:05:45 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static t_ui		*init_compnts4(t_ui *ui)
 	((t_obj *)ui->compnts[4].value)->mat.rgb = (t_color){255, 255, 255, 0};
 	((t_obj *)ui->compnts[4].value)->mat.alpha = 0;
 	((t_obj *)ui->compnts[4].value)->mat.reflect = -1.0;
-	((t_obj *)ui->compnts[4].value)->mat.refract = -1.0;
 	((t_obj *)ui->compnts[4].value)->mat.coef = new_vector(1, 1, 1);
 	((t_obj *)ui->compnts[4].value)->mat.texture.type = NOTEX;
 	((t_obj *)ui->compnts[4].value)->radius = 1;

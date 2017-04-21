@@ -1,47 +1,64 @@
-width 800
-height 800
+width 200
+height 200
 
 camera
-	p 0.0 1.0 -6.0
+	p -1.0 1.0 -8.0
+	r 0.5.0 1.0 0.0 0.25
 
-plane plane1
-	p 0.0 0.0 0.0
-	n 0.0 1.0 0.0
-	c 255 255 255
-	reflect 0.0
-
-plane plane2
+plane wall
 	p 0.0 0.0 3.0
 	n 0.0 0.0 -1.0
 	c 255 255 255
 	reflect 0.0
 
-sphere sphere1
-	p 0.0 2.0 0.0
-	radius 1.0
-	c 255 255 255 
-	reflect 0.3
+plane floor
+	p 0.0 0.0 0.0
+	n 0.0 1.0 0.0
+	c 255 255 255
+	reflect 0.0
 
-sphere sphere2
+sphere left
 	p -3.0 2.0 1.0
 	radius 1.0
 	c 255 255 255
 	reflect 0.0
+	alpha 0.5
 
-sphere sphere3
+sphere center
+	p 0.0 2.0 0.0
+	radius 1.0
+	c 255 0 0
+	reflect 1.0
+
+sphere right
 	p 3.0 2.0 1.0
 	radius 1.0
 	c 255 255 255
 	reflect 0.0
 
-omni light1
+cone greenCenter
+	radius 0.8
+	p 0.0 2.0 -10.0
+	c 0 255 0
+
+cylinder redRight
+	radius 1
+	p 8.0 0.0 -8.0
+	c 255 0 0
+
+cylinder blueRight
+	radius 1
+	p -8.0 0.0 -8.0
+	c 0 0 255
+
+omni redLeft
 	p -1.0 3.0 -2.0
 	c 255 0 0
 
-omni light2
+omni blueRight
 	p 1.0 3.0 -2.0
 	c 0 0 255
 
-omni light3
+omni greenCenter
 	p 0.0 3.0 -2.0
 	c 0 255 0

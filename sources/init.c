@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 14:45:43 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 20:47:28 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_ui			*init_ui(t_env env)
 	ui->obj_map = init_img(ui->obj_map, (t_color){255, 255, 255, 255});
 	ui = init_compnts(ui, env);
 	ui->color = (t_color){255, 255, 255, 0};
-	ui->redraw = 1;
+	ui->draw = 0;
 	ui->click = 0;
 	ui->last_click = 0;
 	ui->delete = 0;
@@ -68,7 +68,7 @@ t_env			init_env(int ac, char **av)
 	env.win = mlx_new_window(env.mlx, env.width, env.height, "RT");
 	create_img(&env.img, env.width, env.height, env.mlx);
 	env.img = init_img(env.img, (t_color){0, 0, 0, 0});
-	env.sky = parse_asset("textures/skybox.xpm", env);
+	env.sky = parse_asset("textures/snow_sky.xpm", env);
 	env.objs[env.n_obj - 1] = init_skybox(env);
 	env.redraw = 1;
 	env.drawing = 0;

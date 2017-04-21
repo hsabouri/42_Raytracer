@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 02:31:15 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 14:34:59 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 21:04:32 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ typedef struct		s_mat
 	t_color			rgb;
 	t_vec4			coef;
 	double			reflect;
-	double			refract;
 	double			alpha;
 	t_img			texture;
 }					t_mat;
@@ -138,10 +137,10 @@ typedef struct		s_obj
 
 typedef struct		s_env
 {
-	int				shadow;
-	int				render;
-	int				drawing;
-	int				redraw;
+	char			shadow;
+	char			render;
+	char			drawing;
+	char			redraw;
 	int				frame;
 	int				width;
 	int				height;
@@ -207,6 +206,7 @@ typedef struct		s_ui
 {
 	t_compnt		*compnts;
 	size_t			n_compnts;
+	char			draw;
 	int				mouse_x;
 	int				mouse_y;
 	int				click;

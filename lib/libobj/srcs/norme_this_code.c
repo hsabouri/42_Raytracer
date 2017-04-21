@@ -6,7 +6,7 @@
 /*   By: hsabouri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 17:52:13 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/20 16:18:47 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 21:37:52 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_obj	obj_default(t_type type, char *name)
 	ret.mat.coef = new_vector(1, 1, 1);
 	ret.pos = new_vector(0, 0, 0);
 	ret.mat.reflect = -1.0;
-	ret.mat.refract = -1.0;
 	ret.dir = new_vector(0, 1, 0);
 	ret.rot = new_quat_null();
 	ret.inv = get_inverse(ret.rot);

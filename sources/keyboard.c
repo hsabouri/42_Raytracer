@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 20:20:20 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/18 13:40:35 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 20:32:03 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static t_env	*key_hook2(int keycode, t_env *env)
 			new_vector(3, 4, -10)));
 		env->redraw = 1;
 	}
+	if (keycode == KEY_I)
+		env->ui->draw = (env->ui->draw == 1) ? 0 : 1;
 	return (env);
 }
 

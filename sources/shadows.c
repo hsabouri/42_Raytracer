@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:18:01 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 16:02:44 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 20:22:16 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static double	if_forest(t_obj *objs, t_ray ray, int i, double tmp)
 	return (tmp);
 }
 
-static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
+static double	other_intersect(t_obj *objs, t_ray ray, double max_dis)
 {
 	double		t;
 	double		tmp;
@@ -48,12 +48,12 @@ static double	other_intersect(t_obj *objs, t_ray ray, int id, double max_dis)
 		}
 		i++;
 	}
-	if (objs[i].type == BACKSLASH || i == id)
+	if (objs[i].type == BACKSLASH)
 		return (EPSILON);
 	return (t);
 }
 
-int				shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id)
+int				shadows(t_obj *objs, t_ray ray, t_lgt lgt)
 {
 	t_ray		new;
 	double		t;
@@ -64,7 +64,7 @@ int				shadows(t_obj *objs, t_ray ray, t_lgt lgt, int id)
 	new.dir = vector_sub(lgt.pos, lgt.hitpnt);
 	max_dis = get_vector_len(new.dir);
 	new.dir = normalize_vector(new.dir);
-	t = other_intersect(objs, new, id, max_dis);
+	t = other_intersect(objs, new, max_dis);
 	if (t > EPSILON && t <= max_dis)
 		return (0);
 	return (1);

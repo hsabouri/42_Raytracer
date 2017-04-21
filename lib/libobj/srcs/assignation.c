@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 19:17:55 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/18 14:06:38 by rbejot           ###   ########.fr       */
+/*   Updated: 2017/04/20 21:07:21 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static t_env	step2_objs(char *line, t_env env)
 		env.objs[env.n_obj - 1].dir = parse_vec(line + 2);
 	if (ft_strnstr(line, "radius ", 7))
 		env.objs[env.n_obj - 1].radius = parse_double(line + 7);
-	if (ft_strnstr(line, "refract ", 8))
-		env.objs[env.n_obj - 1].mat.refract = parse_double(line + 8);
 	if (ft_strnstr(line, "alpha ", 6))
 		env.objs[env.n_obj - 1].mat.alpha = parse_double(line + 6);
 	if (ft_strnstr(line, "reflect ", 8))
@@ -34,7 +32,7 @@ static t_env	step2_objs(char *line, t_env env)
 		env.objs[env.n_obj - 1].mat.texture.type = type_of_objs(line + 5);
 	if (ft_strnstr(line, "r ", 2))
 		env.objs[env.n_obj - 1].rot = parse_quat(line + 2,\
-		&env.objs[env.n_obj - 1].inv);
+			&env.objs[env.n_obj - 1].inv);
 	if (ft_strnstr(line, "child", 6))
 		temp_init(&env, env.n_obj - 1);
 	return (env);

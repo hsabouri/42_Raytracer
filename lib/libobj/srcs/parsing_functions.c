@@ -6,7 +6,7 @@
 /*   By: hsabouri <hsabouri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 22:16:45 by hsabouri          #+#    #+#             */
-/*   Updated: 2017/04/06 15:52:20 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/20 19:56:25 by hsabouri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,12 @@ t_quat	parse_quat(char *str, t_quat *inv)
 	while (ft_isspace(*str) && *str)
 		str++;
 	axis.z = parse_double(str);
-	res = new_quat(M_PI / 180, axis);
+	while (!ft_isspace(*str) && *str)
+		str++;
+	while (!ft_isspace(*str) && *str)
+		str++;
+	axis.w = parse_double(str);
+	res = new_quat(M_PI * axis.w, axis);
 	if (inv)
 		*inv = get_inverse(res);
 	return (res);
