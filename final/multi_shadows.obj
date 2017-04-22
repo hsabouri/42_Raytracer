@@ -1,0 +1,28 @@
+width 800
+height 800
+
+camera
+	p 0.0 0.0 -1.0
+	r 1.0 0.0 0.0 0.05
+
+sphere sph1
+	p 1.0 1.0 4.0
+	radius 1
+	c 255 105 180
+
+plane pl1
+	p 0.0 -2.0 0.0
+	n 0.0 -1.0 0.0
+	c 150 150 150
+
+omni light1
+	p 0.5 2.0 3.0
+	c 255 255 255
+
+omni light1
+	p 1.5 2.0 3.0
+	c 255 255 255
+
+omni light1
+	p 1.0 2.0 3.0
+	c 255 255 255
