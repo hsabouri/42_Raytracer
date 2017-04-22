@@ -1,0 +1,29 @@
+width 1200
+height 800
+ambient 0.2
+
+camera
+	p 0.0 0.0 0.0
+	r 0.0 0.0 0.0 0
+
+plane sol
+	p 0.0 -0.1 0.0
+	n 0.0 1.0 0.0
+	c 43 239 141
+	type CHECKER
+
+sphere sph
+	p 1.0 1.0 3.0
+	radius 1
+	c 214 126 32
+	type BRICKS
+
+sphere sph
+	p -2.0 1.0 3.0
+	radius 1
+	c 111 32 214
+	type NOISE
+
+omni light
+	p 0.0 0.0 0.0
+	c 255 255 255
