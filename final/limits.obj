@@ -1,0 +1,41 @@
+width 1200
+height 1200
+
+camera
+p 0.0 0.0 0.0
+r 1 0 0 0.05
+
+sphere sphereBL
+radius 1.5
+p 1.0 -1.0 3.0
+c 255 0 0
+
+plane sol
+p 0.0 -4.0 0.0
+n 0.0 -1.0 0.0
+c 95 95 95
+
+plane mur
+p 0.0 0.0 10.0
+n 0.0 0.0 -1.0
+c 0 0 255
+
+cylinder jaunepetant
+p -2.0 0.0 8.0
+c 255 145 86
+r 0 0 1 0.25
+radius 1.0
+
+cylinder rosebonbon
+p 0.0 -1.5 8.0
+c 255 105 180
+r 0 0 1 -0.25
+radius 1.0
+
+omni lightL
+p -10.0 2.0 0.0
+c 255 255 255
+
+omni lightR
+p 10.0 2.0 0.0
+c 255 255 255

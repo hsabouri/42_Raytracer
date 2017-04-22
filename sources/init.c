@@ -6,11 +6,29 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:50:00 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/20 20:47:28 by hsabouri         ###   ########.fr       */
+/*   Updated: 2017/04/22 18:30:06 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <rt.h>
+
+void			init_limits(t_env *env)
+{
+	env->objs[0].lmt.axis = (t_vec4){1, 0, 0, 0};
+	env->objs[3].lmt.axis = (t_vec4){0, 1, 0, 0};
+	env->objs[4].lmt.axis = (t_vec4){0, 1, 0, 0};
+	env->objs[0].lmt.coef_max = (t_vec4){1, 0.5, 0.5, 0};
+	env->objs[3].lmt.coef_max = (t_vec4){0, 2, 0, 0};
+	env->objs[4].lmt.coef_max = (t_vec4){0, 2, 0, 0};
+	env->objs[0].lmt.coef_min = (t_vec4){-1, -0.5, -0.5, 0};
+	env->objs[3].lmt.coef_min = (t_vec4){0, -4, 0, 0};
+	env->objs[4].lmt.coef_min = (t_vec4){0, -4, 0, 0};
+	env->objs[3].lmt.mode = MOVEMENT;
+	env->objs[4].lmt.mode = ROTATION;
+	env->objs[0].ch_type = LIMIT;
+	env->objs[4].ch_type = LIMIT;
+	env->objs[3].ch_type = LIMIT;
+}
 
 static void		verify_data(t_env env)
 {

@@ -6,7 +6,7 @@
 /*   By: ple-lez <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 15:47:43 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/21 17:26:38 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/22 18:27:39 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static double	check_in(t_obj *obj, t_ray ray, double t[2], char cmp)
 	if (cmp == 'x')
 		v = (t_vec4){1, 0, 0, 0};
 	if (cmp == 'y')
-		v = (t_vec4){1, 0, 0, 0};
+		v = (t_vec4){0, 1, 0, 0};
 	if (cmp == 'z')
-		v = (t_vec4){1, 0, 0, 0};
+		v = (t_vec4){0, 0, 1, 0};
 	coef0.y = get_component(ray.org, cmp) + t[0] * get_component(ray.dir, cmp);
 	coef1.y = get_component(ray.org, cmp) + t[1] * get_component(ray.dir, cmp);
 	coef0.z = t[0];
@@ -73,8 +73,7 @@ static double	check_in(t_obj *obj, t_ray ray, double t[2], char cmp)
 
 static void		return_min(double *res, double *tmp)
 {
-	*tmp = (*tmp < EPSILON) ? -1.0 : EPSILON;
-	*res = ((*res == -1.0) || (*tmp < *res)) ? *tmp : *res;
+	*res = (((*res == -1.0) || (*tmp < *res)) ? *tmp : *res);
 }
 
 double			limit_object(t_obj *obj, t_ray ray, double t1, double t2)

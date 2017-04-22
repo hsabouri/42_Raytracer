@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 14:24:19 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/21 17:46:01 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/22 18:14:43 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int				main(int ac, char **av)
 	t_env	env;
 
 	env = init_env(ac, av);
+	if (!(ft_strcmp(av[1], "final/limits.obj")))
+		init_limits(&env);
 	mlx_expose_hook(env.win, expose, &env);
 	mlx_loop_hook(env.mlx, draw_loop, &env);
 	mlx_hook(env.win, KEYPRESSEVENT, KEYPRESSMASK, &keypress, &env);

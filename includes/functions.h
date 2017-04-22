@@ -6,7 +6,7 @@
 /*   By: ple-lez <ple-lez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 01:37:11 by ple-lez           #+#    #+#             */
-/*   Updated: 2017/04/21 17:41:03 by ple-lez          ###   ########.fr       */
+/*   Updated: 2017/04/22 18:13:09 by ple-lez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,6 @@ void		*draw(void *arg);
 ** TEMP
 */
 
-void		temp_init(t_env *env, int n_obj);
+void		init_limits(t_env *env);
 
 #endif
