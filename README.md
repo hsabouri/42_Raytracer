@@ -27,7 +27,7 @@ Thanks to:
 * Quentin Duperon
 * Rodolphe Bejot
 
-![alt text](https://github.com/hsabouri/42_Raytracer/tree/master/screenshots/shadow.png "Shadows, spheres and lights")
-![alt text](https://github.com/hsabouri/42_Raytracer/tree/master/screenshots/hall.png "Textures, reflexion...")
-![alt text](https://github.com/hsabouri/42_Raytracer/tree/master/screenshots/hall fast.png "Same but in fast mode")
-![alt text](https://github.com/hsabouri/42_Raytracer/tree/master/screenshots/pikachu.png "Pikachu!")
+![alt text](https://github.com/hsabouri/42_Raytracer/tree/master/screenshots/shadow.png)
+![alt text](https://github.com/hsabouri/42_Raytracer/tree/master/screenshots/hall.png)
+![alt text](https://github.com/hsabouri/42_Raytracer/tree/master/screenshots/hall fast.png)
+![alt text](https://github.com/hsabouri/42_Raytracer/tree/master/screenshots/pikachu.png)
