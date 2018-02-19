@@ -1,7 +1,7 @@
 #UV mapping test
 
-width 200
-height 200
+width 800
+height 600
 
 sphere sphereL
 p -2.0 1.0 0.0
