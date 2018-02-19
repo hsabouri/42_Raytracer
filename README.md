@@ -27,7 +27,8 @@ Thanks to:
 * Quentin Duperon
 * Rodolphe Bejot
 
-![alt text]("https://github.com/hsabouri/42_Raytracer/raw/master/screenshots/shadow.png")
-![alt text]("https://github.com/hsabouri/42_Raytracer/raw/master/screenshots/hall.png")
-![alt text]("https://github.com/hsabouri/42_Raytracer/raw/master/screenshots/hall fast.png")
-![alt text]("https://github.com/hsabouri/42_Raytracer/raw/master/screenshots/pikachu.png")
+
+[<img src="https://raw.github.com/hsabouri/42_Raytracer/master/screenshots/shadow.png" />](https://raw.github.com/hsabouri/42_Raytracer/master/screenshots/shadows.png)
+[<img src="https://raw.github.com/hsabouri/42_Raytracer/master/screenshots/hall.png" />](https://raw.github.com/hsabouri/42_Raytracer/master/screenshots/hall.png)
+[<img src="https://raw.github.com/hsabouri/42_Raytracer/master/screenshots/hall fast.png" />](https://raw.github.com/hsabouri/42_Raytracer/master/screenshots/hall fast.png)
+[<img src="https://raw.github.com/hsabouri/42_Raytracer/master/screenshots/pikachu.png" />](https://raw.github.com/hsabouri/42_Raytracer/master/screenshots/pikachu.png)
